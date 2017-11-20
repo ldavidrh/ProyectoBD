@@ -31,8 +31,12 @@ public class DaoPaciente {
             conn.close();
             return numFilas;
         }
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e); }
+        catch(SQLException e){ 
+            System.out.println(e); 
+        }
+        catch(Exception e){
+            System.out.println(e); 
+        }
         return -1;
     }//fin guardar
 
