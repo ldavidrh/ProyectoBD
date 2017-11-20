@@ -47,4 +47,26 @@ public class DaoAgenda {
         }
         return null;
     }
+    
+    public int eliminarAgenda(String num_agenda){
+        String sql_eliminar;
+        sql_eliminar = "DELETE FROM agenda WHERE num_agenda = '"+ num_agenda +"';";
+        
+        try{
+            Connection conexion = fachada.getConnetion();
+            Statement sentencia = conexion.createStatement();
+            int numFilas = sentencia.executeUpdate(sql_eliminar);
+            return numFilas;
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return -1;
+    }
+    
+    public int modificarAgenda(String num_agenda){
+        String sql_modificar;
+        sql_modificar = "UPDATE agenda SET num_agenda = '";
+        return 0;
+    }
 }
