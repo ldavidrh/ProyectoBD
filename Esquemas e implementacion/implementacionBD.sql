@@ -14,7 +14,7 @@ CREATE TABLE cama
 	codigo_area VARCHAR(30) NOT NULL,
 	estado VARCHAR(15) NOT NULL,
 
-	FOREIGN KEY (codigo_area) REFERENCES area (codigo_area)
+	FOREIGN KEY (codigo_area) REFERENCES area (codigo_area) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS persona CASCADE;
@@ -42,8 +42,8 @@ CREATE TABLE paciente
 	fecha_nacimiento DATE NOT NULL,
 	actividad_economica VARCHAR(30),
 
-	FOREIGN KEY (id_persona) REFERENCES persona (id_persona),
-	FOREIGN KEY (num_historia) REFERENCES historia_clinica (num_historia)
+	FOREIGN KEY (id_persona) REFERENCES persona (id_persona) ON DELETE CASCADE,
+	FOREIGN KEY (num_historia) REFERENCES historia_clinica (num_historia) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS asignada CASCADE;
@@ -53,8 +53,8 @@ CREATE TABLE asignada
 	num_cama VARCHAR(30) NOT NULL,
 	fecha DATE NOT NULL,
 
-	FOREIGN KEY (id_persona) REFERENCES paciente (id_persona),
-	FOREIGN KEY (num_cama) REFERENCES cama (num_cama)
+	FOREIGN KEY (id_persona) REFERENCES paciente (id_persona) ON DELETE CASCADE,
+	FOREIGN KEY (num_cama) REFERENCES cama (num_cama) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS empleado CASCADE;
@@ -67,9 +67,9 @@ CREATE TABLE empleado
 	codigo_area VARCHAR(30) NOT NULL,
 	id_jefe VARCHAR(30) NOT NULL,
 
-	FOREIGN KEY (id_persona) REFERENCES persona (id_persona),
-	FOREIGN KEY (codigo_area) REFERENCES area (codigo_area),
-	FOREIGN KEY (id_jefe) REFERENCES empleado (id_persona)
+	FOREIGN KEY (id_persona) REFERENCES persona (id_persona) ON DELETE CASCADE,
+	FOREIGN KEY (codigo_area) REFERENCES area (codigo_area) ON DELETE CASCADE,
+	FOREIGN KEY (id_jefe) REFERENCES empleado (id_persona) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS agenda CASCADE;
@@ -90,8 +90,8 @@ CREATE TABLE medico
 	universidad VARCHAR(30) NOT NULL,
 	num_agenda VARCHAR(30) NOT NULL,
 
-	FOREIGN KEY (id_persona) REFERENCES empleado (id_persona),
-	FOREIGN KEY (num_agenda) REFERENCES agenda (num_agenda)
+	FOREIGN KEY (id_persona) REFERENCES empleado (id_persona) ON DELETE CASCADE,
+	FOREIGN KEY (num_agenda) REFERENCES agenda (num_agenda) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS campana CASCADE;
@@ -103,7 +103,7 @@ CREATE TABLE campana
 	fecha DATE NOT NULL,
 	id_persona VARCHAR(30) NOT NULL,
 
-	FOREIGN KEY (id_persona) REFERENCES medico (id_persona)
+	FOREIGN KEY (id_persona) REFERENCES medico (id_persona) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS enfermera CASCADE;
@@ -112,7 +112,7 @@ CREATE TABLE enfermera
 	id_persona VARCHAR(30) PRIMARY KEY,
 	anios_exp INTEGER NOT NULL,
 
-	FOREIGN KEY (id_persona) REFERENCES empleado (id_persona)
+	FOREIGN KEY (id_persona) REFERENCES empleado (id_persona) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS habilidades CASCADE;
@@ -122,7 +122,7 @@ CREATE TABLE habilidades
 	habilidad VARCHAR(30) NOT NULL,
 	PRIMARY KEY (id_persona, habilidad),
 
-	FOREIGN KEY (id_persona) REFERENCES enfermera (id_persona)
+	FOREIGN KEY (id_persona) REFERENCES enfermera (id_persona) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS asiste CASCADE;
@@ -132,7 +132,7 @@ CREATE TABLE asiste
 	codigo_campana VARCHAR(30) NOT NULL,
 	descuento INTEGER NOT NULL,
 
-	FOREIGN KEY (id_persona) REFERENCES paciente (id_persona)
+	FOREIGN KEY (id_persona) REFERENCES paciente (id_persona) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS causa CASCADE;
@@ -152,9 +152,9 @@ CREATE TABLE registro
 	precio FLOAT(30) NOT NULL,
 	fecha DATE NOT NULL,
 
-	FOREIGN KEY (num_historia) REFERENCES historia_clinica (num_historia),
-	FOREIGN KEY (codigo_causa) REFERENCES causa (codigo_causa),
-	FOREIGN KEY (id_persona) REFERENCES medico (id_persona)
+	FOREIGN KEY (num_historia) REFERENCES historia_clinica (num_historia) ON DELETE CASCADE,
+	FOREIGN KEY (codigo_causa) REFERENCES causa (codigo_causa) ON DELETE CASCADE,
+	FOREIGN KEY (id_persona) REFERENCES medico (id_persona) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS cita CASCADE;
@@ -165,8 +165,8 @@ CREATE TABLE cita
 	fecha DATE NOT NULL,
 	hora TIME NOT NULL,
 
-	FOREIGN KEY (id_medico) REFERENCES medico (id_persona),
-	FOREIGN KEY (id_paciente) REFERENCES paciente (id_persona)
+	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE,
+	FOREIGN KEY (id_paciente) REFERENCES paciente (id_persona) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS medicamento CASCADE;
@@ -184,8 +184,8 @@ CREATE TABLE formula
 	codigo_medicamento VARCHAR(30) NOT NULL,
 	id_medico VARCHAR(30) NOT NULL,
 
-	FOREIGN KEY (codigo_medicamento) REFERENCES medicamento (codigo_medicamento),
-	FOREIGN KEY (id_medico) REFERENCES medico (id_persona)
+	FOREIGN KEY (codigo_medicamento) REFERENCES medicamento (codigo_medicamento) ON DELETE CASCADE,
+	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS usuario CASCADE;
