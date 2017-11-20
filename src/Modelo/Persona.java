@@ -15,6 +15,13 @@ public class Persona {
     String direccion;
     String telefono;
 
+    public Persona(String id_persona, String nombre, String direccion, String telefono) {
+        this.id_persona = id_persona;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }  
+
     public String getId_persona() {
         return id_persona;
     }

@@ -16,6 +16,14 @@ public class Paciente {
     String fecha_nacimiento;
     String actividad_economica;
 
+    public Paciente(String id_persona, String num_historia, String seguridad_social, String fecha_nacimiento, String actividad_economica) {
+        this.id_persona = id_persona;
+        this.num_historia = num_historia;
+        this.seguridad_social = seguridad_social;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.actividad_economica = actividad_economica;
+    }    
+
     public String getId_persona() {
         return id_persona;
     }

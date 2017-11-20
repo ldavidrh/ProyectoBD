@@ -5,8 +5,8 @@
  */
 package Controlador;
 import Modelo.Paciente;
-import java.util.Vector;
 import AccesoDatos.*;
+import java.sql.*;
 /**
  *
  * @author invitado
@@ -18,63 +18,22 @@ public class ControlPaciente {
         daoPaciente = new DaoPaciente();
     }
     
-    public int insertarPaciente(String id_persona, String num_historia, String seguridad_social, String fecha_nacimiento, String actividad_economica){
-        Paciente pac = new Paciente();
-        
-        pac.setId_persona(id_persona);
-        pac.setNum_historia(num_historia);
-        pac.setSeguridad_social(seguridad_social);
-        pac.setFecha_nacimiento(fecha_nacimiento);
-        pac.setActividad_economica(actividad_economica);
-        
-        //Se llama al dao para guardar
-        System.out.println("Se va a insertar un paciente");
-        
-        int result =daoPaciente.guardarPaciente(pac);
-
-        System.out.println("Se  insertó  un  nuevo paciente");
-        
-        return result;
+    public String insertarPaciente(String id_persona, String num_historia, String seguridad_social, String fecha_nacimiento, String actividad_economica){
+        Paciente pac = new Paciente(id_persona, num_historia, seguridad_social, fecha_nacimiento, actividad_economica);
+        return daoPaciente.guardarPaciente(pac);
     }
     
-    public Paciente consultarPaciente(String id){
-        Vector v= new Vector();
-
-        Paciente pac = new Paciente();
-        System.out.println("Se va a consultar un paciente");
-        pac= daoPaciente.consultarPrograma(id);
-      
-       return pac;
+    public ResultSet consultarPaciente(String id){
+        return daoPaciente.consultarPaciente(id); 
     }
     
-    public int  modificarPaciente(String id_persona, String num_historia, String seguridad_social, String fecha_nacimiento, String actividad_economica){
-        Paciente pac = new Paciente();        
-
-        pac.setId_persona(id_persona);
-        pac.setNum_historia(num_historia);
-        pac.setSeguridad_social(seguridad_social);
-        pac.setFecha_nacimiento(fecha_nacimiento);
-        pac.setActividad_economica(actividad_economica);
-        
-        System.out.println("Se va a modificar un paciente");
-        
-        int result =daoPaciente.modificarPaciente(pac);
-
-        System.out.println("Se  modificó  un  paciente");
-        
-        return result;
-
+    public String modificarPaciente(String id_persona, String num_historia, String seguridad_social, String fecha_nacimiento, String actividad_economica){
+        Paciente pac = new Paciente(id_persona, num_historia, seguridad_social, fecha_nacimiento, actividad_economica);      
+       return daoPaciente.modificarPaciente(pac);
     }
     
-    public boolean borraPaciente(String id){
-
-        boolean pac;
-        
-         System.out.println("Se va a borrar un programa");
-
-        pac = daoPaciente.borrarPaciente(id);
-      
-       return pac;
+    public String eliminarPaciente(String id){
+        return daoPaciente.eliminarPaciente(id);    
     }
     
     public void cerrarConexionBD(){

@@ -13,6 +13,11 @@ public class HistoriaClinica {
     String num_historia;
     String fecha_apertura;
 
+    public HistoriaClinica(String num_historia, String fecha_apertura) {
+        this.num_historia = num_historia;
+        this.fecha_apertura = fecha_apertura;
+    }    
+
     public String getNum_historia() {
         return num_historia;
     }

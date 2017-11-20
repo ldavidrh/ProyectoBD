@@ -18,7 +18,7 @@ public class DaoPaciente {
         fachada= new FachadaBD();
     }
     
-    public int guardarPaciente(Paciente pac){
+    public String guardarPaciente(Paciente pac){
         String sql_guardar;
         sql_guardar="INSERT INTO paciente(id_persona,num_historia,seguridad_social,fecha_nacimiento,actividad_economica) VALUES ('" +
                 pac.getId_persona() + "', '" + pac.getNum_historia() +  "', '" +
@@ -26,82 +26,78 @@ public class DaoPaciente {
                 pac.getActividad_economica() + "')";
         try{
             Connection conn= fachada.conectar();
-            Statement sentencia = conn.createStatement();
-            int numFilas = sentencia.executeUpdate(sql_guardar);
-            conn.close();
-            return numFilas;
+            Statement sentencia = conn.createStatement();             
+            if(sentencia.executeUpdate(sql_guardar)>0){
+                return "Paciente creado correctamente";
+            }else{
+                return "No se realizó la acción: 0 filas afectadas";
+            } 
         }
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e); }
-        return -1;
-    }//fin guardar
+        catch(SQLException e){
+            System.out.println(e);
+            return "Ya existe un paciente con ese id registrado en el hospital";
+        }
+        catch(Exception e){ 
+            System.out.println(e); 
+            return "Ha ocurrido un error al crear el paciente";
+        }        
+    }
 
-    public Paciente consultarPrograma(String id){
-        Paciente pac= new Paciente();
+    public ResultSet consultarPaciente(String id){        
         String sql_select;
-        sql_select="SELECT codigo, nombre,nivel, num_creditos FROM  programa WHERE codigo='" + id +  "'";
-         try{
-            Connection conn= fachada.getConnetion();
-            System.out.println("consultando en la bd");
+        sql_select="SELECT * FROM paciente WHERE id_persona = '" + id +  "'";
+        try{
+            Connection conn= fachada.getConnetion();            
             Statement sentencia = conn.createStatement();
-            ResultSet tabla = sentencia.executeQuery(sql_select);
-            
-            while(tabla.next()){
-                pac.setId_persona(tabla.getString(1));
-                pac.setNum_historia(tabla.getString(2));
-                pac.setSeguridad_social(tabla.getString(3));
-                pac.setFecha_nacimiento(tabla.getString(4));
-                pac.setActividad_economica(tabla.getString(5));
-              
-              System.out.println("ok");
-            }
-           
-            return pac;
-         }
-         catch(SQLException e){ System.out.println(e); }
-         catch(Exception e){ System.out.println(e); }
-        return null;
+            ResultSet tabla = sentencia.executeQuery(sql_select);            
+            return tabla;
+        }catch(Exception e){
+            System.out.println(e);
+            return null;
+        }
     }
     
-    public int modificarPaciente(Paciente pac){
+    public String modificarPaciente(Paciente pac){
         String sql_update;
-        sql_update="UPDATE programa SET "
+        sql_update="UPDATE paciente SET "
                 + "num_historia='" + pac.getNum_historia() + "', seguridad_social='" 
                 + pac.getSeguridad_social() + "', fecha_nacimiento='" + pac.getFecha_nacimiento()
-                + "', actividad_economica='" + pac.getActividad_economica() + " WHERE codigo='" + pac.getId_persona() +  "'";
-        
-        System.out.println("sql = " + sql_update);
+                + "', actividad_economica='" + pac.getActividad_economica() + 
+                "' WHERE id_persona = '" + pac.getId_persona() + "'";
+                
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            
-            int numFilas = sentencia.executeUpdate(sql_update);
-        }
-        catch(Exception e){ 
+            if(sentencia.executeUpdate(sql_update)>0){
+                return "Paciente modificado exitosamente";
+            }else{
+                return "No existe un paciente con ese id";
+            }            
+        }catch(Exception e){
             System.out.println(e);
+            return "Ha ocurrido un error al modificar el paciente";
         }
-        return -1;
-    }
-    
+    }    
    
-    public boolean borrarPaciente(String id){
+    public String eliminarPaciente(String id){
         String sql_borrar;
-        sql_borrar="DELETE FROM  programa WHERE codigo='" + id +  "'";
-        System.out.println("sql = " + sql_borrar);
+        sql_borrar="DELETE FROM paciente WHERE id_persona = '" + id +  "'";
+        
         try{
-            Connection conn= fachada.getConnetion();
-            Statement sentencia = conn.createStatement();
-            
-            int numFilas = sentencia.executeUpdate(sql_borrar);
-        }
-        catch(Exception e){ 
+            Connection conn= fachada.getConnetion();       
+            Statement sentencia = conn.createStatement();            
+            if(sentencia.executeUpdate(sql_borrar)>0){
+                return "Paciente eliminado exitosamente";
+            }else{
+                return "No se eliminó el paciente";
+            }                
+        }catch(Exception e){
             System.out.println(e);
-        }
-        return true;
+            return "Ocurrió un problema al eliminar el paciente";
+        }                             
     }
     
     public void cerrarConexionBD(){
         fachada.closeConection(fachada.getConnetion());
-    }
-    
+    }    
 }
