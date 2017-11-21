@@ -23,7 +23,7 @@ CREATE TABLE persona
 	id_persona VARCHAR(30) PRIMARY KEY,
 	nombre VARCHAR(60) NOT NULL,
 	direccion VARCHAR(50),
-	telefono VARCHAR(20)
+	telefono VARCHAR(30)
 );
 
 DROP TABLE IF EXISTS historia_clinica CASCADE;
@@ -191,7 +191,7 @@ CREATE TABLE formula
 DROP TABLE IF EXISTS usuario CASCADE;
 CREATE TABLE usuario
 (
-	usuario VARCHAR(30) PRIMARY KEY NOT NULL,
+	persona_id VARCHAR(30) PRIMARY KEY NOT NULL,
 	contraseña VARCHAR(30) NOT NULL,
 	tipo_u VARCHAR(30)
 );
