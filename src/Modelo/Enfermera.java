@@ -13,6 +13,11 @@ public class Enfermera {
     String id_persona;
     int anios_exp;
 
+    public Enfermera(String id_persona, int anios_exp) {
+        this.id_persona = id_persona;
+        this.anios_exp = anios_exp;
+    }   
+    
     public String getId_persona() {
         return id_persona;
     }
