@@ -24,10 +24,10 @@ public class DaoHistoriaClinica {
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();             
-            if(sentencia.executeUpdate(sql_guardar)>0){
+            if(sentencia.execute(sql_guardar)){
                 return "Historia clínica creada correctamente";
             }else{
-                return "No se realizó la acción: 0 filas afectadas";
+                return "Error: No se insertó la historia médica";
             }
         }
         catch(SQLException e){
@@ -40,14 +40,21 @@ public class DaoHistoriaClinica {
         }        
     }
     
-    public ResultSet consultarHistoria(String num){
-        String sql_select;        
+    public String[] consultarHistoria(String num){
+        String sql_select;       
+        String consulta[] = new String[2];
         sql_select = "SELECT * FROM historia_clinica WHERE num_historia = '" + num + "'";
         try{
             Connection conn= fachada.getConnetion();            
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_select);            
-            return tabla;
+            if(tabla.next()){
+                consulta[0] = tabla.getString(1);
+                consulta[1] = tabla.getString(2);               
+            }else{
+                consulta = null;
+            }
+            return consulta;
         }catch(Exception e){
             System.out.println(e);
             return null;
@@ -61,7 +68,7 @@ public class DaoHistoriaClinica {
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            if(sentencia.executeUpdate(sql_modificar)>0){
+            if(sentencia.execute(sql_modificar)){
                 return "Historia clínica modificada exitosamente";
             }else{
                 return "No existe una historia clínica con ese número";
@@ -79,7 +86,7 @@ public class DaoHistoriaClinica {
         try{
             Connection conn= fachada.getConnetion();       
             Statement sentencia = conn.createStatement();            
-            if(sentencia.executeUpdate(sql_delete)>0){
+            if(sentencia.execute(sql_delete)){
                 return "Historia clínica eliminada exitosamente";
             }else{
                 return "No se eliminó la historia clínica";

@@ -16,6 +16,14 @@ public class Medico {
     String universidad;
     String num_agenda;
 
+    public Medico(String id_persona, String especialidad, String num_licencia, String universidad, String num_agenda) {
+        this.id_persona = id_persona;
+        this.especialidad = especialidad;
+        this.num_licencia = num_licencia;
+        this.universidad = universidad;
+        this.num_agenda = num_agenda;
+    }    
+    
     public String getId_persona() {
         return id_persona;
     }

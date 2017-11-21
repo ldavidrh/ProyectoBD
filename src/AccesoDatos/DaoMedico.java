@@ -4,46 +4,45 @@
  * and open the template in the editor.
  */
 package AccesoDatos;
+import Modelo.Medico;
 import java.sql.*;
-import Modelo.Persona;
 /**
  *
  * @author User
  */
-public class DaoPersona {
+public class DaoMedico {
     FachadaBD fachada;
-    
-    public DaoPersona(){
-        fachada = new FachadaBD();
+    public DaoMedico(){
+        fachada= new FachadaBD();
     }
     
-    public String guardarPersona(Persona p){
+    public String guardarMedico(Medico m){
         String sql_guardar;
-        sql_guardar = "INSERT INTO persona VALUES('" + p.getId_persona() + "', '" +
-                      p.getNombre() + "', '" + p.getDireccion() + "', '" + p.getTelefono() + "')";
+        sql_guardar = "INSERT INTO medico VALUES('" + m.getId_persona() + "', '" +
+                      m.getEspecialidad()+ "', '" + m.getNum_licencia() + "', '" + m.getUniversidad() + 
+                      "', '" + m.getNum_agenda() + "')";
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();             
             if(sentencia.execute(sql_guardar)){
-                return "Persona creada correctamente";
+                return "Médico creado correctamente";
             }else{
-                return "Error: No se insertó la persona";
+                return "Error: No se insertó el médico";
             }
+        }catch(SQLException ex){
+            System.out.println(ex);
+            return "Ha ocurrido un error: " + ex.getMessage();
         }
-        catch(SQLException e){
-            System.out.println(e);
-            return "Ya existe una persona con ese id, registrada en el hospital";
-        }
-        catch(Exception e){ 
-            System.out.println(e); 
-            return "Ha ocurrido un error al crear la persona";
+        catch(Exception ex){ 
+            System.out.println(ex); 
+            return "Ha ocurrido un error al crear el médico";
         }        
     }
     
-    public String[] consultarPersona(String id){
-        String sql_select;  
-        String consulta[] = new String[4];
-        sql_select = "SELECT * FROM persona WHERE id_persona = '" + id + "'";
+    public String[] consultarMedico(String id){
+        String sql_select;     
+        String consulta[] = new String[5];
+        sql_select = "SELECT * FROM medico WHERE id_persona = '" + id + "'";
         try{
             Connection conn= fachada.getConnetion();            
             Statement sentencia = conn.createStatement();
@@ -53,6 +52,7 @@ public class DaoPersona {
                 consulta[1] = tabla.getString(2);
                 consulta[2] = tabla.getString(3);
                 consulta[3] = tabla.getString(4);
+                consulta[4] = tabla.getString(5);                         
             }else{
                 consulta = null;
             }
@@ -60,47 +60,47 @@ public class DaoPersona {
         }catch(Exception e){
             System.out.println(e);
             return null;
-        }
+        }        
     }
     
-    public String modificarPersona(Persona p){
+    public String modificarMedico(Medico m){
         String sql_modificar;
-        sql_modificar = "UPDATE persona SET nombre ='" + p.getNombre() + "', direccion ='" +
-                        p.getDireccion() + "', telefono = '" + p.getTelefono() + 
-                        "' WHERE id_persona = '" + p.getId_persona() + "'";
+        sql_modificar = "UPDATE medico SET especialidad ='" + m.getEspecialidad() + "', num_licencia ='" +
+                        m.getNum_licencia()+ "', universidad = '" + m.getUniversidad() + "', num_agenda = '" +
+                        m.getNum_agenda() + "' WHERE id_persona = '" + m.getId_persona() + "'";
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
             if(sentencia.execute(sql_modificar)){
-                return "Persona modificada exitosamente";
+                return "Médico modificado exitosamente";
             }else{
-                return "No existe una persona con ese id";
+                return "No existe un Médico con ese id";
             }            
-        }catch(Exception e){
-            System.out.println(e);
-            return "Ha ocurrido un error al modificar la persona";
+        }catch(Exception ex){
+            System.out.println(ex);
+            return "Ha ocurrido un error al modificar el médico";
         }
     }
     
-    public String eliminarPaciente(String id){
+    public String eliminarMedico(String id){
         String sql_delete;
-        sql_delete = "DELETE FROM persona WHERE id_persona = '" + id + "'";
+        sql_delete = "DELETE FROM medico WHERE id_persona = '" + id + "'";
         
         try{
             Connection conn= fachada.getConnetion();       
             Statement sentencia = conn.createStatement();            
             if(sentencia.execute(sql_delete)){
-                return "Persona eliminada exitosamente";
+                return "Médico eliminado exitosamente";
             }else{
-                return "No se eliminó la persona";
+                return "No se eliminó el médico";
             }                
         }catch(Exception e){
             System.out.println(e);
-            return "Ocurrió un problema al eliminar la persona";
+            return "Ocurrió un problema al eliminar el médico";
         }                             
     }
     
     public void cerrarConexionBD(){
         fachada.closeConection(fachada.getConnetion());
-    }    
+    }
 }

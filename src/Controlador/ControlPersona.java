@@ -6,7 +6,6 @@
 package Controlador;
 import Modelo.Persona;
 import AccesoDatos.*;
-import java.sql.*;
 /**
  *
  * @author User
@@ -23,7 +22,7 @@ public class ControlPersona {
         return daoPersona.guardarPersona(p);
     }
     
-    public ResultSet consultarPersona(String id){
+    public String[] consultarPersona(String id){
         return daoPersona.consultarPersona(id);
     }
     
