@@ -10,24 +10,25 @@ package Modelo;
  * @author invitado
  */
 public class Usuario {
-    String usuario;
-    String contraseña;
+    String persona_id;
+    String password;
     String tipo_u;
-
-    public String getUsuario() {
-        return usuario;
+    
+    public Usuario(){}
+    public String getPersona_id() {
+        return persona_id;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setPersona_id(String usuario) {
+        this.persona_id = usuario;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getPassword() {
+        return password;
     }
 
     public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+        this.password = contraseña;
     }
 
     public String getTipo_u() {
