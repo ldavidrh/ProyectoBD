@@ -6,8 +6,10 @@
 package Controlador;
 
 import AccesoDatos.DaoUsuario;
-import Modelo.Usuario;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,14 +17,14 @@ import java.sql.ResultSet;
  */
 public class ControlUsuario {
 
-    DaoUsuario daoUsuario;
+    DaoUsuario daousuario;
 
     public ControlUsuario() {
-        daoUsuario = new DaoUsuario();
+        daousuario = new DaoUsuario();
     }
 
     public boolean consultarDatos(String cedula, String password) {
-        String[] resultado = daoUsuario.consultarUsuario(cedula);
+        String[] resultado = daousuario.consultarDatos(cedula);
         if (resultado == null) {
             return false;
         } else {
@@ -31,8 +33,6 @@ public class ControlUsuario {
             } else {
                 return false;
             }
-
         }
     }
-
 }

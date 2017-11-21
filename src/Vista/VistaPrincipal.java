@@ -6,7 +6,6 @@
 package Vista;
 
 import Controlador.*;
-import java.sql.ResultSet;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -39,15 +38,14 @@ public class VistaPrincipal extends javax.swing.JFrame {
         boolean existe = false;
         do{
             int resultado = JOptionPane.showConfirmDialog(this, entradas, "LOGIN", JOptionPane.CANCEL_OPTION);
-            if(resultado == JOptionPane.CANCEL_OPTION ){
+            if(resultado == JOptionPane.CANCEL_OPTION | resultado == JOptionPane.CLOSED_OPTION){
                 System.exit(0);
             }else if(resultado == JOptionPane.OK_OPTION){
                 String cedula = fieldCedula.getText();
                 String password = new String(fieldPassword.getPassword());
-                
                 existe = controlUsuario.consultarDatos(cedula, password);
             }
-        }while(existe == false);
+        }while(!existe);
     }
 
     /**
