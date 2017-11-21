@@ -18,7 +18,7 @@ public class FachadaBD {
         FachadaBD(){
             url="jdbc:postgresql://localhost:5432/Proyecto";
             usuario="postgres";
-            password="123";
+            password="ldavidrh";
         }
         
         public Connection conectar(){
