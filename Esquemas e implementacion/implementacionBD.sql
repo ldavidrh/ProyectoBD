@@ -1,4 +1,4 @@
-||﻿DROP TABLE IF EXISTS area CASCADE;
+DROP TABLE IF EXISTS area CASCADE;
 CREATE TABLE area
 (
 	codigo_area VARCHAR(30) PRIMARY KEY NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE persona
 	id_persona VARCHAR(30) PRIMARY KEY,
 	nombre VARCHAR(60) NOT NULL,
 	direccion VARCHAR(50),
-	telefono VARCHAR(20)
+	telefono VARCHAR(30)
 );
 
 DROP TABLE IF EXISTS historia_clinica CASCADE;
@@ -65,7 +65,7 @@ CREATE TABLE empleado
 	salario FLOAT(30) NOT NULL,
 	email VARCHAR(30) NOT NULL,
 	codigo_area VARCHAR(30) NOT NULL,
-	id_jefe VARCHAR(30) NOT NULL,
+	id_jefe VARCHAR(30),
 
 	FOREIGN KEY (id_persona) REFERENCES persona (id_persona) ON DELETE CASCADE,
 	FOREIGN KEY (codigo_area) REFERENCES area (codigo_area) ON DELETE CASCADE,
@@ -191,7 +191,7 @@ CREATE TABLE formula
 DROP TABLE IF EXISTS usuario CASCADE;
 CREATE TABLE usuario
 (
-	usuario VARCHAR(30) PRIMARY KEY NOT NULL,
+	id_persona VARCHAR(30) PRIMARY KEY NOT NULL,
 	contraseña VARCHAR(30) NOT NULL,
 	tipo_u VARCHAR(30)
 );
