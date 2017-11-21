@@ -6,7 +6,6 @@
 package Controlador;
 import Modelo.HistoriaClinica;
 import AccesoDatos.*;
-import java.sql.*;
 /**
  *
  * @author User
@@ -23,7 +22,7 @@ public class ControlHistoriaClinica {
         return daoHistoria.guardarHistoria(h);
     }
     
-    public ResultSet consultarHistoria(String num){
+    public String[] consultarHistoria(String num){
         return daoHistoria.consultarHistoria(num);
     }
     

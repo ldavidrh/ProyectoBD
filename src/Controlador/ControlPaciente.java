@@ -6,7 +6,6 @@
 package Controlador;
 import Modelo.Paciente;
 import AccesoDatos.*;
-import java.sql.*;
 /**
  *
  * @author invitado
@@ -23,7 +22,7 @@ public class ControlPaciente {
         return daoPaciente.guardarPaciente(pac);
     }
     
-    public ResultSet consultarPaciente(String id){
+    public String[] consultarPaciente(String id){
         return daoPaciente.consultarPaciente(id); 
     }
     

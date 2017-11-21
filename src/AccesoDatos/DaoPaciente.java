@@ -27,10 +27,10 @@ public class DaoPaciente {
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();             
-            if(sentencia.executeUpdate(sql_guardar)>0){
+            if(sentencia.execute(sql_guardar)){
                 return "Paciente creado correctamente";
             }else{
-                return "No se realizó la acción: 0 filas afectadas";
+                return "Error: No se insertó el paciente";
             } 
         }
         catch(SQLException e){
@@ -43,14 +43,24 @@ public class DaoPaciente {
         }        
     }
 
-    public ResultSet consultarPaciente(String id){        
+    public String[] consultarPaciente(String id){        
         String sql_select;
+        String consulta[] = new String[5];
         sql_select="SELECT * FROM paciente WHERE id_persona = '" + id +  "'";
         try{
             Connection conn= fachada.getConnetion();            
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_select);            
-            return tabla;
+            if(tabla.next()){
+                consulta[0] = tabla.getString(1);
+                consulta[1] = tabla.getString(2);
+                consulta[2] = tabla.getString(3);
+                consulta[3] = tabla.getString(4);
+                consulta[4] = tabla.getString(5);            
+            }else{
+                consulta = null;
+            }
+            return consulta;
         }catch(Exception e){
             System.out.println(e);
             return null;
@@ -68,7 +78,7 @@ public class DaoPaciente {
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            if(sentencia.executeUpdate(sql_update)>0){
+            if(sentencia.execute(sql_update)){
                 return "Paciente modificado exitosamente";
             }else{
                 return "No existe un paciente con ese id";
@@ -86,7 +96,7 @@ public class DaoPaciente {
         try{
             Connection conn= fachada.getConnetion();       
             Statement sentencia = conn.createStatement();            
-            if(sentencia.executeUpdate(sql_borrar)>0){
+            if(sentencia.execute(sql_borrar)){
                 return "Paciente eliminado exitosamente";
             }else{
                 return "No se eliminó el paciente";

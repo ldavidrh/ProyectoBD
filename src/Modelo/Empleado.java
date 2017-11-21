@@ -17,6 +17,15 @@ public class Empleado {
     String codigo_area;
     String id_jefe;
 
+    public Empleado(String id_persona, String cargo, float salario, String email, String codigo_area, String id_jefe) {
+        this.id_persona = id_persona;
+        this.cargo = cargo;
+        this.salario = salario;
+        this.email = email;
+        this.codigo_area = codigo_area;
+        this.id_jefe = id_jefe;
+    }   
+    
     public String getId_persona() {
         return id_persona;
     }

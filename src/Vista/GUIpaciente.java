@@ -17,11 +17,11 @@ public class GUIpaciente extends javax.swing.JInternalFrame {
     ControlHistoriaClinica controlHistoria;
     ControlPaciente controlPaciente;
     
-    public GUIpaciente() {
+    public GUIpaciente(ControlPersona controlPersona, ControlHistoriaClinica controlHistoria, ControlPaciente controlPaciente) {
         initComponents();
-        controlPersona = new ControlPersona();
-        controlHistoria = new ControlHistoriaClinica();
-        controlPaciente = new ControlPaciente();        
+        this.controlPersona = controlPersona;
+        this.controlHistoria = controlHistoria;
+        this.controlPaciente = controlPaciente;        
     }
 
     /**
@@ -265,9 +265,9 @@ public class GUIpaciente extends javax.swing.JInternalFrame {
                        (String)this.anio_apertura.getSelectedItem();
             actividad = this.act_economica.getText();
 
-            JOptionPane.showMessageDialog(this, controlPersona.insertarPersona(id, nombre, direccion, telefono + "\n" +
-                                          controlHistoria.insertarHistoria(historia_clinica, fecha_ap) + "\n" +
-                                          controlPaciente.insertarPaciente(id, historia_clinica, seguridad_social, nacimiento, actividad)));               
+            JOptionPane.showMessageDialog(this, controlPersona.insertarPersona(id, nombre, direccion, telefono));
+            JOptionPane.showMessageDialog(this, controlHistoria.insertarHistoria(historia_clinica, fecha_ap));
+            JOptionPane.showMessageDialog(this,  controlPaciente.insertarPaciente(id, historia_clinica, seguridad_social, nacimiento, actividad));
         }
     }//GEN-LAST:event_guardarActionPerformed
 
@@ -277,7 +277,7 @@ public class GUIpaciente extends javax.swing.JInternalFrame {
             JOptionPane.showInternalMessageDialog(this, "Escriba el ID del paciente", "Atención", JOptionPane.WARNING_MESSAGE);
         }else{
             String id = this.id.getText();
-            ResultSet datosPersona, datosPaciente;
+            String[] datosPersona, datosPaciente;
             datosPersona = controlPersona.consultarPersona(id);
             datosPaciente = controlPaciente.consultarPaciente(id);          
             
