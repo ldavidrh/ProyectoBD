@@ -15,6 +15,13 @@ public class Medicamento {
     String descripcion;
     float costo;
 
+    public Medicamento(String codigo_medicamento, String nombre, String descripcion, float costo) {
+        this.codigo_medicamento = codigo_medicamento;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.costo = costo;
+    }
+
     public String getCodigo_medicamento() {
         return codigo_medicamento;
     }

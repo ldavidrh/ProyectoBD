@@ -4,47 +4,42 @@
  * and open the template in the editor.
  */
 package AccesoDatos;
-
-import Modelo.Agenda;
+import Modelo.Medicamento;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import java.util.logging.*;
 /**
  *
  * @author Luis
  */
-public class DaoAgenda {
-
+public class DaoMedicamento {
     FachadaBD fachada;
-
-    public DaoAgenda() {
+    public DaoMedicamento(){
         fachada = new FachadaBD();
     }
-
-    public String guardarAgenda(Agenda agenda) {
+    
+    public String guardarMedicamento(Medicamento m) {
         String sql_guardar;
-        sql_guardar = "INSERT INTO agenda VALUES('" + agenda.getNum_agenda() + "', '" + agenda.getFecha() + "', '" + agenda.getHora() + "', '" + agenda.getDisponibilidad() + "');";
+        sql_guardar = "INSERT INTO medicamento VALUES('" + m.getCodigo_medicamento() + "', '" + m.getNombre() + "', '" + m.getDescripcion() + "', '" + m.getCosto() + "');";
 
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
             if (sentencia.execute(sql_guardar)) {
-                return "Agenda guardada exitosamente";
+                return "medicamento guardado exitosamente";
             } else {
-                return "No se pudo guardar la agenda";
+                return "No se pudo guardar la medicamento";
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
-            return "Error al guardar la agenda";
+            Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);
+            return "Error al guardar el Medicamento";
         }
     }
 
-    public String[] consultarAgenda(String num_agenda) {
+    public String[] consultarMedicamento(String codigo_medicamento) {
         String sql_consultar;
         String[] consulta = new String[4];
 
-        sql_consultar = "SELECT * FROM agenda WHERE num_agenda = '" + num_agenda + "';";
+        sql_consultar = "SELECT * FROM medicamento WHERE codigo_medicamento = '" + codigo_medicamento + "';";
 
         try {
             Connection conexion = fachada.getConnetion();
@@ -67,39 +62,39 @@ public class DaoAgenda {
 
     }
 
-    public String eliminarAgenda(String num_agenda) {
+    public String eliminarMedicamento(String codigo_medicamento) {
         String sql_eliminar;
-        sql_eliminar = "DELETE FROM agenda WHERE num_agenda = '" + num_agenda + "';";
+        sql_eliminar = "DELETE FROM Medicamento WHERE codigo_medicamento = '" + codigo_medicamento + "';";
 
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
             if (sentencia.execute(sql_eliminar)) {
-                return "Agenda eliminada existosa";
+                return "Medicamento eliminada existosa";
             } else {
-                return "No existe una agenda con el numero: " + num_agenda;
+                return "No existe un medicamento con el numero: " + codigo_medicamento;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
-            return "Error al eliminar agenda";
+            Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);
+            return "Error al eliminar Medicamento";
         }
     }
 
-    public String modificarAgenda(Agenda a) {
+    public String modificarMedicamento(Medicamento m) {
         String sql_modificar;
-        sql_modificar = "UPDATE agenda SET fecha ='" + a.getFecha() + "', hora ='"
-                + a.getHora() + "', disponibilidad = '" + a.getDisponibilidad() + "';";
+        sql_modificar = "UPDATE medicamento SET nombre='" + m.getNombre() + "', descripcion ='"
+                + m.getDescripcion() + "', costo = '" + m.getCosto() + "';";
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
             if (sentencia.execute(sql_modificar)) {
-                return "Agenda modificada exitosamente";
+                return "Medicamento modificado exitosamente";
             } else {
-                return "No existe una agenda con ese numero";
+                return "No existe un Medicamento con ese codigo";
             }
         } catch (Exception ex) {
             System.out.println(ex);
-            return "Ha ocurrido un error al modificar la agenda";
+            return "Ha ocurrido un error al modificar el Medicamento";
         }
 
     }
@@ -107,5 +102,6 @@ public class DaoAgenda {
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());
     }
-
+    
+    
 }

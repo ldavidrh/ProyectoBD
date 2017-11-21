@@ -15,6 +15,15 @@ public class Agenda {
     String hora;
     String disponibilidad;
 
+    public Agenda(String num_agenda, String fecha, String hora, String disponibilidad) {
+        this.num_agenda = num_agenda;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.disponibilidad = disponibilidad;
+    }
+    
+    
+    
     public String getNum_agenda() {
         return num_agenda;
     }
