@@ -13,6 +13,11 @@ public class Habilidades {
     String id_persona;
     String habilidad;
 
+    public Habilidades(String id_persona, String habilidad) {
+        this.id_persona = id_persona;
+        this.habilidad = habilidad;
+    }
+    
     public String getId_persona() {
         return id_persona;
     }
