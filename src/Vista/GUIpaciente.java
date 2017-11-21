@@ -5,6 +5,7 @@
  */
 package Vista;
 import Controlador.*;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -245,7 +246,8 @@ public class GUIpaciente extends javax.swing.JInternalFrame {
            this.direccion.getText().trim().isEmpty() || this.telefono.getText().isEmpty() ||
            this.seguridad_social.getText().isEmpty() || this.num_historia.getText().isEmpty() ||
            this.act_economica.getText().trim().isEmpty()){
-            JOptionPane.showInternalMessageDialog(this, "Existen casillas vacias.", "Error", 2);            
+            JOptionPane.showInternalMessageDialog(this, "Existen casillas vacias.", "Atención", JOptionPane.WARNING_MESSAGE);  
+         
         }else{           
         
             String id, nombre, direccion, telefono, seguridad_social, historia_clinica, nacimiento, actividad, fecha_ap;
@@ -271,6 +273,15 @@ public class GUIpaciente extends javax.swing.JInternalFrame {
 
     private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
         // TODO add your handling code here:
+        if(this.id.getText().trim().isEmpty()){
+            JOptionPane.showInternalMessageDialog(this, "Escriba el ID del paciente", "Atención", JOptionPane.WARNING_MESSAGE);
+        }else{
+            String id = this.id.getText();
+            ResultSet datosPersona, datosPaciente;
+            datosPersona = controlPersona.consultarPersona(id);
+            datosPaciente = controlPaciente.consultarPaciente(id);          
+            
+        }
         
     }//GEN-LAST:event_consultarActionPerformed
 
