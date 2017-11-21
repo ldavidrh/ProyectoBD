@@ -17,30 +17,35 @@ import javax.swing.JTextField;
  * @author Luis
  */
 public class VistaPrincipal extends javax.swing.JFrame {
-
+    ControlUsuario controlUsuario;
     /**
      * Creates new form VistaPrincipal
      */
     public VistaPrincipal() {
         initComponents();
+        controlUsuario = new ControlUsuario();
         
         //Creacion de InputDialog para login
-        JTextField usuario = new JTextField();
-        JPasswordField password = new JPasswordField();
+        JTextField fieldCedula = new JTextField();
+        JPasswordField fieldPassword = new JPasswordField();
         
         JComponent[] entradas = {
             new JLabel("Cedula"),
-            usuario,
+            fieldCedula,
             new JLabel("Contraseña"),
-            password
+            fieldPassword
         };//Finaliza creacion de ventana login
-        
+        boolean existe = false;
         do{
             int resultado = JOptionPane.showConfirmDialog(this, entradas, "LOGIN", JOptionPane.CANCEL_OPTION);
-            if(resultado == JOptionPane.CANCEL_OPTION){
+            if(resultado == JOptionPane.CANCEL_OPTION | resultado == JOptionPane.CLOSED_OPTION){
                 System.exit(0);
+            }else if(resultado == JOptionPane.OK_OPTION){
+                String cedula = fieldCedula.getText();
+                String password = new String(fieldPassword.getPassword());
+                existe = controlUsuario.consultarDatos(cedula, password);
             }
-        }while(true);
+        }while(!existe);
     }
 
     /**

@@ -23,29 +23,26 @@ public class DaoUsuario {
         fachada = new FachadaBD();
     }
 
-    public Usuario consultarDatos(String id_persona) {
+    public String[] consultarDatos(String id_persona) {
         String sql_consultar;
-        ResultSet resultado = null;
-        sql_consultar = "SELECT * FROM usuario WHERE id = '" + id_persona + "';";
+        String[] resultado = new String[3];
+        ResultSet tabla;
+        sql_consultar = "SELECT * FROM usuario WHERE id_persona = '" + id_persona + "';";
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            resultado = sentencia.executeQuery(sql_consultar);
+            tabla = sentencia.executeQuery(sql_consultar);
+            if(tabla.next()){
+                resultado[0] = tabla.getString(1);
+                resultado[1] = tabla.getString(2);
+                resultado[2] = tabla.getString(3);
+                return resultado;
+            }else{
+                return null;
+            }
         } catch (SQLException ex) {
             Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-        Usuario usuario = new Usuario();
-        try {
-            while (resultado.next()) {
-                usuario.setPersona_id(resultado.getString(1));
-                usuario.setContraseña(resultado.getString(2));
-                usuario.setTipo_u(resultado.getString(3));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return usuario;
     }
 }

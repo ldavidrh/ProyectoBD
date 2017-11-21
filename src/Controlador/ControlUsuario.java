@@ -4,22 +4,35 @@
  * and open the template in the editor.
  */
 package Controlador;
+
 import AccesoDatos.DaoUsuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author Luis
  */
 public class ControlUsuario {
+
     DaoUsuario daousuario;
-    public ControlUsuario(){
+
+    public ControlUsuario() {
         daousuario = new DaoUsuario();
     }
-    
-    public boolean consultarDatos(String cedula, String password){
-        return false;
+
+    public boolean consultarDatos(String cedula, String password) {
+        String[] resultado = daousuario.consultarDatos(cedula);
+        if (resultado == null) {
+            return false;
+        } else {
+            if (resultado[1].equals(password)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 }
