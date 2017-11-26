@@ -40,6 +40,10 @@ public class InternalBuscarMedico extends javax.swing.JInternalFrame {
         FieldCedula = new javax.swing.JTextField();
         ButtonConsultar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setResizable(true);
+
         TextArea.setColumns(20);
         TextArea.setRows(5);
         jScrollPane1.setViewportView(TextArea);

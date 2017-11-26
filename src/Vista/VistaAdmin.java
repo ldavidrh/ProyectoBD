@@ -63,19 +63,19 @@ public class VistaAdmin extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         DesktopPane = new javax.swing.JDesktopPane();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        PanelPrincipal = new javax.swing.JTabbedPane();
+        PanelMedico = new javax.swing.JPanel();
         ButtonAgregar = new javax.swing.JButton();
         ButtonEliminar = new javax.swing.JButton();
         ButtonConsultar = new javax.swing.JButton();
         ButtonEditar = new javax.swing.JButton();
+        PanelEnfermera = new javax.swing.JPanel();
+        PanelPaciente = new javax.swing.JPanel();
+        PanelArea = new javax.swing.JPanel();
+        PanelCamas = new javax.swing.JPanel();
+        PanelCampana = new javax.swing.JPanel();
+        PanelCitas = new javax.swing.JPanel();
+        PanelUsuarios = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,98 +90,7 @@ public class VistaAdmin extends javax.swing.JFrame {
             .addGap(0, 271, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 732, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 94, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Area", jPanel3);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 732, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 94, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Camas", jPanel4);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 732, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 94, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Campaña", jPanel5);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 732, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 94, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Paciente", jPanel6);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 732, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 94, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Citas", jPanel7);
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 732, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 94, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Enfermera", jPanel8);
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 732, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 94, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Usuarios", jPanel9);
-
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        PanelMedico.setLayout(new java.awt.GridBagLayout());
 
         ButtonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addDoctor.png"))); // NOI18N
         ButtonAgregar.setText("Agregar");
@@ -197,7 +106,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 133, 3, 0);
-        jPanel2.add(ButtonAgregar, gridBagConstraints);
+        PanelMedico.add(ButtonAgregar, gridBagConstraints);
 
         ButtonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deleteDoctor.png"))); // NOI18N
         ButtonEliminar.setText("Eliminar");
@@ -213,7 +122,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 29, 3, 0);
-        jPanel2.add(ButtonEliminar, gridBagConstraints);
+        PanelMedico.add(ButtonEliminar, gridBagConstraints);
 
         ButtonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchDoctor.png"))); // NOI18N
         ButtonConsultar.setText("Consultar");
@@ -229,20 +138,116 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 18, 3, 0);
-        jPanel2.add(ButtonConsultar, gridBagConstraints);
+        PanelMedico.add(ButtonConsultar, gridBagConstraints);
 
         ButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editDoctor.png"))); // NOI18N
         ButtonEditar.setText("Editar");
         ButtonEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ButtonEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEditarActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 18, 3, 146);
-        jPanel2.add(ButtonEditar, gridBagConstraints);
+        PanelMedico.add(ButtonEditar, gridBagConstraints);
 
-        jTabbedPane1.addTab("Medico", jPanel2);
+        PanelPrincipal.addTab("Medico", PanelMedico);
+
+        javax.swing.GroupLayout PanelEnfermeraLayout = new javax.swing.GroupLayout(PanelEnfermera);
+        PanelEnfermera.setLayout(PanelEnfermeraLayout);
+        PanelEnfermeraLayout.setHorizontalGroup(
+            PanelEnfermeraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 732, Short.MAX_VALUE)
+        );
+        PanelEnfermeraLayout.setVerticalGroup(
+            PanelEnfermeraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 94, Short.MAX_VALUE)
+        );
+
+        PanelPrincipal.addTab("Enfermera", PanelEnfermera);
+
+        javax.swing.GroupLayout PanelPacienteLayout = new javax.swing.GroupLayout(PanelPaciente);
+        PanelPaciente.setLayout(PanelPacienteLayout);
+        PanelPacienteLayout.setHorizontalGroup(
+            PanelPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 732, Short.MAX_VALUE)
+        );
+        PanelPacienteLayout.setVerticalGroup(
+            PanelPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 94, Short.MAX_VALUE)
+        );
+
+        PanelPrincipal.addTab("Paciente", PanelPaciente);
+
+        javax.swing.GroupLayout PanelAreaLayout = new javax.swing.GroupLayout(PanelArea);
+        PanelArea.setLayout(PanelAreaLayout);
+        PanelAreaLayout.setHorizontalGroup(
+            PanelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 732, Short.MAX_VALUE)
+        );
+        PanelAreaLayout.setVerticalGroup(
+            PanelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 94, Short.MAX_VALUE)
+        );
+
+        PanelPrincipal.addTab("Area", PanelArea);
+
+        javax.swing.GroupLayout PanelCamasLayout = new javax.swing.GroupLayout(PanelCamas);
+        PanelCamas.setLayout(PanelCamasLayout);
+        PanelCamasLayout.setHorizontalGroup(
+            PanelCamasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 732, Short.MAX_VALUE)
+        );
+        PanelCamasLayout.setVerticalGroup(
+            PanelCamasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 94, Short.MAX_VALUE)
+        );
+
+        PanelPrincipal.addTab("Camas", PanelCamas);
+
+        javax.swing.GroupLayout PanelCampanaLayout = new javax.swing.GroupLayout(PanelCampana);
+        PanelCampana.setLayout(PanelCampanaLayout);
+        PanelCampanaLayout.setHorizontalGroup(
+            PanelCampanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 732, Short.MAX_VALUE)
+        );
+        PanelCampanaLayout.setVerticalGroup(
+            PanelCampanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 94, Short.MAX_VALUE)
+        );
+
+        PanelPrincipal.addTab("Campaña", PanelCampana);
+
+        javax.swing.GroupLayout PanelCitasLayout = new javax.swing.GroupLayout(PanelCitas);
+        PanelCitas.setLayout(PanelCitasLayout);
+        PanelCitasLayout.setHorizontalGroup(
+            PanelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 732, Short.MAX_VALUE)
+        );
+        PanelCitasLayout.setVerticalGroup(
+            PanelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 94, Short.MAX_VALUE)
+        );
+
+        PanelPrincipal.addTab("Citas", PanelCitas);
+
+        javax.swing.GroupLayout PanelUsuariosLayout = new javax.swing.GroupLayout(PanelUsuarios);
+        PanelUsuarios.setLayout(PanelUsuariosLayout);
+        PanelUsuariosLayout.setHorizontalGroup(
+            PanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 732, Short.MAX_VALUE)
+        );
+        PanelUsuariosLayout.setVerticalGroup(
+            PanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 94, Short.MAX_VALUE)
+        );
+
+        PanelPrincipal.addTab("Usuarios", PanelUsuarios);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -250,7 +255,7 @@ public class VistaAdmin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(PanelPrincipal)
                 .addContainerGap())
             .addComponent(DesktopPane)
         );
@@ -258,7 +263,7 @@ public class VistaAdmin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PanelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DesktopPane))
         );
@@ -283,6 +288,12 @@ public class VistaAdmin extends javax.swing.JFrame {
         this.DesktopPane.add(delMed);
         delMed.show();
     }//GEN-LAST:event_ButtonEliminarActionPerformed
+
+    private void ButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarActionPerformed
+        InternalEditarMedico editMed = new InternalEditarMedico(controlMedico, controlPersona);
+        this.DesktopPane.add(editMed);
+        editMed.show();
+    }//GEN-LAST:event_ButtonEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,14 +337,14 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton ButtonEditar;
     private javax.swing.JButton ButtonEliminar;
     private javax.swing.JDesktopPane DesktopPane;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel PanelArea;
+    private javax.swing.JPanel PanelCamas;
+    private javax.swing.JPanel PanelCampana;
+    private javax.swing.JPanel PanelCitas;
+    private javax.swing.JPanel PanelEnfermera;
+    private javax.swing.JPanel PanelMedico;
+    private javax.swing.JPanel PanelPaciente;
+    private javax.swing.JTabbedPane PanelPrincipal;
+    private javax.swing.JPanel PanelUsuarios;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,18 +4,23 @@
  * and open the template in the editor.
  */
 package Vista;
-
+import Controlador.ControlMedico;
+import Controlador.ControlPersona;
 /**
  *
  * @author Luis
  */
 public class InternalEditarMedico extends javax.swing.JInternalFrame {
-
+    ControlPersona controlPersona;
+    ControlMedico controlMedico;
     /**
      * Creates new form InternalEditarMedico
      */
-    public InternalEditarMedico() {
+    public InternalEditarMedico(ControlMedico controlMedico, ControlPersona controlPersona) {
+        this.controlMedico = controlMedico;
+        this.controlPersona = controlPersona;
         initComponents();
+        this.ButtonEditar.setEnabled(false);
     }
 
     /**
@@ -46,6 +51,10 @@ public class InternalEditarMedico extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         FieldCedulaConsulta = new javax.swing.JTextField();
         ButtonCargar = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setResizable(true);
 
         jLabel1.setText(" Nombre");
 
@@ -210,7 +219,7 @@ public class InternalEditarMedico extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_FieldCedulaConsultaActionPerformed
 
     private void ButtonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCargarActionPerformed
-        // TODO add your handling code here:
+        this.ButtonEditar.setEnabled(true);
     }//GEN-LAST:event_ButtonCargarActionPerformed
 
 
