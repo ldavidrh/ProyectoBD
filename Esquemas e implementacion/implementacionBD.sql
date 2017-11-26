@@ -182,6 +182,7 @@ CREATE TABLE medicamento
 DROP TABLE IF EXISTS formula CASCADE;
 CREATE TABLE formula
 (
+	id_formula VARCHAR(30) PRIMARY KEY NOT NULL,
 	codigo_medicamento VARCHAR(30) NOT NULL,
 	id_medico VARCHAR(30) NOT NULL,
 	id_paciente VARCHAR(30) NOT NULL,
