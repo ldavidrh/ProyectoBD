@@ -25,9 +25,9 @@ public class DaoMedicamento {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
             if (sentencia.execute(sql_guardar)) {
-                return "medicamento guardado exitosamente";
+                return "Medicamento guardado exitosamente";
             } else {
-                return "No se pudo guardar la medicamento";
+                return "No se pudo guardar el medicamento";
             }
         } catch (SQLException ex) {
             Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,9 +70,9 @@ public class DaoMedicamento {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
             if (sentencia.execute(sql_eliminar)) {
-                return "Medicamento eliminada existosa";
+                return "Medicamento eliminado existosamente";
             } else {
-                return "No existe un medicamento con el numero: " + codigo_medicamento;
+                return "No existe un medicamento con el número: " + codigo_medicamento;
             }
         } catch (SQLException ex) {
             Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);

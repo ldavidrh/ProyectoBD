@@ -37,7 +37,10 @@ public class DaoAgenda {
         } catch (SQLException ex) {
             Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
             return "Error al guardar la agenda";
-        }
+        }catch(Exception ex){ 
+            System.out.println(ex); 
+            return "Ha ocurrido un error al crear la agenda";
+        } 
     }
 
     public String[] consultarAgenda(String num_agenda) {

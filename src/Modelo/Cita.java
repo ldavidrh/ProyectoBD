@@ -14,7 +14,16 @@ public class Cita {
     String id_paciente;
     String fecha;
     String hora;
+    float precio;
 
+    public Cita(String id_medico, String id_paciente, String fecha, String hora, float precio) {
+        this.id_medico = id_medico;
+        this.id_paciente = id_paciente;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.precio = precio;
+    }    
+    
     public String getId_medico() {
         return id_medico;
     }
@@ -46,5 +55,12 @@ public class Cita {
     public void setHora(String hora) {
         this.hora = hora;
     }
-    
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }   
 }
