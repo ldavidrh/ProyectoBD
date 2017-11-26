@@ -51,7 +51,8 @@ CREATE TABLE asignada
 (
 	id_persona VARCHAR(30) NOT NULL,
 	num_cama VARCHAR(30) NOT NULL,
-	fecha DATE NOT NULL,
+	fecha_entrada DATE NOT NULL,
+	fecha_salida DATE NOT NULL,
 
 	FOREIGN KEY (id_persona) REFERENCES paciente (id_persona) ON DELETE CASCADE,
 	FOREIGN KEY (num_cama) REFERENCES cama (num_cama) ON DELETE CASCADE
@@ -149,7 +150,6 @@ CREATE TABLE registro
 	num_historia VARCHAR(30) NOT NULL,
 	codigo_causa VARCHAR(30) NOT NULL,
 	id_persona VARCHAR(30) NOT NULL,
-	precio FLOAT(30) NOT NULL,
 	fecha DATE NOT NULL,
 
 	FOREIGN KEY (num_historia) REFERENCES historia_clinica (num_historia) ON DELETE CASCADE,
@@ -164,6 +164,7 @@ CREATE TABLE cita
 	id_paciente VARCHAR(30) NOT NULL,
 	fecha DATE NOT NULL,
 	hora TIME NOT NULL,
+	precio FLOAT(30) NOT NULL,
 
 	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE,
 	FOREIGN KEY (id_paciente) REFERENCES paciente (id_persona) ON DELETE CASCADE
@@ -183,9 +184,11 @@ CREATE TABLE formula
 (
 	codigo_medicamento VARCHAR(30) NOT NULL,
 	id_medico VARCHAR(30) NOT NULL,
+	id_paciente VARCHAR(30) NOT NULL,
 
 	FOREIGN KEY (codigo_medicamento) REFERENCES medicamento (codigo_medicamento) ON DELETE CASCADE,
-	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE
+	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE,
+	FOREIGN KEY (id_paciente) REFERENCES paciente (id_persona) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS usuario CASCADE;
