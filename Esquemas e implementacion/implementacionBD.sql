@@ -70,7 +70,7 @@ CREATE TABLE empleado
 
 	FOREIGN KEY (id_persona) REFERENCES persona (id_persona) ON DELETE CASCADE,
 	FOREIGN KEY (codigo_area) REFERENCES area (codigo_area) ON DELETE CASCADE,
-	FOREIGN KEY (id_jefe) REFERENCES empleado (id_persona) ON DELETE CASCADE
+	FOREIGN KEY (id_jefe) REFERENCES empleado (id_persona)
 );
 
 DROP TABLE IF EXISTS agenda CASCADE;
