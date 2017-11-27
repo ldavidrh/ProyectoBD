@@ -200,4 +200,48 @@ CREATE TABLE usuario
 	tipo_u VARCHAR(30)
 );
 
+INSERT INTO area VALUES ('123','Area de emergencias','Casos de vida o muerte');
+
+INSERT INTO cama VALUES ('001','Esta limpia','123', 'Disponible');
+INSERT INTO cama VALUES ('002','Esta sucia','123', 'Ocupada');
+
+INSERT INTO persona VALUES ('111','Juan David','Car 77A #2B', '310 653 06 58');
+INSERT INTO persona VALUES ('222','Diana Sofia','Calle 12A #3C', '314 600 40 57');
+INSERT INTO persona VALUES ('333','Luis','Car 60B #1A', '212 541 12 78');
+INSERT INTO persona VALUES ('444','Miguel Angel','Corinto :v', '300 400 50 60');
+
+INSERT INTO historia_clinica VALUES ('01', '27-11-2001');
+
+INSERT INTO paciente VALUES ('111','01','123456', '31-07-1998', 'Gasta mucho');
+
+INSERT INTO asignada VALUES ('111','002','31-07-2017', '31-12-2017');
+
+INSERT INTO empleado VALUES ('444','Administrador','15000000', 'Miguel@', '123', null);
+INSERT INTO empleado VALUES ('333','Medico','10000000', 'luis@', '123', '444');
+INSERT INTO empleado VALUES ('222','Enfermera','2000000', 'diana@', '123', '333');
+
+INSERT INTO agenda VALUES ('333','31-12-2017','5:30', 'No');
+INSERT INTO agenda VALUES ('333','31-12-2017','2:30', 'No');
+INSERT INTO agenda VALUES ('333','31-12-2017','9:30', 'Si');
+
+INSERT INTO medico VALUES ('333','Neurologia','321', 'Valle');
+
+INSERT INTO campana VALUES ('1','Maluma','Fondos para curar el cancer', '31-12-2017', '333');
+
+INSERT INTO enfermera VALUES ('222',3);
+
+INSERT INTO habilidades VALUES ('222','Vacunar');
+
+INSERT INTO asiste VALUES ('111','1', 50);
+
+INSERT INTO causa VALUES ('1000','Dolor en espalda', 'Fuertes dolores lumbares');
+
+INSERT INTO registro VALUES ('01','1000', '333', '16-10-2017');
+
+INSERT INTO cita VALUES ('333','111', '31-12-2017','5:30', 50000);
+
+INSERT INTO medicamento VALUES ('1212','Dolex', 'Ayuda contra el malestar general', 700);
+
+INSERT INTO formula VALUES ('0001','1212', '333', '111');
+
 INSERT INTO usuario VALUES ('1','1','Admin');
