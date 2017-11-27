@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package Vista;
+import Controlador.ControlEmpleado;
+import Controlador.ControlEnfermera;
 import Controlador.ControlPersona;
 /**
  *
@@ -11,11 +13,15 @@ import Controlador.ControlPersona;
  */
 public class InternalConsultarEnfermera extends javax.swing.JInternalFrame {
     ControlPersona controlPersona;
+    ControlEmpleado controlEmpleado;
+    ControlEnfermera controlEnfermera;
     /**
      * Creates new form InternalBuscarEnfermera
      */
-    public InternalConsultarEnfermera(ControlPersona controlPersona) {
+    public InternalConsultarEnfermera(ControlEnfermera controlEnfermera, ControlEmpleado controlEmpleado, ControlPersona controlPersona) {
         this.controlPersona = controlPersona;
+        this.controlEmpleado = controlEmpleado;
+        this.controlEnfermera = controlEnfermera;
         initComponents();
     }
 

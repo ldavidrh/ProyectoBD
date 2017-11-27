@@ -20,6 +20,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     ControlUsuario controlUsuario;
     ControlPaciente controlPaciente;
     ControlPersona controlPersona;
+    ControlEnfermera controlEnfermera;
     ControlMedico controlMedico;
     ControlArea controlArea;
     ControlEmpleado controlEmpleado;
@@ -34,6 +35,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         controlMedico = new ControlMedico();
         controlArea = new ControlArea();
         controlEmpleado = new ControlEmpleado();
+        controlEnfermera = new ControlEnfermera();
         
         //Creacion de InputDialog para login
         JTextField fieldCedula = new JTextField();
@@ -720,19 +722,27 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarMedicoActionPerformed
 
     private void ButtonAgregarEnfermeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarEnfermeraActionPerformed
-        // TODO add your handling code here:
+        InternalAgregarEnfermera addEnf = new InternalAgregarEnfermera(controlEnfermera, controlEmpleado, controlPersona);
+        this.DesktopPane.add(addEnf);
+        addEnf.show();
     }//GEN-LAST:event_ButtonAgregarEnfermeraActionPerformed
 
     private void ButtonEliminarEnfermeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarEnfermeraActionPerformed
-        // TODO add your handling code here:
+        InternalBorrarEnfermera delEnf = new InternalBorrarEnfermera(controlPersona);
+        this.DesktopPane.add(delEnf);
+        delEnf.show();
     }//GEN-LAST:event_ButtonEliminarEnfermeraActionPerformed
 
     private void ButtonConsultarEnfermeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarEnfermeraActionPerformed
-        // TODO add your handling code here:
+        InternalConsultarEnfermera conEnf = new InternalConsultarEnfermera(controlEnfermera, controlEmpleado, controlPersona);
+        this.DesktopPane.add(conEnf);
+        conEnf.show();
     }//GEN-LAST:event_ButtonConsultarEnfermeraActionPerformed
 
     private void ButtonEditarEnfermeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarEnfermeraActionPerformed
-        // TODO add your handling code here:
+        InternalEditarEnfermera editEnf =  new InternalEditarEnfermera(controlEnfermera, controlEmpleado, controlPersona);
+        this.DesktopPane.add(editEnf);
+        editEnf.show();
     }//GEN-LAST:event_ButtonEditarEnfermeraActionPerformed
 
     private void ButtonAgregarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarPacienteActionPerformed
@@ -748,11 +758,15 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEliminarPacienteActionPerformed
 
     private void ButtonConsultarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarPacienteActionPerformed
-        // TODO add your handling code here:
+        InternalConsultarPaciente conPac = new InternalConsultarPaciente(controlPaciente, controlPersona);
+        this.DesktopPane.add(conPac);
+        conPac.show();
     }//GEN-LAST:event_ButtonConsultarPacienteActionPerformed
 
     private void ButtonEditarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarPacienteActionPerformed
-        // TODO add your handling code here:
+        InternalEditarPaciente ediPac = new InternalEditarPaciente(controlPaciente, controlPersona);
+        this.DesktopPane.add(ediPac);
+        ediPac.show();
     }//GEN-LAST:event_ButtonEditarPacienteActionPerformed
 
     private void ButtonAgregarPaciente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarPaciente1ActionPerformed
