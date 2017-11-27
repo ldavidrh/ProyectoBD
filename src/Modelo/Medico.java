@@ -14,14 +14,12 @@ public class Medico {
     String especialidad;
     String num_licencia;
     String universidad;
-    String num_agenda;
 
-    public Medico(String id_persona, String especialidad, String num_licencia, String universidad, String num_agenda) {
+    public Medico(String id_persona, String especialidad, String num_licencia, String universidad) {
         this.id_persona = id_persona;
         this.especialidad = especialidad;
         this.num_licencia = num_licencia;
         this.universidad = universidad;
-        this.num_agenda = num_agenda;
     }    
     
     public String getId_persona() {
@@ -54,14 +52,5 @@ public class Medico {
 
     public void setUniversidad(String universidad) {
         this.universidad = universidad;
-    }
-
-    public String getNum_agenda() {
-        return num_agenda;
-    }
-
-    public void setNum_agenda(String num_agenda) {
-        this.num_agenda = num_agenda;
-    }
-    
+    }    
 }

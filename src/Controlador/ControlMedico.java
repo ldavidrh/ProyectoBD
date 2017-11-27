@@ -17,8 +17,8 @@ public class ControlMedico {
         daoMedico = new DaoMedico();
     }
     
-    public String insertarMedico(String id_persona, String especialidad, String num_licencia, String universidad, String num_agenda){
-        Medico m = new Medico(id_persona, especialidad, num_licencia, universidad, num_agenda);
+    public String insertarMedico(String id_persona, String especialidad, String num_licencia, String universidad){
+        Medico m = new Medico(id_persona, especialidad, num_licencia, universidad);
         return daoMedico.guardarMedico(m);
     }
     
@@ -26,8 +26,8 @@ public class ControlMedico {
         return daoMedico.consultarMedico(id);
     }
     
-    public String modificarMedico(String id_persona, String especialidad, String num_licencia, String universidad, String num_agenda){
-        Medico m = new Medico(id_persona, especialidad, num_licencia, universidad, num_agenda);
+    public String modificarMedico(String id_persona, String especialidad, String num_licencia, String universidad){
+        Medico m = new Medico(id_persona, especialidad, num_licencia, universidad);
         return daoMedico.modificarMedico(m);
     }
     

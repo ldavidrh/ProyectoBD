@@ -10,26 +10,24 @@ package Modelo;
  * @author juandavid
  */
 public class Agenda {
-    String num_agenda;
+    String id_medico;
     String fecha;
     String hora;
     String disponibilidad;
 
-    public Agenda(String num_agenda, String fecha, String hora, String disponibilidad) {
-        this.num_agenda = num_agenda;
+    public Agenda(String id_medico, String fecha, String hora, String disponibilidad) {
+        this.id_medico = id_medico;
         this.fecha = fecha;
         this.hora = hora;
         this.disponibilidad = disponibilidad;
     }
-    
-    
-    
-    public String getNum_agenda() {
-        return num_agenda;
+        
+    public String getId_medico() {
+        return id_medico;
     }
 
-    public void setNum_agenda(String num_agenda) {
-        this.num_agenda = num_agenda;
+    public void setId_medico(String id_medico) {
+        this.id_medico = id_medico;
     }
 
     public String getFecha() {

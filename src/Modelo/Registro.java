@@ -15,6 +15,13 @@ public class Registro {
     String id_persona; 
     String fecha;
 
+    public Registro(String num_historia, String codigo_causa, String id_persona, String fecha) {
+        this.num_historia = num_historia;
+        this.codigo_causa = codigo_causa;
+        this.id_persona = id_persona;
+        this.fecha = fecha;
+    }
+    
     public String getNum_historia() {
         return num_historia;
     }

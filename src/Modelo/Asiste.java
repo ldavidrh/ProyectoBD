@@ -14,6 +14,12 @@ public class Asiste {
     String codigo_campana;
     int descuento;
 
+    public Asiste(String id_persona, String codigo_campana, int descuento) {
+        this.id_persona = id_persona;
+        this.codigo_campana = codigo_campana;
+        this.descuento = descuento;
+    }
+    
     public String getId_persona() {
         return id_persona;
     }

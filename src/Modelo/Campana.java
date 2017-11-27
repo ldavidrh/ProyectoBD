@@ -16,6 +16,14 @@ public class Campana {
     String fecha;
     String id_persona;
 
+    public Campana(String codigo_campana, String nombre, String objetivo, String fecha, String id_persona) {
+        this.codigo_campana = codigo_campana;
+        this.nombre = nombre;
+        this.objetivo = objetivo;
+        this.fecha = fecha;
+        this.id_persona = id_persona;
+    }
+    
     public String getCodigo_campana() {
         return codigo_campana;
     }

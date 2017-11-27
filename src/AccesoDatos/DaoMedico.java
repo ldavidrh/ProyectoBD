@@ -19,8 +19,7 @@ public class DaoMedico {
     public String guardarMedico(Medico m){
         String sql_guardar;
         sql_guardar = "INSERT INTO medico VALUES('" + m.getId_persona() + "', '" +
-                      m.getEspecialidad()+ "', '" + m.getNum_licencia() + "', '" + m.getUniversidad() + 
-                      "', '" + m.getNum_agenda() + "')";
+                      m.getEspecialidad()+ "', '" + m.getNum_licencia() + "', '" + m.getUniversidad() + "')";
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();             
@@ -41,7 +40,7 @@ public class DaoMedico {
     
     public String[] consultarMedico(String id){
         String sql_select;     
-        String consulta[] = new String[5];
+        String consulta[] = new String[4];
         sql_select = "SELECT * FROM medico WHERE id_persona = '" + id + "'";
         try{
             Connection conn= fachada.getConnetion();            
@@ -51,8 +50,7 @@ public class DaoMedico {
                 consulta[0] = tabla.getString(1);
                 consulta[1] = tabla.getString(2);
                 consulta[2] = tabla.getString(3);
-                consulta[3] = tabla.getString(4);
-                consulta[4] = tabla.getString(5);                         
+                consulta[3] = tabla.getString(4);                                       
             }else{
                 consulta = null;
             }
@@ -66,8 +64,8 @@ public class DaoMedico {
     public String modificarMedico(Medico m){
         String sql_modificar;
         sql_modificar = "UPDATE medico SET especialidad ='" + m.getEspecialidad() + "', num_licencia ='" +
-                        m.getNum_licencia()+ "', universidad = '" + m.getUniversidad() + "', num_agenda = '" +
-                        m.getNum_agenda() + "' WHERE id_persona = '" + m.getId_persona() + "'";
+                        m.getNum_licencia()+ "', universidad = '" + m.getUniversidad() + 
+                        "' WHERE id_persona = '" + m.getId_persona() + "'";
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();

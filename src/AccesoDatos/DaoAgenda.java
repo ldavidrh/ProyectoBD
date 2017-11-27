@@ -24,7 +24,7 @@ public class DaoAgenda {
 
     public String guardarAgenda(Agenda agenda) {
         String sql_guardar;
-        sql_guardar = "INSERT INTO agenda VALUES('" + agenda.getNum_agenda() + "', '" + agenda.getFecha() + "', '" + agenda.getHora() + "', '" + agenda.getDisponibilidad() + "');";
+        sql_guardar = "INSERT INTO agenda VALUES('" + agenda.getId_medico()+ "', '" + agenda.getFecha() + "', '" + agenda.getHora() + "', '" + agenda.getDisponibilidad() + "');";
 
         try {
             Connection conexion = fachada.getConnetion();
@@ -43,11 +43,11 @@ public class DaoAgenda {
         } 
     }
 
-    public String[] consultarAgenda(String num_agenda) {
+    public String[] consultarAgenda(String id_medico) {
         String sql_consultar;
         String[] consulta = new String[4];
 
-        sql_consultar = "SELECT * FROM agenda WHERE num_agenda = '" + num_agenda + "';";
+        sql_consultar = "SELECT * FROM agenda WHERE num_agenda = '" + id_medico + "';";
 
         try {
             Connection conexion = fachada.getConnetion();
@@ -68,24 +68,6 @@ public class DaoAgenda {
             return null;
         }
 
-    }
-
-    public String eliminarAgenda(String num_agenda) {
-        String sql_eliminar;
-        sql_eliminar = "DELETE FROM agenda WHERE num_agenda = '" + num_agenda + "';";
-
-        try {
-            Connection conexion = fachada.getConnetion();
-            Statement sentencia = conexion.createStatement();
-            if (sentencia.execute(sql_eliminar)) {
-                return "Agenda eliminada existosa";
-            } else {
-                return "No existe una agenda con el numero: " + num_agenda;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
-            return "Error al eliminar agenda";
-        }
     }
 
     public String modificarAgenda(Agenda a) {
