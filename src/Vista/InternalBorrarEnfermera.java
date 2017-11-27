@@ -4,17 +4,18 @@
  * and open the template in the editor.
  */
 package Vista;
-
+import Controlador.ControlPersona;
 /**
  *
  * @author Luis
  */
 public class InternalBorrarEnfermera extends javax.swing.JInternalFrame {
-
+    ControlPersona controlPersona;
     /**
      * Creates new form InternalBorrarEnfermera
      */
-    public InternalBorrarEnfermera() {
+    public InternalBorrarEnfermera(ControlPersona controlPersona) {
+        this.controlPersona = controlPersona;
         initComponents();
     }
 
