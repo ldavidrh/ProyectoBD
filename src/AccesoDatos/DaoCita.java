@@ -24,7 +24,7 @@ public class DaoCita {
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();             
-            if(sentencia.execute(sql_guardar)){
+            if(sentencia.executeUpdate(sql_guardar)==1){
                 return "Cita creada exitosamente";
             }else{
                 return "Error: No se creó la cita";
@@ -70,7 +70,7 @@ public class DaoCita {
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            if(sentencia.execute(sql_modificar)){
+            if(sentencia.executeUpdate(sql_modificar)==1){
                 return "Empleado modificado exitosamente";
             }else{
                 return "No existe un empleado con ese id";

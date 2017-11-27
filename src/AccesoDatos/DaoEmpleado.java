@@ -24,7 +24,7 @@ public class DaoEmpleado {
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();             
-            if(sentencia.execute(sql_guardar)){
+            if(sentencia.executeUpdate(sql_guardar)==1){
                 return "Empleado creado correctamente";
             }else{
                 return "Error: No se insertó el empleado";
@@ -74,7 +74,7 @@ public class DaoEmpleado {
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            if(sentencia.execute(sql_modificar)){
+            if(sentencia.executeUpdate(sql_modificar)==1){
                 return "Empleado modificado exitosamente";
             }else{
                 return "No existe un empleado con ese id";
@@ -92,7 +92,7 @@ public class DaoEmpleado {
         try{
             Connection conn= fachada.getConnetion();       
             Statement sentencia = conn.createStatement();            
-            if(sentencia.execute(sql_delete)){
+            if(sentencia.executeUpdate(sql_delete)==1){
                 return "Empleado eliminado exitosamente";
             }else{
                 return "No se eliminó el empleado";

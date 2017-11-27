@@ -24,7 +24,7 @@ public class DaoHabilidades {
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();             
-            if(sentencia.execute(sql_guardar)){
+            if(sentencia.executeUpdate(sql_guardar)==1){
                 return "Habilidad registrada correctamente";
             }else{
                 return "Error: No se insertó la habilidad";
@@ -67,7 +67,7 @@ public class DaoHabilidades {
         try{
             Connection conn= fachada.getConnetion();       
             Statement sentencia = conn.createStatement();            
-            if(sentencia.execute(sql_delete)){
+            if(sentencia.executeUpdate(sql_delete)==1){
                 return "Habilidad eliminada exitosamente";
             }else{
                 return "No se eliminó la habilidad";

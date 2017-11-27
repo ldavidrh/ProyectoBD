@@ -22,6 +22,65 @@ public class DaoUsuario {
     public DaoUsuario() {
         fachada = new FachadaBD();
     }
+    
+    public String guardarUsuario(Usuario u){
+        String sql_guardar;
+        sql_guardar = "INSERT INTO usuario VALUES('" + u.getId_persona()+ "', '" +
+                      u.getPassword()+ "', '" + u.getTipo_u() + "')";
+        try{
+            Connection conn= fachada.conectar();
+            Statement sentencia = conn.createStatement();             
+            if(sentencia.executeUpdate(sql_guardar)==1){
+                return "Usuario creado correctamente";
+            }else{
+                return "Error: No se insertó el usuario";
+            }
+        }
+        catch(SQLException e){
+            System.out.println(e);
+            return "Ya existe un usuario con ese id";
+        }
+        catch(Exception e){ 
+            System.out.println(e); 
+            return "Ha ocurrido un error al crear el usuario";
+        }        
+    }
+            
+    public String modificarUsuario(Usuario u){
+        String sql_modificar;
+        sql_modificar = "UPDATE usuario SET password ='" + u.getPassword() + "', tipo_u ='" +
+                        u.getTipo_u() + "' WHERE id_persona = '" + u.getId_persona() + "'";
+        try{
+            Connection conn= fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            if(sentencia.executeUpdate(sql_modificar)==1){
+                return "Usuario modificado exitosamente";
+            }else{
+                return "No existe un usuario con ese id";
+            }            
+        }catch(Exception e){
+            System.out.println(e);
+            return "Ha ocurrido un error al modificar el usuario";
+        }
+    }
+    
+    public String eliminarUsuario(String id){
+        String sql_delete;
+        sql_delete = "DELETE FROM usuario WHERE id_persona = '" + id + "'";
+        
+        try{
+            Connection conn= fachada.getConnetion();       
+            Statement sentencia = conn.createStatement();            
+            if(sentencia.executeUpdate(sql_delete)==1){
+                return "Usuario eliminado exitosamente";
+            }else{
+                return "No se eliminó el usuario";
+            }                
+        }catch(Exception e){
+            System.out.println(e);
+            return "Ocurrió un problema al eliminar el usuario";
+        }                             
+    }       
 
     public String[] consultarDatos(String id_persona) {
         String sql_consultar;
@@ -45,4 +104,8 @@ public class DaoUsuario {
             return null;
         }
     }
+    
+     public void cerrarConexionBD(){
+        fachada.closeConection(fachada.getConnetion());
+    }  
 }

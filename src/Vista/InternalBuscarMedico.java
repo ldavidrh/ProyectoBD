@@ -8,6 +8,7 @@ package Vista;
 import Controlador.ControlEmpleado;
 import Controlador.ControlMedico;
 import Controlador.ControlPersona;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -47,6 +48,7 @@ public class InternalBuscarMedico extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setResizable(true);
 
+        TextArea.setEditable(false);
         TextArea.setColumns(20);
         TextArea.setRows(5);
         jScrollPane1.setViewportView(TextArea);
@@ -119,6 +121,28 @@ public class InternalBuscarMedico extends javax.swing.JInternalFrame {
 
     private void ButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarActionPerformed
         // TODO add your handling code here:
+        if(this.FieldCedula.getText().trim().isEmpty()){
+            JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula del médico", "Atención", JOptionPane.WARNING_MESSAGE);            
+        }else{
+            String cedula = this.FieldCedula.getText().trim();
+            String consulta = "DATOS DEL MÉDICO\n";
+            String[] persona = new String[4];
+            String[] empleado = new String[6];
+            String[] medico = new String[4];
+            String[] area = new String[3];
+            String[] jefe = new String[6];
+            
+            persona = controlPersona.consultarPersona(cedula);
+            empleado = controlEmpleado.consultarEmpleado(cedula);
+            medico = controlMedico.consultarMedico(cedula);
+            
+            consulta += "Nombre: " + persona[1] + "\nDirección: " + persona[2] + "\nTeléfono: " + persona[3];
+                        //"\nCargo: " + empleado[1] + "\nSalario: " empleado[2] + "\nEmail: " + empleado[3] +
+                       // "\nCódigo de Área: " + empleado[4] + "\nID efe: ";
+            
+            
+            this.TextArea.setText(consulta);
+        }
     }//GEN-LAST:event_ButtonConsultarActionPerformed
 
 
