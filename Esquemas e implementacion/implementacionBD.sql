@@ -199,3 +199,5 @@ CREATE TABLE usuario
 	password VARCHAR(30) NOT NULL,
 	tipo_u VARCHAR(30)
 );
+
+INSERT INTO usuario VALUES ('1','1','Admin');
