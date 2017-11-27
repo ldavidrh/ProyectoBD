@@ -47,6 +47,8 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         FieldNumAgenda = new javax.swing.JTextField();
         ButtonAgregar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        FieldNumLicencia = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -80,6 +82,8 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel8.setText("N° Licencia");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,36 +91,38 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FieldNombre)
+                            .addComponent(FieldCedula)
+                            .addComponent(FieldDireccion)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(24, 24, 24)
-                                .addComponent(FieldNumAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(FieldNombre)
-                                    .addComponent(FieldCedula)
-                                    .addComponent(FieldDireccion)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel4))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(FieldTelefono)
-                                    .addComponent(FieldUniversidad)
-                                    .addComponent(FieldEspecialidad))))
-                        .addGap(10, 10, 10))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FieldTelefono)
+                            .addComponent(FieldUniversidad)
+                            .addComponent(FieldEspecialidad)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ButtonAgregar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(24, 24, 24)
+                        .addComponent(FieldNumLicencia, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(24, 24, 24)
+                        .addComponent(FieldNumAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,13 +151,17 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(FieldUniversidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(FieldNumLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(FieldNumAgenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(ButtonAgregar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         pack();
@@ -163,6 +173,8 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
 
     private void ButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarActionPerformed
         try{
+           // if(this.FieldCedula.getText().trim().isEmpty() || this.FieldNombre.getText().trim().isEmpty() ||
+             //  || this.
             String nombre = this.FieldNombre.getText();
             String cedula = this.FieldCedula.getText();
             String direccion = this.FieldDireccion.getText();
@@ -183,6 +195,7 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
     private javax.swing.JTextField FieldEspecialidad;
     private javax.swing.JTextField FieldNombre;
     private javax.swing.JTextField FieldNumAgenda;
+    private javax.swing.JTextField FieldNumLicencia;
     private javax.swing.JTextField FieldTelefono;
     private javax.swing.JTextField FieldUniversidad;
     private javax.swing.JLabel jLabel1;
@@ -192,5 +205,6 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }
