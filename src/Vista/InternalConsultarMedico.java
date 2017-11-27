@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.ControlArea;
 import Controlador.ControlEmpleado;
 import Controlador.ControlMedico;
 import Controlador.ControlPersona;
@@ -14,14 +15,16 @@ import javax.swing.JOptionPane;
  *
  * @author Luis
  */
-public class InternalBuscarMedico extends javax.swing.JInternalFrame {
+public class InternalConsultarMedico extends javax.swing.JInternalFrame {
     ControlMedico controlMedico;
     ControlPersona controlPersona;
     ControlEmpleado controlEmpleado;
+    ControlArea controlArea;
     /**
      * Creates new form InternalBuscarMedico
      */
-    public InternalBuscarMedico(ControlMedico controlMedico, ControlPersona controlPersona, ControlEmpleado controlEmpleado) {
+    public InternalConsultarMedico(ControlMedico controlMedico, ControlPersona controlPersona, ControlEmpleado controlEmpleado, ControlArea controlArea) {
+        this.controlArea = controlArea;
         this.controlMedico = controlMedico;
         this.controlPersona = controlPersona;
         this.controlEmpleado = controlEmpleado;

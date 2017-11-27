@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Vista;
-
+import Controlador.ControlPaciente;
+import Controlador.ControlPersona;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -15,11 +16,14 @@ import javax.swing.JOptionPane;
  * @author Luis
  */
 public class InternalAgregarPaciente extends javax.swing.JInternalFrame {
-
+    ControlPersona controlPersona;
+    ControlPaciente controlPaciente;
     /**
      * Creates new form InternalAgregarPaciente
      */
-    public InternalAgregarPaciente() {
+    public InternalAgregarPaciente(ControlPaciente controlPaciente, ControlPersona controlPersona) {
+        this.controlPaciente = controlPaciente;
+        this.controlPersona = controlPersona;
         initComponents();
     }
 
