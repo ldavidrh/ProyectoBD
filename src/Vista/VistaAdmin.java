@@ -20,6 +20,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     ControlUsuario controlUsuario;
     ControlPersona controlPersona;
     ControlMedico controlMedico;
+    ControlEmpleado controlEmpleado;
     /**
      * Creates new form VistaPrincipal
      */
@@ -28,6 +29,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         controlPersona = new ControlPersona();
         controlUsuario = new ControlUsuario();
         controlMedico = new ControlMedico();
+        controlEmpleado = new ControlEmpleado();
         
         //Creacion de InputDialog para login
         JTextField fieldCedula = new JTextField();
@@ -690,25 +692,25 @@ public class VistaAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonConsultarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarMedicoActionPerformed
-        InternalBuscarMedico buscMed = new InternalBuscarMedico(controlMedico, controlPersona);
+        InternalBuscarMedico buscMed = new InternalBuscarMedico(controlMedico, controlPersona, controlEmpleado);
         this.DesktopPane.add(buscMed);
         buscMed.show();
     }//GEN-LAST:event_ButtonConsultarMedicoActionPerformed
 
     private void ButtonAgregarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarMedicoActionPerformed
-        InternalAgregarMedico addMed = new InternalAgregarMedico(controlMedico, controlPersona);
+        InternalAgregarMedico addMed = new InternalAgregarMedico(controlMedico, controlPersona, controlEmpleado);
         this.DesktopPane.add(addMed);
         addMed.show();
     }//GEN-LAST:event_ButtonAgregarMedicoActionPerformed
 
     private void ButtonEliminarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarMedicoActionPerformed
-        InternalBorrarMedico delMed = new InternalBorrarMedico(controlMedico, controlPersona);
+        InternalBorrarMedico delMed = new InternalBorrarMedico(controlMedico, controlPersona, controlEmpleado);
         this.DesktopPane.add(delMed);
         delMed.show();
     }//GEN-LAST:event_ButtonEliminarMedicoActionPerformed
 
     private void ButtonEditarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarMedicoActionPerformed
-        InternalEditarMedico editMed = new InternalEditarMedico(controlMedico, controlPersona);
+        InternalEditarMedico editMed = new InternalEditarMedico(controlMedico, controlPersona, controlEmpleado);
         this.DesktopPane.add(editMed);
         editMed.show();
     }//GEN-LAST:event_ButtonEditarMedicoActionPerformed
