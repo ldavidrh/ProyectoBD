@@ -5,17 +5,20 @@
  */
 package Vista;
 import Controlador.ControlPersona;
+import Controlador.ControlPaciente;
 /**
  *
  * @author Luis
  */
-public class InternalBuscarEnfermera extends javax.swing.JInternalFrame {
+public class InternalConsultarPaciente extends javax.swing.JInternalFrame {
     ControlPersona controlPersona;
+    ControlPaciente controlPaciente;
     /**
-     * Creates new form InternalBuscarEnfermera
+     * Creates new form InternalBuscarPaciente
      */
-    public InternalBuscarEnfermera(ControlPersona controlPersona) {
+    public InternalConsultarPaciente(ControlPaciente controlPaciente, ControlPersona controlPersona) {
         this.controlPersona = controlPersona;
+        this.controlPaciente = controlPaciente;
         initComponents();
     }
 
@@ -31,29 +34,20 @@ public class InternalBuscarEnfermera extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         FieldCedula = new javax.swing.JTextField();
-        ButtonConsultar = new javax.swing.JButton();
+        ButtonConsultarPaciente = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextArea = new javax.swing.JTextArea();
 
         setClosable(true);
         setIconifiable(true);
         setResizable(true);
-        setTitle("Consultar enfermera");
+        setTitle("Consultar paciente");
 
-        jLabel1.setText("Ingrese la cedula de la enfermera que desea consultar");
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        FieldCedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldCedulaActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Ingrese la cedula del paciente que desea consultar");
 
-        ButtonConsultar.setText("Consultar");
-        ButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonConsultarActionPerformed(evt);
-            }
-        });
+        ButtonConsultarPaciente.setText("Consultar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -63,9 +57,9 @@ public class InternalBuscarEnfermera extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(FieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonConsultar))
-                .addContainerGap(68, Short.MAX_VALUE))
+                    .addComponent(FieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonConsultarPaciente))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,10 +68,12 @@ public class InternalBuscarEnfermera extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(ButtonConsultar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonConsultarPaciente)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
+        TextArea.setEditable(false);
         TextArea.setColumns(20);
         TextArea.setRows(5);
         jScrollPane1.setViewportView(TextArea);
@@ -88,35 +84,27 @@ public class InternalBuscarEnfermera extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane1)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FieldCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldCedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FieldCedulaActionPerformed
-
-    private void ButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonConsultarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonConsultar;
+    private javax.swing.JButton ButtonConsultarPaciente;
     private javax.swing.JTextField FieldCedula;
     private javax.swing.JTextArea TextArea;
     private javax.swing.JLabel jLabel1;
