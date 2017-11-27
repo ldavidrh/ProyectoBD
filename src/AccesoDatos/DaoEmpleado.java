@@ -31,7 +31,30 @@ public class DaoEmpleado {
             }
         }catch(SQLException ex){
             System.out.println(ex);
-            return "Ha ocurrido un error: " + ex.getMessage();
+            return "Error: asegúrese de ingresar el código de área y la cédula del jefe correctamente";
+        }
+        catch(Exception ex){ 
+            System.out.println(ex); 
+            return "Ha ocurrido un error al crear el empleado";
+        }        
+    }
+    
+    public String guardarEmpleadoSinJefe(Empleado e){
+        String sql_guardar;
+        sql_guardar = "INSERT INTO empleado VALUES('" + e.getId_persona() + "', '" +
+                      e.getCargo() + "', '" + e.getSalario() + "', '" + e.getEmail() + 
+                      "', '" + e.getCodigo_area() + "')";
+        try{
+            Connection conn= fachada.conectar();
+            Statement sentencia = conn.createStatement();             
+            if(sentencia.executeUpdate(sql_guardar)==1){
+                return "Empleado creado correctamente";
+            }else{
+                return "Error: No se insertó el empleado";
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+            return "Error: asegúrese de ingresar el código de área y la cédula del jefe correctamente";
         }
         catch(Exception ex){ 
             System.out.println(ex); 
@@ -101,6 +124,17 @@ public class DaoEmpleado {
             System.out.println(e);
             return "Ocurrió un problema al eliminar el empleado";
         }                             
+    }
+    
+    public void eliminarJefe(String id_jefe){        
+        String sql = "UPDATE empleado SET id_jefe = NULL WHERE id_jefe = '" + id_jefe + "'";
+        try{
+            Connection conn= fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            sentencia.executeUpdate(sql);                   
+        }catch(Exception ex){
+            System.out.println(ex);            
+        }
     }
     
     public void cerrarConexionBD(){
