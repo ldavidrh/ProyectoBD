@@ -704,7 +704,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonAgregarMedicoActionPerformed
 
     private void ButtonEliminarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarMedicoActionPerformed
-        InternalBorrarMedico delMed = new InternalBorrarMedico(controlMedico, controlPersona, controlEmpleado);
+        InternalBorrarMedico delMed = new InternalBorrarMedico(controlPersona);
         this.DesktopPane.add(delMed);
         delMed.show();
     }//GEN-LAST:event_ButtonEliminarMedicoActionPerformed
@@ -732,7 +732,9 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarEnfermeraActionPerformed
 
     private void ButtonAgregarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarPacienteActionPerformed
-        // TODO add your handling code here:
+        InternalAgregarPaciente addPac = new InternalAgregarPaciente();
+        this.DesktopPane.add(addPac);
+        addPac.show();
     }//GEN-LAST:event_ButtonAgregarPacienteActionPerformed
 
     private void ButtonEliminarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarPacienteActionPerformed
