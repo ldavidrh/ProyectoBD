@@ -88,10 +88,10 @@ public class VistaAdmin extends javax.swing.JFrame {
         ButtonConsultarPaciente = new javax.swing.JButton();
         ButtonEditarPaciente = new javax.swing.JButton();
         PanelArea = new javax.swing.JPanel();
-        ButtonAgregarPaciente1 = new javax.swing.JButton();
-        ButtonEliminarPaciente1 = new javax.swing.JButton();
-        ButtonConsultarPaciente1 = new javax.swing.JButton();
-        ButtonEditarPaciente1 = new javax.swing.JButton();
+        ButtonAgregarArea = new javax.swing.JButton();
+        ButtonEliminarArea = new javax.swing.JButton();
+        ButtonConsultarArea = new javax.swing.JButton();
+        ButtonEditarArea = new javax.swing.JButton();
         PanelCamas = new javax.swing.JPanel();
         ButtonAgregarCama = new javax.swing.JButton();
         ButtonEliminarCama = new javax.swing.JButton();
@@ -330,43 +330,43 @@ public class VistaAdmin extends javax.swing.JFrame {
 
         PanelPrincipal.addTab("Paciente", PanelPaciente);
 
-        ButtonAgregarPaciente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addPatient.png"))); // NOI18N
-        ButtonAgregarPaciente1.setText("Agregar");
-        ButtonAgregarPaciente1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ButtonAgregarPaciente1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ButtonAgregarPaciente1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonAgregarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addArea.png"))); // NOI18N
+        ButtonAgregarArea.setText("Agregar");
+        ButtonAgregarArea.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonAgregarArea.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonAgregarArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonAgregarPaciente1ActionPerformed(evt);
+                ButtonAgregarAreaActionPerformed(evt);
             }
         });
 
-        ButtonEliminarPaciente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deletePatient.png"))); // NOI18N
-        ButtonEliminarPaciente1.setText("Eliminar");
-        ButtonEliminarPaciente1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ButtonEliminarPaciente1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ButtonEliminarPaciente1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonEliminarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deleteArea.png"))); // NOI18N
+        ButtonEliminarArea.setText("Eliminar");
+        ButtonEliminarArea.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonEliminarArea.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonEliminarArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonEliminarPaciente1ActionPerformed(evt);
+                ButtonEliminarAreaActionPerformed(evt);
             }
         });
 
-        ButtonConsultarPaciente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchPatient.png"))); // NOI18N
-        ButtonConsultarPaciente1.setText("Consultar");
-        ButtonConsultarPaciente1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ButtonConsultarPaciente1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ButtonConsultarPaciente1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonConsultarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchArea.png"))); // NOI18N
+        ButtonConsultarArea.setText("Consultar");
+        ButtonConsultarArea.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonConsultarArea.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonConsultarArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonConsultarPaciente1ActionPerformed(evt);
+                ButtonConsultarAreaActionPerformed(evt);
             }
         });
 
-        ButtonEditarPaciente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editPatient.png"))); // NOI18N
-        ButtonEditarPaciente1.setText("Editar");
-        ButtonEditarPaciente1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ButtonEditarPaciente1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ButtonEditarPaciente1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonEditarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editArea.png"))); // NOI18N
+        ButtonEditarArea.setText("Editar");
+        ButtonEditarArea.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonEditarArea.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonEditarArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonEditarPaciente1ActionPerformed(evt);
+                ButtonEditarAreaActionPerformed(evt);
             }
         });
 
@@ -376,13 +376,13 @@ public class VistaAdmin extends javax.swing.JFrame {
             PanelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelAreaLayout.createSequentialGroup()
                 .addGap(135, 135, 135)
-                .addComponent(ButtonAgregarPaciente1)
+                .addComponent(ButtonAgregarArea)
                 .addGap(18, 18, 18)
-                .addComponent(ButtonEliminarPaciente1)
+                .addComponent(ButtonEliminarArea)
                 .addGap(18, 18, 18)
-                .addComponent(ButtonConsultarPaciente1)
+                .addComponent(ButtonConsultarArea)
                 .addGap(18, 18, 18)
-                .addComponent(ButtonEditarPaciente1)
+                .addComponent(ButtonEditarArea)
                 .addContainerGap(155, Short.MAX_VALUE))
         );
         PanelAreaLayout.setVerticalGroup(
@@ -390,10 +390,10 @@ public class VistaAdmin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAreaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(PanelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonAgregarPaciente1)
-                    .addComponent(ButtonEliminarPaciente1)
-                    .addComponent(ButtonConsultarPaciente1)
-                    .addComponent(ButtonEditarPaciente1))
+                    .addComponent(ButtonAgregarArea)
+                    .addComponent(ButtonEliminarArea)
+                    .addComponent(ButtonConsultarArea)
+                    .addComponent(ButtonEditarArea))
                 .addContainerGap())
         );
 
@@ -769,52 +769,78 @@ public class VistaAdmin extends javax.swing.JFrame {
         ediPac.show();
     }//GEN-LAST:event_ButtonEditarPacienteActionPerformed
 
-    private void ButtonAgregarPaciente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarPaciente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonAgregarPaciente1ActionPerformed
+    private void ButtonAgregarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarAreaActionPerformed
+        InternalAgregarArea addArea = new InternalAgregarArea(controlArea);
+        this.DesktopPane.add(addArea);
+        addArea.show();
+    }//GEN-LAST:event_ButtonAgregarAreaActionPerformed
 
-    private void ButtonEliminarPaciente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarPaciente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonEliminarPaciente1ActionPerformed
+    private void ButtonEliminarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarAreaActionPerformed
+        InternalBorrarArea delArea = new InternalBorrarArea(controlArea);
+        this.DesktopPane.add(delArea);
+        delArea.show();
+        
+    }//GEN-LAST:event_ButtonEliminarAreaActionPerformed
 
-    private void ButtonConsultarPaciente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarPaciente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonConsultarPaciente1ActionPerformed
+    private void ButtonConsultarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarAreaActionPerformed
+        InternalConsultarArea conArea = new InternalConsultarArea(controlArea);
+        this.DesktopPane.add(conArea);
+        conArea.show();
+    }//GEN-LAST:event_ButtonConsultarAreaActionPerformed
 
-    private void ButtonEditarPaciente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarPaciente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonEditarPaciente1ActionPerformed
+    private void ButtonEditarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarAreaActionPerformed
+        InternalEditarArea editArea = new InternalEditarArea(controlArea);
+        this.DesktopPane.add(editArea);
+        editArea.show();
+    }//GEN-LAST:event_ButtonEditarAreaActionPerformed
 
     private void ButtonAgregarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarCamaActionPerformed
-        // TODO add your handling code here:
+        InternalAgregarCama addCama = new InternalAgregarCama();
+        this.DesktopPane.add(addCama);
+        addCama.show();
     }//GEN-LAST:event_ButtonAgregarCamaActionPerformed
 
     private void ButtonEliminarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarCamaActionPerformed
-        // TODO add your handling code here:
+        InternalBorrarCama delCama = new InternalBorrarCama();
+        this.DesktopPane.add(delCama);
+        delCama.show();
     }//GEN-LAST:event_ButtonEliminarCamaActionPerformed
 
     private void ButtonConsultarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarCamaActionPerformed
-        // TODO add your handling code here:
+        InternalConsultarCama conCama = new InternalConsultarCama();
+        this.DesktopPane.add(conCama);
+        conCama.show();
     }//GEN-LAST:event_ButtonConsultarCamaActionPerformed
 
     private void ButtonEditarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarCamaActionPerformed
-        // TODO add your handling code here:
+        InternalEditarCama editCama = new InternalEditarCama();
+        this.DesktopPane.add(editCama);
+        editCama.show();
+        
     }//GEN-LAST:event_ButtonEditarCamaActionPerformed
 
     private void ButtonAgregarCampanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarCampanaActionPerformed
-        // TODO add your handling code here:
+        InternalAgregarCampana addCamp = new InternalAgregarCampana();
+        this.DesktopPane.add(addCamp);
+        addCamp.show();
     }//GEN-LAST:event_ButtonAgregarCampanaActionPerformed
 
     private void ButtonEliminarCampanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarCampanaActionPerformed
-        // TODO add your handling code here:
+        InternalEliminarCampana delCamp = new InternalEliminarCampana();
+        this.DesktopPane.add(delCamp);
+        delCamp.show();
     }//GEN-LAST:event_ButtonEliminarCampanaActionPerformed
 
     private void ButtonConsultarCampanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarCampanaActionPerformed
-        // TODO add your handling code here:
+        InternalConsultarCampana conCamp = new InternalConsultarCampana();
+        this.DesktopPane.add(conCamp);
+        conCamp.show();
     }//GEN-LAST:event_ButtonConsultarCampanaActionPerformed
 
     private void ButtonEditarCampanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarCampanaActionPerformed
-        // TODO add your handling code here:
+        InternalEditarCampana editCamp = new InternalEditarCampana();
+        this.DesktopPane.add(editCamp);
+        editCamp.show();
     }//GEN-LAST:event_ButtonEditarCampanaActionPerformed
 
     private void ButtonAgregarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarCitaActionPerformed
@@ -886,37 +912,37 @@ public class VistaAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonAgregarArea;
     private javax.swing.JButton ButtonAgregarCama;
     private javax.swing.JButton ButtonAgregarCampana;
     private javax.swing.JButton ButtonAgregarCita;
     private javax.swing.JButton ButtonAgregarEnfermera;
     private javax.swing.JButton ButtonAgregarMedico;
     private javax.swing.JButton ButtonAgregarPaciente;
-    private javax.swing.JButton ButtonAgregarPaciente1;
     private javax.swing.JButton ButtonAgregarUsuario;
+    private javax.swing.JButton ButtonConsultarArea;
     private javax.swing.JButton ButtonConsultarCama;
     private javax.swing.JButton ButtonConsultarCampana;
     private javax.swing.JButton ButtonConsultarCita;
     private javax.swing.JButton ButtonConsultarEnfermera;
     private javax.swing.JButton ButtonConsultarMedico;
     private javax.swing.JButton ButtonConsultarPaciente;
-    private javax.swing.JButton ButtonConsultarPaciente1;
     private javax.swing.JButton ButtonConsultarUsuario;
+    private javax.swing.JButton ButtonEditarArea;
     private javax.swing.JButton ButtonEditarCama;
     private javax.swing.JButton ButtonEditarCampana;
     private javax.swing.JButton ButtonEditarCita;
     private javax.swing.JButton ButtonEditarEnfermera;
     private javax.swing.JButton ButtonEditarMedico;
     private javax.swing.JButton ButtonEditarPaciente;
-    private javax.swing.JButton ButtonEditarPaciente1;
     private javax.swing.JButton ButtonEditarUsuario;
+    private javax.swing.JButton ButtonEliminarArea;
     private javax.swing.JButton ButtonEliminarCama;
     private javax.swing.JButton ButtonEliminarCampana;
     private javax.swing.JButton ButtonEliminarCita;
     private javax.swing.JButton ButtonEliminarEnfermera;
     private javax.swing.JButton ButtonEliminarMedico;
     private javax.swing.JButton ButtonEliminarPaciente;
-    private javax.swing.JButton ButtonEliminarPaciente1;
     private javax.swing.JButton ButtonEliminarUsuario;
     private javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JPanel PanelArea;

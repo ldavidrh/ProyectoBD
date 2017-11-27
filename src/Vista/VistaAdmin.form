@@ -331,13 +331,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
-                      <Component id="ButtonAgregarPaciente1" min="-2" max="-2" attributes="0"/>
+                      <Component id="ButtonAgregarArea" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                      <Component id="ButtonEliminarPaciente1" min="-2" max="-2" attributes="0"/>
+                      <Component id="ButtonEliminarArea" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                      <Component id="ButtonConsultarPaciente1" min="-2" max="-2" attributes="0"/>
+                      <Component id="ButtonConsultarArea" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                      <Component id="ButtonEditarPaciente1" min="-2" max="-2" attributes="0"/>
+                      <Component id="ButtonEditarArea" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="155" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -347,10 +347,10 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="ButtonAgregarPaciente1" min="-2" max="-2" attributes="0"/>
-                          <Component id="ButtonEliminarPaciente1" min="-2" max="-2" attributes="0"/>
-                          <Component id="ButtonConsultarPaciente1" min="-2" max="-2" attributes="0"/>
-                          <Component id="ButtonEditarPaciente1" min="-2" max="-2" attributes="0"/>
+                          <Component id="ButtonAgregarArea" min="-2" max="-2" attributes="0"/>
+                          <Component id="ButtonEliminarArea" min="-2" max="-2" attributes="0"/>
+                          <Component id="ButtonConsultarArea" min="-2" max="-2" attributes="0"/>
+                          <Component id="ButtonEditarArea" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -358,56 +358,56 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="ButtonAgregarPaciente1">
+            <Component class="javax.swing.JButton" name="ButtonAgregarArea">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Iconos/addPatient.png"/>
+                  <Image iconType="3" name="/Iconos/addArea.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonAgregarPaciente1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonAgregarAreaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="ButtonEliminarPaciente1">
+            <Component class="javax.swing.JButton" name="ButtonEliminarArea">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Iconos/deletePatient.png"/>
+                  <Image iconType="3" name="/Iconos/deleteArea.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEliminarPaciente1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEliminarAreaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="ButtonConsultarPaciente1">
+            <Component class="javax.swing.JButton" name="ButtonConsultarArea">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Iconos/searchPatient.png"/>
+                  <Image iconType="3" name="/Iconos/searchArea.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonConsultarPaciente1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonConsultarAreaActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="ButtonEditarPaciente1">
+            <Component class="javax.swing.JButton" name="ButtonEditarArea">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Iconos/editPatient.png"/>
+                  <Image iconType="3" name="/Iconos/editArea.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Editar"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEditarPaciente1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEditarAreaActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
