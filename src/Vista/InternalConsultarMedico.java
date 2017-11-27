@@ -127,22 +127,19 @@ public class InternalConsultarMedico extends javax.swing.JInternalFrame {
         if(this.FieldCedula.getText().trim().isEmpty()){
             JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula del médico", "Atención", JOptionPane.WARNING_MESSAGE);            
         }else{
-            String cedula = this.FieldCedula.getText().trim();
-            String consulta = "DATOS DEL MÉDICO\n";
-            String[] persona = new String[4];
-            String[] empleado = new String[6];
-            String[] medico = new String[4];
-            String[] area = new String[3];
-            String[] jefe = new String[6];
+            String cedula = this.FieldCedula.getText().trim();      
             
-            persona = controlPersona.consultarPersona(cedula);
-            empleado = controlEmpleado.consultarEmpleado(cedula);
-            medico = controlMedico.consultarMedico(cedula);
+            String[] persona = controlPersona.consultarPersona(cedula);
+            String[] empleado = controlEmpleado.consultarEmpleado(cedula);
+            String[] medico = controlMedico.consultarMedico(cedula);  
+            String[] area = controlArea.consultarArea(empleado[4]);
+            String[] jefe = controlEmpleado.consultarEmpleado(empleado[5]);
             
-            consulta += "Nombre: " + persona[1] + "\nDirección: " + persona[2] + "\nTeléfono: " + persona[3];
-                        //"\nCargo: " + empleado[1] + "\nSalario: " empleado[2] + "\nEmail: " + empleado[3] +
-                       // "\nCódigo de Área: " + empleado[4] + "\nID efe: ";
             
+            String consulta = "DATOS PESONALES\nNombre: " + persona[1] + "\nDirección: " + persona[2] + "\nTeléfono: " + persona[3] +  
+                       "PERFIL PROFESIONAL\nEspecialidad: " + medico[1] + "\nNúmero de Licencia: " + medico[2] + "\nUniversidad: "
+                       + medico[3] + "\nDATOS DEL EMPLEADO\nCargo: " + empleado[1] + "\nSalario: " + empleado[2] + "\nEmail: " + empleado[3] +
+                       "\nÁrea: " + area[1] + " - " + area[0] + "\nJefe: " + jefe[1] + ", cc: " + jefe[0];            
             
             this.TextArea.setText(consulta);
         }
