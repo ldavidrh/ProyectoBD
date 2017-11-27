@@ -18,8 +18,10 @@ import javax.swing.JTextField;
  */
 public class VistaAdmin extends javax.swing.JFrame {
     ControlUsuario controlUsuario;
+    ControlPaciente controlPaciente;
     ControlPersona controlPersona;
     ControlMedico controlMedico;
+    ControlArea controlArea;
     ControlEmpleado controlEmpleado;
     /**
      * Creates new form VistaPrincipal
@@ -27,8 +29,10 @@ public class VistaAdmin extends javax.swing.JFrame {
     public VistaAdmin() {
         initComponents();
         controlPersona = new ControlPersona();
+        controlPaciente = new ControlPaciente();
         controlUsuario = new ControlUsuario();
         controlMedico = new ControlMedico();
+        controlArea = new ControlArea();
         controlEmpleado = new ControlEmpleado();
         
         //Creacion de InputDialog para login
@@ -692,7 +696,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonConsultarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarMedicoActionPerformed
-        InternalBuscarMedico buscMed = new InternalBuscarMedico(controlMedico, controlPersona, controlEmpleado);
+        InternalConsultarMedico buscMed = new InternalConsultarMedico(controlMedico, controlPersona, controlEmpleado, controlArea);
         this.DesktopPane.add(buscMed);
         buscMed.show();
     }//GEN-LAST:event_ButtonConsultarMedicoActionPerformed
@@ -732,13 +736,15 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarEnfermeraActionPerformed
 
     private void ButtonAgregarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarPacienteActionPerformed
-        InternalAgregarPaciente addPac = new InternalAgregarPaciente();
+        InternalAgregarPaciente addPac = new InternalAgregarPaciente(controlPaciente, controlPersona);
         this.DesktopPane.add(addPac);
         addPac.show();
     }//GEN-LAST:event_ButtonAgregarPacienteActionPerformed
 
     private void ButtonEliminarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarPacienteActionPerformed
-        // TODO add your handling code here:
+        InternalBorrarPaciente delPac = new InternalBorrarPaciente(controlPersona);
+        this.DesktopPane.add(delPac);
+        delPac.show();
     }//GEN-LAST:event_ButtonEliminarPacienteActionPerformed
 
     private void ButtonConsultarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarPacienteActionPerformed
