@@ -45,7 +45,7 @@ public class DaoCausa {
     
     public String[] consultarCausa(String codigo_causa) {
         String sql_consultar;
-        String[] consulta = new String[4];
+        String[] consulta = new String[3];
 
         sql_consultar = "SELECT * FROM causa WHERE codigo_causa = '" + codigo_causa + "';";
 
@@ -58,7 +58,6 @@ public class DaoCausa {
                 consulta[0] = tabla.getString(1);
                 consulta[1] = tabla.getString(2);
                 consulta[2] = tabla.getString(3);
-                consulta[3] = tabla.getString(4);
             } else {
                 consulta = null;
             }
