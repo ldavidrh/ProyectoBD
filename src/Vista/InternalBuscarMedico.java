@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.ControlEmpleado;
 import Controlador.ControlMedico;
 import Controlador.ControlPersona;
 
@@ -15,12 +16,14 @@ import Controlador.ControlPersona;
 public class InternalBuscarMedico extends javax.swing.JInternalFrame {
     ControlMedico controlMedico;
     ControlPersona controlPersona;
+    ControlEmpleado controlEmpleado;
     /**
      * Creates new form InternalBuscarMedico
      */
-    public InternalBuscarMedico(ControlMedico controlMedico, ControlPersona controlPersona) {
+    public InternalBuscarMedico(ControlMedico controlMedico, ControlPersona controlPersona, ControlEmpleado controlEmpleado) {
         this.controlMedico = controlMedico;
         this.controlPersona = controlPersona;
+        this.controlEmpleado = controlEmpleado;
         initComponents();
     }
 
