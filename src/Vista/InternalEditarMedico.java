@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Vista;
+import Controlador.ControlEmpleado;
 import Controlador.ControlMedico;
 import Controlador.ControlPersona;
 /**
@@ -13,12 +14,14 @@ import Controlador.ControlPersona;
 public class InternalEditarMedico extends javax.swing.JInternalFrame {
     ControlPersona controlPersona;
     ControlMedico controlMedico;
+    ControlEmpleado controlEmpleado;
     /**
      * Creates new form InternalEditarMedico
      */
-    public InternalEditarMedico(ControlMedico controlMedico, ControlPersona controlPersona) {
+    public InternalEditarMedico(ControlMedico controlMedico, ControlPersona controlPersona, ControlEmpleado controlEmpleado) {
         this.controlMedico = controlMedico;
         this.controlPersona = controlPersona;
+        this.controlEmpleado = controlEmpleado;
         initComponents();
         this.ButtonEditar.setEnabled(false);
     }

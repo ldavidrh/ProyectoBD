@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Vista;
+import Controlador.ControlEmpleado;
 import Controlador.ControlMedico;
 import Controlador.ControlPersona;
 import javax.swing.JOptionPane;
@@ -14,12 +15,14 @@ import javax.swing.JOptionPane;
 public class InternalAgregarMedico extends javax.swing.JInternalFrame {
     ControlMedico controlMedico;
     ControlPersona controlPersona;
+    ControlEmpleado controlEmpleado;
     /**
      * Creates new form InternalAddMedico
      */
-    public InternalAgregarMedico(ControlMedico controlMedico, ControlPersona controlPersona) {
+    public InternalAgregarMedico(ControlMedico controlMedico, ControlPersona controlPersona, ControlEmpleado controlEmpleado) {
         this.controlMedico = controlMedico;
         this.controlPersona = controlPersona;
+        this.controlEmpleado = controlEmpleado;
         initComponents();
     }
 
@@ -309,8 +312,8 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
 
     private void ButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarActionPerformed
         try{
-           // if(this.FieldCedula.getText().trim().isEmpty() || this.FieldNombre.getText().trim().isEmpty() ||
-             //  || this.
+         //  if(this.FieldCedula.getText().trim().isEmpty() || this.FieldNombre.getText().trim().isEmpty() ||
+           //   || this.
             String nombre = this.FieldNombre.getText();
             String cedula = this.FieldCedula.getText();
             String direccion = this.FieldDireccion.getText();
