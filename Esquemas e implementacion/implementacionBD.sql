@@ -196,6 +196,6 @@ DROP TABLE IF EXISTS usuario CASCADE;
 CREATE TABLE usuario
 (
 	id_persona VARCHAR(30) PRIMARY KEY NOT NULL,
-	contraseña VARCHAR(30) NOT NULL,
+	password VARCHAR(30) NOT NULL,
 	tipo_u VARCHAR(30)
 );

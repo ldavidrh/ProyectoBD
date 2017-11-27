@@ -55,7 +55,7 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
         FieldCedulaJefe = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        FieldArea = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         FieldEspecialidad = new javax.swing.JTextField();
@@ -88,7 +88,7 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Cedula");
 
-        jLabel3.setText("Direccion");
+        jLabel3.setText("Dirección");
 
         jLabel4.setText("Telefono");
 
@@ -169,9 +169,9 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
 
         jLabel13.setText("Codigo area");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        FieldArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                FieldAreaActionPerformed(evt);
             }
         });
 
@@ -189,7 +189,7 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1))
+                        .addComponent(FieldArea))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
@@ -220,7 +220,7 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FieldArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
@@ -312,18 +312,37 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
 
     private void ButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarActionPerformed
         try{
-         //  if(this.FieldCedula.getText().trim().isEmpty() || this.FieldNombre.getText().trim().isEmpty() ||
-           //   || this.
-            String nombre = this.FieldNombre.getText();
-            String cedula = this.FieldCedula.getText();
-            String direccion = this.FieldDireccion.getText();
-            String telefono = this.FieldTelefono.getText();
-            JOptionPane.showMessageDialog(this, controlPersona.insertarPersona(cedula, nombre, direccion, telefono), "RESULTADO", JOptionPane.INFORMATION_MESSAGE);
+          if(this.FieldCedula.getText().trim().isEmpty() || this.FieldNombre.getText().trim().isEmpty() ||                  
+             this.FieldCargo.getText().trim().isEmpty() || this.FieldSalario.getText().trim().isEmpty() ||
+             this.FieldEmail.getText().trim().isEmpty() || this.FieldArea.getText().trim().isEmpty() ||
+             this.FieldEspecialidad.getText().trim().isEmpty() || this.FieldNumLicencia.getText().trim().isEmpty() ||
+             this.FieldUniversidad.getText().trim().isEmpty()){
+              JOptionPane.showInternalMessageDialog(this, "Existen casillas vacias.", "Atención", JOptionPane.WARNING_MESSAGE);
+          }else{
+              String nombre = this.FieldNombre.getText();
+              String cedula = this.FieldCedula.getText();
+              String direccion = this.FieldDireccion.getText();
+              String telefono = this.FieldTelefono.getText();
+              JOptionPane.showMessageDialog(this, controlPersona.insertarPersona(cedula, nombre, direccion, telefono), "RESULTADO", JOptionPane.INFORMATION_MESSAGE);
+              
+              String cargo = this.FieldCargo.getText();
+              float salario = Float.parseFloat(this.FieldSalario.getText());
+              String email = this.FieldEmail.getText();
+              String area = this.FieldArea.getText();
+              String id_jefe = this.FieldCedulaJefe.getText();
+              
+              
+              
+              
+              
+          }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Asegurese de ingresar un salario de tipo numérico");           
                         
         }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error al capturar los datos");
             System.out.println(e);
-        }
-       
+        }       
     }//GEN-LAST:event_ButtonAgregarActionPerformed
 
     private void FieldCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldCargoActionPerformed
@@ -342,13 +361,14 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FieldCedulaJefeActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void FieldAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldAreaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_FieldAreaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAgregar;
+    private javax.swing.JTextField FieldArea;
     private javax.swing.JTextField FieldCargo;
     private javax.swing.JTextField FieldCedula;
     private javax.swing.JTextField FieldCedulaJefe;
@@ -375,6 +395,5 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
