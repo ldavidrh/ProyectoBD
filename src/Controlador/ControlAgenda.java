@@ -7,7 +7,6 @@ package Controlador;
 
 import AccesoDatos.DaoAgenda;
 import Modelo.Agenda;
-import java.sql.ResultSet;
 
 /**
  *
@@ -20,22 +19,18 @@ public class ControlAgenda {
         daoAgenda = new DaoAgenda();
     }
     
-     public String insertarAgenda(String num_agenda, String fecha, String hora, String disponibilidad){
-        Agenda a  = new Agenda(num_agenda, fecha, hora, disponibilidad);
+     public String insertarAgenda(String id_medico, String fecha, String hora, String disponibilidad){
+        Agenda a  = new Agenda(id_medico, fecha, hora, disponibilidad);
         return daoAgenda.guardarAgenda(a);
     }
     
-    public String[] consultarAgenda(String num_agenda){
-        return daoAgenda.consultarAgenda(num_agenda);
+    public String[] consultarAgenda(String id_medico){
+        return daoAgenda.consultarAgenda(id_medico);
     }
     
-    public String modificarAgenda(String num_agenda, String fecha, String hora, String disponibilidad){
-        Agenda a = new Agenda(num_agenda, fecha, hora, disponibilidad);
+    public String modificarAgenda(String id_medico, String fecha, String hora, String disponibilidad){
+        Agenda a = new Agenda(id_medico, fecha, hora, disponibilidad);
         return daoAgenda.modificarAgenda(a);
-    }
-    
-    public String eliminarAgenda(String num_agenda){
-        return daoAgenda.eliminarAgenda(num_agenda);
     }
     
     public void cerrarConexionBD(){

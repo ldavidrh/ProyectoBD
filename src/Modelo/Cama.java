@@ -15,6 +15,13 @@ public class Cama {
     String codigo_area;
     String estado;
 
+    public Cama(String num_cama, String descripcion, String codigo_area, String estado) {
+        this.num_cama = num_cama;
+        this.descripcion = descripcion;
+        this.codigo_area = codigo_area;
+        this.estado = estado;
+    }
+    
     public String getNum_cama() {
         return num_cama;
     }

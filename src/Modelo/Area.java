@@ -14,6 +14,12 @@ public class Area {
     String nombre;
     String descripcion;
 
+    public Area(String codigo_area, String nombre, String descripcion) {
+        this.codigo_area = codigo_area;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+    
     public String getCodigo_area() {
         return codigo_area;
     }

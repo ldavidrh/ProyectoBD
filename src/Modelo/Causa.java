@@ -14,6 +14,12 @@ public class Causa {
     String nombre;
     String descripcion;
 
+    public Causa(String codigo_causa, String nombre, String descripcion) {
+        this.codigo_causa = codigo_causa;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+    
     public String getCodigo_causa() {
         return codigo_causa;
     }

@@ -12,8 +12,16 @@ package Modelo;
 public class Asignada {
     String id_persona;
     String num_cama;
-    String fecha;
+    String fecha_asignacion;
+    String fecha_finalizacion;
 
+    public Asignada(String id_persona, String num_cama, String fecha_asignacion, String fecha_finalizacion) {
+        this.id_persona = id_persona;
+        this.num_cama = num_cama;
+        this.fecha_asignacion = fecha_asignacion;
+        this.fecha_finalizacion = fecha_finalizacion;
+    }       
+    
     public String getId_persona() {
         return id_persona;
     }
@@ -30,12 +38,19 @@ public class Asignada {
         this.num_cama = num_cama;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getFecha_asignacion() {
+        return fecha_asignacion;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setFecha_asignacion(String fecha_asignacion) {
+        this.fecha_asignacion = fecha_asignacion;
     }
-            
+
+    public String getFecha_finalizacion() {
+        return fecha_finalizacion;
+    }
+
+    public void setFecha_finalizacion(String fecha_finalizacion) {
+        this.fecha_finalizacion = fecha_finalizacion;
+    }            
 }
