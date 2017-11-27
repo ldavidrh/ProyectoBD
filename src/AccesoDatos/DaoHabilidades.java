@@ -50,8 +50,7 @@ public class DaoHabilidades {
             ResultSet tabla = sentencia.executeQuery(sql_select);            
            
             while(tabla.next()){
-                consulta += tabla.getString(1);
-                consulta += tabla.getString(2);
+                consulta += "-" + tabla.getString(2);
                 consulta += "\n";
             }           
             return consulta;

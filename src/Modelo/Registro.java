@@ -12,8 +12,7 @@ package Modelo;
 public class Registro {
     String num_historia;
     String codigo_causa;
-    String id_persona;
-    float precio;
+    String id_persona; 
     String fecha;
 
     public String getNum_historia() {
@@ -38,14 +37,6 @@ public class Registro {
 
     public void setId_persona(String id_persona) {
         this.id_persona = id_persona;
-    }
-
-    public float getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(float precio) {
-        this.precio = precio;
     }
 
     public String getFecha() {
