@@ -34,7 +34,7 @@ public class DaoRegistro {
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
-            if (sentencia.execute(sql_guardar)) {
+            if (sentencia.executeUpdate(sql_guardar)==1) {
                 return "Registro guardado exitosamente";
             } else {
                 return "No se pudo guardar el Registro";
@@ -87,7 +87,7 @@ public class DaoRegistro {
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
-            if (sentencia.execute(sql_eliminar)) {
+            if (sentencia.executeUpdate(sql_eliminar)==1) {
                 return "Registro eliminado existosamente";
             } else {
                 return "No existe ese registro";

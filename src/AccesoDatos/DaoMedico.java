@@ -23,7 +23,7 @@ public class DaoMedico {
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();             
-            if(sentencia.execute(sql_guardar)){
+            if(sentencia.executeUpdate(sql_guardar)==1){
                 return "Médico creado correctamente";
             }else{
                 return "Error: No se insertó el médico";
@@ -69,7 +69,7 @@ public class DaoMedico {
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            if(sentencia.execute(sql_modificar)){
+            if(sentencia.executeUpdate(sql_modificar)==1){
                 return "Médico modificado exitosamente";
             }else{
                 return "No existe un Médico con ese id";
@@ -87,7 +87,7 @@ public class DaoMedico {
         try{
             Connection conn= fachada.getConnetion();       
             Statement sentencia = conn.createStatement();            
-            if(sentencia.execute(sql_delete)){
+            if(sentencia.executeUpdate(sql_delete)==1){
                 return "Médico eliminado exitosamente";
             }else{
                 return "No se eliminó el médico";

@@ -10,17 +10,17 @@ package Modelo;
  * @author invitado
  */
 public class Usuario {
-    String persona_id;
+    String id_persona;
     String password;
     String tipo_u;
     
     public Usuario(){}
-    public String getPersona_id() {
-        return persona_id;
+    public String getId_persona() {
+        return id_persona;
     }
 
-    public void setPersona_id(String usuario) {
-        this.persona_id = usuario;
+    public void setId_persona(String usuario) {
+        this.id_persona = usuario;
     }
 
     public String getPassword() {

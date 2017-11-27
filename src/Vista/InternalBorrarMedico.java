@@ -5,24 +5,18 @@
  */
 
 package Vista;
-import Controlador.ControlEmpleado;
-import Controlador.ControlMedico;
 import Controlador.ControlPersona;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
  */
-public class InternalBorrarMedico extends javax.swing.JInternalFrame {
-    ControlMedico controlMedico;
+public class InternalBorrarMedico extends javax.swing.JInternalFrame {    
     ControlPersona controlPersona;
-    ControlEmpleado controlEmpleado;
     /** Creates new form InternalDeleteMedico */
-    public InternalBorrarMedico(ControlMedico controlMedico, ControlPersona controlPersona, ControlEmpleado controlEmpleado) {
-        this.controlMedico = controlMedico;
-        this.controlPersona = controlPersona;
-        this.controlEmpleado = controlEmpleado;
-        initComponents();
-        
+    public InternalBorrarMedico(ControlPersona controlPersona) { 
+        this.controlPersona = controlPersona;      
+        initComponents();        
     }
 
     /** This method is called from within the constructor to
@@ -80,7 +74,14 @@ public class InternalBorrarMedico extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:       
+        if(this.FieldCedula.getText().trim().isEmpty()){
+            JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula del médico", "Atención", JOptionPane.WARNING_MESSAGE);                
+        }else{
+            String cedula = this.FieldCedula.getText();
+            JOptionPane.showMessageDialog(this, controlPersona.eliminarPersona(cedula));
+        }
+        
     }//GEN-LAST:event_ButtonEliminarActionPerformed
 
 

@@ -24,7 +24,7 @@ public class DaoHistoriaClinica {
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();             
-            if(sentencia.execute(sql_guardar)){
+            if(sentencia.executeUpdate(sql_guardar)==1){
                 return "Historia clínica creada correctamente";
             }else{
                 return "Error: No se insertó la historia médica";
@@ -68,7 +68,7 @@ public class DaoHistoriaClinica {
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            if(sentencia.execute(sql_modificar)){
+            if(sentencia.executeUpdate(sql_modificar)==1){
                 return "Historia clínica modificada exitosamente";
             }else{
                 return "No existe una historia clínica con ese número";
@@ -86,7 +86,7 @@ public class DaoHistoriaClinica {
         try{
             Connection conn= fachada.getConnetion();       
             Statement sentencia = conn.createStatement();            
-            if(sentencia.execute(sql_delete)){
+            if(sentencia.executeUpdate(sql_delete)==1){
                 return "Historia clínica eliminada exitosamente";
             }else{
                 return "No se eliminó la historia clínica";

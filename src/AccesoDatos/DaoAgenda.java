@@ -29,7 +29,7 @@ public class DaoAgenda {
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
-            if (sentencia.execute(sql_guardar)) {
+            if (sentencia.executeUpdate(sql_guardar)==1) {
                 return "Agenda guardada exitosamente";
             } else {
                 return "No se pudo guardar la agenda";
@@ -77,7 +77,7 @@ public class DaoAgenda {
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            if (sentencia.execute(sql_modificar)) {
+            if (sentencia.executeUpdate(sql_modificar)==1) {
                 return "Agenda modificada exitosamente";
             } else {
                 return "No existe una agenda con ese numero";

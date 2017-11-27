@@ -27,7 +27,7 @@ public class DaoPaciente {
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();             
-            if(sentencia.execute(sql_guardar)){
+            if(sentencia.executeUpdate(sql_guardar)==1){
                 return "Paciente creado correctamente";
             }else{
                 return "Error: No se insertó el paciente";
@@ -78,7 +78,7 @@ public class DaoPaciente {
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            if(sentencia.execute(sql_update)){
+            if(sentencia.executeUpdate(sql_update)==1){
                 return "Paciente modificado exitosamente";
             }else{
                 return "No existe un paciente con ese id";
@@ -96,7 +96,7 @@ public class DaoPaciente {
         try{
             Connection conn= fachada.getConnetion();       
             Statement sentencia = conn.createStatement();            
-            if(sentencia.execute(sql_borrar)){
+            if(sentencia.executeUpdate(sql_borrar)==1){
                 return "Paciente eliminado exitosamente";
             }else{
                 return "No se eliminó el paciente";

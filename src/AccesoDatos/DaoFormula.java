@@ -24,7 +24,7 @@ public class DaoFormula {
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();             
-            if(sentencia.execute(sql_guardar)){
+            if(sentencia.executeUpdate(sql_guardar)==1){
                 return "Fórmula creada correctamente";
             }else{
                 return "Error: No se insertó la fórmula";

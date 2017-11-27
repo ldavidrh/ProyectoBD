@@ -5,45 +5,45 @@
  */
 package AccesoDatos;
 import java.sql.*;
-import Modelo.Persona;
+import Modelo.Area;
 /**
  *
  * @author User
  */
-public class DaoPersona {
+public class DaoArea {
     FachadaBD fachada;
     
-    public DaoPersona(){
+    public DaoArea(){
         fachada = new FachadaBD();
     }
     
-    public String guardarPersona(Persona p){
+    public String guardarArea(Area a){
         String sql_guardar;
-        sql_guardar = "INSERT INTO persona VALUES('" + p.getId_persona() + "', '" +
-                      p.getNombre() + "', '" + p.getDireccion() + "', '" + p.getTelefono() + "')";
+        sql_guardar = "INSERT INTO area VALUES('" + a.getCodigo_area() + "', '" +
+                      a.getNombre() + "', '" + a.getDescripcion() + "')";
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();             
             if(sentencia.executeUpdate(sql_guardar)==1){
-                return "Persona creada correctamente";
+                return "Área creada correctamente";
             }else{
-                return "Error: No se insertó la persona";
+                return "Error: No se insertó el área";
             }
         }
         catch(SQLException e){
             System.out.println(e);
-            return "Ya existe una persona con ese id, registrada en el hospital";
+            return "Ya existe un área con ese código";
         }
         catch(Exception e){ 
             System.out.println(e); 
-            return "Ha ocurrido un error al crear la persona";
+            return "Ha ocurrido un error al crear el área";
         }        
     }
     
-    public String[] consultarPersona(String id){
+    public String[] consultarArea(String codigo){
         String sql_select;  
-        String consulta[] = new String[4];
-        sql_select = "SELECT * FROM persona WHERE id_persona = '" + id + "'";
+        String consulta[] = new String[3];
+        sql_select = "SELECT * FROM area WHERE codigo_area = '" + codigo + "'";
         try{
             Connection conn= fachada.getConnetion();            
             Statement sentencia = conn.createStatement();
@@ -51,8 +51,7 @@ public class DaoPersona {
             if(tabla.next()){
                 consulta[0] = tabla.getString(1);
                 consulta[1] = tabla.getString(2);
-                consulta[2] = tabla.getString(3);
-                consulta[3] = tabla.getString(4);
+                consulta[2] = tabla.getString(3);              
             }else{
                 consulta = null;
             }
@@ -63,40 +62,39 @@ public class DaoPersona {
         }
     }
     
-    public String modificarPersona(Persona p){
+    public String modificarArea(Area a){
         String sql_modificar;
-        sql_modificar = "UPDATE persona SET nombre ='" + p.getNombre() + "', direccion ='" +
-                        p.getDireccion() + "', telefono = '" + p.getTelefono() + 
-                        "' WHERE id_persona = '" + p.getId_persona() + "'";
+        sql_modificar = "UPDATE area SET nombre ='" + a.getNombre() + "', descripcion ='" +
+                        a.getDescripcion()+ "' WHERE codigo_area = '" + a.getCodigo_area()+ "'";
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
             if(sentencia.executeUpdate(sql_modificar)==1){
-                return "Persona modificada exitosamente";
+                return "Área modificada exitosamente";
             }else{
-                return "No existe una persona con ese id";
+                return "No existe un área con ese código";
             }            
         }catch(Exception e){
             System.out.println(e);
-            return "Ha ocurrido un error al modificar la persona";
+            return "Ha ocurrido un error al modificar el área";
         }
     }
     
-    public String eliminarPaciente(String id){
+    public String eliminarArea(String codigo){
         String sql_delete;
-        sql_delete = "DELETE FROM persona WHERE id_persona = '" + id + "'";
+        sql_delete = "DELETE FROM area WHERE codigo_area = '" + codigo + "'";
         
         try{
             Connection conn= fachada.getConnetion();       
             Statement sentencia = conn.createStatement();            
             if(sentencia.executeUpdate(sql_delete)==1){
-                return "Persona eliminada exitosamente";
+                return "Área eliminada exitosamente";
             }else{
-                return "No se eliminó la persona";
+                return "No se eliminó el área";
             }                
         }catch(Exception e){
             System.out.println(e);
-            return "Ocurrió un problema al eliminar la persona";
+            return "Ocurrió un problema al eliminar el área";
         }                             
     }
     
