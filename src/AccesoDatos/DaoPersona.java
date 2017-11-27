@@ -52,7 +52,7 @@ public class DaoPersona {
                 consulta[0] = tabla.getString(1);
                 consulta[1] = tabla.getString(2);
                 consulta[2] = tabla.getString(3);
-                consulta[3] = tabla.getString(4);
+                consulta[3] = tabla.getString(4);                
             }else{
                 consulta = null;
             }
@@ -92,7 +92,7 @@ public class DaoPersona {
             if(sentencia.executeUpdate(sql_delete)==1){
                 return "Persona eliminada exitosamente";
             }else{
-                return "No se eliminó la persona";
+                return "No hay una persona con ese id";
             }                
         }catch(Exception e){
             System.out.println(e);

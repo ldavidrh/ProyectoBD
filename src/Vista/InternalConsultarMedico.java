@@ -16,10 +16,12 @@ import javax.swing.JOptionPane;
  * @author Luis
  */
 public class InternalConsultarMedico extends javax.swing.JInternalFrame {
+
     ControlMedico controlMedico;
     ControlPersona controlPersona;
     ControlEmpleado controlEmpleado;
     ControlArea controlArea;
+
     /**
      * Creates new form InternalBuscarMedico
      */
@@ -111,7 +113,7 @@ public class InternalConsultarMedico extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -124,24 +126,32 @@ public class InternalConsultarMedico extends javax.swing.JInternalFrame {
 
     private void ButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarActionPerformed
         // TODO add your handling code here:
-        if(this.FieldCedula.getText().trim().isEmpty()){
-            JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula del médico", "Atención", JOptionPane.WARNING_MESSAGE);            
-        }else{
-            String cedula = this.FieldCedula.getText().trim();      
-            
-            String[] persona = controlPersona.consultarPersona(cedula);
-            String[] empleado = controlEmpleado.consultarEmpleado(cedula);
-            String[] medico = controlMedico.consultarMedico(cedula);  
-            String[] area = controlArea.consultarArea(empleado[4]);
-            String[] jefe = controlEmpleado.consultarEmpleado(empleado[5]);
-            
-            
-            String consulta = "DATOS PESONALES\nNombre: " + persona[1] + "\nDirección: " + persona[2] + "\nTeléfono: " + persona[3] +  
-                       "PERFIL PROFESIONAL\nEspecialidad: " + medico[1] + "\nNúmero de Licencia: " + medico[2] + "\nUniversidad: "
-                       + medico[3] + "\nDATOS DEL EMPLEADO\nCargo: " + empleado[1] + "\nSalario: " + empleado[2] + "\nEmail: " + empleado[3] +
-                       "\nÁrea: " + area[1] + " - " + area[0] + "\nJefe: " + jefe[1] + ", cc: " + jefe[0];            
-            
-            this.TextArea.setText(consulta);
+        try {
+            if (this.FieldCedula.getText().trim().isEmpty()) {
+                JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula del médico", "Atención", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String cedula = this.FieldCedula.getText().trim();
+                String consulta = "";
+                String[] persona = controlPersona.consultarPersona(cedula);
+                if (persona == null) {
+                    consulta = "No existe un empleado con esa cédula en el hospital";
+                } else {
+                    String[] empleado = controlEmpleado.consultarEmpleado(cedula);
+                    String[] medico = controlMedico.consultarMedico(cedula);
+                    String[] area = controlArea.consultarArea(empleado[4]);
+                    String[] jefe = controlEmpleado.consultarEmpleado(empleado[5]);
+                    consulta = "DATOS PESONALES\nNombre: " + persona[1] + "\nDirección: " + persona[2] + "\nTeléfono: " + persona[3]
+                            + "\n\nPERFIL PROFESIONAL\nEspecialidad: " + medico[1] + "\nNúmero de Licencia: " + medico[2] + "\nUniversidad: "
+                            + medico[3] + "\n\nDATOS DEL EMPLEADO\nCargo: " + empleado[1] + "\nSalario: " + empleado[2] + "\nEmail: " + empleado[3]
+                            + "\nÁrea: " + area[1] + " (" + area[0] + ")";
+                    if (jefe != null) {
+                        consulta += "\nJefe: " + jefe[1] + ". cc: " + jefe[0];
+                    }
+                }
+                this.TextArea.setText(consulta);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Asegurese de ingresar un salario de tipo numérico");
         }
     }//GEN-LAST:event_ButtonConsultarActionPerformed
 

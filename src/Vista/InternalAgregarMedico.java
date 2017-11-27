@@ -330,7 +330,12 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
               float salario = Float.parseFloat(this.FieldSalario.getText());
               String email = this.FieldEmail.getText();
               String area = this.FieldArea.getText();
-              String id_jefe = this.FieldCedulaJefe.getText();
+              String id_jefe;
+              if(this.FieldCedulaJefe.getText().equals("")){
+                  id_jefe = null;
+              }else{
+                  id_jefe = this.FieldCedulaJefe.getText();
+              }             
               
               String especialidad = this.FieldEspecialidad.getText();
               String numLicencia = this.FieldNumLicencia.getText();

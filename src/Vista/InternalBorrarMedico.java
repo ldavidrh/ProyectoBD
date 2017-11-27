@@ -5,6 +5,7 @@
  */
 
 package Vista;
+import Controlador.ControlEmpleado;
 import Controlador.ControlPersona;
 import javax.swing.JOptionPane;
 /**
@@ -13,9 +14,11 @@ import javax.swing.JOptionPane;
  */
 public class InternalBorrarMedico extends javax.swing.JInternalFrame {    
     ControlPersona controlPersona;
+    ControlEmpleado controlEmpleado;
     /** Creates new form InternalDeleteMedico */
-    public InternalBorrarMedico(ControlPersona controlPersona) { 
-        this.controlPersona = controlPersona;      
+    public InternalBorrarMedico(ControlPersona controlPersona, ControlEmpleado controlEmpleado) { 
+        this.controlPersona = controlPersona;     
+        this.controlEmpleado = controlEmpleado;
         initComponents();        
     }
 
@@ -79,6 +82,7 @@ public class InternalBorrarMedico extends javax.swing.JInternalFrame {
             JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula del médico", "Atención", JOptionPane.WARNING_MESSAGE);                
         }else{
             String cedula = this.FieldCedula.getText();
+            controlEmpleado.eliminarJefe(cedula);
             JOptionPane.showMessageDialog(this, controlPersona.eliminarPersona(cedula));
         }
         

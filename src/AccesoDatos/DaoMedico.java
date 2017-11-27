@@ -30,7 +30,7 @@ public class DaoMedico {
             }
         }catch(SQLException ex){
             System.out.println(ex);
-            return "Ha ocurrido un error: " + ex.getMessage();
+            return "Atención: Probablemente hubo un error en la creación del empleado";
         }
         catch(Exception ex){ 
             System.out.println(ex); 
