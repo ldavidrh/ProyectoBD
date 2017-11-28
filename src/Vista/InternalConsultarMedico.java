@@ -132,12 +132,12 @@ public class InternalConsultarMedico extends javax.swing.JInternalFrame {
             } else {
                 String cedula = this.FieldCedula.getText().trim();
                 String consulta = "";
-                String[] persona = controlPersona.consultarPersona(cedula);
-                if (persona == null) {
-                    consulta = "No existe un empleado con esa cédula en el hospital";
+                String[] medico = controlMedico.consultarMedico(cedula);
+                if (medico == null) {
+                    consulta = "No existe un médico con esa cédula en el hospital";
                 } else {
-                    String[] empleado = controlEmpleado.consultarEmpleado(cedula);
-                    String[] medico = controlMedico.consultarMedico(cedula);
+                    String[] persona = controlPersona.consultarPersona(cedula);
+                    String[] empleado = controlEmpleado.consultarEmpleado(cedula);                    
                     String[] area = controlArea.consultarArea(empleado[4]);
                     String[] jefe = controlEmpleado.consultarEmpleado(empleado[5]);
                     consulta = "DATOS PESONALES\nNombre: " + persona[1] + "\nDirección: " + persona[2] + "\nTeléfono: " + persona[3]

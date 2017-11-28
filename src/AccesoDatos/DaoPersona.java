@@ -32,7 +32,7 @@ public class DaoPersona {
         }
         catch(SQLException e){
             System.out.println(e);
-            return "Ya existe una persona con ese id, registrada en el hospital";
+            return "Ya se creó una persona con esa cédula";
         }
         catch(Exception e){ 
             System.out.println(e); 
@@ -72,7 +72,7 @@ public class DaoPersona {
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
             if(sentencia.executeUpdate(sql_modificar)==1){
-                return "Persona modificada exitosamente";
+                return "Datos personales modificados exitosamente";
             }else{
                 return "No existe una persona con ese id";
             }            
