@@ -44,7 +44,7 @@ public class DaoCampana {
         }        
     }
 
-    public String[] consultarCampaña(String id){        
+    public String[] consultarCampana(String id){        
         String sql_select;
         String consulta[] = new String[5];
         sql_select="SELECT * FROM campana WHERE codigo_campana = '" + id +  "'";
