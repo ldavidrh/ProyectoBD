@@ -30,7 +30,7 @@ public class DaoMedico {
             }
         }catch(SQLException ex){
             System.out.println(ex);
-            return "Atención: Probablemente hubo un error en la creación del empleado";
+            return "Ya existe un médico con esa cédula";
         }
         catch(Exception ex){ 
             System.out.println(ex); 
@@ -70,7 +70,7 @@ public class DaoMedico {
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
             if(sentencia.executeUpdate(sql_modificar)==1){
-                return "Médico modificado exitosamente";
+                return "Datos de médico modificados exitosamente";
             }else{
                 return "No existe un Médico con ese id";
             }            

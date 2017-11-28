@@ -4,18 +4,22 @@
  * and open the template in the editor.
  */
 package Vista;
+
 import Controlador.ControlEmpleado;
 import Controlador.ControlMedico;
 import Controlador.ControlPersona;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luis
  */
 public class InternalEditarMedico extends javax.swing.JInternalFrame {
+
     ControlPersona controlPersona;
     ControlMedico controlMedico;
     ControlEmpleado controlEmpleado;
+
     /**
      * Creates new form InternalEditarMedico
      */
@@ -265,6 +269,7 @@ public class InternalEditarMedico extends javax.swing.JInternalFrame {
         jLabel6.setText("Universidad");
 
         ButtonEditar.setText("Editar");
+        ButtonEditar.setEnabled(false);
         ButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonEditarActionPerformed(evt);
@@ -351,37 +356,71 @@ public class InternalEditarMedico extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarActionPerformed
-        
+        try {
+            String cedula = this.FieldCedulaConsulta.getText().trim();
+
+            String nombre = this.FieldNombre.getText();
+            String direccion = this.FieldDireccion.getText();
+            String telefono = this.FieldTelefono.getText();
+
+            String cargo = this.FieldCargo.getText();
+            float salario = Float.parseFloat(this.FieldSalario.getText());
+            String email = this.FieldEmail.getText();
+            String area = this.FieldArea.getText();
+            String id_jefe;
+            if (this.FieldCedulaJefe.getText().trim().equals("")) {
+                id_jefe = null;
+            } else {
+                id_jefe = this.FieldCedulaJefe.getText();
+            }
+
+            String especialidad = this.FieldEspecialidad.getText();
+            String numLicencia = this.FieldNumLicencia.getText();
+            String universidad = this.FieldUniversidad.getText();
+            
+            
+            String mensaje = "- " + controlPersona.modificarPersona(cedula, nombre, direccion, telefono);
+            mensaje += "\n- " + controlEmpleado.modificarEmpleado(cedula, cargo, salario, email, area, id_jefe);
+            mensaje += "\n- " + controlMedico.modificarMedico(cedula, especialidad, numLicencia, universidad);
+            
+            JOptionPane.showMessageDialog(this, mensaje);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Asegurese de ingresar un salario de tipo numérico");
+        }
     }//GEN-LAST:event_ButtonEditarActionPerformed
 
     private void ButtonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCargarActionPerformed
-        if(this.FieldCedulaConsulta.getText().trim().isEmpty()){
+
+        if (this.FieldCedulaConsulta.getText().trim().isEmpty()) {
             JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula del médico que desea editar", "Atención", JOptionPane.WARNING_MESSAGE);
-        }else{
-            String cedula = this.FieldCedulaConsulta.getText().trim();      
-            
-            String[] persona = controlPersona.consultarPersona(cedula);
-            String[] empleado = controlEmpleado.consultarEmpleado(cedula);
-            String[] medico = controlMedico.consultarMedico(cedula);  
-            
-            this.FieldNombre.setText(persona[1]);
-            this.FieldDireccion.setText(persona[2]);
-            this.FieldTelefono.setText(persona[3]);
-            
-            this.FieldCargo.setText(empleado[1]);
-            this.FieldSalario.setText(empleado[2]);
-            this.FieldEmail.setText(empleado[3]);
-            this.FieldArea.setText(empleado[4]);
-            this.FieldCedulaJefe.setText(empleado[5]);
-            
-            this.FieldEspecialidad.setText(medico[1]);
-            this.FieldNumLicencia.setText(medico[2]);
-            this.FieldUniversidad.setText(medico[3]);
-            
-            
-       
+        } else {
+            String cedula = this.FieldCedulaConsulta.getText().trim();
+            String[] medico = controlMedico.consultarMedico(cedula);
+
+            if (medico == null) {
+                JOptionPane.showMessageDialog(this, "No existe un médico con esa cédula en el hospital");
+            } else {
+                String[] persona = controlPersona.consultarPersona(cedula);
+                String[] empleado = controlEmpleado.consultarEmpleado(cedula);
+
+                this.FieldNombre.setText(persona[1]);
+                this.FieldDireccion.setText(persona[2]);
+                this.FieldTelefono.setText(persona[3]);
+
+                this.FieldCargo.setText(empleado[1]);
+                this.FieldSalario.setText(empleado[2]);
+                this.FieldEmail.setText(empleado[3]);
+                this.FieldArea.setText(empleado[4]);
+                this.FieldCedulaJefe.setText(empleado[5]);
+
+                this.FieldEspecialidad.setText(medico[1]);
+                this.FieldNumLicencia.setText(medico[2]);
+                this.FieldUniversidad.setText(medico[3]);
+
+                this.ButtonEditar.setEnabled(true);
+                this.FieldCedulaConsulta.setEditable(false);
+            }
         }
-        this.ButtonEditar.setEnabled(true);
     }//GEN-LAST:event_ButtonCargarActionPerformed
 
     private void FieldCedulaConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldCedulaConsultaActionPerformed
