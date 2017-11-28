@@ -25,7 +25,7 @@ public class DaoAsiste {
     public String guardarAsiste(Asiste a){
         String sql_guardar;
         sql_guardar = "INSERT INTO asiste VALUES('" + a.getId_persona() + "', '" +
-                      a.getCodigo_campana() + "', '" + a.getDescuento() + "')";
+                      a.getCodigo_campana() + "', " + a.getDescuento() + ")";
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();            
@@ -71,8 +71,8 @@ public class DaoAsiste {
     
     public String modificarAsiste(Asiste a){
         String sql_modificar;
-        sql_modificar = "UPDATE asiste SET descuento ='" + a.getDescuento() + 
-                        "' WHERE id_persona = '" + a.getId_persona() + "' AND codigo_campana='" + a.getCodigo_campana() + "';";
+        sql_modificar = "UPDATE asiste SET descuento =" + a.getDescuento() + 
+                        " WHERE id_persona = '" + a.getId_persona() + "' AND codigo_campana='" + a.getCodigo_campana() + "';";
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
