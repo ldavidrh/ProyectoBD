@@ -24,6 +24,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     ControlMedico controlMedico;
     ControlArea controlArea;
     ControlEmpleado controlEmpleado;
+    ControlCampana controlCampana;
     /**
      * Creates new form VistaPrincipal
      */
@@ -36,6 +37,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         controlArea = new ControlArea();
         controlEmpleado = new ControlEmpleado();
         controlEnfermera = new ControlEnfermera();
+        controlCampana = new ControlCampana();
         
         //Creacion de InputDialog para login
         JTextField fieldCedula = new JTextField();
@@ -330,6 +332,8 @@ public class VistaAdmin extends javax.swing.JFrame {
 
         PanelPrincipal.addTab("Paciente", PanelPaciente);
 
+        PanelArea.setLayout(new java.awt.GridBagLayout());
+
         ButtonAgregarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addArea.png"))); // NOI18N
         ButtonAgregarArea.setText("Agregar");
         ButtonAgregarArea.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -339,6 +343,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonAgregarAreaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 135, 8, 0);
+        PanelArea.add(ButtonAgregarArea, gridBagConstraints);
 
         ButtonEliminarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deleteArea.png"))); // NOI18N
         ButtonEliminarArea.setText("Eliminar");
@@ -349,6 +359,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonEliminarAreaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
+        PanelArea.add(ButtonEliminarArea, gridBagConstraints);
 
         ButtonConsultarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchArea.png"))); // NOI18N
         ButtonConsultarArea.setText("Consultar");
@@ -359,6 +375,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonConsultarAreaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
+        PanelArea.add(ButtonConsultarArea, gridBagConstraints);
 
         ButtonEditarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editArea.png"))); // NOI18N
         ButtonEditarArea.setText("Editar");
@@ -369,35 +391,16 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonEditarAreaActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout PanelAreaLayout = new javax.swing.GroupLayout(PanelArea);
-        PanelArea.setLayout(PanelAreaLayout);
-        PanelAreaLayout.setHorizontalGroup(
-            PanelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelAreaLayout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(ButtonAgregarArea)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonEliminarArea)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonConsultarArea)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonEditarArea)
-                .addContainerGap(155, Short.MAX_VALUE))
-        );
-        PanelAreaLayout.setVerticalGroup(
-            PanelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAreaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PanelAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonAgregarArea)
-                    .addComponent(ButtonEliminarArea)
-                    .addComponent(ButtonConsultarArea)
-                    .addComponent(ButtonEditarArea))
-                .addContainerGap())
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 155);
+        PanelArea.add(ButtonEditarArea, gridBagConstraints);
 
         PanelPrincipal.addTab("Area", PanelArea);
+
+        PanelCamas.setLayout(new java.awt.GridBagLayout());
 
         ButtonAgregarCama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addBed.png"))); // NOI18N
         ButtonAgregarCama.setText("Agregar");
@@ -408,6 +411,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonAgregarCamaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 127, 8, 0);
+        PanelCamas.add(ButtonAgregarCama, gridBagConstraints);
 
         ButtonEliminarCama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deleteBed.png"))); // NOI18N
         ButtonEliminarCama.setText("Eliminar");
@@ -418,6 +427,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonEliminarCamaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
+        PanelCamas.add(ButtonEliminarCama, gridBagConstraints);
 
         ButtonConsultarCama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchBed.png"))); // NOI18N
         ButtonConsultarCama.setText("Consultar");
@@ -428,6 +443,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonConsultarCamaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
+        PanelCamas.add(ButtonConsultarCama, gridBagConstraints);
 
         ButtonEditarCama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editBed.png"))); // NOI18N
         ButtonEditarCama.setText("Editar");
@@ -438,35 +459,16 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonEditarCamaActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout PanelCamasLayout = new javax.swing.GroupLayout(PanelCamas);
-        PanelCamas.setLayout(PanelCamasLayout);
-        PanelCamasLayout.setHorizontalGroup(
-            PanelCamasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCamasLayout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addComponent(ButtonAgregarCama)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonEliminarCama)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonConsultarCama)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonEditarCama)
-                .addContainerGap(163, Short.MAX_VALUE))
-        );
-        PanelCamasLayout.setVerticalGroup(
-            PanelCamasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCamasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelCamasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonAgregarCama)
-                    .addComponent(ButtonEliminarCama)
-                    .addComponent(ButtonConsultarCama)
-                    .addComponent(ButtonEditarCama))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 163);
+        PanelCamas.add(ButtonEditarCama, gridBagConstraints);
 
         PanelPrincipal.addTab("Camas", PanelCamas);
+
+        PanelCampana.setLayout(new java.awt.GridBagLayout());
 
         ButtonAgregarCampana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addCampaign.png"))); // NOI18N
         ButtonAgregarCampana.setText("Agregar");
@@ -477,6 +479,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonAgregarCampanaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 127, 8, 0);
+        PanelCampana.add(ButtonAgregarCampana, gridBagConstraints);
 
         ButtonEliminarCampana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deleteCampaign.png"))); // NOI18N
         ButtonEliminarCampana.setText("Eliminar");
@@ -487,6 +495,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonEliminarCampanaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
+        PanelCampana.add(ButtonEliminarCampana, gridBagConstraints);
 
         ButtonConsultarCampana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchCampaign.png"))); // NOI18N
         ButtonConsultarCampana.setText("Consultar");
@@ -497,6 +511,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonConsultarCampanaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
+        PanelCampana.add(ButtonConsultarCampana, gridBagConstraints);
 
         ButtonEditarCampana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editCampaign.png"))); // NOI18N
         ButtonEditarCampana.setText("Editar");
@@ -507,35 +527,16 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonEditarCampanaActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout PanelCampanaLayout = new javax.swing.GroupLayout(PanelCampana);
-        PanelCampana.setLayout(PanelCampanaLayout);
-        PanelCampanaLayout.setHorizontalGroup(
-            PanelCampanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCampanaLayout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addComponent(ButtonAgregarCampana)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonEliminarCampana)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonConsultarCampana)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonEditarCampana)
-                .addContainerGap(163, Short.MAX_VALUE))
-        );
-        PanelCampanaLayout.setVerticalGroup(
-            PanelCampanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCampanaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelCampanaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonAgregarCampana)
-                    .addComponent(ButtonEliminarCampana)
-                    .addComponent(ButtonConsultarCampana)
-                    .addComponent(ButtonEditarCampana))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 163);
+        PanelCampana.add(ButtonEditarCampana, gridBagConstraints);
 
         PanelPrincipal.addTab("Campaña", PanelCampana);
+
+        PanelCitas.setLayout(new java.awt.GridBagLayout());
 
         ButtonAgregarCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addCita.png"))); // NOI18N
         ButtonAgregarCita.setText("Agregar");
@@ -546,6 +547,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonAgregarCitaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 127, 8, 0);
+        PanelCitas.add(ButtonAgregarCita, gridBagConstraints);
 
         ButtonEliminarCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deleteCita.png"))); // NOI18N
         ButtonEliminarCita.setText("Eliminar");
@@ -556,6 +563,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonEliminarCitaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
+        PanelCitas.add(ButtonEliminarCita, gridBagConstraints);
 
         ButtonConsultarCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchCita.png"))); // NOI18N
         ButtonConsultarCita.setText("Consultar");
@@ -566,6 +579,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonConsultarCitaActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
+        PanelCitas.add(ButtonConsultarCita, gridBagConstraints);
 
         ButtonEditarCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editCita.png"))); // NOI18N
         ButtonEditarCita.setText("Editar");
@@ -576,35 +595,16 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonEditarCitaActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout PanelCitasLayout = new javax.swing.GroupLayout(PanelCitas);
-        PanelCitas.setLayout(PanelCitasLayout);
-        PanelCitasLayout.setHorizontalGroup(
-            PanelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCitasLayout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addComponent(ButtonAgregarCita)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonEliminarCita)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonConsultarCita)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonEditarCita)
-                .addContainerGap(163, Short.MAX_VALUE))
-        );
-        PanelCitasLayout.setVerticalGroup(
-            PanelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCitasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonAgregarCita)
-                    .addComponent(ButtonEliminarCita)
-                    .addComponent(ButtonConsultarCita)
-                    .addComponent(ButtonEditarCita))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 163);
+        PanelCitas.add(ButtonEditarCita, gridBagConstraints);
 
         PanelPrincipal.addTab("Citas", PanelCitas);
+
+        PanelUsuarios.setLayout(new java.awt.GridBagLayout());
 
         ButtonAgregarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addUser.png"))); // NOI18N
         ButtonAgregarUsuario.setText("Agregar");
@@ -615,6 +615,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonAgregarUsuarioActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 127, 8, 0);
+        PanelUsuarios.add(ButtonAgregarUsuario, gridBagConstraints);
 
         ButtonEliminarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deleteUser.png"))); // NOI18N
         ButtonEliminarUsuario.setText("Eliminar");
@@ -625,6 +631,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonEliminarUsuarioActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
+        PanelUsuarios.add(ButtonEliminarUsuario, gridBagConstraints);
 
         ButtonConsultarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchUser.png"))); // NOI18N
         ButtonConsultarUsuario.setText("Consultar");
@@ -635,6 +647,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonConsultarUsuarioActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
+        PanelUsuarios.add(ButtonConsultarUsuario, gridBagConstraints);
 
         ButtonEditarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editUser.png"))); // NOI18N
         ButtonEditarUsuario.setText("Editar");
@@ -645,33 +663,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonEditarUsuarioActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout PanelUsuariosLayout = new javax.swing.GroupLayout(PanelUsuarios);
-        PanelUsuarios.setLayout(PanelUsuariosLayout);
-        PanelUsuariosLayout.setHorizontalGroup(
-            PanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelUsuariosLayout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addComponent(ButtonAgregarUsuario)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonEliminarUsuario)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonConsultarUsuario)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonEditarUsuario)
-                .addContainerGap(163, Short.MAX_VALUE))
-        );
-        PanelUsuariosLayout.setVerticalGroup(
-            PanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelUsuariosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonAgregarUsuario)
-                    .addComponent(ButtonEliminarUsuario)
-                    .addComponent(ButtonConsultarUsuario)
-                    .addComponent(ButtonEditarUsuario))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 163);
+        PanelUsuarios.add(ButtonEditarUsuario, gridBagConstraints);
 
         PanelPrincipal.addTab("Usuarios", PanelUsuarios);
 
@@ -820,25 +817,25 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarCamaActionPerformed
 
     private void ButtonAgregarCampanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarCampanaActionPerformed
-        InternalAgregarCampana addCamp = new InternalAgregarCampana();
+        InternalAgregarCampana addCamp = new InternalAgregarCampana(controlCampana);
         this.DesktopPane.add(addCamp);
         addCamp.show();
     }//GEN-LAST:event_ButtonAgregarCampanaActionPerformed
 
     private void ButtonEliminarCampanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarCampanaActionPerformed
-        InternalEliminarCampana delCamp = new InternalEliminarCampana();
+        InternalBorrarCampana delCamp = new InternalBorrarCampana(controlCampana);
         this.DesktopPane.add(delCamp);
         delCamp.show();
     }//GEN-LAST:event_ButtonEliminarCampanaActionPerformed
 
     private void ButtonConsultarCampanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarCampanaActionPerformed
-        InternalConsultarCampana conCamp = new InternalConsultarCampana();
+        InternalConsultarCampana conCamp = new InternalConsultarCampana(controlCampana);
         this.DesktopPane.add(conCamp);
         conCamp.show();
     }//GEN-LAST:event_ButtonConsultarCampanaActionPerformed
 
     private void ButtonEditarCampanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarCampanaActionPerformed
-        InternalEditarCampana editCamp = new InternalEditarCampana();
+        InternalEditarCampana editCamp = new InternalEditarCampana(controlCampana);
         this.DesktopPane.add(editCamp);
         editCamp.show();
     }//GEN-LAST:event_ButtonEditarCampanaActionPerformed
@@ -866,7 +863,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonAgregarUsuarioActionPerformed
 
     private void ButtonEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarUsuarioActionPerformed
-        InternalEliminarUsuario delUser = new InternalEliminarUsuario(controlUsuario);
+        InternalBorrarUsuario delUser = new InternalBorrarUsuario(controlUsuario);
         this.DesktopPane.add(delUser);
         delUser.show();
     }//GEN-LAST:event_ButtonEliminarUsuarioActionPerformed

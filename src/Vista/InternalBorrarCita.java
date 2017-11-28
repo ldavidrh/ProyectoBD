@@ -9,12 +9,12 @@ package Vista;
  *
  * @author Luis
  */
-public class InternalEliminarCita extends javax.swing.JInternalFrame {
+public class InternalBorrarCita extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form InternalEliminarCita
      */
-    public InternalEliminarCita() {
+    public InternalBorrarCita() {
         initComponents();
     }
 

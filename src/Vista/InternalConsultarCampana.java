@@ -4,17 +4,18 @@
  * and open the template in the editor.
  */
 package Vista;
-
+import Controlador.ControlCampana;
 /**
  *
  * @author Luis
  */
 public class InternalConsultarCampana extends javax.swing.JInternalFrame {
-
+    ControlCampana controlCampana;
     /**
      * Creates new form InternalConsultarCampaña
      */
-    public InternalConsultarCampana() {
+    public InternalConsultarCampana(ControlCampana controlCampana) {
+        this.controlCampana = controlCampana;
         initComponents();
     }
 

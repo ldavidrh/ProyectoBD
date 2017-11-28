@@ -4,17 +4,19 @@
  * and open the template in the editor.
  */
 package Vista;
-
+import Controlador.ControlUsuario;
 /**
  *
  * @author Luis
  */
-public class InternalEliminarCampana extends javax.swing.JInternalFrame {
-
+public class InternalBorrarUsuario extends javax.swing.JInternalFrame {
+    ControlUsuario controlUsuario;
     /**
-     * Creates new form InternalEliminarCampana
+     * Creates new form InternalEliminarUsuario
+     * @param controlUsuario
      */
-    public InternalEliminarCampana() {
+    public InternalBorrarUsuario(ControlUsuario controlUsuario) {
+        this.controlUsuario = controlUsuario;
         initComponents();
     }
 
@@ -29,19 +31,19 @@ public class InternalEliminarCampana extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        FieldCodigo = new javax.swing.JTextField();
-        ButtonEliminar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        FieldCedula = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
         setResizable(true);
-        setTitle("Eliminar campaña");
+        setTitle("Eliminar usuario");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Ingrese el codigo de la campaña que desea eliminar");
+        jLabel1.setText("Ingrese la cedula del usuario que desea eliminar");
 
-        ButtonEliminar.setText("Eliminar");
+        jButton1.setText("Eliminar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -51,8 +53,8 @@ public class InternalEliminarCampana extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(FieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonEliminar))
+                    .addComponent(jButton1)
+                    .addComponent(FieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -61,9 +63,9 @@ public class InternalEliminarCampana extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(FieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButtonEliminar)
+                .addComponent(FieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -89,8 +91,8 @@ public class InternalEliminarCampana extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonEliminar;
-    private javax.swing.JTextField FieldCodigo;
+    private javax.swing.JTextField FieldCedula;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
