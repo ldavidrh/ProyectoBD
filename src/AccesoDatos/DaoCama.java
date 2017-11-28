@@ -5,49 +5,55 @@
  */
 package AccesoDatos;
 
-import Modelo.Causa;
-import java.sql.*;
+import Modelo.Cama;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
-import java.util.logging.Logger;/**
+import java.util.logging.Logger;
+
+/**
  *
  * @author juandavid
  */
-public class DaoCausa {
+public class DaoCama {
     FachadaBD fachada;
 
-    public DaoCausa() {
+    public DaoCama() {
         fachada = new FachadaBD();
     }
 
-    public String guardarCausa(Causa causa) {
+    public String guardarCama(Cama cama) {
         String sql_guardar;
-        sql_guardar = "INSERT INTO causa VALUES('" + causa.getCodigo_causa() + "', '" + causa.getNombre() + "', '" + causa.getDescripcion() + "');";
+        sql_guardar = "INSERT INTO cama VALUES('" + cama.getNum_cama() + "', '" + cama.getDescripcion() + "', '" 
+                + cama.getCodigo_area() + "', '" + cama.getEstado() + "');";
 
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
             if (sentencia.execute(sql_guardar)) {
-                return "Causa guardada exitosamente";
+                return "Cama guardada exitosamente";
             } else {
-                return "No se pudo guardar la causa";
+                return "No se pudo guardar la cama";
             }
         } catch (SQLException ex) {
             Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
-            return "Error al guardar la causa";
+            return "Error al guardar la cama";
         }catch(Exception ex){ 
             System.out.println(ex); 
-            return "Ha ocurrido un error al crear la causa";
+            return "Ha ocurrido un error al crear la cama";
         }
     }
     
     
     
     
-    public String[] consultarCausa(String codigo_causa) {
+    public String[] consultarCama(String num_cama) {
         String sql_consultar;
-        String[] consulta = new String[3];
+        String[] consulta = new String[4];
 
-        sql_consultar = "SELECT * FROM causa WHERE codigo_causa = '" + codigo_causa + "';";
+        sql_consultar = "SELECT * FROM cama WHERE num_cama = '" + num_cama + "';";
 
         try {
             Connection conexion = fachada.getConnetion();
@@ -58,6 +64,7 @@ public class DaoCausa {
                 consulta[0] = tabla.getString(1);
                 consulta[1] = tabla.getString(2);
                 consulta[2] = tabla.getString(3);
+                consulta[3] = tabla.getString(4);
             } else {
                 consulta = null;
             }
@@ -69,39 +76,39 @@ public class DaoCausa {
 
     }
 
-    public String eliminarCausa(String codigo_causa) {
+    public String eliminarCama(String num_cama) {
         String sql_eliminar;
-        sql_eliminar = "DELETE FROM causa WHERE codigo_causa = '" + codigo_causa + "';";
+        sql_eliminar = "DELETE FROM cama WHERE num_cama = '" + num_cama + "';";
 
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
             if (sentencia.execute(sql_eliminar)) {
-                return "Causa eliminada existosa";
+                return "Cama eliminada existosa";
             } else {
-                return "No existe una causa con el numero: " + codigo_causa;
+                return "No existe una cama con el numero: " + num_cama;
             }
         } catch (SQLException ex) {
             Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
-            return "Error al eliminar causa";
+            return "Error al eliminar cama";
         }
     }
 
-    public String modificarCausa(Causa causa) {
+    public String modificarCama(Cama cama) {
         String sql_modificar;
-        sql_modificar = "UPDATE causa SET nombre ='" + causa.getNombre() + "', descripcion ='"
-                + causa.getDescripcion() + "' WHERE codigo_causa = '" + causa.getCodigo_causa() + "';";
+        sql_modificar = "UPDATE cama SET descripcion ='" + cama.getDescripcion() + "', codigo_area ='"
+                + cama.getCodigo_area() + "', estado='" + cama.getEstado() + "' WHERE num_cama = '" + cama.getNum_cama() + "';";
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
             if (sentencia.execute(sql_modificar)) {
-                return "Causa modificada exitosamente";
+                return "Cama modificada exitosamente";
             } else {
-                return "No existe una causa con ese numero";
+                return "No existe una cama con ese numero";
             }
         } catch (Exception ex) {
             System.out.println(ex);
-            return "Ha ocurrido un error al modificar la causa";
+            return "Ha ocurrido un error al modificar la cama";
         }
 
     }
