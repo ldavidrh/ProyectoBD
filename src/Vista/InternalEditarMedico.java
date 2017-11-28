@@ -379,9 +379,9 @@ public class InternalEditarMedico extends javax.swing.JInternalFrame {
             String universidad = this.FieldUniversidad.getText();
             
             
-            String mensaje = "- " + controlPersona.modificarPersona(cedula, nombre, direccion, telefono);
-            mensaje += "\n- " + controlEmpleado.modificarEmpleado(cedula, cargo, salario, email, area, id_jefe);
-            mensaje += "\n- " + controlMedico.modificarMedico(cedula, especialidad, numLicencia, universidad);
+            String mensaje = "1) " + controlPersona.modificarPersona(cedula, nombre, direccion, telefono);
+            mensaje += "\n2) " + controlEmpleado.modificarEmpleado(cedula, cargo, salario, email, area, id_jefe);
+            mensaje += "\n3) " + controlMedico.modificarMedico(cedula, especialidad, numLicencia, universidad);
             
             JOptionPane.showMessageDialog(this, mensaje);
         } catch (NumberFormatException e) {

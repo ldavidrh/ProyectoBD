@@ -83,7 +83,7 @@ public class InternalConsultarMedico extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(FieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ButtonConsultar))
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,9 +103,11 @@ public class InternalConsultarMedico extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane1))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,8 +115,8 @@ public class InternalConsultarMedico extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -150,8 +152,9 @@ public class InternalConsultarMedico extends javax.swing.JInternalFrame {
                 }
                 this.TextArea.setText(consulta);
             }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Asegurese de ingresar un salario de tipo numérico");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());                   
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error desde la vista");
         }
     }//GEN-LAST:event_ButtonConsultarActionPerformed
 

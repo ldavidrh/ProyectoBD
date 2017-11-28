@@ -4,18 +4,22 @@
  * and open the template in the editor.
  */
 package Vista;
+import Controlador.ControlEmpleado;
 import Controlador.ControlPersona;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
  */
 public class InternalBorrarEnfermera extends javax.swing.JInternalFrame {
     ControlPersona controlPersona;
+    ControlEmpleado controlEmpleado;
     /**
      * Creates new form InternalBorrarEnfermera
      */
-    public InternalBorrarEnfermera(ControlPersona controlPersona) {
+    public InternalBorrarEnfermera(ControlPersona controlPersona, ControlEmpleado controlEmpleado) {
         this.controlPersona = controlPersona;
+        this.controlEmpleado = controlEmpleado;
         initComponents();
     }
 
@@ -76,6 +80,13 @@ public class InternalBorrarEnfermera extends javax.swing.JInternalFrame {
 
     private void ButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarActionPerformed
         // TODO add your handling code here:
+        if(this.FieldCedula.getText().trim().isEmpty()){
+            JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula de la enfermera", "Atención", JOptionPane.WARNING_MESSAGE);                
+        }else{
+            String cedula = this.FieldCedula.getText();
+            controlEmpleado.eliminarJefe(cedula);
+            JOptionPane.showMessageDialog(this, controlPersona.eliminarPersona(cedula));
+        }
     }//GEN-LAST:event_ButtonEliminarActionPerformed
 
 

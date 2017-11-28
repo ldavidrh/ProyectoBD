@@ -5,6 +5,7 @@
  */
 package Vista;
 import Controlador.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
@@ -41,6 +42,7 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
         FieldDireccion = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         FieldTelefono = new javax.swing.JTextField();
+        ButtonAgregarPersona = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         FieldCargo = new javax.swing.JTextField();
@@ -51,13 +53,13 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
         FieldCedulaJefe = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        FieldArea = new javax.swing.JTextField();
+        ButtonAgregarEmpleado = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         FieldExperiencia = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        ButtonAgregarEnfermera = new javax.swing.JButton();
 
-        setClosable(true);
         setIconifiable(true);
         setResizable(true);
         setTitle("Agregar enfermera");
@@ -72,11 +74,24 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Nombre");
 
-        jLabel2.setText("Cedula");
+        jLabel2.setText("Cédula");
 
-        jLabel3.setText("Direccion");
+        jLabel3.setText("Dirección");
 
-        jLabel4.setText("Telefono");
+        jLabel4.setText("Teléfono");
+
+        FieldTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FieldTelefonoActionPerformed(evt);
+            }
+        });
+
+        ButtonAgregarPersona.setText("Registrar Datos Personales");
+        ButtonAgregarPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAgregarPersonaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -85,17 +100,26 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FieldDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(FieldCedula, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(FieldNombre)
-                    .addComponent(FieldTelefono))
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(24, 24, 24)
+                        .addComponent(FieldNombre)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FieldTelefono)
+                            .addComponent(FieldCedula)
+                            .addComponent(FieldDireccion))
+                        .addContainerGap())))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(ButtonAgregarPersona)
+                .addGap(0, 88, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,19 +128,21 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(FieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(FieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(FieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(FieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonAgregarPersona)
+                .addGap(18, 18, 18))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos empleado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
@@ -151,13 +177,21 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel12.setText("Cedula Jefe");
+        jLabel12.setText("Cédula Jefe");
 
-        jLabel13.setText("Codigo area");
+        jLabel13.setText("Código área");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        FieldArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                FieldAreaActionPerformed(evt);
+            }
+        });
+
+        ButtonAgregarEmpleado.setText("Registrar Datos Empleado");
+        ButtonAgregarEmpleado.setEnabled(false);
+        ButtonAgregarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAgregarEmpleadoActionPerformed(evt);
             }
         });
 
@@ -175,7 +209,7 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1))
+                        .addComponent(FieldArea))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
@@ -187,6 +221,10 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
                             .addComponent(FieldSalario)
                             .addComponent(FieldCargo))))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(87, Short.MAX_VALUE)
+                .addComponent(ButtonAgregarEmpleado)
+                .addGap(77, 77, 77))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,28 +233,38 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(FieldCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(FieldSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(FieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FieldArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(FieldCedulaJefe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonAgregarEmpleado)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos enfermera", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
 
         jLabel5.setText("Años experiencia");
+
+        ButtonAgregarEnfermera.setText("Registrar Datos Enfermera");
+        ButtonAgregarEnfermera.setEnabled(false);
+        ButtonAgregarEnfermera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAgregarEnfermeraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -226,8 +274,12 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(FieldExperiencia, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                .addComponent(FieldExperiencia)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(53, Short.MAX_VALUE)
+                .addComponent(ButtonAgregarEnfermera)
+                .addGap(43, 43, 43))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,15 +288,10 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(FieldExperiencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(ButtonAgregarEnfermera)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -252,25 +299,21 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -297,16 +340,110 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FieldCedulaJefeActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void FieldAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldAreaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_FieldAreaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ButtonAgregarEnfermeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarEnfermeraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        try{
+          if(this.FieldExperiencia.getText().trim().isEmpty()){
+              JOptionPane.showInternalMessageDialog(this, "Ingreselos años de experiencia.", "Atención", JOptionPane.WARNING_MESSAGE);
+          }else{    
+              String cedula = this.FieldCedula.getText();              
+              int exp = Integer.parseInt(this.FieldExperiencia.getText());
+              
+              String mensaje = controlEnfermera.insertarEnfermera(cedula, exp);
+              JOptionPane.showMessageDialog(this, mensaje);
+              if(mensaje.equals("Enfermera creada correctamente")){                 
+                  this.dispose();
+              }                           
+          }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Asegurese de ingresar los años con formato numérico");           
+                        
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error al capturar los datos");
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_ButtonAgregarEnfermeraActionPerformed
+
+    private void ButtonAgregarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarPersonaActionPerformed
+        // TODO add your handling code here:
+        try{
+          if(this.FieldCedula.getText().trim().isEmpty() || this.FieldNombre.getText().trim().isEmpty()){
+              JOptionPane.showInternalMessageDialog(this, "Existen casillas vacias.", "Atención", JOptionPane.WARNING_MESSAGE);
+          }else{
+              String nombre = this.FieldNombre.getText();
+              String cedula = this.FieldCedula.getText();
+              String direccion = this.FieldDireccion.getText();
+              String telefono = this.FieldTelefono.getText();
+                                          
+              String mensaje = controlPersona.insertarPersona(cedula, nombre, direccion, telefono);
+              if(mensaje.equals("Persona creada correctamente")){
+                  this.ButtonAgregarEmpleado.setEnabled(true);                  
+                  this.ButtonAgregarPersona.setEnabled(false);
+                  this.FieldCedula.setEditable(false);
+              }  
+              JOptionPane.showMessageDialog(this, mensaje);
+          }                         
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error al capturar los datos");
+            System.out.println(e);
+        }        
+    }//GEN-LAST:event_ButtonAgregarPersonaActionPerformed
+
+    private void ButtonAgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarEmpleadoActionPerformed
+        // TODO add your handling code here:
+        try{
+          if(this.FieldCargo.getText().trim().isEmpty() || this.FieldSalario.getText().trim().isEmpty() ||
+             this.FieldEmail.getText().trim().isEmpty() || this.FieldArea.getText().trim().isEmpty()){             
+              JOptionPane.showInternalMessageDialog(this, "Existen casillas vacias.", "Atención", JOptionPane.WARNING_MESSAGE);
+          }else{              
+              String cedula = this.FieldCedula.getText();
+                                         
+              String cargo = this.FieldCargo.getText();
+              float salario = Float.parseFloat(this.FieldSalario.getText());
+              String email = this.FieldEmail.getText();
+              String area = this.FieldArea.getText();
+              String id_jefe;
+              if(this.FieldCedulaJefe.getText().equals("")){
+                  id_jefe = null;
+              }else{
+                  id_jefe = this.FieldCedulaJefe.getText();
+              }                
+              
+              String mensaje = controlEmpleado.insertarEmpleado(cedula, cargo, salario, email, area, id_jefe);
+              JOptionPane.showMessageDialog(this, mensaje);
+              switch (mensaje) {
+                  case "Empleado creado correctamente":
+                      this.ButtonAgregarEmpleado.setEnabled(false);
+                      this.ButtonAgregarEnfermera.setEnabled(true);
+                      break;
+                  case "Ya existe un empleado con esa cédula":
+                      this.dispose();
+                      break;
+              }              
+          }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Asegurese de ingresar un salario de tipo numérico");           
+                        
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error al capturar los datos");
+            System.out.println(e);
+        }  
+    }//GEN-LAST:event_ButtonAgregarEmpleadoActionPerformed
+
+    private void FieldTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FieldTelefonoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonAgregarEmpleado;
+    private javax.swing.JButton ButtonAgregarEnfermera;
+    private javax.swing.JButton ButtonAgregarPersona;
+    private javax.swing.JTextField FieldArea;
     private javax.swing.JTextField FieldCargo;
     private javax.swing.JTextField FieldCedula;
     private javax.swing.JTextField FieldCedulaJefe;
@@ -316,7 +453,6 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
     private javax.swing.JTextField FieldNombre;
     private javax.swing.JTextField FieldSalario;
     private javax.swing.JTextField FieldTelefono;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -330,6 +466,5 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

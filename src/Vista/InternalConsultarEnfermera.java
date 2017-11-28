@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package Vista;
+import Controlador.ControlArea;
 import Controlador.ControlEmpleado;
 import Controlador.ControlEnfermera;
 import Controlador.ControlPersona;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
@@ -15,13 +17,15 @@ public class InternalConsultarEnfermera extends javax.swing.JInternalFrame {
     ControlPersona controlPersona;
     ControlEmpleado controlEmpleado;
     ControlEnfermera controlEnfermera;
+    ControlArea controlArea;
     /**
      * Creates new form InternalBuscarEnfermera
      */
-    public InternalConsultarEnfermera(ControlEnfermera controlEnfermera, ControlEmpleado controlEmpleado, ControlPersona controlPersona) {
+    public InternalConsultarEnfermera(ControlEnfermera controlEnfermera, ControlEmpleado controlEmpleado, ControlPersona controlPersona, ControlArea controlArea) {
         this.controlPersona = controlPersona;
         this.controlEmpleado = controlEmpleado;
         this.controlEnfermera = controlEnfermera;
+        this.controlArea = controlArea;
         initComponents();
     }
 
@@ -71,7 +75,7 @@ public class InternalConsultarEnfermera extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(FieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ButtonConsultar))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,9 +99,11 @@ public class InternalConsultarEnfermera extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane1))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,8 +111,8 @@ public class InternalConsultarEnfermera extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -118,6 +124,34 @@ public class InternalConsultarEnfermera extends javax.swing.JInternalFrame {
 
     private void ButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarActionPerformed
         // TODO add your handling code here:
+        try {
+            if (this.FieldCedula.getText().trim().isEmpty()) {
+                JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula de la enfermera", "Atención", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String cedula = this.FieldCedula.getText().trim();
+                String consulta = "";
+                String[] enfermera = controlEnfermera.consultarEnfermera(cedula);
+                if (enfermera == null) {
+                    consulta = "No existe una enfermera con esa cédula en el hospital";
+                } else {
+                    String[] persona = controlPersona.consultarPersona(cedula);
+                    String[] empleado = controlEmpleado.consultarEmpleado(cedula);                    
+                    String[] area = controlArea.consultarArea(empleado[4]);
+                    String[] jefe = controlEmpleado.consultarEmpleado(empleado[5]);
+                    consulta = "DATOS PESONALES\nNombre: " + persona[1] + "\nDirección: " + persona[2] + "\nTeléfono: " + persona[3]
+                            + "\n\nPERFIL PROFESIONAL\nAños de experiencia: " + enfermera[1] + 
+                            "\n\nDATOS DEL EMPLEADO\nCargo: " + empleado[1] + "\nSalario: " + empleado[2] + "\nEmail: " + empleado[3]
+                            + "\nÁrea: " + area[1] + " (" + area[0] + ")";
+                    if (jefe != null) {
+                        consulta += "\nJefe: " + jefe[1] + ". cc: " + jefe[0];
+                    }
+                }
+                this.TextArea.setText(consulta);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());                   
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error desde la vista");
+        }
     }//GEN-LAST:event_ButtonConsultarActionPerformed
 
 
