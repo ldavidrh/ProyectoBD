@@ -710,7 +710,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonAgregarMedicoActionPerformed
 
     private void ButtonEliminarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarMedicoActionPerformed
-        InternalBorrarMedico delMed = new InternalBorrarMedico(controlPersona);
+        InternalBorrarMedico delMed = new InternalBorrarMedico(controlPersona, controlEmpleado);
         this.DesktopPane.add(delMed);
         delMed.show();
     }//GEN-LAST:event_ButtonEliminarMedicoActionPerformed

@@ -19,7 +19,11 @@ public class ControlEmpleado {
     
     public String insertarEmpleado(String id_persona, String cargo, float salario, String email, String codigo_area, String id_jefe){
         Empleado e = new Empleado(id_persona, cargo, salario, email, codigo_area, id_jefe);
-        return daoEmpleado.guardarEmpleado(e);
+        if(id_jefe==null){
+            return daoEmpleado.guardarEmpleadoSinJefe(e);
+        }else{
+            return daoEmpleado.guardarEmpleado(e);
+        }        
     }
     
     public String[] consultarEmpleado(String id){
@@ -33,6 +37,10 @@ public class ControlEmpleado {
     
     public String eliminarEmpleado(String id){
         return daoEmpleado.eliminarEmpleado(id);
+    }
+    
+    public void eliminarJefe(String id_jefe){
+        daoEmpleado.eliminarJefe(id_jefe);
     }
     
     public void cerrarConexionBD(){
