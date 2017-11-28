@@ -860,11 +860,15 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarCitaActionPerformed
 
     private void ButtonAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarUsuarioActionPerformed
-        // TODO add your handling code here:
+        InternalAgregarUsuario addUser = new InternalAgregarUsuario(controlUsuario);
+        this.DesktopPane.add(addUser);
+        addUser.show();
     }//GEN-LAST:event_ButtonAgregarUsuarioActionPerformed
 
     private void ButtonEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarUsuarioActionPerformed
-        // TODO add your handling code here:
+        InternalEliminarUsuario delUser = new InternalEliminarUsuario(controlUsuario);
+        this.DesktopPane.add(delUser);
+        delUser.show();
     }//GEN-LAST:event_ButtonEliminarUsuarioActionPerformed
 
     private void ButtonConsultarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarUsuarioActionPerformed
@@ -872,7 +876,9 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonConsultarUsuarioActionPerformed
 
     private void ButtonEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarUsuarioActionPerformed
-        // TODO add your handling code here:
+        InternalConsultarUsuario conUser = new InternalConsultarUsuario(controlUsuario);
+        this.DesktopPane.add(conUser);
+        conUser.show();
     }//GEN-LAST:event_ButtonEditarUsuarioActionPerformed
 
     /**
