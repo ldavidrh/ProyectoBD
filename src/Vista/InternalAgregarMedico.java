@@ -354,8 +354,7 @@ public class InternalAgregarMedico extends javax.swing.JInternalFrame {
               
               String mensaje = controlMedico.insertarMedico(cedula, especialidad, numLicencia, universidad);
               JOptionPane.showMessageDialog(this, mensaje);
-              if(mensaje.equals("Médico creado correctamente")){
-                  this.ButtonAgregarMedico.setEnabled(false);
+              if(mensaje.equals("Médico creado correctamente")){                  
                   this.dispose();
               }                           
           }
