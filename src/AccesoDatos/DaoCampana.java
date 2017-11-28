@@ -21,7 +21,7 @@ public class DaoCampana {
         fachada= new FachadaBD();
     }
     
-    public String guardarPaciente(Campana c){
+    public String guardarCampana(Campana c){
         String sql_guardar;
         sql_guardar="INSERT INTO campana VALUES ('" + c.getCodigo_campana() + "', '" + c.getNombre() +  "', '" +
                 c.getObjetivo() + "', '"  + c.getFecha() +  "', '" + c.getId_persona() + "')";
