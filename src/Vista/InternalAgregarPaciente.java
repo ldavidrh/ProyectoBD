@@ -4,10 +4,14 @@
  * and open the template in the editor.
  */
 package Vista;
+
+import Controlador.ControlHistoriaClinica;
 import Controlador.ControlPaciente;
 import Controlador.ControlPersona;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -16,14 +20,18 @@ import javax.swing.JOptionPane;
  * @author Luis
  */
 public class InternalAgregarPaciente extends javax.swing.JInternalFrame {
+
     ControlPersona controlPersona;
     ControlPaciente controlPaciente;
+    ControlHistoriaClinica controlHistoria;
+
     /**
      * Creates new form InternalAgregarPaciente
      */
-    public InternalAgregarPaciente(ControlPaciente controlPaciente, ControlPersona controlPersona) {
+    public InternalAgregarPaciente(ControlPaciente controlPaciente, ControlPersona controlPersona, ControlHistoriaClinica controlHistoria) {
         this.controlPaciente = controlPaciente;
         this.controlPersona = controlPersona;
+        this.controlHistoria = controlHistoria;
         initComponents();
     }
 
@@ -45,16 +53,15 @@ public class InternalAgregarPaciente extends javax.swing.JInternalFrame {
         FieldDireccion = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         FieldTelefono = new javax.swing.JTextField();
+        ButtonAgregarPersona = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        FieldNumHistoria = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         FieldSeguridadSocial = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         DateChooser = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        ButtonAgregar = new javax.swing.JButton();
+        FieldActividad = new javax.swing.JTextField();
+        ButtonAgregarPaciente = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -77,6 +84,13 @@ public class InternalAgregarPaciente extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Telefono");
 
+        ButtonAgregarPersona.setText("Registrar Datos Personales");
+        ButtonAgregarPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAgregarPersonaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -90,11 +104,17 @@ public class InternalAgregarPaciente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FieldDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(FieldCedula, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(FieldNombre)
-                    .addComponent(FieldTelefono))
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(ButtonAgregarPersona)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FieldDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                            .addComponent(FieldCedula, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(FieldNombre)
+                            .addComponent(FieldTelefono))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,12 +135,12 @@ public class InternalAgregarPaciente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(FieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ButtonAgregarPersona)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos paciente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
-
-        jLabel5.setText("Num. Historia ");
 
         jLabel6.setText("Seguridad Social");
 
@@ -134,9 +154,17 @@ public class InternalAgregarPaciente extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Actividad economica");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        FieldActividad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                FieldActividadActionPerformed(evt);
+            }
+        });
+
+        ButtonAgregarPaciente.setText("Registrar Datos Paciente");
+        ButtonAgregarPaciente.setEnabled(false);
+        ButtonAgregarPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAgregarPacienteActionPerformed(evt);
             }
         });
 
@@ -148,13 +176,9 @@ public class InternalAgregarPaciente extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5))
+                        .addComponent(jLabel6)
                         .addGap(24, 24, 24)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FieldSeguridadSocial)
-                            .addComponent(FieldNumHistoria)))
+                        .addComponent(FieldSeguridadSocial))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -164,51 +188,44 @@ public class InternalAgregarPaciente extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel8)
                                 .addGap(5, 5, 5)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField1)
+                            .addComponent(FieldActividad)
                             .addComponent(DateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ButtonAgregarPaciente)
+                .addGap(75, 75, 75))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(FieldNumHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(FieldSeguridadSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(DateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                    .addComponent(FieldActividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(ButtonAgregarPaciente)
+                .addContainerGap())
         );
-
-        ButtonAgregar.setText("Agregar");
-        ButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonAgregarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ButtonAgregar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -216,10 +233,8 @@ public class InternalAgregarPaciente extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ButtonAgregar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -234,45 +249,96 @@ public class InternalAgregarPaciente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FieldSeguridadSocialActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void FieldActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldActividadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_FieldActividadActionPerformed
 
-    private void ButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarActionPerformed
+    private void ButtonAgregarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarPacienteActionPerformed
         try {
             LocalDate fecha = this.DateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             String dia = String.valueOf(fecha.getDayOfMonth());
             String mes = String.valueOf(fecha.getMonthValue());
             String anio = String.valueOf(fecha.getYear());
-            JOptionPane.showMessageDialog(this, dia + "-" + mes + "-" + anio);
-           
-        }catch(NullPointerException npe){
+                        
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            LocalDate actual = LocalDate.now();
+            String fecha_apertura = dtf.format(actual);            
+
+            if (this.FieldActividad.getText().trim().isEmpty() || this.FieldSeguridadSocial.getText().trim().isEmpty()) {
+                JOptionPane.showInternalMessageDialog(this, "Existen casillas vacias.", "Atención", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String cedula = this.FieldCedula.getText();
+                String seguridad = this.FieldSeguridadSocial.getText();
+                String actividad = this.FieldActividad.getText();
+                String num_historia = "0" + cedula;
+
+                String mensajeHistoria = controlHistoria.insertarHistoria(num_historia, fecha_apertura);
+                JOptionPane.showMessageDialog(this, mensajeHistoria);
+                if (mensajeHistoria.equals("Historia clínica creada correctamente")) {
+                    String fecha_nacimiento = dia + "-" + mes + "-" + anio;
+                    String mensajePaciente = controlPaciente.insertarPaciente(cedula, num_historia, seguridad, fecha_nacimiento, actividad);
+                    JOptionPane.showMessageDialog(this, mensajePaciente);
+                    if(mensajePaciente.equals("Paciente creado correctamente")){
+                        this.dispose();
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this, "Inténtelo de nuevo");
+                    this.dispose();
+                }
+            }
+
+        } catch (NullPointerException npe) {
             JOptionPane.showMessageDialog(this, "Seleccione una fecha");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(this, "Error en la captura de datos");
         }
+    }//GEN-LAST:event_ButtonAgregarPacienteActionPerformed
 
+    private void ButtonAgregarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarPersonaActionPerformed
+        // TODO add your handling code here:
+        try {
+            if (this.FieldCedula.getText().trim().isEmpty() || this.FieldNombre.getText().trim().isEmpty()) {
+                JOptionPane.showInternalMessageDialog(this, "Existen casillas vacias.", "Atención", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String nombre = this.FieldNombre.getText();
+                String cedula = this.FieldCedula.getText();
+                String direccion = this.FieldDireccion.getText();
+                String telefono = this.FieldTelefono.getText();
 
-    }//GEN-LAST:event_ButtonAgregarActionPerformed
+                String mensaje = controlPersona.insertarPersona(cedula, nombre, direccion, telefono);
+                if (mensaje.equals("Persona creada correctamente")) {
+                    this.ButtonAgregarPaciente.setEnabled(true);
+                    this.ButtonAgregarPersona.setEnabled(false);
+                    this.FieldCedula.setEditable(false);
+                }
+                JOptionPane.showMessageDialog(this, mensaje);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error al capturar los datos");
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_ButtonAgregarPersonaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonAgregar;
+    private javax.swing.JButton ButtonAgregarPaciente;
+    private javax.swing.JButton ButtonAgregarPersona;
     private com.toedter.calendar.JDateChooser DateChooser;
+    private javax.swing.JTextField FieldActividad;
     private javax.swing.JTextField FieldCedula;
     private javax.swing.JTextField FieldDireccion;
     private javax.swing.JTextField FieldNombre;
-    private javax.swing.JTextField FieldNumHistoria;
     private javax.swing.JTextField FieldSeguridadSocial;
     private javax.swing.JTextField FieldTelefono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

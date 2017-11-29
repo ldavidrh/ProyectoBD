@@ -25,6 +25,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     ControlArea controlArea;
     ControlEmpleado controlEmpleado;
     ControlCampana controlCampana;
+    ControlHistoriaClinica controlHistoria;
     /**
      * Creates new form VistaPrincipal
      */
@@ -38,6 +39,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         controlEmpleado = new ControlEmpleado();
         controlEnfermera = new ControlEnfermera();
         controlCampana = new ControlCampana();
+        controlHistoria = new ControlHistoriaClinica();
         
         //Creacion de InputDialog para login
         JTextField fieldCedula = new JTextField();
@@ -743,7 +745,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarEnfermeraActionPerformed
 
     private void ButtonAgregarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarPacienteActionPerformed
-        InternalAgregarPaciente addPac = new InternalAgregarPaciente(controlPaciente, controlPersona);
+        InternalAgregarPaciente addPac = new InternalAgregarPaciente(controlPaciente, controlPersona, controlHistoria);
         this.DesktopPane.add(addPac);
         addPac.show();
     }//GEN-LAST:event_ButtonAgregarPacienteActionPerformed
