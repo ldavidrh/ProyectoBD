@@ -89,11 +89,13 @@ public class VistaAdmin extends javax.swing.JFrame {
         ButtonEliminarPaciente = new javax.swing.JButton();
         ButtonConsultarPaciente = new javax.swing.JButton();
         ButtonEditarPaciente = new javax.swing.JButton();
+        ButtonEditarPaciente1 = new javax.swing.JButton();
         PanelArea = new javax.swing.JPanel();
         ButtonAgregarArea = new javax.swing.JButton();
         ButtonEliminarArea = new javax.swing.JButton();
         ButtonConsultarArea = new javax.swing.JButton();
         ButtonEditarArea = new javax.swing.JButton();
+        ButtonEmpleadosPorArea = new javax.swing.JButton();
         PanelCamas = new javax.swing.JPanel();
         ButtonAgregarCama = new javax.swing.JButton();
         ButtonEliminarCama = new javax.swing.JButton();
@@ -279,7 +281,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 128, 8, 0);
+        gridBagConstraints.insets = new java.awt.Insets(11, 66, 8, 0);
         PanelPaciente.add(ButtonAgregarPaciente, gridBagConstraints);
 
         ButtonEliminarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deletePatient.png"))); // NOI18N
@@ -327,8 +329,24 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 162);
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
         PanelPaciente.add(ButtonEditarPaciente, gridBagConstraints);
+
+        ButtonEditarPaciente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/costoPaciente.png"))); // NOI18N
+        ButtonEditarPaciente1.setText("Costo por paciente");
+        ButtonEditarPaciente1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonEditarPaciente1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonEditarPaciente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEditarPaciente1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 83);
+        PanelPaciente.add(ButtonEditarPaciente1, gridBagConstraints);
 
         PanelPrincipal.addTab("Paciente", PanelPaciente);
 
@@ -347,7 +365,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 135, 8, 0);
+        gridBagConstraints.insets = new java.awt.Insets(11, 61, 8, 0);
         PanelArea.add(ButtonAgregarArea, gridBagConstraints);
 
         ButtonEliminarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deleteArea.png"))); // NOI18N
@@ -363,7 +381,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
+        gridBagConstraints.insets = new java.awt.Insets(11, 26, 8, 0);
         PanelArea.add(ButtonEliminarArea, gridBagConstraints);
 
         ButtonConsultarArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchArea.png"))); // NOI18N
@@ -395,8 +413,24 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 155);
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
         PanelArea.add(ButtonEditarArea, gridBagConstraints);
+
+        ButtonEmpleadosPorArea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/empleados.png"))); // NOI18N
+        ButtonEmpleadosPorArea.setText("Empledos por area");
+        ButtonEmpleadosPorArea.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonEmpleadosPorArea.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonEmpleadosPorArea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEmpleadosPorAreaActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 82);
+        PanelArea.add(ButtonEmpleadosPorArea, gridBagConstraints);
 
         PanelPrincipal.addTab("Area", PanelArea);
 
@@ -878,6 +912,19 @@ public class VistaAdmin extends javax.swing.JFrame {
         conUser.show();
     }//GEN-LAST:event_ButtonEditarUsuarioActionPerformed
 
+    private void ButtonEmpleadosPorAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmpleadosPorAreaActionPerformed
+        InternalEmpleadosPorArea empArea = new InternalEmpleadosPorArea(controlArea);
+        this.DesktopPane.add(empArea);
+        empArea.show();
+        
+    }//GEN-LAST:event_ButtonEmpleadosPorAreaActionPerformed
+
+    private void ButtonEditarPaciente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarPaciente1ActionPerformed
+        InternalCostoPaciente costPer = new InternalCostoPaciente(controlPaciente, controlPersona);
+        this.DesktopPane.add(costPer);
+        costPer.show();
+    }//GEN-LAST:event_ButtonEditarPaciente1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -938,6 +985,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton ButtonEditarEnfermera;
     private javax.swing.JButton ButtonEditarMedico;
     private javax.swing.JButton ButtonEditarPaciente;
+    private javax.swing.JButton ButtonEditarPaciente1;
     private javax.swing.JButton ButtonEditarUsuario;
     private javax.swing.JButton ButtonEliminarArea;
     private javax.swing.JButton ButtonEliminarCama;
@@ -947,6 +995,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton ButtonEliminarMedico;
     private javax.swing.JButton ButtonEliminarPaciente;
     private javax.swing.JButton ButtonEliminarUsuario;
+    private javax.swing.JButton ButtonEmpleadosPorArea;
     private javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JPanel PanelArea;
     private javax.swing.JPanel PanelCamas;
