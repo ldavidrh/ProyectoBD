@@ -641,7 +641,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
         PanelCitas.add(ButtonEditarCita, gridBagConstraints);
 
-        ButtonEditarCitasPorMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/citasAtendidas.png"))); // NOI18N
+        ButtonEditarCitasPorMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addArea.png"))); // NOI18N
         ButtonEditarCitasPorMedico.setText("Citas atendidas por medico");
         ButtonEditarCitasPorMedico.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ButtonEditarCitasPorMedico.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
