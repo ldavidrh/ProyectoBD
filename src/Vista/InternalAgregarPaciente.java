@@ -63,7 +63,6 @@ public class InternalAgregarPaciente extends javax.swing.JInternalFrame {
         FieldActividad = new javax.swing.JTextField();
         ButtonAgregarPaciente = new javax.swing.JButton();
 
-        setClosable(true);
         setIconifiable(true);
         setResizable(true);
         setTitle("Agregar paciente");

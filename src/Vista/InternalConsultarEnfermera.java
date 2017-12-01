@@ -140,8 +140,11 @@ public class InternalConsultarEnfermera extends javax.swing.JInternalFrame {
                     String[] jefe = controlEmpleado.consultarEmpleado(empleado[5]);
                     consulta = "DATOS PESONALES\nNombre: " + persona[1] + "\nDirección: " + persona[2] + "\nTeléfono: " + persona[3]
                             + "\n\nPERFIL PROFESIONAL\nAños de experiencia: " + enfermera[1] + 
-                            "\n\nDATOS DEL EMPLEADO\nCargo: " + empleado[1] + "\nSalario: " + empleado[2] + "\nEmail: " + empleado[3]
-                            + "\nÁrea: " + area[1] + " (" + area[0] + ")";
+                            "\n\nDATOS DEL EMPLEADO\nCargo: " + empleado[1] + "\nSalario: " + empleado[2] + "\nEmail: " + empleado[3];
+                            
+                    if (area != null) {
+                        consulta += "\nÁrea: " + area[1] + ". cód: " + area[0];
+                    }
                     if (jefe != null) {
                         consulta += "\nJefe: " + jefe[1] + ". cc: " + jefe[0];
                     }

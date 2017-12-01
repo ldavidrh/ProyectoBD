@@ -90,7 +90,7 @@ public class DaoArea {
             if(sentencia.executeUpdate(sql_delete)==1){
                 return "Área eliminada exitosamente";
             }else{
-                return "No se eliminó el área";
+                return "No existe un área con ese código";
             }                
         }catch(Exception e){
             System.out.println(e);

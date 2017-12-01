@@ -81,8 +81,7 @@ public class InternalBorrarPaciente extends javax.swing.JInternalFrame {
             JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula del paciente", "Atención", JOptionPane.WARNING_MESSAGE);                
         }else{
             String cedula = this.FieldCedula.getText();            
-            JOptionPane.showMessageDialog(this, controlPersona.eliminarPersona(cedula));
-            this.dispose();
+            JOptionPane.showMessageDialog(this, controlPersona.eliminarPersona(cedula));            
         }
     }//GEN-LAST:event_ButtonEliminarPacienteActionPerformed
 

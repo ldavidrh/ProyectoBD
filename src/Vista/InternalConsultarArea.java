@@ -4,13 +4,18 @@
  * and open the template in the editor.
  */
 package Vista;
+
 import Controlador.ControlArea;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luis
  */
 public class InternalConsultarArea extends javax.swing.JInternalFrame {
+
     ControlArea controlArea;
+
     /**
      * Creates new form InternalConsultarArea
      */
@@ -45,6 +50,11 @@ public class InternalConsultarArea extends javax.swing.JInternalFrame {
         jLabel1.setText("Ingrese el codigo del area que desea consultar");
 
         ButtonConsultar.setText("Consultar");
+        ButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -99,6 +109,23 @@ public class InternalConsultarArea extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarActionPerformed
+        // TODO add your handling code here:
+        if (this.FieldCodigo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el código del área");
+        } else {
+            String cod = this.FieldCodigo.getText();
+            String consulta = "";
+            String[] area = controlArea.consultarArea(cod);
+            if (area == null) {
+                consulta = "No existe un area con ese código en el hospital";
+            } else {                
+                consulta = "Nombre: " + area[1] + "\nDescripción: " + area[2];                 
+            }
+            this.TextArea.setText(consulta);
+        }
+    }//GEN-LAST:event_ButtonConsultarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
