@@ -52,10 +52,7 @@ CREATE TABLE asignada
 	id_persona VARCHAR(30) NOT NULL,
 	num_cama VARCHAR(30) NOT NULL,
 	fecha_entrada DATE NOT NULL,
-	fecha_salida DATE NOT NULL,
-
-	FOREIGN KEY (id_persona) REFERENCES paciente (id_persona) ON DELETE CASCADE,
-	FOREIGN KEY (num_cama) REFERENCES cama (num_cama) ON DELETE CASCADE
+	fecha_salida DATE NOT NULL,	
 );
 
 DROP TABLE IF EXISTS empleado CASCADE;
