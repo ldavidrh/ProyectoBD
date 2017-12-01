@@ -14,7 +14,7 @@ CREATE TABLE cama
 	codigo_area VARCHAR(30) NOT NULL,
 	estado VARCHAR(15) NOT NULL,
 
-	FOREIGN KEY (codigo_area) REFERENCES area (codigo_area) ON DELETE CASCADE
+	FOREIGN KEY (codigo_area) REFERENCES area (codigo_area) 
 );
 
 DROP TABLE IF EXISTS persona CASCADE;
