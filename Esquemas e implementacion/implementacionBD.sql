@@ -10,11 +10,11 @@ DROP TABLE IF EXISTS cama CASCADE;
 CREATE TABLE cama
 (
 	num_cama VARCHAR(30) PRIMARY KEY NOT NULL,
-	descripcion VARCHAR(60), 
-	codigo_area VARCHAR(30) NOT NULL,
+	descripcion VARCHAR(60) NOT NULL, 
+	codigo_area VARCHAR(30), 
 	estado VARCHAR(15) NOT NULL,
 
-	FOREIGN KEY (codigo_area) REFERENCES area (codigo_area) ON DELETE CASCADE
+	FOREIGN KEY (codigo_area) REFERENCES area (codigo_area) 
 );
 
 DROP TABLE IF EXISTS persona CASCADE;
@@ -52,10 +52,7 @@ CREATE TABLE asignada
 	id_persona VARCHAR(30) NOT NULL,
 	num_cama VARCHAR(30) NOT NULL,
 	fecha_entrada DATE NOT NULL,
-	fecha_salida DATE NOT NULL,
-
-	FOREIGN KEY (id_persona) REFERENCES paciente (id_persona) ON DELETE CASCADE,
-	FOREIGN KEY (num_cama) REFERENCES cama (num_cama) ON DELETE CASCADE
+	fecha_salida DATE NOT NULL,	
 );
 
 DROP TABLE IF EXISTS empleado CASCADE;
