@@ -41,8 +41,7 @@ public class DaoEmpleado {
                 return "Ya existe un empleado con esa cédula";
             }
             return "Error: asegúrese de ingresar el código de área y la cédula del jefe correctamente";
-        }
-        catch(Exception ex){ 
+        }catch(Exception ex){ 
             System.out.println(ex); 
             return "Ha ocurrido un error al crear el empleado";
         }        

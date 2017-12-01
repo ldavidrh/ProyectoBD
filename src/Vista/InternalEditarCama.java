@@ -5,16 +5,22 @@
  */
 package Vista;
 
+import Controlador.ControlCama;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luis
  */
 public class InternalEditarCama extends javax.swing.JInternalFrame {
 
+    ControlCama controlCama;
+
     /**
      * Creates new form InternalEditarCama
      */
-    public InternalEditarCama() {
+    public InternalEditarCama(ControlCama controlCama) {
+        this.controlCama = controlCama;
         initComponents();
     }
 
@@ -38,7 +44,7 @@ public class InternalEditarCama extends javax.swing.JInternalFrame {
         FieldCodigoArea = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextAreaDescripcion = new javax.swing.JTextArea();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         ButtonEditar = new javax.swing.JButton();
 
         setClosable(true);
@@ -48,9 +54,14 @@ public class InternalEditarCama extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Ingrese el numero de la cama que desea editar");
+        jLabel1.setText("Ingrese el número de la cama que desea editar");
 
         ButtonCargarDatos.setText("Cargar datos");
+        ButtonCargarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonCargarDatosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -59,11 +70,10 @@ public class InternalEditarCama extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(FieldNumeroCama))
-                    .addComponent(ButtonCargarDatos))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(ButtonCargarDatos)
+                    .addComponent(FieldNumeroCama, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,19 +89,25 @@ public class InternalEditarCama extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel3.setText("Codigo area");
+        jLabel3.setText("Código área");
 
         jLabel4.setText("Estado");
 
-        jLabel5.setText("Descripcion");
+        jLabel5.setText("Descripción");
 
         TextAreaDescripcion.setColumns(20);
         TextAreaDescripcion.setRows(5);
         jScrollPane1.setViewportView(TextAreaDescripcion);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libre", "Ocupada" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Libre", "Ocupada" }));
 
         ButtonEditar.setText("Editar");
+        ButtonEditar.setEnabled(false);
+        ButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -106,17 +122,12 @@ public class InternalEditarCama extends javax.swing.JInternalFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(FieldCodigoArea)
-                                    .addComponent(jComboBox1, 0, 161, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(ButtonEditar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(FieldCodigoArea)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)))
+                    .addComponent(ButtonEditar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,8 +156,8 @@ public class InternalEditarCama extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -154,13 +165,55 @@ public class InternalEditarCama extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCargarDatosActionPerformed
+        // TODO add your handling code here:
+        if (this.FieldNumeroCama.getText().trim().isEmpty()) {
+            JOptionPane.showInternalMessageDialog(this, "Ingrese el número de la cama que desea editar", "Atención", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String numero_cama = this.FieldNumeroCama.getText().trim();
+            String[] cama = controlCama.consultarCama(numero_cama);
+
+            if (cama == null) {
+                JOptionPane.showMessageDialog(this, "No existe una cama con ese número en el hospital");
+            } else {
+                this.FieldCodigoArea.setText(cama[2]);
+                this.TextAreaDescripcion.setText(cama[1]);
+
+                if (cama[3].equals("Libre")) {
+                    this.jComboBox1.setSelectedIndex(0);
+                } else {
+                    this.jComboBox1.setSelectedIndex(1);
+                }
+
+                this.ButtonEditar.setEnabled(true);
+                this.FieldNumeroCama.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_ButtonCargarDatosActionPerformed
+
+    private void ButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarActionPerformed
+        // TODO add your handling code here:
+        String num_cama = this.FieldNumeroCama.getText().trim();
+        String descripcion = this.TextAreaDescripcion.getText();
+        String estado = (String)this.jComboBox1.getSelectedItem();
+        
+        String area;
+        if (this.FieldCodigoArea.getText().trim().equals("")) {
+            area = null;
+        } else {
+            area = this.FieldCodigoArea.getText();
+        }      
+
+        JOptionPane.showMessageDialog(this, controlCama.modificarCama(num_cama, descripcion, area, estado));
+    }//GEN-LAST:event_ButtonEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

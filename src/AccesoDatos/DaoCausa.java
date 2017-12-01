@@ -26,7 +26,7 @@ public class DaoCausa {
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
-            if (sentencia.execute(sql_guardar)) {
+            if (sentencia.executeUpdate(sql_guardar)==1) {
                 return "Causa guardada exitosamente";
             } else {
                 return "No se pudo guardar la causa";
@@ -76,7 +76,7 @@ public class DaoCausa {
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
-            if (sentencia.execute(sql_eliminar)) {
+            if (sentencia.executeUpdate(sql_eliminar)==1) {
                 return "Causa eliminada existosa";
             } else {
                 return "No existe una causa con el numero: " + codigo_causa;
@@ -94,7 +94,7 @@ public class DaoCausa {
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            if (sentencia.execute(sql_modificar)) {
+            if (sentencia.executeUpdate(sql_modificar)==1) {
                 return "Causa modificada exitosamente";
             } else {
                 return "No existe una causa con ese numero";

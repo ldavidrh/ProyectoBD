@@ -28,8 +28,8 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel2" max="32767" attributes="0"/>
                   <Component id="jPanel1" max="32767" attributes="0"/>
+                  <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -40,9 +40,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="10" max="32767" attributes="0"/>
               <Component id="jPanel2" min="-2" pref="267" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -63,13 +63,11 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel1" max="32767" attributes="0"/>
-                          <Component id="FieldNumeroCama" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <Component id="ButtonCargarDatos" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="FieldNumeroCama" alignment="0" min="-2" pref="259" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -90,7 +88,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese el numero de la cama que desea editar"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el n&#xfa;mero de la cama que desea editar"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="FieldNumeroCama">
@@ -99,6 +97,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cargar datos"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonCargarDatosActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -124,23 +125,15 @@
                               <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" pref="253" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="FieldCodigoArea" max="32767" attributes="0"/>
-                                      <Component id="jComboBox1" pref="161" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="FieldCodigoArea" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" alignment="0" pref="182" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="ButtonEditar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="ButtonEditar" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -172,7 +165,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Codigo area"/>
+            <Property name="text" type="java.lang.String" value="C&#xf3;digo &#xe1;rea"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -182,7 +175,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Descripcion"/>
+            <Property name="text" type="java.lang.String" value="Descripci&#xf3;n"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="FieldCodigoArea">
@@ -218,7 +211,11 @@
         <Component class="javax.swing.JButton" name="ButtonEditar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Editar"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEditarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

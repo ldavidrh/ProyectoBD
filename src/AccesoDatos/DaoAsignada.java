@@ -32,7 +32,7 @@ public class DaoAsignada {
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
-            if (sentencia.execute(sql_guardar)) {
+            if (sentencia.executeUpdate(sql_guardar)==1) {
                 return "Asignación exitosa";
             } else {
                 return "No se pudo asignar";
@@ -83,7 +83,7 @@ public class DaoAsignada {
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
-            if (sentencia.execute(sql_eliminar)) {
+            if (sentencia.executeUpdate(sql_eliminar)==1) {
                 return "asignada eliminada existosa";
             } else {
                 return "No existe una cama asiganada con el numero: " + num_cama;
@@ -101,7 +101,7 @@ public class DaoAsignada {
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            if (sentencia.execute(sql_modificar)) {
+            if (sentencia.executeUpdate(sql_modificar)==1) {
                 return "asignada modificada exitosamente";
             } else {
                 return "No existe una cama asiganada con el numero: " + asignada.getNum_cama();

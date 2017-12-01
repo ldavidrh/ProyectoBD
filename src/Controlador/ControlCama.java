@@ -37,6 +37,10 @@ public class ControlCama {
         return daoCama.eliminarCama(num_cama);
     }
     
+    public void eliminarArea(String cod){
+        daoCama.eliminarArea(cod);
+    }
+    
     public void cerrarConexionBD(){
         daoCama.cerrarConexionBD();
     }

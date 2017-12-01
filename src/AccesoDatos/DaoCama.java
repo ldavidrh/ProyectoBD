@@ -18,6 +18,7 @@ import java.util.logging.Logger;
  * @author juandavid
  */
 public class DaoCama {
+
     FachadaBD fachada;
 
     public DaoCama() {
@@ -26,29 +27,29 @@ public class DaoCama {
 
     public String guardarCama(Cama cama) {
         String sql_guardar;
-        sql_guardar = "INSERT INTO cama VALUES('" + cama.getNum_cama() + "', '" + cama.getDescripcion() + "', '" 
+        sql_guardar = "INSERT INTO cama VALUES('" + cama.getNum_cama() + "', '" + cama.getDescripcion() + "', '"
                 + cama.getCodigo_area() + "', '" + cama.getEstado() + "');";
 
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
-            if (sentencia.execute(sql_guardar)) {
+            if (sentencia.executeUpdate(sql_guardar) == 1) {
                 return "Cama guardada exitosamente";
             } else {
                 return "No se pudo guardar la cama";
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
-            return "Error al guardar la cama";
-        }catch(Exception ex){ 
-            System.out.println(ex); 
+            System.out.println(ex);
+            if (verificarExistencia(cama.getNum_cama())) {
+                return "Ya existe una cama con ese número";
+            }
+            return "Error: no existe un área con el código " + cama.getNum_cama() + " en el hospital";
+        } catch (Exception ex) {
+            System.out.println(ex);
             return "Ha ocurrido un error al crear la cama";
         }
     }
-    
-    
-    
-    
+
     public String[] consultarCama(String num_cama) {
         String sql_consultar;
         String[] consulta = new String[4];
@@ -83,13 +84,13 @@ public class DaoCama {
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
-            if (sentencia.execute(sql_eliminar)) {
-                return "Cama eliminada existosa";
+            if (sentencia.executeUpdate(sql_eliminar) == 1) {
+                return "Cama eliminada existosamente";
             } else {
-                return "No existe una cama con el numero: " + num_cama;
+                return "No existe una cama con el numero " + num_cama;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
             return "Error al eliminar cama";
         }
     }
@@ -101,20 +102,47 @@ public class DaoCama {
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            if (sentencia.execute(sql_modificar)) {
+            if (sentencia.executeUpdate(sql_modificar) == 1) {
                 return "Cama modificada exitosamente";
             } else {
                 return "No existe una cama con ese numero";
             }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return "Error: no existe un área con ese código en el hospital";
         } catch (Exception ex) {
             System.out.println(ex);
             return "Ha ocurrido un error al modificar la cama";
         }
+    }
 
+    public boolean verificarExistencia(String num) {
+        String sql_select;
+        sql_select = "SELECT * FROM cama WHERE num_cama = '" + num + "'";
+        try {
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            return tabla.next();
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    public void eliminarArea(String cod) {
+        String sql = "UPDATE cama SET codigo_area = NULL WHERE codigo_area = '" + cod + "'";
+        try {
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            sentencia.executeUpdate(sql);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
     }
 
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());
     }
-    
+
 }

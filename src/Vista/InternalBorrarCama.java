@@ -5,16 +5,20 @@
  */
 package Vista;
 
+import Controlador.ControlCama;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luis
  */
 public class InternalBorrarCama extends javax.swing.JInternalFrame {
-
+    ControlCama controlCama;
     /**
      * Creates new form InternalEliminarCama
      */
-    public InternalBorrarCama() {
+    public InternalBorrarCama(ControlCama controlCama) {
+        this.controlCama = controlCama;
         initComponents();
     }
 
@@ -42,6 +46,11 @@ public class InternalBorrarCama extends javax.swing.JInternalFrame {
         jLabel1.setText("Ingrese el numero de la cama que desea eliminar");
 
         ButtonEliminar.setText("Eliminar");
+        ButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,6 +96,16 @@ public class InternalBorrarCama extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarActionPerformed
+        // TODO add your handling code here:
+        if(this.FieldNumeroCama.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ingrese el número de la cama");
+        }else{
+            String num_cama = this.FieldNumeroCama.getText();            
+            JOptionPane.showMessageDialog(this, controlCama.eliminarCama(num_cama));            
+        }
+    }//GEN-LAST:event_ButtonEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

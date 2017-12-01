@@ -5,16 +5,23 @@
  */
 package Vista;
 
+import Controlador.ControlArea;
+import Controlador.ControlCama;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luis
  */
 public class InternalConsultarCama extends javax.swing.JInternalFrame {
-
+    ControlCama controlCama;
+    ControlArea controlArea;
     /**
      * Creates new form InternalConsultarCama
      */
-    public InternalConsultarCama() {
+    public InternalConsultarCama(ControlCama controlCama, ControlArea controlArea) {
+        this.controlCama = controlCama;
+        this.controlArea = controlArea;
         initComponents();
     }
 
@@ -44,6 +51,11 @@ public class InternalConsultarCama extends javax.swing.JInternalFrame {
         jLabel1.setText("Ingrese el numero de la cama que desea consultar");
 
         Consultar.setText("Consultar");
+        Consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -55,7 +67,7 @@ public class InternalConsultarCama extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(FieldNumeroCama, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Consultar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,10 +91,10 @@ public class InternalConsultarCama extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,12 +102,34 @@ public class InternalConsultarCama extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarActionPerformed
+        // TODO add your handling code here:
+        if (this.FieldNumeroCama.getText().trim().isEmpty()) {
+                JOptionPane.showInternalMessageDialog(this, "Ingrese el número de la cama", "Atención", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String num_cama = this.FieldNumeroCama.getText().trim();
+                String consulta = "";
+                String[] cama = controlCama.consultarCama(num_cama);
+                if (cama == null) {
+                    consulta = "No existe una cama con ese número en el hospital";
+                } else {                                      
+                    String[] area = controlArea.consultarArea(cama[2]);
+                  
+                    if (area != null) {
+                        consulta += "Área: " + area[1] + ". cód: " + area[0];
+                    }
+                    consulta += "\nEstado: " + cama[3] + "\nDescripción: " + cama[1];                      
+                }
+                this.TextArea.setText(consulta);
+            }
+    }//GEN-LAST:event_ConsultarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

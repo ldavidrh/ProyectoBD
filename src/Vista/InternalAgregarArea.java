@@ -46,7 +46,7 @@ public class InternalAgregarArea extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Codigo area");
+        jLabel1.setText("Código area");
 
         jLabel2.setText("Nombre");
 

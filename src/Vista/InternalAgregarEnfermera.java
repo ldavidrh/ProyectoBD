@@ -4,16 +4,20 @@
  * and open the template in the editor.
  */
 package Vista;
+
 import Controlador.*;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luis
  */
 public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
+
     ControlPersona controlPersona;
     ControlEmpleado controlEmpleado;
     ControlEnfermera controlEnfermera;
+
     /**
      * Creates new form InternalBorrarEnfermera
      */
@@ -346,23 +350,23 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
 
     private void ButtonAgregarEnfermeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarEnfermeraActionPerformed
         // TODO add your handling code here:
-        try{
-          if(this.FieldExperiencia.getText().trim().isEmpty()){
-              JOptionPane.showInternalMessageDialog(this, "Ingreselos años de experiencia.", "Atención", JOptionPane.WARNING_MESSAGE);
-          }else{    
-              String cedula = this.FieldCedula.getText();              
-              int exp = Integer.parseInt(this.FieldExperiencia.getText());
-              
-              String mensaje = controlEnfermera.insertarEnfermera(cedula, exp);
-              JOptionPane.showMessageDialog(this, mensaje);
-              if(mensaje.equals("Enfermera creada correctamente")){                 
-                  this.dispose();
-              }                           
-          }
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this, "Asegurese de ingresar los años con formato numérico");           
-                        
-        }catch(Exception e){
+        try {
+            if (this.FieldExperiencia.getText().trim().isEmpty()) {
+                JOptionPane.showInternalMessageDialog(this, "Ingreselos años de experiencia.", "Atención", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String cedula = this.FieldCedula.getText();
+                int exp = Integer.parseInt(this.FieldExperiencia.getText());
+
+                String mensaje = controlEnfermera.insertarEnfermera(cedula, exp);
+                JOptionPane.showMessageDialog(this, mensaje);
+                if (mensaje.equals("Enfermera creada correctamente")) {
+                    this.dispose();
+                }
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Asegurese de ingresar los años con formato numérico");
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ha ocurrido un error al capturar los datos");
             System.out.println(e);
         }
@@ -370,73 +374,68 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
 
     private void ButtonAgregarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarPersonaActionPerformed
         // TODO add your handling code here:
-        try{
-          if(this.FieldCedula.getText().trim().isEmpty() || this.FieldNombre.getText().trim().isEmpty()){
-              JOptionPane.showInternalMessageDialog(this, "Existen casillas vacias.", "Atención", JOptionPane.WARNING_MESSAGE);
-          }else{
-              String nombre = this.FieldNombre.getText();
-              String cedula = this.FieldCedula.getText();
-              String direccion = this.FieldDireccion.getText();
-              String telefono = this.FieldTelefono.getText();
-                                          
-              String mensaje = controlPersona.insertarPersona(cedula, nombre, direccion, telefono);
-              if(mensaje.equals("Persona creada correctamente")){
-                  this.ButtonAgregarEmpleado.setEnabled(true);                  
-                  this.ButtonAgregarPersona.setEnabled(false);
-                  this.FieldCedula.setEditable(false);
-              }  
-              JOptionPane.showMessageDialog(this, mensaje);
-          }                         
-        }catch(Exception e){
+        try {
+            if (this.FieldCedula.getText().trim().isEmpty() || this.FieldNombre.getText().trim().isEmpty()) {
+                JOptionPane.showInternalMessageDialog(this, "Existen casillas vacias.", "Atención", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String nombre = this.FieldNombre.getText();
+                String cedula = this.FieldCedula.getText();
+                String direccion = this.FieldDireccion.getText();
+                String telefono = this.FieldTelefono.getText();
+
+                String mensaje = controlPersona.insertarPersona(cedula, nombre, direccion, telefono);
+                if (mensaje.equals("Persona creada correctamente")) {
+                    this.ButtonAgregarEmpleado.setEnabled(true);
+                    this.ButtonAgregarPersona.setEnabled(false);
+                    this.FieldCedula.setEditable(false);
+                }
+                JOptionPane.showMessageDialog(this, mensaje);
+            }
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ha ocurrido un error al capturar los datos");
             System.out.println(e);
-        }        
+        }
     }//GEN-LAST:event_ButtonAgregarPersonaActionPerformed
 
     private void ButtonAgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarEmpleadoActionPerformed
         // TODO add your handling code here:
-        try{
-          if(this.FieldCargo.getText().trim().isEmpty() || this.FieldSalario.getText().trim().isEmpty() ||
-             this.FieldEmail.getText().trim().isEmpty() || this.FieldArea.getText().trim().isEmpty()){             
-              JOptionPane.showInternalMessageDialog(this, "Existen casillas vacias.", "Atención", JOptionPane.WARNING_MESSAGE);
-          }else{              
-              String cedula = this.FieldCedula.getText();
-                                         
-              String cargo = this.FieldCargo.getText();
-              float salario = Float.parseFloat(this.FieldSalario.getText());
-              String email = this.FieldEmail.getText();
-              String area;
-              if(this.FieldArea.getText().equals("")){
-                  area = null;
-              }else{
-                  area = this.FieldArea.getText();
-              } 
-              String id_jefe;
-              if(this.FieldCedulaJefe.getText().equals("")){
-                  id_jefe = null;
-              }else{
-                  id_jefe = this.FieldCedulaJefe.getText();
-              }                
-              
-              String mensaje = controlEmpleado.insertarEmpleado(cedula, cargo, salario, email, area, id_jefe);
-              JOptionPane.showMessageDialog(this, mensaje);
-              switch (mensaje) {
-                  case "Empleado creado correctamente":
-                      this.ButtonAgregarEmpleado.setEnabled(false);
-                      this.ButtonAgregarEnfermera.setEnabled(true);
-                      break;
-                  case "Ya existe un empleado con esa cédula":
-                      this.dispose();
-                      break;
-              }              
-          }
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this, "Asegurese de ingresar un salario de tipo numérico");           
-                        
-        }catch(Exception e){
+        try {
+            if (this.FieldCargo.getText().trim().isEmpty() || this.FieldSalario.getText().trim().isEmpty()
+                    || this.FieldEmail.getText().trim().isEmpty() || this.FieldArea.getText().trim().isEmpty()) {
+                JOptionPane.showInternalMessageDialog(this, "Existen casillas vacias.", "Atención", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String cedula = this.FieldCedula.getText();
+
+                String cargo = this.FieldCargo.getText();
+                float salario = Float.parseFloat(this.FieldSalario.getText());
+                String email = this.FieldEmail.getText();
+                String area = this.FieldArea.getText();                
+                String id_jefe;
+                if (this.FieldCedulaJefe.getText().equals("")) {
+                    id_jefe = null;
+                } else {
+                    id_jefe = this.FieldCedulaJefe.getText();
+                }
+
+                String mensaje = controlEmpleado.insertarEmpleado(cedula, cargo, salario, email, area, id_jefe);
+                JOptionPane.showMessageDialog(this, mensaje);
+                switch (mensaje) {
+                    case "Empleado creado correctamente":
+                        this.ButtonAgregarEmpleado.setEnabled(false);
+                        this.ButtonAgregarEnfermera.setEnabled(true);
+                        break;
+                    case "Ya existe un empleado con esa cédula":
+                        this.dispose();
+                        break;
+                }
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Asegurese de ingresar un salario de tipo numérico");
+
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ha ocurrido un error al capturar los datos");
             System.out.println(e);
-        }  
+        }
     }//GEN-LAST:event_ButtonAgregarEmpleadoActionPerformed
 
     private void FieldTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldTelefonoActionPerformed

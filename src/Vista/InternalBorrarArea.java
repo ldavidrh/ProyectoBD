@@ -6,6 +6,7 @@
 
 package Vista;
 import Controlador.ControlArea;
+import Controlador.ControlCama;
 import Controlador.ControlEmpleado;
 import javax.swing.JOptionPane;
 /**
@@ -15,10 +16,12 @@ import javax.swing.JOptionPane;
 public class InternalBorrarArea extends javax.swing.JInternalFrame {
     ControlArea controlArea;
     ControlEmpleado controlEmpleado;
+    ControlCama controlCama;
     /** Creates new form InternalDeleteArea */
-    public InternalBorrarArea(ControlArea controlArea, ControlEmpleado controlEmpleado) {
+    public InternalBorrarArea(ControlArea controlArea, ControlEmpleado controlEmpleado, ControlCama controlCama) {
         this.controlArea = controlArea;
         this.controlEmpleado = controlEmpleado;
+        this.controlCama = controlCama;
         initComponents();
     }
 
@@ -104,6 +107,7 @@ public class InternalBorrarArea extends javax.swing.JInternalFrame {
         }else{
             String codigo = this.FieldCodigo.getText();
             controlEmpleado.eliminarArea(codigo);
+            controlCama.eliminarArea(codigo);
             JOptionPane.showMessageDialog(this, controlArea.eliminarArea(codigo));            
         }
     }//GEN-LAST:event_ButtonEliminarActionPerformed

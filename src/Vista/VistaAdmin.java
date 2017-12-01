@@ -26,6 +26,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     ControlEmpleado controlEmpleado;
     ControlCampana controlCampana;
     ControlHistoriaClinica controlHistoria;
+    ControlCama controlCama;
     /**
      * Creates new form VistaPrincipal
      */
@@ -40,6 +41,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         controlEnfermera = new ControlEnfermera();
         controlCampana = new ControlCampana();
         controlHistoria = new ControlHistoriaClinica();
+        controlCama = new ControlCama();
         
         //Creacion de InputDialog para login
         JTextField fieldCedula = new JTextField();
@@ -809,7 +811,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonAgregarAreaActionPerformed
 
     private void ButtonEliminarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarAreaActionPerformed
-        InternalBorrarArea delArea = new InternalBorrarArea(controlArea, controlEmpleado);
+        InternalBorrarArea delArea = new InternalBorrarArea(controlArea, controlEmpleado, controlCama);
         this.DesktopPane.add(delArea);
         delArea.show();
         
@@ -828,25 +830,25 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarAreaActionPerformed
 
     private void ButtonAgregarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarCamaActionPerformed
-        InternalAgregarCama addCama = new InternalAgregarCama();
+        InternalAgregarCama addCama = new InternalAgregarCama(controlCama);
         this.DesktopPane.add(addCama);
         addCama.show();
     }//GEN-LAST:event_ButtonAgregarCamaActionPerformed
 
     private void ButtonEliminarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarCamaActionPerformed
-        InternalBorrarCama delCama = new InternalBorrarCama();
+        InternalBorrarCama delCama = new InternalBorrarCama(controlCama);
         this.DesktopPane.add(delCama);
         delCama.show();
     }//GEN-LAST:event_ButtonEliminarCamaActionPerformed
 
     private void ButtonConsultarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarCamaActionPerformed
-        InternalConsultarCama conCama = new InternalConsultarCama();
+        InternalConsultarCama conCama = new InternalConsultarCama(controlCama, controlArea);
         this.DesktopPane.add(conCama);
         conCama.show();
     }//GEN-LAST:event_ButtonConsultarCamaActionPerformed
 
     private void ButtonEditarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarCamaActionPerformed
-        InternalEditarCama editCama = new InternalEditarCama();
+        InternalEditarCama editCama = new InternalEditarCama(controlCama);
         this.DesktopPane.add(editCama);
         editCama.show();
         

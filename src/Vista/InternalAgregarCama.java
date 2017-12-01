@@ -4,16 +4,21 @@
  * and open the template in the editor.
  */
 package Vista;
+
+import Controlador.ControlCama;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luis
  */
 public class InternalAgregarCama extends javax.swing.JInternalFrame {
-
+    ControlCama controlCama;
     /**
      * Creates new form InternalAgregarCama
      */
-    public InternalAgregarCama() {
+    public InternalAgregarCama(ControlCama controlCama) {
+        this.controlCama = controlCama;
         initComponents();
     }
 
@@ -35,7 +40,7 @@ public class InternalAgregarCama extends javax.swing.JInternalFrame {
         FieldCodigoArea = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextAreaDescripcion = new javax.swing.JTextArea();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         ButtonAgregar = new javax.swing.JButton();
 
         setClosable(true);
@@ -47,19 +52,24 @@ public class InternalAgregarCama extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Num. Cama");
 
-        jLabel2.setText("Codigo area");
+        jLabel2.setText("Código área");
 
         jLabel3.setText("Estado");
 
-        jLabel4.setText("Descripcion");
+        jLabel4.setText("Descripción");
 
         TextAreaDescripcion.setColumns(20);
         TextAreaDescripcion.setRows(5);
         jScrollPane1.setViewportView(TextAreaDescripcion);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libre", "Ocupada" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Libre", "Ocupada" }));
 
         ButtonAgregar.setText("Agregar");
+        ButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -81,8 +91,8 @@ public class InternalAgregarCama extends javax.swing.JInternalFrame {
                             .addGap(18, 18, 18)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(FieldCodigoArea)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jComboBox1, 0, 216, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1))))
                     .addComponent(ButtonAgregar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -103,11 +113,11 @@ public class InternalAgregarCama extends javax.swing.JInternalFrame {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ButtonAgregar)
-                .addContainerGap())
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,11 +134,29 @@ public class InternalAgregarCama extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarActionPerformed
+        // TODO add your handling code here:
+        if(this.FieldNumeroCama.getText().trim().isEmpty() || this.FieldCodigoArea.getText().trim().isEmpty() ||
+             this.TextAreaDescripcion.getText().trim().isEmpty()){             
+              JOptionPane.showInternalMessageDialog(this, "Existen casillas vacias.", "Atención", JOptionPane.WARNING_MESSAGE);
+          }else{              
+              String num_cama = this.FieldNumeroCama.getText();
+                                         
+              String cod_area = this.FieldCodigoArea.getText();             
+              String descripcion = this.TextAreaDescripcion.getText();
+              
+              String estado = (String)this.jComboBox1.getSelectedItem();
+                            
+              String mensaje = controlCama.insertarCama(num_cama, descripcion, cod_area, estado);
+              JOptionPane.showMessageDialog(this, mensaje);                  
+          }
+    }//GEN-LAST:event_ButtonAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
