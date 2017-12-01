@@ -39,6 +39,10 @@ public class ControlEmpleado {
         daoEmpleado.eliminarJefe(id_jefe);
     }
     
+    public void eliminarArea(String cod){
+        daoEmpleado.eliminarArea(cod);
+    }
+    
     public void cerrarConexionBD(){
         daoEmpleado.cerrarConexionBD();
     }

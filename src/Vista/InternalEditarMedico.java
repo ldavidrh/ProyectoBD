@@ -366,7 +366,12 @@ public class InternalEditarMedico extends javax.swing.JInternalFrame {
             String cargo = this.FieldCargo.getText();
             float salario = Float.parseFloat(this.FieldSalario.getText());
             String email = this.FieldEmail.getText();
-            String area = this.FieldArea.getText();
+            String area;            
+            if (this.FieldArea.getText().trim().equals("")) {
+                area = null;
+            } else {
+                area = this.FieldArea.getText();
+            }
             String id_jefe;
             if (this.FieldCedulaJefe.getText().trim().equals("")) {
                 id_jefe = null;

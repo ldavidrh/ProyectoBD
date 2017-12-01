@@ -6,15 +6,19 @@
 
 package Vista;
 import Controlador.ControlArea;
+import Controlador.ControlEmpleado;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
  */
 public class InternalBorrarArea extends javax.swing.JInternalFrame {
     ControlArea controlArea;
+    ControlEmpleado controlEmpleado;
     /** Creates new form InternalDeleteArea */
-    public InternalBorrarArea(ControlArea controlAreax) {
+    public InternalBorrarArea(ControlArea controlArea, ControlEmpleado controlEmpleado) {
         this.controlArea = controlArea;
+        this.controlEmpleado = controlEmpleado;
         initComponents();
     }
 
@@ -39,9 +43,14 @@ public class InternalBorrarArea extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Ingrese el codigo del area que desea eliminar ");
+        jLabel1.setText("Ingrese el código del área que desea eliminar ");
 
         ButtonEliminar.setText("Eliminar");
+        ButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,6 +96,17 @@ public class InternalBorrarArea extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarActionPerformed
+        // TODO add your handling code here:
+        if(this.FieldCodigo.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ingrese el código de área");
+        }else{
+            String codigo = this.FieldCodigo.getText();
+            controlEmpleado.eliminarArea(codigo);
+            JOptionPane.showMessageDialog(this, controlArea.eliminarArea(codigo));            
+        }
+    }//GEN-LAST:event_ButtonEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

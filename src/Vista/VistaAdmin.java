@@ -826,7 +826,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonAgregarAreaActionPerformed
 
     private void ButtonEliminarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarAreaActionPerformed
-        InternalBorrarArea delArea = new InternalBorrarArea(controlArea);
+        InternalBorrarArea delArea = new InternalBorrarArea(controlArea, controlEmpleado);
         this.DesktopPane.add(delArea);
         delArea.show();
         

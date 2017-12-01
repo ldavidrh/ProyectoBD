@@ -5,6 +5,7 @@
  */
 package Vista;
 import Controlador.ControlArea;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
@@ -56,6 +57,11 @@ public class InternalAgregarArea extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(TextAreaDescripcion);
 
         ButtonAgregar.setText("Agregar");
+        ButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,6 +122,20 @@ public class InternalAgregarArea extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarActionPerformed
+        // TODO add your handling code here:
+        if(this.FieldCodigoArea.getText().trim().isEmpty() || this.FieldNombre.getText().trim().isEmpty() ||
+           this.TextAreaDescripcion.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Existen casillas vacías");
+        }else{
+            String cod_area = this.FieldCodigoArea.getText();
+            String nombre = this.FieldNombre.getText();
+            String descripcion = this.TextAreaDescripcion.getText();
+            
+            JOptionPane.showMessageDialog(this, controlArea.insertarArea(cod_area, nombre, descripcion));           
+        }
+    }//GEN-LAST:event_ButtonAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

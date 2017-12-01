@@ -146,6 +146,17 @@ public class DaoEmpleado {
         }
     }
     
+    public void eliminarArea(String cod){        
+        String sql = "UPDATE empleado SET codigo_area = NULL WHERE codigo_area = '" + cod + "'";
+        try{
+            Connection conn= fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            sentencia.executeUpdate(sql);                   
+        }catch(Exception ex){
+            System.out.println(ex);            
+        }
+    }
+    
     public void cerrarConexionBD(){
         fachada.closeConection(fachada.getConnetion());
     }

@@ -5,6 +5,7 @@
  */
 package Vista;
 import Controlador.ControlArea;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
@@ -34,7 +35,7 @@ public class InternalEditarArea extends javax.swing.JInternalFrame {
         FieldNombre = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextAreaDescripcion = new javax.swing.JTextArea();
-        ButtonAgregar = new javax.swing.JButton();
+        ButtonEditar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         FieldCodigo = new javax.swing.JTextField();
@@ -55,7 +56,13 @@ public class InternalEditarArea extends javax.swing.JInternalFrame {
         TextAreaDescripcion.setRows(5);
         jScrollPane1.setViewportView(TextAreaDescripcion);
 
-        ButtonAgregar.setText("Agregar");
+        ButtonEditar.setText("Editar");
+        ButtonEditar.setEnabled(false);
+        ButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,7 +79,7 @@ public class InternalEditarArea extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(FieldNombre)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)))
-                    .addComponent(ButtonAgregar))
+                    .addComponent(ButtonEditar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -84,11 +91,11 @@ public class InternalEditarArea extends javax.swing.JInternalFrame {
                     .addComponent(FieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ButtonAgregar)
-                .addGap(55, 55, 55))
+                .addComponent(ButtonEditar)
+                .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -144,8 +151,8 @@ public class InternalEditarArea extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -153,12 +160,37 @@ public class InternalEditarArea extends javax.swing.JInternalFrame {
 
     private void ButtonCargarDatosAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCargarDatosAreaActionPerformed
         // TODO add your handling code here:
+        if (this.FieldCodigo.getText().trim().isEmpty()) {
+            JOptionPane.showInternalMessageDialog(this, "Ingrese el código del área que desea editar", "Atención", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String cod = this.FieldCodigo.getText().trim();
+            String[] area = controlArea.consultarArea(cod);
+
+            if (area == null) {
+                JOptionPane.showMessageDialog(this, "No existe un área con ese código en el hospital");
+            } else {
+                this.FieldNombre.setText(area[1]);
+                this.TextAreaDescripcion.setText(area[2]);                              
+
+                this.ButtonEditar.setEnabled(true);
+                this.FieldCodigo.setEditable(false);
+            }
+        }
     }//GEN-LAST:event_ButtonCargarDatosAreaActionPerformed
+
+    private void ButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarActionPerformed
+        // TODO add your handling code here:
+        String cod = this.FieldCodigo.getText().trim();
+        String nombre = this.FieldNombre.getText();
+        String descripcion = this.TextAreaDescripcion.getText(); 
+
+        JOptionPane.showMessageDialog(this, controlArea.modificarArea(cod, nombre, descripcion));
+    }//GEN-LAST:event_ButtonEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonAgregar;
     private javax.swing.JButton ButtonCargarDatosArea;
+    private javax.swing.JButton ButtonEditar;
     private javax.swing.JTextField FieldCodigo;
     private javax.swing.JTextField FieldNombre;
     private javax.swing.JTextArea TextAreaDescripcion;
