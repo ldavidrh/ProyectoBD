@@ -6,13 +6,14 @@
 package Vista;
 import Controlador.ControlPersona;
 import Controlador.ControlPaciente;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
  */
 public class InternalConsultarPaciente extends javax.swing.JInternalFrame {
     ControlPersona controlPersona;
-    ControlPaciente controlPaciente;
+    ControlPaciente controlPaciente;    
     /**
      * Creates new form InternalBuscarPaciente
      */
@@ -48,6 +49,11 @@ public class InternalConsultarPaciente extends javax.swing.JInternalFrame {
         jLabel1.setText("Ingrese la cedula del paciente que desea consultar");
 
         ButtonConsultarPaciente.setText("Consultar");
+        ButtonConsultarPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonConsultarPacienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -59,7 +65,7 @@ public class InternalConsultarPaciente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(FieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ButtonConsultarPaciente))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,10 +90,10 @@ public class InternalConsultarPaciente extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,12 +101,38 @@ public class InternalConsultarPaciente extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonConsultarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarPacienteActionPerformed
+        // TODO add your handling code here:
+        try {
+            if (this.FieldCedula.getText().trim().isEmpty()) {
+                JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula del paciente", "Atención", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String cedula = this.FieldCedula.getText().trim();
+                String consulta = "";
+                String[] paciente = controlPaciente.consultarPaciente(cedula);
+                if (paciente == null) {
+                    consulta = "No existe un paciente con esa cédula en el hospital";
+                } else {
+                    String[] persona = controlPersona.consultarPersona(cedula);
+                    
+                    consulta = "DATOS PESONALES\nNombre: " + persona[1] + "\nDirección: " + persona[2] + "\nTeléfono: " + persona[3]
+                            + "\n\nDATOS DEL PACIENTE\nNúmero de historia: " + paciente[1] + "\nSeguridad social: " + paciente[2] + 
+                            "\nFecha de nacimiento: " + paciente[3] + "\nActividad econónica: " + paciente[4];
+                }
+                this.TextArea.setText(consulta);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());                   
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error desde la vista");
+        }
+    }//GEN-LAST:event_ButtonConsultarPacienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -84,6 +84,7 @@ public class InternalBorrarMedico extends javax.swing.JInternalFrame {
             String cedula = this.FieldCedula.getText();
             controlEmpleado.eliminarJefe(cedula);
             JOptionPane.showMessageDialog(this, controlPersona.eliminarPersona(cedula));
+            this.dispose();
         }
         
     }//GEN-LAST:event_ButtonEliminarActionPerformed

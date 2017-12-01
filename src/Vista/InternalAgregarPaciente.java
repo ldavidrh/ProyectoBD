@@ -270,7 +270,7 @@ public class InternalAgregarPaciente extends javax.swing.JInternalFrame {
                 String cedula = this.FieldCedula.getText();
                 String seguridad = this.FieldSeguridadSocial.getText();
                 String actividad = this.FieldActividad.getText();
-                String num_historia = "0" + cedula;
+                String num_historia = "H" + cedula;
 
                 String mensajeHistoria = controlHistoria.insertarHistoria(num_historia, fecha_apertura);
                 JOptionPane.showMessageDialog(this, mensajeHistoria);

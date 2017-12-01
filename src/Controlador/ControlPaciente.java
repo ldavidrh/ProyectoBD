@@ -26,9 +26,8 @@ public class ControlPaciente {
         return daoPaciente.consultarPaciente(id); 
     }
     
-    public String modificarPaciente(String id_persona, String num_historia, String seguridad_social, String fecha_nacimiento, String actividad_economica){
-        Paciente pac = new Paciente(id_persona, num_historia, seguridad_social, fecha_nacimiento, actividad_economica);      
-       return daoPaciente.modificarPaciente(pac);
+    public String modificarPaciente(String id_persona, String seguridad_social, String actividad_economica){             
+       return daoPaciente.modificarPaciente(id_persona, seguridad_social, actividad_economica);
     }
     
     public String eliminarPaciente(String id){

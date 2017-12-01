@@ -67,13 +67,12 @@ public class DaoPaciente {
         }
     }
     
-    public String modificarPaciente(Paciente pac){
+    public String modificarPaciente(String id, String seguridad_social, String actividad_economica){
         String sql_update;
         sql_update="UPDATE paciente SET "
-                + "num_historia='" + pac.getNum_historia() + "', seguridad_social='" 
-                + pac.getSeguridad_social() + "', fecha_nacimiento='" + pac.getFecha_nacimiento()
-                + "', actividad_economica='" + pac.getActividad_economica() + 
-                "' WHERE id_persona = '" + pac.getId_persona() + "'";
+                + " seguridad_social='" + seguridad_social 
+                + "', actividad_economica='" + actividad_economica + 
+                "' WHERE id_persona = '" + id + "'";
                 
         try{
             Connection conn= fachada.getConnetion();

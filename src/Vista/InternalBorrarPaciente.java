@@ -4,18 +4,20 @@
  * and open the template in the editor.
  */
 package Vista;
+import Controlador.ControlPaciente;
 import Controlador.ControlPersona;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
  */
 public class InternalBorrarPaciente extends javax.swing.JInternalFrame {
-    ControlPersona controlPersona;
+    ControlPersona controlPersona;    
     /**
      * Creates new form InternalBorrarPaciente
      */
     public InternalBorrarPaciente(ControlPersona controlPersona) {
-        this.controlPersona = controlPersona;
+        this.controlPersona = controlPersona;        
         initComponents();
     }
 
@@ -40,6 +42,11 @@ public class InternalBorrarPaciente extends javax.swing.JInternalFrame {
         jLabel1.setText("Ingrese la cedula del paciente que desea borrar");
 
         ButtonEliminarPaciente.setText("Eliminar");
+        ButtonEliminarPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEliminarPacienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,6 +74,17 @@ public class InternalBorrarPaciente extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonEliminarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarPacienteActionPerformed
+        // TODO add your handling code here:
+        if(this.FieldCedula.getText().trim().isEmpty()){
+            JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula del paciente", "Atención", JOptionPane.WARNING_MESSAGE);                
+        }else{
+            String cedula = this.FieldCedula.getText();            
+            JOptionPane.showMessageDialog(this, controlPersona.eliminarPersona(cedula));
+            this.dispose();
+        }
+    }//GEN-LAST:event_ButtonEliminarPacienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

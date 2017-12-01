@@ -42,14 +42,10 @@ public class InternalEditarPaciente extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         FieldTelefono = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        FieldNumHistoria = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         FieldSeguridadSocial = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        DateChooser = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        FieldActividad = new javax.swing.JTextField();
         ButtonEditar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -87,7 +83,7 @@ public class InternalEditarPaciente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FieldDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                    .addComponent(FieldDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(FieldNombre)
                     .addComponent(FieldTelefono))
                 .addContainerGap())
@@ -112,8 +108,6 @@ public class InternalEditarPaciente extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos paciente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
 
-        jLabel5.setText("Num. Historia ");
-
         jLabel6.setText("Seguridad Social");
 
         FieldSeguridadSocial.addActionListener(new java.awt.event.ActionListener() {
@@ -122,13 +116,11 @@ public class InternalEditarPaciente extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel7.setText("Fecha Nacimiento");
-
         jLabel8.setText("Actividad economica");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        FieldActividad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                FieldActividadActionPerformed(evt);
             }
         });
 
@@ -140,49 +132,32 @@ public class InternalEditarPaciente extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5))
+                        .addComponent(jLabel6)
                         .addGap(24, 24, 24)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FieldSeguridadSocial)
-                            .addComponent(FieldNumHistoria)))
+                        .addComponent(FieldSeguridadSocial))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(5, 5, 5)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(DateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
+                        .addComponent(jLabel8)
+                        .addGap(5, 5, 5)
+                        .addComponent(FieldActividad, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(FieldNumHistoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(FieldSeguridadSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(DateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FieldActividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
         );
 
-        ButtonEditar.setText("Agregar");
+        ButtonEditar.setText("Editar");
+        ButtonEditar.setEnabled(false);
         ButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonEditarActionPerformed(evt);
@@ -194,6 +169,11 @@ public class InternalEditarPaciente extends javax.swing.JInternalFrame {
         jLabel9.setText("Ingrese la cedula del paciente que desea editar");
 
         ButtonCargarDatos.setText("Cargar datos");
+        ButtonCargarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonCargarDatosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -243,9 +223,9 @@ public class InternalEditarPaciente extends javax.swing.JInternalFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(ButtonEditar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -259,46 +239,70 @@ public class InternalEditarPaciente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FieldSeguridadSocialActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void FieldActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldActividadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_FieldActividadActionPerformed
 
     private void ButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarActionPerformed
-        try {
-            LocalDate fecha = this.DateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            String dia = String.valueOf(fecha.getDayOfMonth());
-            String mes = String.valueOf(fecha.getMonthValue());
-            String anio = String.valueOf(fecha.getYear());
-            JOptionPane.showMessageDialog(this, dia + "-" + mes + "-" + anio);
+        String cedula = this.FieldCedulaConsulta.getText().trim();
 
-        }catch(NullPointerException npe){
-            JOptionPane.showMessageDialog(this, "Seleccione una fecha");
-        }
+        String nombre = this.FieldNombre.getText();
+        String direccion = this.FieldDireccion.getText();
+        String telefono = this.FieldTelefono.getText();
 
+        String seguridad = this.FieldSeguridadSocial.getText();
+        String actividad = this.FieldActividad.getText();            
+
+        String mensaje = "1) " + controlPersona.modificarPersona(cedula, nombre, direccion, telefono);
+        mensaje += "\n2) " + controlPaciente.modificarPaciente(cedula, seguridad, actividad);          
+
+        JOptionPane.showMessageDialog(this, mensaje);        
     }//GEN-LAST:event_ButtonEditarActionPerformed
+
+    private void ButtonCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCargarDatosActionPerformed
+        // TODO add your handling code here:
+        if (this.FieldCedulaConsulta.getText().trim().isEmpty()) {
+            JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula del paciente que desea editar", "Atención", JOptionPane.WARNING_MESSAGE);
+        } else {
+            String cedula = this.FieldCedulaConsulta.getText().trim();
+            String[] paciente = controlPaciente.consultarPaciente(cedula);
+
+            if (paciente == null) {
+                JOptionPane.showMessageDialog(this, "No existe un paciente con esa cédula en el hospital");
+            } else {
+                String[] persona = controlPersona.consultarPersona(cedula);                
+
+                this.FieldNombre.setText(persona[1]);
+                this.FieldDireccion.setText(persona[2]);
+                this.FieldTelefono.setText(persona[3]);
+
+                this.FieldSeguridadSocial.setText(paciente[2]);
+                this.FieldActividad.setText(paciente[4]);
+
+                this.ButtonEditar.setEnabled(true);
+                this.FieldCedulaConsulta.setEditable(false);
+            }
+        }
+    }//GEN-LAST:event_ButtonCargarDatosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonCargarDatos;
     private javax.swing.JButton ButtonEditar;
-    private com.toedter.calendar.JDateChooser DateChooser;
+    private javax.swing.JTextField FieldActividad;
     private javax.swing.JTextField FieldCedulaConsulta;
     private javax.swing.JTextField FieldDireccion;
     private javax.swing.JTextField FieldNombre;
-    private javax.swing.JTextField FieldNumHistoria;
     private javax.swing.JTextField FieldSeguridadSocial;
     private javax.swing.JTextField FieldTelefono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
