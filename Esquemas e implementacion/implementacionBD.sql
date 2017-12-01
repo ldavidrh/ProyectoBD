@@ -65,11 +65,11 @@ CREATE TABLE empleado
 	cargo VARCHAR(20) NOT NULL,
 	salario FLOAT(30) NOT NULL,
 	email VARCHAR(30) NOT NULL,
-	codigo_area VARCHAR(30) NOT NULL,
+	codigo_area VARCHAR(30),
 	id_jefe VARCHAR(30),
 
 	FOREIGN KEY (id_persona) REFERENCES persona (id_persona) ON DELETE CASCADE,
-	FOREIGN KEY (codigo_area) REFERENCES area (codigo_area) ON DELETE CASCADE,
+	FOREIGN KEY (codigo_area) REFERENCES area (codigo_area),
 	FOREIGN KEY (id_jefe) REFERENCES empleado (id_persona)
 );
 
