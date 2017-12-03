@@ -4,19 +4,34 @@
  * and open the template in the editor.
  */
 package Vista;
+
+import AccesoDatos.DaoPaciente;
 import Controlador.ControlAsignada;
+import Controlador.ControlCama;
+import Controlador.ControlPaciente;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luis
  */
 public class InternalAsignarCama extends javax.swing.JInternalFrame {
+
     ControlAsignada controlAsignada;
+    ControlPaciente controlPaciente;
+    ControlCama controlCama;
+
     /**
      * Creates new form InternalAsignarCama
+     *
      * @param controlAsignada
      */
-    public InternalAsignarCama(ControlAsignada controlAsignada) {
+    public InternalAsignarCama(ControlAsignada controlAsignada, ControlPaciente controlPaciente, ControlCama controlCama) {
         this.controlAsignada = controlAsignada;
+        this.controlPaciente = controlPaciente;
+        this.controlCama = controlCama;
         initComponents();
     }
 
@@ -47,9 +62,9 @@ public class InternalAsignarCama extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Numero cama");
+        jLabel1.setText("Número cama");
 
-        jLabel2.setText("Cedula persona");
+        jLabel2.setText("Cédula persona");
 
         jLabel3.setText("Fecha entrada");
 
@@ -62,6 +77,11 @@ public class InternalAsignarCama extends javax.swing.JInternalFrame {
         });
 
         ButtonAsignarCama.setText("Asignar");
+        ButtonAsignarCama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAsignarCamaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,6 +156,44 @@ public class InternalAsignarCama extends javax.swing.JInternalFrame {
     private void FieldCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldCedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FieldCedulaActionPerformed
+
+    private void ButtonAsignarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAsignarCamaActionPerformed
+        // TODO add your handling code here:
+        try {
+            if (this.FieldNumeroCama.getText().trim().isEmpty() || this.FieldCedula.getText().trim().isEmpty()) {
+                JOptionPane.showInternalMessageDialog(this, "Existen casillas vacias.", "Atención", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String num_cama = this.FieldNumeroCama.getText();
+                String cedula = this.FieldCedula.getText();
+
+                if (!controlPaciente.verificarExistencia(cedula)) {
+                    JOptionPane.showMessageDialog(this, "No existe un paciente con esa cédula");
+                } else if (!controlCama.verificarExistencia(num_cama)) {
+                    JOptionPane.showMessageDialog(this, "No existe una cama con ese número");
+                } else {
+                    LocalDate entrada = this.jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                    String dia_entrada = String.valueOf(entrada.getDayOfMonth());
+                    String mes_entrada = String.valueOf(entrada.getMonthValue());
+                    String anio_entrada = String.valueOf(entrada.getYear());
+                    String fecha_entrada = dia_entrada + "-" + mes_entrada + "-" + anio_entrada;
+
+                    LocalDate salida = this.jDateChooser2.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                    String dia_salida = String.valueOf(salida.getDayOfMonth());
+                    String mes_salida = String.valueOf(salida.getMonthValue());
+                    String anio_salida = String.valueOf(salida.getYear());
+                    String fecha_salida = dia_salida + "-" + mes_salida + "-" + anio_salida;
+
+                    String mensaje = controlAsignada.insertarAsignada(cedula, num_cama, fecha_entrada, fecha_salida);
+                    if (mensaje.equals("Asignación exitosa")) {
+                        controlCama.modificarEstado(num_cama, "Ocupada");
+                    }
+                    JOptionPane.showMessageDialog(this, mensaje);
+                }
+            }
+        } catch (NullPointerException npe) {
+            JOptionPane.showMessageDialog(this, "Seleccione las fechas");
+        }
+    }//GEN-LAST:event_ButtonAsignarCamaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

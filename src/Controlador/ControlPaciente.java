@@ -34,6 +34,10 @@ public class ControlPaciente {
         return daoPaciente.eliminarPaciente(id);    
     }
     
+    public boolean verificarExistencia(String id){
+        return daoPaciente.verificarExistencia(id);
+    }
+    
     public void cerrarConexionBD(){
         daoPaciente.cerrarConexionBD();
     }   

@@ -981,7 +981,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarCitasPorMedicoActionPerformed
 
     private void ButtonEditarAsignarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarAsignarCamaActionPerformed
-        InternalAsignarCama asigCama = new InternalAsignarCama(controlAsignada);
+        InternalAsignarCama asigCama = new InternalAsignarCama(controlAsignada, controlPaciente, controlCama);
         this.DesktopPane.add(asigCama);
         asigCama.show();
     }//GEN-LAST:event_ButtonEditarAsignarCamaActionPerformed

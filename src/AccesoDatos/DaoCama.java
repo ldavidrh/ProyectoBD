@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -95,10 +96,10 @@ public class DaoCama {
         }
     }
 
-    public String modificarCama(Cama cama) {
+    public String modificarCama(String num_cama, String descripcion, String codigo_area) {
         String sql_modificar;
-        sql_modificar = "UPDATE cama SET descripcion ='" + cama.getDescripcion() + "', codigo_area ='"
-                + cama.getCodigo_area() + "', estado='" + cama.getEstado() + "' WHERE num_cama = '" + cama.getNum_cama() + "';";
+        sql_modificar = "UPDATE cama SET descripcion ='" + descripcion + "', codigo_area ='"
+                       + codigo_area + "' WHERE num_cama = '" + num_cama + "';";
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
@@ -140,7 +141,27 @@ public class DaoCama {
             System.out.println(ex);
         }
     }
-
+    
+    public void modificarEstado(String num_cama, String estado){
+        String sql = "UPDATE cama SET estado = '" + estado + "' WHERE num_cama = '" + num_cama + "'";
+        try {
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            sentencia.executeUpdate(sql);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+    
+    //-recibe un arraylist con los números de las camas que quedan libres hoy para
+    //-llamar al método modificarEstado que las setée de ocupadas a libres. SE
+    //-LLAMA DESDE HiloCamas
+    public void camasHilo(ArrayList camas_libres_hoy) {
+        for (int i = 0; i < camas_libres_hoy.size(); i++) {
+            this.modificarEstado((String) camas_libres_hoy.get(i), "Libre");
+        }
+    }
+            
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());
     }

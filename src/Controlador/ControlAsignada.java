@@ -7,6 +7,7 @@ package Controlador;
 
 import AccesoDatos.DaoAsignada;
 import Modelo.Asignada;
+import java.util.ArrayList;
 
 /**
  *
@@ -35,6 +36,10 @@ public class ControlAsignada {
     
     public String eliminarAsignada(String num_cama){
         return daoAsignada.eliminarAsignada(num_cama);
+    }
+    
+    public ArrayList verficarFechaSalida(){
+        return daoAsignada.verificarFechaSalida();
     }
     
     public void cerrarConexionBD(){

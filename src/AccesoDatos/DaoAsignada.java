@@ -10,6 +10,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,16 +41,13 @@ public class DaoAsignada {
                 return "No se pudo asignar";
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
-            return "Error al asignar";
+            System.out.println(ex); 
+            return "Ya existe ese registro";
         }catch(Exception ex){ 
             System.out.println(ex); 
             return "Ha ocurrido un error al asignar";
         }
-    }
-    
-    
-    
+    }  
     
     public String[] consultarAsignada(String num_cama) {
         String sql_consultar;
@@ -111,6 +111,31 @@ public class DaoAsignada {
             return "Ha ocurrido un error al modificar la asignada";
         }
 
+    }
+    
+    //-Verifica si ya se cumple la fecha de salida de un paciente, para setear el 
+    //-estado de una cama de "Ocupada" a "Libre". Se usa un hilo para ello.
+    public ArrayList verificarFechaSalida() {
+        String sql_select;
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate actual = LocalDate.now();
+        String fecha_actual = dtf.format(actual);         
+        sql_select = "SELECT num_cama FROM asignada WHERE fecha_salida = '" + fecha_actual + "'";
+        try {
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+            ArrayList camas_libres_hoy = new ArrayList();
+            
+            while(tabla.next()){
+                camas_libres_hoy.add(tabla.getString(1));
+            }            
+            return camas_libres_hoy;            
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
     }
 
     public void cerrarConexionBD() {
