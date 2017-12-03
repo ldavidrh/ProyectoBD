@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -149,6 +150,15 @@ public class DaoCama {
             sentencia.executeUpdate(sql);
         } catch (Exception ex) {
             System.out.println(ex);
+        }
+    }
+    
+    //-recibe un arraylist con los números de las camas que quedan libres hoy para
+    //-llamar al método modificarEstado que las setée de ocupadas a libres. SE
+    //-LLAMA DESDE HiloCamas
+    public void camasHilo(ArrayList camas_libres_hoy) {
+        for (int i = 0; i < camas_libres_hoy.size(); i++) {
+            this.modificarEstado((String) camas_libres_hoy.get(i), "Libre");
         }
     }
             

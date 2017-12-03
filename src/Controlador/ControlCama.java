@@ -7,6 +7,7 @@ package Controlador;
 
 import AccesoDatos.DaoCama;
 import Modelo.Cama;
+import java.util.ArrayList;
 
 /**
  *
@@ -46,6 +47,10 @@ public class ControlCama {
     
     public void modificarEstado(String num_cama, String estado){
         daoCama.modificarEstado(num_cama, estado);
+    }
+    
+    public void camasHilo(ArrayList camas_libres_hoy){
+        daoCama.camasHilo(camas_libres_hoy);
     }
     
     public void cerrarConexionBD(){
