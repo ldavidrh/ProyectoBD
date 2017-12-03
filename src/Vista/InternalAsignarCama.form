@@ -118,12 +118,12 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Numero cama"/>
+            <Property name="text" type="java.lang.String" value="N&#xfa;mero cama"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cedula persona"/>
+            <Property name="text" type="java.lang.String" value="C&#xe9;dula persona"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -151,6 +151,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Asignar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonAsignarCamaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

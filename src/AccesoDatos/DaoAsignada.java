@@ -38,16 +38,13 @@ public class DaoAsignada {
                 return "No se pudo asignar";
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
-            return "Error al asignar";
+            System.out.println(ex); 
+            return "Ya existe ese registro";
         }catch(Exception ex){ 
             System.out.println(ex); 
             return "Ha ocurrido un error al asignar";
         }
-    }
-    
-    
-    
+    }  
     
     public String[] consultarAsignada(String num_cama) {
         String sql_consultar;

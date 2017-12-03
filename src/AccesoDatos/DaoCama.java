@@ -95,10 +95,10 @@ public class DaoCama {
         }
     }
 
-    public String modificarCama(Cama cama) {
+    public String modificarCama(String num_cama, String descripcion, String codigo_area) {
         String sql_modificar;
-        sql_modificar = "UPDATE cama SET descripcion ='" + cama.getDescripcion() + "', codigo_area ='"
-                + cama.getCodigo_area() + "', estado='" + cama.getEstado() + "' WHERE num_cama = '" + cama.getNum_cama() + "';";
+        sql_modificar = "UPDATE cama SET descripcion ='" + descripcion + "', codigo_area ='"
+                       + codigo_area + "' WHERE num_cama = '" + num_cama + "';";
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
@@ -140,7 +140,18 @@ public class DaoCama {
             System.out.println(ex);
         }
     }
-
+    
+    public void modificarEstado(String num_cama, String estado){
+        String sql = "UPDATE cama SET estado = '" + estado + "' WHERE num_cama = '" + num_cama + "'";
+        try {
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            sentencia.executeUpdate(sql);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+            
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());
     }
