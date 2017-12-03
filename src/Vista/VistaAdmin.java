@@ -108,6 +108,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         ButtonConsultarCama = new javax.swing.JButton();
         ButtonEditarCama = new javax.swing.JButton();
         ButtonEditarAsignarCama = new javax.swing.JButton();
+        ButtonEditarAsignarCama1 = new javax.swing.JButton();
         PanelCampana = new javax.swing.JPanel();
         ButtonAgregarCampana = new javax.swing.JButton();
         ButtonEliminarCampana = new javax.swing.JButton();
@@ -492,12 +493,22 @@ public class VistaAdmin extends javax.swing.JFrame {
             }
         });
 
+        ButtonEditarAsignarCama1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/asignarCama.png"))); // NOI18N
+        ButtonEditarAsignarCama1.setText("Asignar cama");
+        ButtonEditarAsignarCama1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonEditarAsignarCama1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonEditarAsignarCama1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEditarAsignarCama1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelCamasLayout = new javax.swing.GroupLayout(PanelCamas);
         PanelCamas.setLayout(PanelCamasLayout);
         PanelCamasLayout.setHorizontalGroup(
             PanelCamasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCamasLayout.createSequentialGroup()
-                .addGap(90, 90, 90)
+                .addGap(28, 28, 28)
                 .addComponent(ButtonAgregarCama)
                 .addGap(18, 18, 18)
                 .addComponent(ButtonEliminarCama)
@@ -507,13 +518,16 @@ public class VistaAdmin extends javax.swing.JFrame {
                 .addComponent(ButtonEditarCama)
                 .addGap(18, 18, 18)
                 .addComponent(ButtonEditarAsignarCama)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(ButtonEditarAsignarCama1)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         PanelCamasLayout.setVerticalGroup(
             PanelCamasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCamasLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(PanelCamasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ButtonEditarAsignarCama1)
                     .addComponent(ButtonEditarAsignarCama)
                     .addComponent(ButtonAgregarCama)
                     .addComponent(ButtonEliminarCama)
@@ -972,6 +986,10 @@ public class VistaAdmin extends javax.swing.JFrame {
         asigCama.show();
     }//GEN-LAST:event_ButtonEditarAsignarCamaActionPerformed
 
+    private void ButtonEditarAsignarCama1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarAsignarCama1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonEditarAsignarCama1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1027,6 +1045,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton ButtonConsultarUsuario;
     private javax.swing.JButton ButtonEditarArea;
     private javax.swing.JButton ButtonEditarAsignarCama;
+    private javax.swing.JButton ButtonEditarAsignarCama1;
     private javax.swing.JButton ButtonEditarCama;
     private javax.swing.JButton ButtonEditarCampana;
     private javax.swing.JButton ButtonEditarCita;
