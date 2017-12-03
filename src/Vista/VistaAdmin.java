@@ -27,11 +27,13 @@ public class VistaAdmin extends javax.swing.JFrame {
     ControlCampana controlCampana;
     ControlHistoriaClinica controlHistoria;
     ControlCama controlCama;
+    ControlAsignada controlAsignada;
     /**
      * Creates new form VistaPrincipal
      */
     public VistaAdmin() {
         initComponents();
+        controlAsignada = new ControlAsignada();
         controlPersona = new ControlPersona();
         controlPaciente = new ControlPaciente();
         controlUsuario = new ControlUsuario();
@@ -105,6 +107,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         ButtonEliminarCama = new javax.swing.JButton();
         ButtonConsultarCama = new javax.swing.JButton();
         ButtonEditarCama = new javax.swing.JButton();
+        ButtonEditarAsignarCama = new javax.swing.JButton();
         PanelCampana = new javax.swing.JPanel();
         ButtonAgregarCampana = new javax.swing.JButton();
         ButtonEliminarCampana = new javax.swing.JButton();
@@ -439,8 +442,6 @@ public class VistaAdmin extends javax.swing.JFrame {
 
         PanelPrincipal.addTab("Area", PanelArea);
 
-        PanelCamas.setLayout(new java.awt.GridBagLayout());
-
         ButtonAgregarCama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addBed.png"))); // NOI18N
         ButtonAgregarCama.setText("Agregar");
         ButtonAgregarCama.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -450,12 +451,6 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonAgregarCamaActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 127, 8, 0);
-        PanelCamas.add(ButtonAgregarCama, gridBagConstraints);
 
         ButtonEliminarCama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deleteBed.png"))); // NOI18N
         ButtonEliminarCama.setText("Eliminar");
@@ -466,12 +461,6 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonEliminarCamaActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
-        PanelCamas.add(ButtonEliminarCama, gridBagConstraints);
 
         ButtonConsultarCama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchBed.png"))); // NOI18N
         ButtonConsultarCama.setText("Consultar");
@@ -482,12 +471,6 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonConsultarCamaActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
-        PanelCamas.add(ButtonConsultarCama, gridBagConstraints);
 
         ButtonEditarCama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editBed.png"))); // NOI18N
         ButtonEditarCama.setText("Editar");
@@ -498,12 +481,45 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonEditarCamaActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 163);
-        PanelCamas.add(ButtonEditarCama, gridBagConstraints);
+
+        ButtonEditarAsignarCama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/asignarCama.png"))); // NOI18N
+        ButtonEditarAsignarCama.setText("Asignar cama");
+        ButtonEditarAsignarCama.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonEditarAsignarCama.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonEditarAsignarCama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEditarAsignarCamaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PanelCamasLayout = new javax.swing.GroupLayout(PanelCamas);
+        PanelCamas.setLayout(PanelCamasLayout);
+        PanelCamasLayout.setHorizontalGroup(
+            PanelCamasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCamasLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(ButtonAgregarCama)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonEliminarCama)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonConsultarCama)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonEditarCama)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonEditarAsignarCama)
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+        PanelCamasLayout.setVerticalGroup(
+            PanelCamasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCamasLayout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(PanelCamasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ButtonEditarAsignarCama)
+                    .addComponent(ButtonAgregarCama)
+                    .addComponent(ButtonEliminarCama)
+                    .addComponent(ButtonConsultarCama)
+                    .addComponent(ButtonEditarCama)))
+        );
 
         PanelPrincipal.addTab("Camas", PanelCamas);
 
@@ -950,6 +966,12 @@ public class VistaAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ButtonEditarCitasPorMedicoActionPerformed
 
+    private void ButtonEditarAsignarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarAsignarCamaActionPerformed
+        InternalAsignarCama asigCama = new InternalAsignarCama(controlAsignada);
+        this.DesktopPane.add(asigCama);
+        asigCama.show();
+    }//GEN-LAST:event_ButtonEditarAsignarCamaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1004,6 +1026,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton ButtonConsultarPaciente;
     private javax.swing.JButton ButtonConsultarUsuario;
     private javax.swing.JButton ButtonEditarArea;
+    private javax.swing.JButton ButtonEditarAsignarCama;
     private javax.swing.JButton ButtonEditarCama;
     private javax.swing.JButton ButtonEditarCampana;
     private javax.swing.JButton ButtonEditarCita;
