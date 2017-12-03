@@ -52,7 +52,9 @@ CREATE TABLE asignada
 	id_persona VARCHAR(30) NOT NULL,
 	num_cama VARCHAR(30) NOT NULL,
 	fecha_entrada DATE NOT NULL,
-	fecha_salida DATE NOT NULL,	
+	fecha_salida DATE NOT NULL,
+	
+	PRIMARY KEY (id_persona, num_cama, fecha_entrada, fecha_salida)
 );
 
 DROP TABLE IF EXISTS empleado CASCADE;
