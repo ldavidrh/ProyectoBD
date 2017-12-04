@@ -88,7 +88,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese el codigo de la campa&#xf1;a que desee consultar"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el c&#xf3;digo de la campa&#xf1;a que desee consultar"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="FieldCodigo">
@@ -97,6 +97,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonConsultarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

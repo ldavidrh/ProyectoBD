@@ -5,6 +5,7 @@
  */
 package Vista;
 import Controlador.ControlCampana;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
@@ -42,9 +43,14 @@ public class InternalConsultarCampana extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Ingrese el codigo de la campaña que desee consultar");
+        jLabel1.setText("Ingrese el código de la campaña que desee consultar");
 
         ButtonConsultar.setText("Consultar");
+        ButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,6 +103,24 @@ public class InternalConsultarCampana extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarActionPerformed
+        // TODO add your handling code here:
+        if (this.FieldCodigo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el código de la campaña");
+        } else {
+            String cod = this.FieldCodigo.getText();
+            String consulta = "";
+            String[] campana = controlCampana.consultarCampana(cod);
+            if (campana == null) {
+                consulta = "No hay registros de una campaña con ese código";
+            } else {                
+                consulta = "Nombre: " + campana[1] + "\nDescripción: " + campana[2] + "\nFecha: " + campana[3] +
+                            "\nID médico encargado: " + campana[4];                 
+            }
+            this.jTextArea1.setText(consulta);
+        }
+    }//GEN-LAST:event_ButtonConsultarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

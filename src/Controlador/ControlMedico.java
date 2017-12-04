@@ -35,6 +35,10 @@ public class ControlMedico {
         return daoMedico.eliminarMedico(id);
     }
     
+    public boolean verificarExistencia(String id){
+        return daoMedico.verificarExistencia(id);
+    }
+    
     public void cerrarConexionBD(){
         daoMedico.cerrarConexionBD();
     }

@@ -932,7 +932,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarCamaActionPerformed
 
     private void ButtonAgregarCampanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarCampanaActionPerformed
-        InternalAgregarCampana addCamp = new InternalAgregarCampana(controlCampana);
+        InternalAgregarCampana addCamp = new InternalAgregarCampana(controlCampana, controlMedico);
         this.DesktopPane.add(addCamp);
         addCamp.show();
     }//GEN-LAST:event_ButtonAgregarCampanaActionPerformed
@@ -950,7 +950,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonConsultarCampanaActionPerformed
 
     private void ButtonEditarCampanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarCampanaActionPerformed
-        InternalEditarCampana editCamp = new InternalEditarCampana(controlCampana);
+        InternalEditarCampana editCamp = new InternalEditarCampana(controlCampana, controlMedico);
         this.DesktopPane.add(editCamp);
         editCamp.show();
     }//GEN-LAST:event_ButtonEditarCampanaActionPerformed

@@ -5,17 +5,23 @@
  */
 package Vista;
 import Controlador.ControlCampana;
+import Controlador.ControlMedico;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
  */
 public class InternalAgregarCampana extends javax.swing.JInternalFrame {
     ControlCampana controlCampana;
+    ControlMedico controlMedico;
     /**
      * Creates new form InternalAgregarCampana
      */
-    public InternalAgregarCampana(ControlCampana controlCampana) {
+    public InternalAgregarCampana(ControlCampana controlCampana, ControlMedico controlMedico) {
         this.controlCampana = controlCampana;
+        this.controlMedico = controlMedico;
         initComponents();
     }
 
@@ -49,21 +55,26 @@ public class InternalAgregarCampana extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Codigo");
+        jLabel1.setText("Código");
 
         jLabel2.setText("Nombre");
 
         jLabel3.setText("Fecha");
 
-        jLabel4.setText("Cedula encargado");
+        jLabel4.setText("Cédula encargado");
 
-        jLabel5.setText("Descripcion");
+        jLabel5.setText("Descripción");
 
         TextAreaDescripcion.setColumns(20);
         TextAreaDescripcion.setRows(5);
         jScrollPane1.setViewportView(TextAreaDescripcion);
 
         ButtonAgregar.setText("Agregar");
+        ButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,6 +147,36 @@ public class InternalAgregarCampana extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarActionPerformed
+        // TODO add your handling code here:
+        try {
+            if (this.FieldCedulaEncargado.getText().trim().isEmpty() || this.FieldCodigo.getText().trim().isEmpty() ||
+                this.FieldNombre.getText().trim().isEmpty() || this.TextAreaDescripcion.getText().trim().isEmpty()) {
+                JOptionPane.showInternalMessageDialog(this, "Existen casillas vacias.", "Atención", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String ced_medico = this.FieldCedulaEncargado.getText();               
+
+                if (!controlMedico.verificarExistencia(ced_medico)) {
+                    JOptionPane.showMessageDialog(this, "No existe un médico con esa cédula");
+                } else {
+                    String codigo = this.FieldCodigo.getText();
+                    String nombre = this.FieldNombre.getText();
+                    String descripcion = this.TextAreaDescripcion.getText();
+                    
+                    LocalDate fecha = this.DateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                    String dia = String.valueOf(fecha.getDayOfMonth());
+                    String mes = String.valueOf(fecha.getMonthValue());
+                    String anio = String.valueOf(fecha.getYear());
+                    String fecha_campana = dia + "-" + mes + "-" + anio;                  
+
+                    JOptionPane.showMessageDialog(this, controlCampana.insertarCampana(codigo, nombre, descripcion, fecha_campana, ced_medico));
+                }
+            }
+        } catch (NullPointerException npe) {
+            JOptionPane.showMessageDialog(this, "Seleccione la fecha");
+        }
+    }//GEN-LAST:event_ButtonAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

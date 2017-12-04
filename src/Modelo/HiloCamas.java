@@ -32,8 +32,8 @@ public class HiloCamas extends Thread {
                     controlCama.camasHilo(camas_libres_hoy);
                 }
                 System.out.println("hilo ejecutándose");
-                //sleep(24*3600000);
-                sleep(60000);
+                sleep(24*3600000);
+                //sleep(60000);
             }catch (InterruptedException ex) {
                 System.out.println("Error en la ejecución del HiloCamas encargado de revisar la fecha de salida de los pacientes");
             }

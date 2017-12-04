@@ -100,7 +100,7 @@ public class DaoCampana {
             if(sentencia.executeUpdate(sql_borrar)==1){
                 return "Campaña eliminada exitosamente";
             }else{
-                return "No se eliminó campaña";
+                return "No existe una campaña con ese código";
             }                
         }catch(Exception e){
             System.out.println(e);

@@ -60,7 +60,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <Component id="FieldCodigo" min="-2" pref="228" max="-2" attributes="0"/>
-                      <Component id="ButtonEliminar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="ButtonCancelar" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -74,7 +74,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="FieldCodigo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="ButtonEliminar" min="-2" max="-2" attributes="0"/>
+                  <Component id="ButtonCancelar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -88,10 +88,13 @@
         </Component>
         <Component class="javax.swing.JTextField" name="FieldCodigo">
         </Component>
-        <Component class="javax.swing.JButton" name="ButtonEliminar">
+        <Component class="javax.swing.JButton" name="ButtonCancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonCancelarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

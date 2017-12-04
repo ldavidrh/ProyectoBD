@@ -79,7 +79,7 @@
                           </Group>
                           <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="ButtonAgregar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="ButtonEditar" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -108,7 +108,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="111" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="ButtonAgregar" min="-2" max="-2" attributes="0"/>
+                  <Component id="ButtonEditar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -127,12 +127,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cedula encargado"/>
+            <Property name="text" type="java.lang.String" value="C&#xe9;dula encargado"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Descripcion"/>
+            <Property name="text" type="java.lang.String" value="Descripci&#xf3;n"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -150,10 +150,14 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="ButtonAgregar">
+        <Component class="javax.swing.JButton" name="ButtonEditar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Agregar"/>
+            <Property name="text" type="java.lang.String" value="Editar"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonEditarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="FieldNombre">
         </Component>
@@ -203,7 +207,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese el codigo de la campa&#xf1;a que desea editar"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el c&#xf3;digo de la campa&#xf1;a que desea editar"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="FieldCodigo">
@@ -212,6 +216,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cargar datos"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonCargarDatosActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
