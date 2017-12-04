@@ -170,6 +170,8 @@ public class InternalAsignarCama extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(this, "No existe un paciente con esa cédula");
                 } else if (!controlCama.verificarExistencia(num_cama)) {
                     JOptionPane.showMessageDialog(this, "No existe una cama con ese número");
+                }else if (!controlCama.verificarEstado(num_cama)){
+                    JOptionPane.showMessageDialog(this, "Esa cama se encuentra ocupada");                 
                 } else {
                     LocalDate entrada = this.jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                     String dia_entrada = String.valueOf(entrada.getDayOfMonth());

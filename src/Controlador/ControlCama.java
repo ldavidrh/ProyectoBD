@@ -53,6 +53,10 @@ public class ControlCama {
         daoCama.camasHilo(camas_libres_hoy);
     }
     
+    public boolean verificarEstado(String num){
+        return daoCama.verificarEstado(num);
+    }
+    
     public void cerrarConexionBD(){
         daoCama.cerrarConexionBD();
     }

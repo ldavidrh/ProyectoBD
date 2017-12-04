@@ -11,8 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -44,7 +42,7 @@ public class DaoCama {
             if (verificarExistencia(cama.getNum_cama())) {
                 return "Ya existe una cama con ese número";
             }
-            return "Error: no existe un área con el código " + cama.getNum_cama() + " en el hospital";
+            return "Error: no existe un área con el código " + cama.getCodigo_area() + " en el hospital";
         } catch (Exception ex) {
             System.out.println(ex);
             return "Ha ocurrido un error al crear la cama";
@@ -125,6 +123,21 @@ public class DaoCama {
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_select);
             return tabla.next();
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+    
+    public boolean verificarEstado(String num) {
+        String sql_select;
+        sql_select = "SELECT estado FROM cama WHERE num_cama = '" + num + "'";
+        try {
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);            
+            tabla.next();
+            return tabla.getString(1).equals("Libre");                       
         } catch (Exception e) {
             System.out.println(e);
             return false;

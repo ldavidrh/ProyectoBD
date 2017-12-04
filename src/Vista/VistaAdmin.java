@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.*;
+import Modelo.HiloCamas;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -46,6 +47,8 @@ public class VistaAdmin extends javax.swing.JFrame {
         controlCampana = new ControlCampana();
         controlHistoria = new ControlHistoriaClinica();
         controlCama = new ControlCama();
+        HiloCamas hilo = new HiloCamas(controlAsignada, controlCama);
+        hilo.start();
         
         //Creacion de InputDialog para login
         JTextField fieldCedula = new JTextField();

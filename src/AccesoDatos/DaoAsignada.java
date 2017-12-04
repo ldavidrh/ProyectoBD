@@ -137,7 +137,7 @@ public class DaoAsignada {
             return null;
         }
     }
-
+    
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());
     }
