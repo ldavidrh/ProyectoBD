@@ -101,7 +101,7 @@ CREATE TABLE campana
 	nombre VARCHAR(60) NOT NULL,
 	objetivo VARCHAR(60) NOT NULL,
 	fecha DATE NOT NULL,
-	id_persona VARCHAR(30) NOT NULL,	
+	id_persona VARCHAR(30) NOT NULL	
 );
 
 DROP TABLE IF EXISTS enfermera CASCADE;
