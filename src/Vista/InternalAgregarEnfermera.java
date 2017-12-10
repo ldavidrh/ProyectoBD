@@ -65,7 +65,6 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
         ButtonAgregarEnfermera = new javax.swing.JButton();
 
         setIconifiable(true);
-        setResizable(true);
         setTitle("Agregar enfermera");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos personales", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
@@ -107,8 +106,7 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(24, 24, 24)
-                        .addComponent(FieldNombre)
-                        .addContainerGap())
+                        .addComponent(FieldNombre))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -118,8 +116,8 @@ public class InternalAgregarEnfermera extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(FieldTelefono)
                             .addComponent(FieldCedula)
-                            .addComponent(FieldDireccion))
-                        .addContainerGap())))
+                            .addComponent(FieldDireccion))))
+                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(89, 89, 89)
                 .addComponent(ButtonAgregarPersona)

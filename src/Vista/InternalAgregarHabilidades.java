@@ -38,6 +38,10 @@ public class InternalAgregarHabilidades extends javax.swing.JInternalFrame {
         FieldCedula = new javax.swing.JTextField();
         FieldHabilidad = new javax.swing.JTextField();
 
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Agregar habilidad");
+
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setText("Cedula");

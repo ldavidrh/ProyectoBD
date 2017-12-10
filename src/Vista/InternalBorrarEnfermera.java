@@ -38,7 +38,6 @@ public class InternalBorrarEnfermera extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setResizable(true);
         setTitle("Eliminar enfermera");
 
         jLabel1.setText("Ingrese la cedula de la enfermera que desea eliminar");

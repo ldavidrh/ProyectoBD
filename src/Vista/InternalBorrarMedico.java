@@ -37,7 +37,6 @@ public class InternalBorrarMedico extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setResizable(true);
 
         jLabel1.setText("Ingrese la cedula del medico que desea eliminar");
 

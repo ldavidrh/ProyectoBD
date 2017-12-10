@@ -36,7 +36,6 @@ public class InternalBorrarPaciente extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setResizable(true);
         setTitle("Eliminar paciente");
 
         jLabel1.setText("Ingrese la cedula del paciente que desea borrar");
