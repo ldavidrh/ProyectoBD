@@ -173,7 +173,8 @@ CREATE TABLE medicamento
 	codigo_medicamento VARCHAR(30) PRIMARY KEY NOT NULL,
 	nombre VARCHAR(30) NOT NULL,
 	descripcion VARCHAR(60) NOT NULL,
-	costo FLOAT(30) NOT NULL
+	costo FLOAT(30) NOT NULL,
+	existe BIT NOT NULL
 );
 
 DROP TABLE IF EXISTS formula CASCADE;
@@ -237,7 +238,7 @@ INSERT INTO registro VALUES ('01','1000', '333', '16-10-2017');
 
 INSERT INTO cita VALUES ('333','111', '31-12-2017','5:30', 50000);
 
-INSERT INTO medicamento VALUES ('1212','Dolex', 'Ayuda contra el malestar general', 700);
+INSERT INTO medicamento VALUES ('1212','Dolex', 'Ayuda contra el malestar general', 700, '1');
 
 INSERT INTO formula VALUES ('0001','1212', '333', '111');
 
