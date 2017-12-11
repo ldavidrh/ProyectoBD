@@ -1192,7 +1192,9 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonAgregarHabilidadesActionPerformed
 
     private void ButtonAgregarAsistentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarAsistentesActionPerformed
-        // TODO add your handling code here:
+        InternalAgregarAsistente addAsis = new InternalAgregarAsistente(controlCampana, controlPaciente);
+        this.DesktopPane.add(addAsis);
+        addAsis.show();
     }//GEN-LAST:event_ButtonAgregarAsistentesActionPerformed
 
     /**
