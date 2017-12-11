@@ -173,7 +173,8 @@ CREATE TABLE medicamento
 	codigo_medicamento VARCHAR(30) PRIMARY KEY NOT NULL,
 	nombre VARCHAR(30) NOT NULL,
 	descripcion VARCHAR(60) NOT NULL,
-	costo FLOAT(30) NOT NULL
+	costo FLOAT(30) NOT NULL,
+	existe BIT NOT NULL
 );
 
 DROP TABLE IF EXISTS formula CASCADE;
