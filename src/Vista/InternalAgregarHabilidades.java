@@ -4,14 +4,19 @@
  * and open the template in the editor.
  */
 package Vista;
+
 import Controlador.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luis
  */
 public class InternalAgregarHabilidades extends javax.swing.JInternalFrame {
+
     ControlEnfermera controlEnfermera;
     ControlHabilidades controlHabilidades;
+
     /**
      * Creates new form InternalAgregarHabilidades
      */
@@ -19,7 +24,7 @@ public class InternalAgregarHabilidades extends javax.swing.JInternalFrame {
         this.controlEnfermera = controlEnfermera;
         this.controlHabilidades = controlHabilidad;
         initComponents();
-        
+
     }
 
     /**
@@ -44,11 +49,16 @@ public class InternalAgregarHabilidades extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Cedula");
+        jLabel1.setText("Cédula");
 
         jLabel2.setText("Habilidad");
 
         ButtonAgregar.setText("Agregar");
+        ButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,6 +117,21 @@ public class InternalAgregarHabilidades extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarActionPerformed
+        // TODO add your handling code here:
+        if (this.FieldCedula.getText().trim().isEmpty() || this.FieldHabilidad.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Existen casillas vacías");
+        } else {
+            String ced_enfermera = this.FieldCedula.getText();
+            if (controlEnfermera.verificarExistencia(ced_enfermera)) {
+                String habilidad = this.FieldHabilidad.getText();
+                JOptionPane.showMessageDialog(this, controlHabilidades.insertarHabilidades(ced_enfermera, habilidad));
+            }else{
+                JOptionPane.showMessageDialog(this, "No existe una enfermera con esa cédula");
+            }
+        }
+    }//GEN-LAST:event_ButtonAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

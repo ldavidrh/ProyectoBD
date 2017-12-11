@@ -35,6 +35,10 @@ public class ControlEnfermera {
         return daoEnfermera.eliminarEnfermera(id);
     }
     
+    public boolean verificarExistencia(String id){
+        return daoEnfermera.verificarExistencia(id);
+    }
+    
     public void cerrarConexionBD(){
         daoEnfermera.cerrarConexionBD();
     }
