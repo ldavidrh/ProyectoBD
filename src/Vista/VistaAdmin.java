@@ -31,11 +31,13 @@ public class VistaAdmin extends javax.swing.JFrame {
     ControlHistoriaClinica controlHistoria;
     ControlCama controlCama;
     ControlAsignada controlAsignada;
+    ControlHabilidades controlHabilidades;
     /**
      * Creates new form VistaPrincipal
      */
     public VistaAdmin() {
         initComponents();
+        controlHabilidades = new ControlHabilidades();
         controlMedicamento = new ControlMedicamento();
         controlAsignada = new ControlAsignada();
         controlPersona = new ControlPersona();
@@ -124,6 +126,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         ButtonEliminarCampana = new javax.swing.JButton();
         ButtonConsultarCampana = new javax.swing.JButton();
         ButtonEditarCampana = new javax.swing.JButton();
+        ButtonAgregarAsistentes = new javax.swing.JButton();
         PanelCitas = new javax.swing.JPanel();
         ButtonAgregarCita = new javax.swing.JButton();
         ButtonEliminarCita = new javax.swing.JButton();
@@ -238,6 +241,8 @@ public class VistaAdmin extends javax.swing.JFrame {
 
         PanelPrincipal.addTab("Medico", PanelMedico);
 
+        PanelEnfermera.setLayout(new java.awt.GridBagLayout());
+
         ButtonAgregarEnfermera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addNurse.png"))); // NOI18N
         ButtonAgregarEnfermera.setText("Agregar");
         ButtonAgregarEnfermera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -247,6 +252,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonAgregarEnfermeraActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 69, 8, 0);
+        PanelEnfermera.add(ButtonAgregarEnfermera, gridBagConstraints);
 
         ButtonEliminarEnfermera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deleteNurse.png"))); // NOI18N
         ButtonEliminarEnfermera.setText("Eliminar");
@@ -257,6 +268,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonEliminarEnfermeraActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
+        PanelEnfermera.add(ButtonEliminarEnfermera, gridBagConstraints);
 
         ButtonConsultarEnfermera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchNurse.png"))); // NOI18N
         ButtonConsultarEnfermera.setText("Consultar");
@@ -267,6 +284,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonConsultarEnfermeraActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
+        PanelEnfermera.add(ButtonConsultarEnfermera, gridBagConstraints);
 
         ButtonEditarEnfermera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editNurse.png"))); // NOI18N
         ButtonEditarEnfermera.setText("Editar");
@@ -277,6 +300,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonEditarEnfermeraActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
+        PanelEnfermera.add(ButtonEditarEnfermera, gridBagConstraints);
 
         ButtonAgregarHabilidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/agregarHabilidad.png"))); // NOI18N
         ButtonAgregarHabilidades.setText("Agregar habilidades");
@@ -288,35 +317,12 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonAgregarHabilidadesActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout PanelEnfermeraLayout = new javax.swing.GroupLayout(PanelEnfermera);
-        PanelEnfermera.setLayout(PanelEnfermeraLayout);
-        PanelEnfermeraLayout.setHorizontalGroup(
-            PanelEnfermeraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelEnfermeraLayout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(ButtonAgregarEnfermera)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonEliminarEnfermera)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonConsultarEnfermera)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonEditarEnfermera)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonAgregarHabilidades)
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        PanelEnfermeraLayout.setVerticalGroup(
-            PanelEnfermeraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelEnfermeraLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(PanelEnfermeraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ButtonAgregarHabilidades)
-                    .addComponent(ButtonAgregarEnfermera)
-                    .addComponent(ButtonEliminarEnfermera)
-                    .addComponent(ButtonConsultarEnfermera)
-                    .addComponent(ButtonEditarEnfermera)))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 76);
+        PanelEnfermera.add(ButtonAgregarHabilidades, gridBagConstraints);
 
         PanelPrincipal.addTab("Enfermera", PanelEnfermera);
 
@@ -619,7 +625,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 127, 8, 0);
+        gridBagConstraints.insets = new java.awt.Insets(11, 81, 8, 0);
         PanelCampana.add(ButtonAgregarCampana, gridBagConstraints);
 
         ButtonEliminarCampana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deleteCampaign.png"))); // NOI18N
@@ -667,8 +673,24 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 163);
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
         PanelCampana.add(ButtonEditarCampana, gridBagConstraints);
+
+        ButtonAgregarAsistentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addAsistente.png"))); // NOI18N
+        ButtonAgregarAsistentes.setText("Agregar asistentes");
+        ButtonAgregarAsistentes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonAgregarAsistentes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonAgregarAsistentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAgregarAsistentesActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 68);
+        PanelCampana.add(ButtonAgregarAsistentes, gridBagConstraints);
 
         PanelPrincipal.addTab("Campaña", PanelCampana);
 
@@ -1164,8 +1186,14 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarMedicamentoActionPerformed
 
     private void ButtonAgregarHabilidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarHabilidadesActionPerformed
-        // TODO add your handling code here:
+        InternalAgregarHabilidades addHab = new InternalAgregarHabilidades(controlEnfermera, controlHabilidades);
+        this.DesktopPane.add(addHab);
+        addHab.show();
     }//GEN-LAST:event_ButtonAgregarHabilidadesActionPerformed
+
+    private void ButtonAgregarAsistentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarAsistentesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonAgregarAsistentesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1206,6 +1234,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAgendaMes;
     private javax.swing.JButton ButtonAgregarArea;
+    private javax.swing.JButton ButtonAgregarAsistentes;
     private javax.swing.JButton ButtonAgregarCama;
     private javax.swing.JButton ButtonAgregarCampana;
     private javax.swing.JButton ButtonAgregarCita;
