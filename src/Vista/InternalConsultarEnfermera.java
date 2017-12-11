@@ -7,6 +7,7 @@ package Vista;
 import Controlador.ControlArea;
 import Controlador.ControlEmpleado;
 import Controlador.ControlEnfermera;
+import Controlador.ControlHabilidades;
 import Controlador.ControlPersona;
 import javax.swing.JOptionPane;
 /**
@@ -18,14 +19,16 @@ public class InternalConsultarEnfermera extends javax.swing.JInternalFrame {
     ControlEmpleado controlEmpleado;
     ControlEnfermera controlEnfermera;
     ControlArea controlArea;
+    ControlHabilidades controlHabilidades;
     /**
      * Creates new form InternalBuscarEnfermera
      */
-    public InternalConsultarEnfermera(ControlEnfermera controlEnfermera, ControlEmpleado controlEmpleado, ControlPersona controlPersona, ControlArea controlArea) {
+    public InternalConsultarEnfermera(ControlEnfermera controlEnfermera, ControlEmpleado controlEmpleado, ControlPersona controlPersona, ControlArea controlArea, ControlHabilidades controlHabilidades) {
         this.controlPersona = controlPersona;
         this.controlEmpleado = controlEmpleado;
         this.controlEnfermera = controlEnfermera;
         this.controlArea = controlArea;
+        this.controlHabilidades = controlHabilidades;
         initComponents();
     }
 
@@ -139,6 +142,7 @@ public class InternalConsultarEnfermera extends javax.swing.JInternalFrame {
                     String[] empleado = controlEmpleado.consultarEmpleado(cedula);                    
                     String[] area = controlArea.consultarArea(empleado[4]);
                     String[] jefe = controlEmpleado.consultarEmpleado(empleado[5]);
+                    String habilidades = controlHabilidades.consultarHabilidades(cedula);
                     consulta = "DATOS PESONALES\nNombre: " + persona[1] + "\nDirección: " + persona[2] + "\nTeléfono: " + persona[3]
                             + "\n\nPERFIL PROFESIONAL\nAños de experiencia: " + enfermera[1] + 
                             "\n\nDATOS DEL EMPLEADO\nCargo: " + empleado[1] + "\nSalario: " + empleado[2] + "\nEmail: " + empleado[3];
@@ -149,6 +153,7 @@ public class InternalConsultarEnfermera extends javax.swing.JInternalFrame {
                     if (jefe != null) {
                         consulta += "\nJefe: " + jefe[1] + ". cc: " + jefe[0];
                     }
+                    consulta += "\n\nHABILIDADES REGISTRADAS\n" + habilidades;                    
                 }
                 this.TextArea.setText(consulta);
             }

@@ -956,7 +956,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEliminarEnfermeraActionPerformed
 
     private void ButtonConsultarEnfermeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarEnfermeraActionPerformed
-        InternalConsultarEnfermera conEnf = new InternalConsultarEnfermera(controlEnfermera, controlEmpleado, controlPersona, controlArea);
+        InternalConsultarEnfermera conEnf = new InternalConsultarEnfermera(controlEnfermera, controlEmpleado, controlPersona, controlArea, controlHabilidades);
         this.DesktopPane.add(conEnf);
         conEnf.show();
     }//GEN-LAST:event_ButtonConsultarEnfermeraActionPerformed
