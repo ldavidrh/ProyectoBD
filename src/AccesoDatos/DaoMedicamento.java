@@ -19,8 +19,8 @@ public class DaoMedicamento {
     
     public String guardarMedicamento(Medicamento m) {
         String sql_guardar;
-        sql_guardar = "INSERT INTO medicamento VALUES('" + m.getCodigo_medicamento() + "', '" + m.getNombre() + "', '" + m.getDescripcion() + "', '" + m.getCosto() + "');";
-
+        sql_guardar = "INSERT INTO medicamento VALUES('" + m.getCodigo_medicamento() + "', '" + 
+                       m.getNombre() + "', '" + m.getDescripcion() + "', '" + m.getCosto() + "', '1');";
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
@@ -29,17 +29,22 @@ public class DaoMedicamento {
             } else {
                 return "No se pudo guardar el medicamento";
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);
-            return "Error al guardar el Medicamento";
+        } catch(SQLException ex){
+            System.out.println(ex);
+            return "Ya existe un medicamento con ese código";
         }
+        catch(Exception ex){ 
+            System.out.println(ex); 
+            return "Ha ocurrido un error al registrar el medicamento";
+        }     
     }
 
     public String[] consultarMedicamento(String codigo_medicamento) {
         String sql_consultar;
-        String[] consulta = new String[4];
+        String[] consulta = new String[5];
 
-        sql_consultar = "SELECT * FROM medicamento WHERE codigo_medicamento = '" + codigo_medicamento + "';";
+        sql_consultar = "SELECT * FROM medicamento WHERE codigo_medicamento = '" + 
+                        codigo_medicamento + "';";
 
         try {
             Connection conexion = fachada.getConnetion();
@@ -51,6 +56,11 @@ public class DaoMedicamento {
                 consulta[1] = tabla.getString(2);
                 consulta[2] = tabla.getString(3);
                 consulta[3] = tabla.getString(4);
+                consulta[4] = "";
+                
+                if(tabla.getString(5).equals("0")){
+                    consulta[4] = "\nMedicamento descontinuado";
+                }
             } else {
                 consulta = null;
             }
@@ -62,28 +72,11 @@ public class DaoMedicamento {
 
     }
 
-    public String eliminarMedicamento(String codigo_medicamento) {
-        String sql_eliminar;
-        sql_eliminar = "DELETE FROM Medicamento WHERE codigo_medicamento = '" + codigo_medicamento + "';";
-
-        try {
-            Connection conexion = fachada.getConnetion();
-            Statement sentencia = conexion.createStatement();
-            if (sentencia.executeUpdate(sql_eliminar)==1) {
-                return "Medicamento eliminado existosamente";
-            } else {
-                return "No existe un medicamento con el número: " + codigo_medicamento;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DaoMedicamento.class.getName()).log(Level.SEVERE, null, ex);
-            return "Error al eliminar Medicamento";
-        }
-    }
-
     public String modificarMedicamento(Medicamento m) {
         String sql_modificar;
         sql_modificar = "UPDATE medicamento SET nombre='" + m.getNombre() + "', descripcion ='"
-                + m.getDescripcion() + "', costo = '" + m.getCosto() + "';";
+                + m.getDescripcion() + "', costo = '" + m.getCosto() + "', existe = '" + m.getExiste() + "'"
+                + " WHERE codigo_medicamento = '" + m.getCodigo_medicamento() + "'";
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
@@ -96,7 +89,6 @@ public class DaoMedicamento {
             System.out.println(ex);
             return "Ha ocurrido un error al modificar el Medicamento";
         }
-
     }
 
     public void cerrarConexionBD() {

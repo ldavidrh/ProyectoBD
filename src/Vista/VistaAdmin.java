@@ -140,7 +140,6 @@ public class VistaAdmin extends javax.swing.JFrame {
         ButtonEditarUsuario = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         ButtonAgregarMedicamento = new javax.swing.JButton();
-        ButtonEliminarMedicamento = new javax.swing.JButton();
         ButtonConsultarMedicamento = new javax.swing.JButton();
         ButtonEditarMedicamento = new javax.swing.JButton();
 
@@ -864,22 +863,6 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 138, 8, 0);
         jPanel1.add(ButtonAgregarMedicamento, gridBagConstraints);
 
-        ButtonEliminarMedicamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deleteMedicamentos.png"))); // NOI18N
-        ButtonEliminarMedicamento.setText("Eliminar");
-        ButtonEliminarMedicamento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ButtonEliminarMedicamento.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ButtonEliminarMedicamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonEliminarMedicamentoActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
-        jPanel1.add(ButtonEliminarMedicamento, gridBagConstraints);
-
         ButtonConsultarMedicamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchMedicamentos.png"))); // NOI18N
         ButtonConsultarMedicamento.setText("Consultar");
         ButtonConsultarMedicamento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -1167,12 +1150,6 @@ public class VistaAdmin extends javax.swing.JFrame {
         addMedi.show();
     }//GEN-LAST:event_ButtonAgregarMedicamentoActionPerformed
 
-    private void ButtonEliminarMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarMedicamentoActionPerformed
-        InternalEliminarMedicamento delMedi = new InternalEliminarMedicamento(controlMedicamento);
-        this.DesktopPane.add(delMedi);
-        delMedi.show();
-    }//GEN-LAST:event_ButtonEliminarMedicamentoActionPerformed
-
     private void ButtonConsultarMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarMedicamentoActionPerformed
         InternalConsultarMedicamento conMedi = new InternalConsultarMedicamento(controlMedicamento);
         this.DesktopPane.add(conMedi);
@@ -1272,7 +1249,6 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton ButtonEliminarCampana;
     private javax.swing.JButton ButtonEliminarCita;
     private javax.swing.JButton ButtonEliminarEnfermera;
-    private javax.swing.JButton ButtonEliminarMedicamento;
     private javax.swing.JButton ButtonEliminarMedico;
     private javax.swing.JButton ButtonEliminarPaciente;
     private javax.swing.JButton ButtonEliminarUsuario;

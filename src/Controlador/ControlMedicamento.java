@@ -21,7 +21,7 @@ public class ControlMedicamento {
     }
 
     public String insertarMedicamento(String codigo_medicamento, String nombre, String descripcion, float costo) {
-        Medicamento m = new Medicamento(codigo_medicamento, nombre, descripcion, costo);
+        Medicamento m = new Medicamento(codigo_medicamento, nombre, descripcion, costo, '1');
         return daoMedicamento.guardarMedicamento(m);
     }
 
@@ -29,13 +29,9 @@ public class ControlMedicamento {
         return daoMedicamento.consultarMedicamento(codigo_medicamento);
     }
 
-    public String modificarMedicamento(String codigo_medicamento, String nombre, String descripcion, float costo) {
-        Medicamento m = new Medicamento(codigo_medicamento, nombre, descripcion, costo);
+    public String modificarMedicamento(String codigo_medicamento, String nombre, String descripcion, float costo, char existe) {
+        Medicamento m = new Medicamento(codigo_medicamento, nombre, descripcion, costo, existe);
         return daoMedicamento.modificarMedicamento(m);
-    }
-
-    public String eliminarMedicamento(String num_Medicamento) {
-        return daoMedicamento.eliminarMedicamento(num_Medicamento);
     }
 
     public void cerrarConexionBD() {
