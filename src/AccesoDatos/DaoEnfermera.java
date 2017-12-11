@@ -97,6 +97,20 @@ public class DaoEnfermera {
         }                             
     }
     
+    public boolean verificarExistencia(String id){
+        String sql_select; 
+        sql_select = "SELECT * FROM enfermera WHERE id_persona = '" + id + "'";
+        try{
+            Connection conn= fachada.getConnetion();            
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);   
+            return tabla.next();            
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }
+    }
+    
     public void cerrarConexionBD(){
         fachada.closeConection(fachada.getConnetion());
     }    
