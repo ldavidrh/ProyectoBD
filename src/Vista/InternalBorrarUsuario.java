@@ -41,7 +41,7 @@ public class InternalBorrarUsuario extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Ingrese la cedula del usuario que desea eliminar");
+        jLabel1.setText("Ingrese la cédula del usuario que desea eliminar");
 
         jButton1.setText("Eliminar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -98,10 +98,9 @@ public class InternalBorrarUsuario extends javax.swing.JInternalFrame {
     if(this.FieldCedula.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(this, "Ingrese el usuario");
         }else{
-            String usuario = this.FieldCedula.getText();
-            controlUsuario.eliminarUsuario(usuario);
+            String usuario = this.FieldCedula.getText();            
             JOptionPane.showMessageDialog(this, controlUsuario.eliminarUsuario(usuario));            
-        }        // TODO add your handling code here:
+        }     
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

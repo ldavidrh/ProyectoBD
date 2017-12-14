@@ -7,8 +7,7 @@ package AccesoDatos;
 
 import Modelo.Agenda;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,73 +21,77 @@ public class DaoAgenda {
         fachada = new FachadaBD();
     }
 
-    public String guardarAgenda(Agenda agenda) {
+    public String actualizarAgenda(Agenda agenda) {
         String sql_guardar;
-        sql_guardar = "INSERT INTO agenda VALUES('" + agenda.getId_medico()+ "', '" + agenda.getFecha() + "', '" + agenda.getHora() + "', '" + agenda.getDisponibilidad() + "');";
+        sql_guardar = "INSERT INTO agenda VALUES('" + agenda.getId_medico() + "', '" + agenda.getFecha() + "', '"
+                + agenda.getHora_inicio() + "');";
 
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
-            if (sentencia.executeUpdate(sql_guardar)==1) {
-                return "Agenda guardada exitosamente";
+            if (sentencia.executeUpdate(sql_guardar) == 1) {
+                return "Agenda actualizada exitosamente";
             } else {
-                return "No se pudo guardar la agenda";
+                return "No se pudo actualizar la agenda";
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
-            return "Error al guardar la agenda";
-        }catch(Exception ex){ 
-            System.out.println(ex); 
-            return "Ha ocurrido un error al crear la agenda";
-        } 
-    }
-
-    public String[] consultarAgenda(String id_medico) {
-        String sql_consultar;
-        String[] consulta = new String[4];
-
-        sql_consultar = "SELECT * FROM agenda WHERE num_agenda = '" + id_medico + "';";
-
-        try {
-            Connection conexion = fachada.getConnetion();
-            Statement sentencia = conexion.createStatement();
-            ResultSet tabla = sentencia.executeQuery(sql_consultar);
-
-            if (tabla.next()) {
-                consulta[0] = tabla.getString(1);
-                consulta[1] = tabla.getString(2);
-                consulta[2] = tabla.getString(3);
-                consulta[3] = tabla.getString(4);
-            } else {
-                consulta = null;
-            }
-            return consulta;
-        } catch (SQLException e) {
-            System.out.print(e);
-            return null;
+            System.out.println(ex);
+            return "El médico no está disponible a esa hora";
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return "Ha ocurrido un error al actualizar la agenda";
         }
-
     }
 
-    public String modificarAgenda(Agenda a) {
-        String sql_modificar;
-        sql_modificar = "UPDATE agenda SET fecha ='" + a.getFecha() + "', hora ='"
-                + a.getHora() + "', disponibilidad = '" + a.getDisponibilidad() + "';";
+    public ArrayList consultarAgenda(String id_medico, String fecha) {
+        String sql_select;
+        ArrayList consulta = this.horasDisponibles();
+        sql_select = "SELECT hora_inicio FROM agenda WHERE id_medico = '" + id_medico
+                + "' AND fecha = '" + fecha + "'";
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            if (sentencia.executeUpdate(sql_modificar)==1) {
-                return "Agenda modificada exitosamente";
-            } else {
-                return "No existe una agenda con ese numero";
-            }
-        } catch (Exception ex) {
-            System.out.println(ex);
-            return "Ha ocurrido un error al modificar la agenda";
-        }
+            ResultSet tabla = sentencia.executeQuery(sql_select);
 
+            if (tabla.next()) {
+                while (tabla.next()) {
+                    if (consulta.contains(tabla.getString(1))) {
+                        consulta.remove(tabla.getString(1));
+                    }
+                }
+            }else{
+                return null;
+            }
+            return consulta;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
     }
 
+    public ArrayList horasDisponibles() {
+        ArrayList horas = new ArrayList();
+
+        horas.add("7:00");
+        horas.add("7:30");
+        horas.add("8:00");
+        horas.add("8:30");
+        horas.add("9:00");
+        horas.add("9:30");
+        horas.add("10:00");
+        horas.add("10:30");
+        horas.add("11:00");
+        horas.add("11:30");
+        horas.add("14:00");
+        horas.add("14:30");
+        horas.add("15:00");
+        horas.add("15:30");
+        horas.add("16:00");
+        horas.add("16:30");
+
+        return horas;
+    }
+    
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());
     }

@@ -7,6 +7,7 @@ package Controlador;
 
 import AccesoDatos.DaoAgenda;
 import Modelo.Agenda;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,19 +20,14 @@ public class ControlAgenda {
         daoAgenda = new DaoAgenda();
     }
     
-     public String insertarAgenda(String id_medico, String fecha, String hora, String disponibilidad){
-        Agenda a  = new Agenda(id_medico, fecha, hora, disponibilidad);
-        return daoAgenda.guardarAgenda(a);
+     public String actualizarAgenda(String id_medico, String fecha, String hora_inicio){
+        Agenda a  = new Agenda(id_medico, fecha, hora_inicio);
+        return daoAgenda.actualizarAgenda(a);
     }
     
-    public String[] consultarAgenda(String id_medico){
-        return daoAgenda.consultarAgenda(id_medico);
-    }
-    
-    public String modificarAgenda(String id_medico, String fecha, String hora, String disponibilidad){
-        Agenda a = new Agenda(id_medico, fecha, hora, disponibilidad);
-        return daoAgenda.modificarAgenda(a);
-    }
+    public ArrayList consultarAgenda(String id_medico, String fecha){
+        return daoAgenda.consultarAgenda(id_medico, fecha);
+    }    
     
     public void cerrarConexionBD(){
         daoAgenda.cerrarConexionBD();

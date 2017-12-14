@@ -12,14 +12,12 @@ package Modelo;
 public class Agenda {
     String id_medico;
     String fecha;
-    String hora;
-    String disponibilidad;
+    String hora_inicio;
 
-    public Agenda(String id_medico, String fecha, String hora, String disponibilidad) {
+    public Agenda(String id_medico, String fecha, String hora_inicio) {
         this.id_medico = id_medico;
         this.fecha = fecha;
-        this.hora = hora;
-        this.disponibilidad = disponibilidad;
+        this.hora_inicio = hora_inicio; 
     }
         
     public String getId_medico() {
@@ -38,20 +36,11 @@ public class Agenda {
         this.fecha = fecha;
     }
 
-    public String getHora() {
-        return hora;
+    public String getHora_inicio() {
+        return hora_inicio;
     }
 
-    public void setHora(String hora) {
-        this.hora = hora;
-    }
-
-    public String getDisponibilidad() {
-        return disponibilidad;
-    }
-
-    public void setDisponibilidad(String disponibilidad) {
-        this.disponibilidad = disponibilidad;
-    }
-    
+    public void setHora_inicio(String hora_inicio) {
+        this.hora_inicio = hora_inicio;
+    }     
 }
