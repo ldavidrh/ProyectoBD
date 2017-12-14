@@ -162,7 +162,8 @@ CREATE TABLE cita
 	fecha DATE NOT NULL,
 	hora TIME NOT NULL,
 	precio FLOAT(30) NOT NULL,
-
+	
+	PRIMARY KEY(id_medico, id_paciente,  fecha, hora),
 	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE,
 	FOREIGN KEY (id_paciente) REFERENCES paciente (id_persona) ON DELETE CASCADE
 );
