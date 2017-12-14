@@ -10,13 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import Controlador.ControlUsuario;
+import Controlador.*;
 /**
  *
  * @author Luis
  */
 public class VistaMedico extends javax.swing.JFrame {
     ControlUsuario controlUsuario;
+    ControlHistoriaClinica controlHistoriaClinica;
     /**
      * Creates new form VistaMedico
      */
@@ -61,7 +62,7 @@ public class VistaMedico extends javax.swing.JFrame {
         ButtonConsultarHistoriaPaciente = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         ButtonFormulaMedica = new javax.swing.JButton();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        DesktopPane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,14 +122,14 @@ public class VistaMedico extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Paciente", jPanel1);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout DesktopPaneLayout = new javax.swing.GroupLayout(DesktopPane);
+        DesktopPane.setLayout(DesktopPaneLayout);
+        DesktopPaneLayout.setHorizontalGroup(
+            DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        DesktopPaneLayout.setVerticalGroup(
+            DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 288, Short.MAX_VALUE)
         );
 
@@ -139,7 +140,7 @@ public class VistaMedico extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDesktopPane1)
+                    .addComponent(DesktopPane)
                     .addComponent(jTabbedPane1))
                 .addContainerGap())
         );
@@ -149,7 +150,7 @@ public class VistaMedico extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDesktopPane1)
+                .addComponent(DesktopPane)
                 .addContainerGap())
         );
 
@@ -157,7 +158,9 @@ public class VistaMedico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonConsultarHistoriaPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarHistoriaPacienteActionPerformed
-        // TODO add your handling code here:
+        InternalConsultarHistoriaClinica conHis = new InternalConsultarHistoriaClinica(controlHistoriaClinica);
+        this.DesktopPane.add(conHis);
+        conHis.show();
     }//GEN-LAST:event_ButtonConsultarHistoriaPacienteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -214,8 +217,8 @@ public class VistaMedico extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonConsultarHistoriaPaciente;
     private javax.swing.JButton ButtonFormulaMedica;
+    private javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JButton jButton2;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables

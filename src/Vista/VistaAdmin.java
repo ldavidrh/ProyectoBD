@@ -19,6 +19,7 @@ import javax.swing.JTextField;
  */
 public class VistaAdmin extends javax.swing.JFrame {
     ControlUsuario controlUsuario;
+    ControlCita controlCita;
     ControlMedicamento controlMedicamento;
     ControlAgenda controlAgenda;
     ControlPaciente controlPaciente;
@@ -50,6 +51,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         controlEnfermera = new ControlEnfermera();
         controlCampana = new ControlCampana();
         controlHistoria = new ControlHistoriaClinica();
+        controlCita = new ControlCita();
         controlCama = new ControlCama();
         HiloCamas hilo = new HiloCamas(controlAsignada, controlCama);
         hilo.start();
@@ -1066,7 +1068,9 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarCampanaActionPerformed
 
     private void ButtonAgregarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarCitaActionPerformed
-        // TODO add your handling code here:
+        InternalAgregarCita addCita = new InternalAgregarCita(controlCita, controlMedico, controlAgenda, controlPaciente);
+        this.DesktopPane.add(addCita);
+        addCita.show();
     }//GEN-LAST:event_ButtonAgregarCitaActionPerformed
 
     private void ButtonEliminarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarCitaActionPerformed
