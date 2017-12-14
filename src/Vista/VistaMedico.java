@@ -16,13 +16,35 @@ import Controlador.*;
  * @author Luis
  */
 public class VistaMedico extends javax.swing.JFrame {
-    ControlUsuario controlUsuario;
     ControlHistoriaClinica controlHistoriaClinica;
+    ControlFormula controlFormula;
+    ControlUsuario controlUsuario;
+    ControlCita controlCita;
+    ControlMedicamento controlMedicamento;
+    ControlAgenda controlAgenda;
+    ControlPaciente controlPaciente;
+    ControlPersona controlPersona;
+    ControlEnfermera controlEnfermera;
+    ControlMedico controlMedico;
+    ControlArea controlArea;
+    ControlEmpleado controlEmpleado;
+    ControlCampana controlCampana;
+    ControlHistoriaClinica controlHistoria;
+    ControlCama controlCama;
+    ControlAsignada controlAsignada;
+    ControlHabilidades controlHabilidades;
+    
+    
     /**
      * Creates new form VistaMedico
      */
     public VistaMedico() {
+        this.controlHistoriaClinica = new ControlHistoriaClinica();
         this.controlUsuario = new ControlUsuario();
+        this.controlFormula = new ControlFormula();
+        this.controlMedico = new ControlMedico();
+        this.controlPaciente = new ControlPaciente();
+        this.controlMedicamento = new ControlMedicamento();
         initComponents();
 
         //Creacion de InputDialog para login
@@ -61,6 +83,7 @@ public class VistaMedico extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         ButtonConsultarHistoriaPaciente = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         ButtonFormulaMedica = new javax.swing.JButton();
         DesktopPane = new javax.swing.JDesktopPane();
 
@@ -86,6 +109,29 @@ public class VistaMedico extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addComponent(ButtonConsultarHistoriaPaciente)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(284, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ButtonConsultarHistoriaPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Paciente", jPanel1);
+
         ButtonFormulaMedica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/formula.png"))); // NOI18N
         ButtonFormulaMedica.setText("Emitir formula medica");
         ButtonFormulaMedica.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -96,31 +142,24 @@ public class VistaMedico extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(ButtonConsultarHistoriaPaciente)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(243, 243, 243)
                 .addComponent(ButtonFormulaMedica)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ButtonConsultarHistoriaPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ButtonFormulaMedica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(ButtonFormulaMedica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Paciente", jPanel1);
+        jTabbedPane1.addTab("Formula medica", jPanel2);
 
         javax.swing.GroupLayout DesktopPaneLayout = new javax.swing.GroupLayout(DesktopPane);
         DesktopPane.setLayout(DesktopPaneLayout);
@@ -168,7 +207,9 @@ public class VistaMedico extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void ButtonFormulaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonFormulaMedicaActionPerformed
-        // TODO add your handling code here:
+        InternalEmitirFormulaMedica emitirFormula = new InternalEmitirFormulaMedica(controlFormula, controlMedico, controlPaciente, controlMedicamento);
+        this.DesktopPane.add(emitirFormula);
+        emitirFormula.show();
     }//GEN-LAST:event_ButtonFormulaMedicaActionPerformed
 
     /**
@@ -220,6 +261,7 @@ public class VistaMedico extends javax.swing.JFrame {
     private javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
