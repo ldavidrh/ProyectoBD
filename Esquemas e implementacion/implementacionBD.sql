@@ -128,7 +128,7 @@ CREATE TABLE asiste
 (
 	id_persona VARCHAR(30) NOT NULL,
 	codigo_campana VARCHAR(30) NOT NULL,
-	descuento INTEGER NOT NULL,
+	descuento_aplicado BIT NOT NULL,
 
 	FOREIGN KEY (id_persona) REFERENCES paciente (id_persona) ON DELETE CASCADE
 );
@@ -162,7 +162,8 @@ CREATE TABLE cita
 	fecha DATE NOT NULL,
 	hora TIME NOT NULL,
 	precio FLOAT(30) NOT NULL,
-
+	
+	PRIMARY KEY(id_medico, id_paciente,  fecha, hora),
 	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE,
 	FOREIGN KEY (id_paciente) REFERENCES paciente (id_persona) ON DELETE CASCADE
 );
@@ -230,7 +231,7 @@ INSERT INTO enfermera VALUES ('222',3);
 
 INSERT INTO habilidades VALUES ('222','Vacunar');
 
-INSERT INTO asiste VALUES ('111','1', 50);
+INSERT INTO asiste VALUES ('111','1', '0');
 
 INSERT INTO causa VALUES ('1000','Dolor en espalda', 'Fuertes dolores lumbares');
 

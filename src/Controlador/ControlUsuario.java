@@ -6,6 +6,7 @@
 package Controlador;
 
 import AccesoDatos.DaoUsuario;
+import Modelo.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -17,14 +18,14 @@ import java.util.logging.Logger;
  */
 public class ControlUsuario {
 
-    DaoUsuario daousuario;
+    DaoUsuario daoUsuario;
 
     public ControlUsuario() {
-        daousuario = new DaoUsuario();
+        daoUsuario = new DaoUsuario();
     }
 
-    public boolean consultarDatos(String cedula, String password, String tipo) {
-        String[] resultado = daousuario.consultarDatos(cedula);
+    public boolean verificarUsuario(String cedula, String password, String tipo) {
+        String[] resultado = daoUsuario.consultarDatos(cedula);
         if (resultado == null) {
             return false;
         } else {
@@ -35,4 +36,25 @@ public class ControlUsuario {
             }
         }
     }
+    
+    public String agregarUsuario (String usuario,String contrasenia,String tipo_u) {
+        Usuario u = new Usuario(usuario,contrasenia,tipo_u);
+        return daoUsuario.guardarUsuario(u);
+    }
+    
+    public String eliminarUsuario (String usuario){
+        return daoUsuario.eliminarUsuario(usuario);
+    }
+    
+    public String[] consultarUsuario(String usuario){
+        return daoUsuario.consultarDatos(usuario);
+    }
+    
+    public String modificarUsuario(String usuario,String contrasenia){
+        return daoUsuario.modificarUsuario(usuario,contrasenia);
+    }
+    
+    
+    
+    
 }

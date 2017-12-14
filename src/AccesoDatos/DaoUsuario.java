@@ -25,8 +25,8 @@ public class DaoUsuario {
     
     public String guardarUsuario(Usuario u){
         String sql_guardar;
-        sql_guardar = "INSERT INTO usuario VALUES('" + u.getId_persona()+ "', '" +
-                      u.getPassword()+ "', '" + u.getTipo_u() + "')";
+        sql_guardar = "INSERT INTO usuario VALUES('" + u.getUsuario()+ "', '" +
+                      u.getContrasenia()+ "', '" + u.getTipo_u() + "')";
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();             
@@ -46,10 +46,9 @@ public class DaoUsuario {
         }        
     }
             
-    public String modificarUsuario(Usuario u){
+    public String modificarUsuario(String usuario, String contrasenia){
         String sql_modificar;
-        sql_modificar = "UPDATE usuario SET password ='" + u.getPassword() + "', tipo_u ='" +
-                        u.getTipo_u() + "' WHERE id_persona = '" + u.getId_persona() + "'";
+        sql_modificar = "UPDATE usuario SET password='" + contrasenia + "' WHERE id_persona = '" + usuario + "'";
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
