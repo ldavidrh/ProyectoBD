@@ -69,13 +69,9 @@
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="FieldCedulaPaciente" alignment="0" max="32767" attributes="0"/>
                               <Component id="FieldCedulaMedico" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="jSpinner1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jSpinner2" min="-2" max="-2" attributes="0"/>
-                              </Group>
                               <Component id="FieldPrecio" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jDateChooser1" pref="107" max="32767" attributes="0"/>
+                              <Component id="DateChooser" pref="107" max="32767" attributes="0"/>
+                              <Component id="ComboBoxHora" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="ButtonAgregar" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -100,13 +96,12 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
+                      <Component id="DateChooser" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jSpinner2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ComboBoxHora" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -155,16 +150,25 @@
         </Component>
         <Component class="javax.swing.JTextField" name="FieldPrecio">
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner1">
-        </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner2">
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+        <Component class="com.toedter.calendar.JDateChooser" name="DateChooser">
         </Component>
         <Component class="javax.swing.JButton" name="ButtonAgregar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonAgregarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="ComboBoxHora">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

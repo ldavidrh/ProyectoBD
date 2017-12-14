@@ -72,17 +72,6 @@ CREATE TABLE empleado
 	FOREIGN KEY (id_jefe) REFERENCES empleado (id_persona)
 );
 
-DROP TABLE IF EXISTS agenda CASCADE;
-CREATE TABLE agenda
-(
-	id_medico VARCHAR(30) NOT NULL,
-	fecha DATE NOT NULL,
-	hora TIME NOT NULL,
-	disponibilidad CHAR(2) NOT NULL,
-	
-	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE
-);
-
 DROP TABLE IF EXISTS medico CASCADE;
 CREATE TABLE medico
 (
@@ -92,6 +81,17 @@ CREATE TABLE medico
 	universidad VARCHAR(30) NOT NULL,	
 
 	FOREIGN KEY (id_persona) REFERENCES empleado (id_persona) ON DELETE CASCADE	
+);
+
+DROP TABLE IF EXISTS agenda CASCADE;
+CREATE TABLE agenda
+(
+	id_medico VARCHAR(30) NOT NULL,
+	fecha DATE NOT NULL,
+	hora_inicio TIME NOT NULL,	
+	
+	PRIMARY KEY(id_medico, fecha, hora_inicio),
+	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS campana CASCADE;
@@ -162,7 +162,8 @@ CREATE TABLE cita
 	fecha DATE NOT NULL,
 	hora TIME NOT NULL,
 	precio FLOAT(30) NOT NULL,
-
+	
+	PRIMARY KEY(id_medico, id_paciente,  fecha, hora),
 	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE,
 	FOREIGN KEY (id_paciente) REFERENCES paciente (id_persona) ON DELETE CASCADE
 );
@@ -218,11 +219,11 @@ INSERT INTO empleado VALUES ('444','Administrador','15000000', 'Miguel@', '123',
 INSERT INTO empleado VALUES ('333','Medico','10000000', 'luis@', '123', '444');
 INSERT INTO empleado VALUES ('222','Enfermera','2000000', 'diana@', '123', '333');
 
-INSERT INTO agenda VALUES ('333','31-12-2017','5:30', 'No');
-INSERT INTO agenda VALUES ('333','31-12-2017','2:30', 'No');
-INSERT INTO agenda VALUES ('333','31-12-2017','9:30', 'Si');
-
 INSERT INTO medico VALUES ('333','Neurologia','321', 'Valle');
+
+INSERT INTO agenda VALUES ('333','31-12-2017','5:30');
+INSERT INTO agenda VALUES ('333','31-12-2017','2:30');
+INSERT INTO agenda VALUES ('333','31-12-2017','9:30');
 
 INSERT INTO campana VALUES ('1','Maluma','Fondos para curar el cancer', '31-12-2017', '333');
 
@@ -242,4 +243,4 @@ INSERT INTO medicamento VALUES ('1212','Dolex', 'Ayuda contra el malestar genera
 
 INSERT INTO formula VALUES ('0001','1212', '333', '111');
 
-INSERT INTO usuario VALUES ('1','1','Admin');
+INSERT INTO usuario VALUES ('1','1','admin');
