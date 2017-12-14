@@ -231,7 +231,7 @@ INSERT INTO enfermera VALUES ('222',3);
 
 INSERT INTO habilidades VALUES ('222','Vacunar');
 
-INSERT INTO asiste VALUES ('111','1', 50, '1');
+INSERT INTO asiste VALUES ('111','1', '0');
 
 INSERT INTO causa VALUES ('1000','Dolor en espalda', 'Fuertes dolores lumbares');
 
