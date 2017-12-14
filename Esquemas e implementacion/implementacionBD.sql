@@ -88,9 +88,10 @@ CREATE TABLE agenda
 (
 	id_medico VARCHAR(30) NOT NULL,
 	fecha DATE NOT NULL,
-	hora TIME NOT NULL,
+	hora_inicio TIME NOT NULL,
+	hora_fin TIME NOT NULL,
 	
-	PRIMARY KEY(id_medico, fecha, hora),
+	PRIMARY KEY(id_medico, fecha, hora_inicio),
 	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE
 );
 
