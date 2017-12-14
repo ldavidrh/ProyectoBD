@@ -4,13 +4,18 @@
  * and open the template in the editor.
  */
 package Vista;
+
 import Controlador.ControlMedicamento;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luis
  */
 public class InternalAgregarMedicamento extends javax.swing.JInternalFrame {
+
     ControlMedicamento controlMedicamento;
+
     /**
      * Creates new form InternalAgregarMedicamento
      */
@@ -47,11 +52,11 @@ public class InternalAgregarMedicamento extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Codigo");
+        jLabel1.setText("Código");
 
         jLabel2.setText("Nombre");
 
-        jLabel3.setText("Descripcion");
+        jLabel3.setText("Descripción");
 
         jLabel4.setText("Costo");
 
@@ -60,6 +65,11 @@ public class InternalAgregarMedicamento extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(TextAreaDescripcion);
 
         ButtonAgregar.setText("Agregar");
+        ButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -67,23 +77,23 @@ public class InternalAgregarMedicamento extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(FieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FieldNombre)
+                            .addComponent(FieldCodigo)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FieldCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                            .addComponent(FieldCosto)))
                     .addComponent(ButtonAgregar))
                 .addGap(0, 10, Short.MAX_VALUE))
         );
@@ -133,6 +143,25 @@ public class InternalAgregarMedicamento extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarActionPerformed
+        // TODO add your handling code here:
+        try {
+            if (this.FieldCodigo.getText().trim().isEmpty() || this.FieldNombre.getText().trim().isEmpty()
+                    || this.TextAreaDescripcion.getText().trim().isEmpty() || this.FieldCosto.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Existen casillas vacías");
+            } else {
+                String codigo = this.FieldCodigo.getText();
+                String nombre = this.FieldNombre.getText();
+                String descripcion = this.TextAreaDescripcion.getText();
+                float costo = Float.parseFloat(this.FieldCosto.getText().trim());
+
+                JOptionPane.showMessageDialog(this, controlMedicamento.insertarMedicamento(codigo, nombre, descripcion, costo));
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un costo de tipo numérico");
+        }
+    }//GEN-LAST:event_ButtonAgregarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

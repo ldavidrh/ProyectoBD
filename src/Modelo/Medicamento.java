@@ -14,12 +14,14 @@ public class Medicamento {
     String nombre;
     String descripcion;
     float costo;
+    char existe;
 
-    public Medicamento(String codigo_medicamento, String nombre, String descripcion, float costo) {
+    public Medicamento(String codigo_medicamento, String nombre, String descripcion, float costo, char existe) {
         this.codigo_medicamento = codigo_medicamento;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.costo = costo;
+        this.existe = existe;
     }
 
     public String getCodigo_medicamento() {
@@ -53,5 +55,8 @@ public class Medicamento {
     public void setCosto(float costo) {
         this.costo = costo;
     }
-    
+
+    public char getExiste() {
+        return existe;
+    }
 }

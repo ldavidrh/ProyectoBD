@@ -5,6 +5,7 @@
  */
 package Vista;
 import Controlador.ControlMedicamento;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
@@ -44,6 +45,11 @@ public class InternalConsultarMedicamento extends javax.swing.JInternalFrame {
         jLabel1.setText("Ingrese el codigo del medicamento que desea consultar");
 
         ButtonConsultar.setText("Consultar");
+        ButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -96,6 +102,24 @@ public class InternalConsultarMedicamento extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarActionPerformed
+        // TODO add your handling code here:
+        if (this.FieldCodigo.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el código del medicamento");
+        } else {
+            String cod = this.FieldCodigo.getText();
+            String consulta = "";
+            String[] medicamento = controlMedicamento.consultarMedicamento(cod);
+            if (medicamento == null) {
+                consulta = "No existe registro de un medicamento con ese código";
+            } else {                
+                consulta = "Nombre: " + medicamento[1] + "\nDescripción: " + medicamento[2]
+                            + "\nCosto: " + medicamento[3] + medicamento[4];                 
+            }
+            this.TextArea.setText(consulta);
+        }
+    }//GEN-LAST:event_ButtonConsultarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
