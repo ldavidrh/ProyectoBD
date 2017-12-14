@@ -42,7 +42,7 @@ public class VistaMedico extends javax.swing.JFrame {
             } else if (resultado == JOptionPane.OK_OPTION) {
                 String cedula = fieldCedula.getText();
                 String password = new String(fieldPassword.getPassword());
-                existe = controlUsuario.consultarDatos(cedula, password, "medico");
+                existe = controlUsuario.verificarUsuario(cedula, password, "medico");
             }
         } while (!existe);
  }

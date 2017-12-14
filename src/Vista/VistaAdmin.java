@@ -72,7 +72,7 @@ public class VistaAdmin extends javax.swing.JFrame {
             }else if(resultado == JOptionPane.OK_OPTION){
                 String cedula = fieldCedula.getText();
                 String password = new String(fieldPassword.getPassword());
-                existe = controlUsuario.consultarDatos(cedula, password, "admin");
+                existe = controlUsuario.verificarUsuario(cedula, password, "admin");
             }
         }while(!existe);
     }
@@ -136,7 +136,6 @@ public class VistaAdmin extends javax.swing.JFrame {
         PanelUsuarios = new javax.swing.JPanel();
         ButtonAgregarUsuario = new javax.swing.JButton();
         ButtonEliminarUsuario = new javax.swing.JButton();
-        ButtonConsultarUsuario = new javax.swing.JButton();
         ButtonEditarUsuario = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         ButtonAgregarMedicamento = new javax.swing.JButton();
@@ -811,22 +810,6 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
         PanelUsuarios.add(ButtonEliminarUsuario, gridBagConstraints);
 
-        ButtonConsultarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchUser.png"))); // NOI18N
-        ButtonConsultarUsuario.setText("Consultar");
-        ButtonConsultarUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ButtonConsultarUsuario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ButtonConsultarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonConsultarUsuarioActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
-        PanelUsuarios.add(ButtonConsultarUsuario, gridBagConstraints);
-
         ButtonEditarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editUser.png"))); // NOI18N
         ButtonEditarUsuario.setText("Editar");
         ButtonEditarUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -1093,12 +1076,8 @@ public class VistaAdmin extends javax.swing.JFrame {
         delUser.show();
     }//GEN-LAST:event_ButtonEliminarUsuarioActionPerformed
 
-    private void ButtonConsultarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ButtonConsultarUsuarioActionPerformed
-
     private void ButtonEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarUsuarioActionPerformed
-        InternalConsultarUsuario conUser = new InternalConsultarUsuario(controlUsuario);
+        InternalEditarUsuario conUser = new InternalEditarUsuario(controlUsuario);
         this.DesktopPane.add(conUser);
         conUser.show();
     }//GEN-LAST:event_ButtonEditarUsuarioActionPerformed
@@ -1232,7 +1211,6 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton ButtonConsultarMedicamento;
     private javax.swing.JButton ButtonConsultarMedico;
     private javax.swing.JButton ButtonConsultarPaciente;
-    private javax.swing.JButton ButtonConsultarUsuario;
     private javax.swing.JButton ButtonEditarArea;
     private javax.swing.JButton ButtonEditarAsignarCama;
     private javax.swing.JButton ButtonEditarCama;

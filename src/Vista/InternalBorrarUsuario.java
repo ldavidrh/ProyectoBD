@@ -5,6 +5,7 @@
  */
 package Vista;
 import Controlador.ControlUsuario;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
@@ -43,6 +44,11 @@ public class InternalBorrarUsuario extends javax.swing.JInternalFrame {
         jLabel1.setText("Ingrese la cedula del usuario que desea eliminar");
 
         jButton1.setText("Eliminar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,6 +93,16 @@ public class InternalBorrarUsuario extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    if(this.FieldCedula.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ingrese el usuario");
+        }else{
+            String usuario = this.FieldCedula.getText();
+            controlUsuario.eliminarUsuario(usuario);
+            JOptionPane.showMessageDialog(this, controlUsuario.eliminarUsuario(usuario));            
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

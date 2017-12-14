@@ -5,6 +5,7 @@
  */
 package Vista;
 import Controlador.ControlUsuario;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
@@ -119,7 +120,16 @@ public class InternalAgregarUsuario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarActionPerformed
-        // TODO add your handling code here:
+       if(this.FieldCedula.getText().trim().isEmpty() || this.FieldPassword.getText().trim().isEmpty()
+           ){
+            JOptionPane.showMessageDialog(this, "Existen casillas vacías");
+        }else{
+            String usuario = this.FieldCedula.getText();
+            String contrasenia = this.FieldPassword.getText();
+            String tipo_u = this.ComboTipoUsuario.getItemAt(WIDTH);
+            
+            JOptionPane.showMessageDialog(this, controlUsuario.agregarUsuario(usuario, contrasenia, tipo_u));           
+        } // TODO add your handling code here:
     }//GEN-LAST:event_ButtonAgregarActionPerformed
 
 

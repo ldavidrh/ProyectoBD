@@ -10,25 +10,31 @@ package Modelo;
  * @author invitado
  */
 public class Usuario {
-    String id_persona;
-    String password;
+    String usuario;
+    String contrasenia;
     String tipo_u;
     
-    public Usuario(){}
-    public String getId_persona() {
-        return id_persona;
+    public Usuario(String usuario, String contrasenia,String tipo_u){
+    this.usuario=usuario;
+    this.contrasenia=contrasenia;
+    this.tipo_u=tipo_u;
+    }
+    
+    
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setId_persona(String usuario) {
-        this.id_persona = usuario;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public String getPassword() {
-        return password;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
-    public void setContraseña(String contraseña) {
-        this.password = contraseña;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
     public String getTipo_u() {
