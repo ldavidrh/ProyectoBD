@@ -5,18 +5,47 @@
  */
 package Vista;
 
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import Controlador.ControlUsuario;
 /**
  *
  * @author Luis
  */
 public class VistaMedico extends javax.swing.JFrame {
-
+    ControlUsuario controlUsuario;
     /**
      * Creates new form VistaMedico
      */
     public VistaMedico() {
+        this.controlUsuario = new ControlUsuario();
         initComponents();
-    }
+
+        //Creacion de InputDialog para login
+        JTextField fieldCedula = new JTextField();
+        JPasswordField fieldPassword = new JPasswordField();
+
+        JComponent[] entradas = {
+            new JLabel("Cedula"),
+            fieldCedula,
+            new JLabel("Contraseña"),
+            fieldPassword
+        };//Finaliza creacion de ventana login
+        boolean existe = false;
+        do {
+            int resultado = JOptionPane.showConfirmDialog(this, entradas, "LOGIN", JOptionPane.CANCEL_OPTION);
+            if (resultado == JOptionPane.CANCEL_OPTION | resultado == JOptionPane.CLOSED_OPTION) {
+                System.exit(0);
+            } else if (resultado == JOptionPane.OK_OPTION) {
+                String cedula = fieldCedula.getText();
+                String password = new String(fieldPassword.getPassword());
+                existe = controlUsuario.consultarDatos(cedula, password, "medico");
+            }
+        } while (!existe);
+ }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,20 +58,20 @@ public class VistaMedico extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        ButtonConsultarHistoriaPaciente = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         ButtonFormulaMedica = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/historiaClinica.png"))); // NOI18N
-        jButton1.setText("Historia Clinica");
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonConsultarHistoriaPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/historiaClinica.png"))); // NOI18N
+        ButtonConsultarHistoriaPaciente.setText("Historia Clinica");
+        ButtonConsultarHistoriaPaciente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonConsultarHistoriaPaciente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonConsultarHistoriaPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ButtonConsultarHistoriaPacienteActionPerformed(evt);
             }
         });
 
@@ -72,7 +101,7 @@ public class VistaMedico extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(129, 129, 129)
-                .addComponent(jButton1)
+                .addComponent(ButtonConsultarHistoriaPaciente)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
@@ -84,7 +113,7 @@ public class VistaMedico extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtonConsultarHistoriaPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ButtonFormulaMedica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -127,9 +156,9 @@ public class VistaMedico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ButtonConsultarHistoriaPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarHistoriaPacienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ButtonConsultarHistoriaPacienteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -153,16 +182,24 @@ public class VistaMedico extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMedico.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMedico.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMedico.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaMedico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VistaMedico.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -175,8 +212,8 @@ public class VistaMedico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonConsultarHistoriaPaciente;
     private javax.swing.JButton ButtonFormulaMedica;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;

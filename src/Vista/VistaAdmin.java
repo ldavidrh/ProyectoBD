@@ -72,7 +72,7 @@ public class VistaAdmin extends javax.swing.JFrame {
             }else if(resultado == JOptionPane.OK_OPTION){
                 String cedula = fieldCedula.getText();
                 String password = new String(fieldPassword.getPassword());
-                existe = controlUsuario.consultarDatos(cedula, password);
+                existe = controlUsuario.consultarDatos(cedula, password, "admin");
             }
         }while(!existe);
     }

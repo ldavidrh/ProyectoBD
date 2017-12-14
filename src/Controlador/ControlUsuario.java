@@ -23,12 +23,12 @@ public class ControlUsuario {
         daousuario = new DaoUsuario();
     }
 
-    public boolean consultarDatos(String cedula, String password) {
+    public boolean consultarDatos(String cedula, String password, String tipo) {
         String[] resultado = daousuario.consultarDatos(cedula);
         if (resultado == null) {
             return false;
         } else {
-            if (resultado[1].equals(password)) {
+            if (resultado[1].equals(password) && resultado[2].equals(tipo)) {
                 return true;
             } else {
                 return false;
