@@ -221,9 +221,9 @@ INSERT INTO empleado VALUES ('222','Enfermera','2000000', 'diana@', '123', '333'
 
 INSERT INTO medico VALUES ('333','Neurologia','321', 'Valle');
 
-INSERT INTO agenda VALUES ('333','31-12-2017','5:30');
-INSERT INTO agenda VALUES ('333','31-12-2017','2:30');
-INSERT INTO agenda VALUES ('333','31-12-2017','9:30');
+INSERT INTO agenda VALUES ('333','31-12-2017','5:30', '6:00');
+INSERT INTO agenda VALUES ('333','31-12-2017','2:30', '3:00');
+INSERT INTO agenda VALUES ('333','31-12-2017','9:30', '10:00');
 
 INSERT INTO campana VALUES ('1','Maluma','Fondos para curar el cancer', '31-12-2017', '333');
 
