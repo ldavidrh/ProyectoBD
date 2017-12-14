@@ -90,6 +90,7 @@ CREATE TABLE agenda
 	fecha DATE NOT NULL,
 	hora TIME NOT NULL,
 	
+	PRIMARY KEY(id_medico, fecha, hora),
 	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE
 );
 
@@ -219,9 +220,9 @@ INSERT INTO empleado VALUES ('222','Enfermera','2000000', 'diana@', '123', '333'
 
 INSERT INTO medico VALUES ('333','Neurologia','321', 'Valle');
 
-INSERT INTO agenda VALUES ('333','31-12-2017','5:30', 'No');
-INSERT INTO agenda VALUES ('333','31-12-2017','2:30', 'No');
-INSERT INTO agenda VALUES ('333','31-12-2017','9:30', 'Si');
+INSERT INTO agenda VALUES ('333','31-12-2017','5:30');
+INSERT INTO agenda VALUES ('333','31-12-2017','2:30');
+INSERT INTO agenda VALUES ('333','31-12-2017','9:30');
 
 INSERT INTO campana VALUES ('1','Maluma','Fondos para curar el cancer', '31-12-2017', '333');
 
