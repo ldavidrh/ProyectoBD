@@ -411,7 +411,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         PanelPaciente.add(ButtonEditarPaciente1, gridBagConstraints);
 
         ButtonEditarPaciente2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/sinNombreAun.png"))); // NOI18N
-        ButtonEditarPaciente2.setText("...");
+        ButtonEditarPaciente2.setText("Camas");
         ButtonEditarPaciente2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ButtonEditarPaciente2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         ButtonEditarPaciente2.addActionListener(new java.awt.event.ActionListener() {
@@ -1118,7 +1118,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonCamasAsignadasActionPerformed
 
     private void ButtonEditarPaciente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarPaciente2ActionPerformed
-        InternalMovimientosPaciente movPac = new InternalMovimientosPaciente(controlPaciente, controlCama);
+        InternalMovimientosPaciente movPac = new InternalMovimientosPaciente(controlPaciente, controlCama, controlAsignada);
         this.DesktopPane.add(movPac);
         movPac.show();
     }//GEN-LAST:event_ButtonEditarPaciente2ActionPerformed
