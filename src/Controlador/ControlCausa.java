@@ -7,6 +7,7 @@ package Controlador;
 
 import AccesoDatos.DaoCausa;
 import Modelo.Causa;
+import java.util.ArrayList;
 
 /**
  *
@@ -41,6 +42,10 @@ public class ControlCausa {
     public String obtenerCodigo(String nombre){
         return daoCausa.obtenerCodigo(nombre);
     }
+    
+    public ArrayList consultarCausas(){
+        return daoCausa.consultarCausas();
+    } 
     
     public void cerrarConexionBD(){
         daoCausa.cerrarConexionBD();
