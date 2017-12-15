@@ -150,9 +150,9 @@ public class DaoAsignada {
             
             while (tabla.next()) {
                listar = listar +
-                       "persona: " + tabla.getString(1) +
-                       "numero de cama: " + tabla.getString(2) +
-                       "fecha de entrada: " + tabla.getString(3) +
+                       "persona: " + tabla.getString(1) + " "+
+                       "numero de cama: " + tabla.getString(2) + " "+
+                       "fecha de entrada: " + tabla.getString(3) + " "+
                        "fechaa de salida: " + tabla.getString(4) + "\n";
             }
             } catch (SQLException ex) {
