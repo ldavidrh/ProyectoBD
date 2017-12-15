@@ -4,18 +4,22 @@
  * and open the template in the editor.
  */
 package Vista;
+import Controlador.ControlAsignada;
 import Controlador.ControlCama;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
  */
 public class InternalCamasAsignadas extends javax.swing.JInternalFrame {
     ControlCama controlCama;
+    ControlAsignada controlAsignada;
     /**
      * Creates new form InternalCamasAsignadas
      */
-    public InternalCamasAsignadas(ControlCama controlCama) {
+    public InternalCamasAsignadas(ControlCama controlCama,ControlAsignada controlAsignada) {
         this.controlCama = controlCama;
+        this.controlAsignada = controlAsignada;
         initComponents();
     }
 
@@ -44,6 +48,11 @@ public class InternalCamasAsignadas extends javax.swing.JInternalFrame {
         jLabel1.setText("Ingrese el numero de cama de la que desea ver el historial");
 
         ButtonConsultarHistorialCAma.setText("Consultar");
+        ButtonConsultarHistorialCAma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonConsultarHistorialCAmaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -96,6 +105,17 @@ public class InternalCamasAsignadas extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonConsultarHistorialCAmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarHistorialCAmaActionPerformed
+     if(this.FieldNumCama.getText().trim().isEmpty()
+           ){
+            JOptionPane.showMessageDialog(this, "por favor ingrese un numero de cama el campo esta vacio");
+        }else{
+            String num_cama = this.FieldNumCama.getText();
+            
+            this.TextArea.setText(controlAsignada.historialCama(num_cama));
+        } // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonConsultarHistorialCAmaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
