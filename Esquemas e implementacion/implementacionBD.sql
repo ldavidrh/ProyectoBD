@@ -152,7 +152,7 @@ CREATE TABLE registro
 	id_persona VARCHAR(30) NOT NULL,
 	fecha DATE NOT NULL,
 
-	FOREIGN KEY (num_historia) REFERENCES historia_clinica (num_historia) ON DELETE CASCADE,		
+	FOREIGN KEY (num_historia) REFERENCES historia_clinica (num_historia) ON DELETE CASCADE	
 );
 
 DROP TABLE if EXISTS causas_registro CASCADE;
