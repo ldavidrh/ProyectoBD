@@ -143,8 +143,8 @@ public class InternalConsultarAgendaMes extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Él medico no se encuentra disponible los domingos");
             } else {
                 String fechaConsulta = Integer.toString(fechaLocal.getDayOfMonth()) + "-" + Integer.toString(fechaLocal.getMonthValue()) + "-" + Integer.toString(fechaLocal.getYear());
-                String horas = "AGENDA DEL MÉDICO " + id_medico + " \n";
-                horas += controlAgenda.consultarAgenda(id_medico, fechaConsulta);
+                String horas = "AGENDA DEL MÉDICO " + id_medico + " \n\nFecha: " + fechaConsulta + "\n";
+                horas += controlAgenda.consultarAgendaMensual(id_medico, fechaConsulta);
                 
                 InternalShowAgenda showAgenda = new InternalShowAgenda(horas);
                 
