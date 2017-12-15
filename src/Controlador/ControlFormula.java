@@ -17,9 +17,13 @@ public class ControlFormula {
         daoFormula = new DaoFormula();
     }
     
-    public String insertarFormula(String id_formula, String codigo_medicamente, String id_medico, String id_paciente){
-        Formula f = new Formula(id_formula, codigo_medicamente, id_medico, id_paciente);
+    public String insertarFormula(String id_formula, String id_medico, String id_paciente, String fecha){
+        Formula f = new Formula(id_formula, id_medico, id_paciente, fecha);
         return daoFormula.guardarFormula(f);
+    }
+    
+    public String insertarMedicamentos(String codigo_formula, String codigo_medicamento){
+        return daoFormula.guardarMedicamentos(codigo_formula, codigo_medicamento);
     }
     
     public void cerrarConexionBD(){

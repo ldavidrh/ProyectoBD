@@ -4,48 +4,51 @@
  * and open the template in the editor.
  */
 package AccesoDatos;
+
 import Modelo.Medicamento;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.*;
+
 /**
  *
  * @author Luis
  */
 public class DaoMedicamento {
+
     FachadaBD fachada;
-    public DaoMedicamento(){
+
+    public DaoMedicamento() {
         fachada = new FachadaBD();
     }
-    
+
     public String guardarMedicamento(Medicamento m) {
         String sql_guardar;
-        sql_guardar = "INSERT INTO medicamento VALUES('" + m.getCodigo_medicamento() + "', '" + 
-                       m.getNombre() + "', '" + m.getDescripcion() + "', '" + m.getCosto() + "', '1');";
+        sql_guardar = "INSERT INTO medicamento VALUES('" + m.getCodigo_medicamento() + "', '"
+                + m.getNombre() + "', '" + m.getDescripcion() + "', '" + m.getCosto() + "', '1');";
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
-            if (sentencia.executeUpdate(sql_guardar)==1) {
+            if (sentencia.executeUpdate(sql_guardar) == 1) {
                 return "Medicamento guardado exitosamente";
             } else {
                 return "No se pudo guardar el medicamento";
             }
-        } catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex);
             return "Ya existe un medicamento con ese código";
-        }
-        catch(Exception ex){ 
-            System.out.println(ex); 
+        } catch (Exception ex) {
+            System.out.println(ex);
             return "Ha ocurrido un error al registrar el medicamento";
-        }     
+        }
     }
 
     public String[] consultarMedicamento(String codigo_medicamento) {
         String sql_consultar;
         String[] consulta = new String[5];
 
-        sql_consultar = "SELECT * FROM medicamento WHERE codigo_medicamento = '" + 
-                        codigo_medicamento + "';";
+        sql_consultar = "SELECT * FROM medicamento WHERE codigo_medicamento = '"
+                + codigo_medicamento + "';";
 
         try {
             Connection conexion = fachada.getConnetion();
@@ -58,8 +61,8 @@ public class DaoMedicamento {
                 consulta[2] = tabla.getString(3);
                 consulta[3] = tabla.getString(4);
                 consulta[4] = "";
-                
-                if(tabla.getString(5).equals("0")){
+
+                if (tabla.getString(5).equals("0")) {
                     consulta[4] = "\nMedicamento descontinuado";
                 }
             } else {
@@ -81,7 +84,7 @@ public class DaoMedicamento {
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            if (sentencia.executeUpdate(sql_modificar)==1) {
+            if (sentencia.executeUpdate(sql_modificar) == 1) {
                 return "Medicamento modificado exitosamente";
             } else {
                 return "No existe un Medicamento con ese codigo";
@@ -91,30 +94,27 @@ public class DaoMedicamento {
             return "Ha ocurrido un error al modificar el Medicamento";
         }
     }
-    
-    public ArrayList listarMedicamentos(){
-     String sql_listar;
+
+    public ArrayList listarMedicamentos() {
+        String sql_listar;
         ArrayList listar = new ArrayList();
-        sql_listar = "SELECT codigo_medicamento FROM medicamento;" ;
+        sql_listar = "SELECT codigo_medicamento FROM medicamento WHERE existe = '1';";
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_listar);
 
-            
             while (tabla.next()) {
                 listar.add(tabla.getString(1));
-                System.out.println((String)tabla.getString(1));
             }
-            } catch (SQLException ex) {
+        } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-            return listar; 
+        return listar;
     }
 
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());
     }
-    
-    
+
 }

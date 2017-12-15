@@ -11,23 +11,15 @@ package Modelo;
  */
 public class Formula {    
     String id_formula;
-    String codigo_medicamento;
     String id_medico;
     String id_paciente;
+    String fecha;
 
-    public Formula(String id_formula, String codigo_medicamento, String id_medico, String id_paciente) {
-        this.id_formula = id_formula;
-        this.codigo_medicamento = codigo_medicamento;
+    public Formula(String id_formula, String id_medico, String id_paciente, String fecha) {
+        this.id_formula = id_formula;       
         this.id_medico = id_medico;
         this.id_paciente = id_paciente;
-    }
-    
-    public String getCodigo_medicamento() {
-        return codigo_medicamento;
-    }
-
-    public void setCodigo_medicamento(String codigo_medicamento) {
-        this.codigo_medicamento = codigo_medicamento;
+        this.fecha = fecha;
     }
 
     public String getId_medico() {
@@ -54,4 +46,7 @@ public class Formula {
         this.id_paciente = id_paciente;
     }    
 
+    public String getFecha() {
+        return fecha;
+    }
 }
