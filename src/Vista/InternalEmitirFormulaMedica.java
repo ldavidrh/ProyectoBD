@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import Controlador.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -29,6 +30,7 @@ public class InternalEmitirFormulaMedica extends javax.swing.JInternalFrame {
         this.controlPaciente = controlPaciente;
         this.controlMedico = controlMedico;
         initComponents();
+        refrescar();
     }
 
     /**
@@ -151,4 +153,13 @@ public class InternalEmitirFormulaMedica extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    private void refrescar(){
+    ArrayList lista = controlMedicamento.listarMedicamentos();
+    int n= lista.size();
+    for (int i=0;i<n;i++){
+        this.ComboBoxCodigoMedicamento.addItem((String)lista.get(i));
+    }
+            
+    }
 }

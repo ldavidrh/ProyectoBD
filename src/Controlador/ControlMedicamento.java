@@ -7,6 +7,7 @@ package Controlador;
 
 import AccesoDatos.DaoMedicamento;
 import Modelo.Medicamento;
+import java.util.ArrayList;
 
 /**
  *
@@ -33,7 +34,10 @@ public class ControlMedicamento {
         Medicamento m = new Medicamento(codigo_medicamento, nombre, descripcion, costo, existe);
         return daoMedicamento.modificarMedicamento(m);
     }
-
+    
+    public ArrayList listarMedicamentos (){
+    return daoMedicamento.listarMedicamentos();
+    }
     public void cerrarConexionBD() {
         daoMedicamento.cerrarConexionBD();
     }
