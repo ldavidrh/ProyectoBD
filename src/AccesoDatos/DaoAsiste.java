@@ -25,7 +25,7 @@ public class DaoAsiste {
     public String guardarAsiste(Asiste a){
         String sql_guardar;
         sql_guardar = "INSERT INTO asiste VALUES('" + a.getId_persona() + "', '" +
-                      a.getCodigo_campana() + "', " + a.getDescuento() + ")";
+                      a.getCodigo_campana() + "', '0')";
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();            
@@ -37,7 +37,7 @@ public class DaoAsiste {
         }
         catch(SQLException e){
             System.out.println(e);
-            return "Error: No se insertó la asistencia";
+            return "Ya se registró la asistencia de ese paciente a la campaña";
         }
         catch(Exception e){ 
             System.out.println(e); 
