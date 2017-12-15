@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -43,67 +44,53 @@ public class DaoAsiste {
             System.out.println(e); 
             return "Error: No se insertó la asistencia";
         }        
-    }
+    }    
     
-    
-    public String[] consultarAsiste(String id_persona, String codigo_campana){
-        String sql_select;  
-        String consulta[] = new String[3];
-        sql_select = "SELECT * FROM asiste WHERE id_persona = '" + id_persona + 
-                "' AND codigo_campana='" + codigo_campana + "';";
-        try{
-            Connection conn= fachada.getConnetion();            
+    public String consultarAsistencia(String cod_campana) {
+        String sql_select;
+        String consulta = "";
+        sql_select = "SELECT id_persona FROM asiste WHERE codigo_campana = '" + cod_campana + "'";
+                
+        try {
+            Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            ResultSet tabla = sentencia.executeQuery(sql_select);            
-            if(tabla.next()){
-                consulta[0] = tabla.getString(1);
-                consulta[1] = tabla.getString(2);
-                consulta[2] = tabla.getString(3);              
-            }else{
-                consulta = null;
-            }
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+
+            while(tabla.next()){
+                consulta += tabla.getString(1);
+                consulta += "\n";
+            }           
             return consulta;
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return null;
         }
     }
     
-    public String modificarAsiste(Asiste a){
-        String sql_modificar;
-        sql_modificar = "UPDATE asiste SET descuento =" + a.getDescuento() + 
-                        " WHERE id_persona = '" + a.getId_persona() + "' AND codigo_campana='" + a.getCodigo_campana() + "';";
-        try{
-            Connection conn= fachada.getConnetion();
-            Statement sentencia = conn.createStatement();
-            if(sentencia.executeUpdate(sql_modificar)==1){
-                return "Asistencia modificada exitosamente";
-            }else{
-                return "No existe la asistencia";
-            }            
-        }catch(Exception e){
-            System.out.println(e);
-            return "Ha ocurrido un error al modificar la asistencia";
-        }
+    public int generarPrecioCita(String id_paciente){   
+        Double precio = 30000 - (0.1 * this.cantidadAsistencias(id_paciente))*30000;
+        Integer total = precio.intValue();
+        return total;        
     }
     
-    public String eliminarAsiste(String id_persona, String codigo_campana){
-        String sql_delete;
-        sql_delete = "DELETE FROM asiste WHERE id_persona = '" + id_persona +
-                "' AND codigo_campana='" + codigo_campana + "';";
-        
-        try{
-            Connection conn= fachada.getConnetion();       
-            Statement sentencia = conn.createStatement();            
-            if(sentencia.executeUpdate(sql_delete)==1){
-                return "Asistencia eliminada exitosamente";
-            }else{
-                return "No se eliminó la asistencia";
-            }                
-        }catch(Exception e){
+    public int cantidadAsistencias(String id_paciente){
+        String sql_select;     
+        int cantidad = 0;
+        sql_select = "SELECT COUNT(*) FROM asiste WHERE id_persona = '" + id_paciente + "'";
+                
+        try {
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+
+            while(tabla.next()){
+                cantidad = Integer.parseInt(tabla.getString(1));                
+            }           
+            return cantidad;
+        } catch (Exception e) {
             System.out.println(e);
-            return "Ocurrió un problema al eliminar la asistencia";
-        }                             
+            return 0;
+        }
     }
     
     public void cerrarConexionBD(){
