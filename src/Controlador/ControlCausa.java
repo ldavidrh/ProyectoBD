@@ -38,6 +38,10 @@ public class ControlCausa {
         return daoCausa.eliminarCausa(codigo_causa);
     }
     
+    public String obtenerCodigo(String nombre){
+        return daoCausa.obtenerCodigo(nombre);
+    }
+    
     public void cerrarConexionBD(){
         daoCausa.cerrarConexionBD();
     }
