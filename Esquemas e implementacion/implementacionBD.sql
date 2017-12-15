@@ -259,7 +259,7 @@ INSERT INTO asiste VALUES ('111','1', '0');
 
 INSERT INTO causa VALUES ('1000','Dolor en espalda', 'Fuertes dolores lumbares');
 
-INSERT INTO registro VALUES ('H111', '333', '16-10-2017');
+INSERT INTO registro VALUES ('H1113331659', 'H111', '333', '16-10-2017');
 
 INSERT INTO cita VALUES ('333','111', '31-12-2017','5:30', 50000);
 
