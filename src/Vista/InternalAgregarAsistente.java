@@ -5,6 +5,7 @@
  */
 package Vista;
 import Controlador.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
@@ -12,12 +13,14 @@ import Controlador.*;
 public class InternalAgregarAsistente extends javax.swing.JInternalFrame {
     ControlCampana controlCampana;
     ControlPaciente controlPaciente;
+    ControlAsiste controlAsiste;
     /**
      * Creates new form InternalAgregarAsistente
      */
-    public InternalAgregarAsistente(ControlCampana controlCampana, ControlPaciente controlPaciente) {
+    public InternalAgregarAsistente(ControlCampana controlCampana, ControlPaciente controlPaciente, ControlAsiste controlAsiste) {
         this.controlCampana = controlCampana;
         this.controlPaciente = controlPaciente;
+        this.controlAsiste = controlAsiste;
         initComponents();
     }
 
@@ -33,10 +36,8 @@ public class InternalAgregarAsistente extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         FieldCedula = new javax.swing.JTextField();
         FieldCodigoCampana = new javax.swing.JTextField();
-        FieldDescuento = new javax.swing.JTextField();
         ButtonAgregar = new javax.swing.JButton();
 
         setClosable(true);
@@ -45,11 +46,9 @@ public class InternalAgregarAsistente extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Cedula");
+        jLabel1.setText("Cédula asistente");
 
-        jLabel2.setText("Codigo campaña");
-
-        jLabel3.setText("Descuento");
+        jLabel2.setText("Código campaña");
 
         FieldCodigoCampana.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +57,11 @@ public class InternalAgregarAsistente extends javax.swing.JInternalFrame {
         });
 
         ButtonAgregar.setText("Agregar");
+        ButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAgregarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,11 +73,9 @@ public class InternalAgregarAsistente extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(FieldDescuento)
                             .addComponent(FieldCodigoCampana, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
                             .addComponent(FieldCedula)))
                     .addComponent(ButtonAgregar))
@@ -90,10 +92,6 @@ public class InternalAgregarAsistente extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(FieldCodigoCampana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(FieldDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(ButtonAgregar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -123,15 +121,30 @@ public class InternalAgregarAsistente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FieldCodigoCampanaActionPerformed
 
+    private void ButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarActionPerformed
+        // TODO add your handling code here:
+        if(this.FieldCedula.getText().trim().isEmpty() || this.FieldCodigoCampana.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Existen casillas vacías");
+        }else{
+            String cedula = this.FieldCedula.getText().trim();
+            String codigo = this.FieldCodigoCampana.getText().trim();
+            if(!controlPaciente.verificarExistencia(cedula)){
+                JOptionPane.showMessageDialog(this, "No existe un paciente con esa cédula");
+            }else if(!controlCampana.verificarExistencia(codigo)){
+                JOptionPane.showMessageDialog(this, "No existe una campaña con ese código");
+            }else{
+                JOptionPane.showMessageDialog(this, controlAsiste.insertarAsiste(cedula, codigo));                        
+            }
+        }
+    }//GEN-LAST:event_ButtonAgregarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonAgregar;
     private javax.swing.JTextField FieldCedula;
     private javax.swing.JTextField FieldCodigoCampana;
-    private javax.swing.JTextField FieldDescuento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

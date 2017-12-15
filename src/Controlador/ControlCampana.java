@@ -37,6 +37,10 @@ public class ControlCampana {
         return daoCampana.eliminarCampana(id);    
     }
     
+    public boolean verificarExistencia(String id){
+        return daoCampana.verificarExistencia(id);
+    }
+    
     public void cerrarConexionBD(){
         daoCampana.cerrarConexionBD();
     }   
