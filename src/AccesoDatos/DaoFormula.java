@@ -19,8 +19,9 @@ public class DaoFormula {
     
     public String guardarFormula(Formula f){
         String sql_guardar;
-        sql_guardar = "INSERT INTO formula VALUES('" + f.getId_formula() + "', '" +
-                      f.getCodigo_medicamento() + "', '" + f.getId_medico() + "', '" + f.getId_paciente() + "')";
+        sql_guardar = "INSERT INTO formula VALUES('" + f.getId_formula() +
+                       "', '" + f.getId_medico() + "', '" + f.getId_paciente() 
+                      + "', '" + f.getFecha() + "')";
         try{
             Connection conn= fachada.conectar();
             Statement sentencia = conn.createStatement();             
@@ -31,13 +32,36 @@ public class DaoFormula {
             }
         }catch(SQLException ex){
             System.out.println(ex);
-            return "Ha ocurrido un error: " + ex.getMessage();
+            return "Ya se creó una fórmula médica en esta hora";
         }
         catch(Exception ex){ 
             System.out.println(ex); 
             return "Ha ocurrido un error al guardar la fórmula";
         }        
     }
+    
+    public String guardarMedicamentos(String codigo_formula, String codigo_medicamento){
+        String sql_guardar;
+        sql_guardar = "INSERT INTO medicamentos_formula VALUES('" + codigo_formula
+                      + "', '" + codigo_medicamento + "')";
+        try{
+            Connection conn= fachada.conectar();
+            Statement sentencia = conn.createStatement();             
+            if(sentencia.executeUpdate(sql_guardar)==1){
+                return "Medicamento guardado correctamente";
+            }else{
+                return "Error: No se insertó el medicamento";
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+            return "Ya se agregó ese medicamento a la fórmula";
+        }
+        catch(Exception ex){ 
+            System.out.println(ex); 
+            return "Ha ocurrido un error al guardar el medicamento";
+        }        
+    }
+    
     
     public String[] consultarFormula(String id){
         String sql_select;        

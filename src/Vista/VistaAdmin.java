@@ -247,7 +247,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(8, 18, 11, 96);
         PanelMedico.add(ButtonAgendaMes, gridBagConstraints);
 
-        PanelPrincipal.addTab("Medico", PanelMedico);
+        PanelPrincipal.addTab("Médico", PanelMedico);
 
         PanelEnfermera.setLayout(new java.awt.GridBagLayout());
 
@@ -516,7 +516,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 82);
         PanelArea.add(ButtonEmpleadosPorArea, gridBagConstraints);
 
-        PanelPrincipal.addTab("Area", PanelArea);
+        PanelPrincipal.addTab("Área", PanelArea);
 
         PanelCamas.setLayout(new java.awt.GridBagLayout());
 
@@ -1094,7 +1094,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonAgregarCitaActionPerformed
 
     private void ButtonEliminarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarCitaActionPerformed
-       InternalBorrarCita delCita = new InternalBorrarCita(controlCita,controlPaciente);
+       InternalBorrarCita delCita = new InternalBorrarCita(controlCita,controlPaciente, controlAgenda);
        this.DesktopPane.add(delCita);
        delCita.show();
     }//GEN-LAST:event_ButtonEliminarCitaActionPerformed

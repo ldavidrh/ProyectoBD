@@ -33,7 +33,7 @@ public class InternalEmitirFormulaMedica extends javax.swing.JInternalFrame {
         this.controlPaciente = controlPaciente;
         this.controlMedico = controlMedico;
         initComponents();
-        refrescar();
+        this.jPanel2.setVisible(false);
     }
 
     /**
@@ -46,30 +46,35 @@ public class InternalEmitirFormulaMedica extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         FieldCedulaMedico = new javax.swing.JTextField();
         FieldCedulaPaciente = new javax.swing.JTextField();
-        ComboBoxCodigoMedicamento = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jButtonContinunar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        ComboBoxCodigoMedicamento = new javax.swing.JComboBox<String>();
         ButtonEmitirFormula = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jTextFieldCodigo = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Emitir formula medica");
+        setTitle("Emitir fórmula médica");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel2.setText("Codigo medicamento");
+        jLabel3.setText("Cédula medico");
 
-        jLabel3.setText("Cedula medico");
+        jLabel4.setText("Cédula paciente");
 
-        jLabel4.setText("Cedula paciente");
+        jLabel1.setText("Ingrese los siguientes datos");
 
-        ButtonEmitirFormula.setText("Emitir");
-        ButtonEmitirFormula.addActionListener(new java.awt.event.ActionListener() {
+        jButtonContinunar.setText("Continuar");
+        jButtonContinunar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonEmitirFormulaActionPerformed(evt);
+                jButtonContinunarActionPerformed(evt);
             }
         });
 
@@ -78,42 +83,89 @@ public class InternalEmitirFormulaMedica extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(18, 18, 18)
-                            .addComponent(ComboBoxCodigoMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4))
-                            .addGap(38, 38, 38)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(FieldCedulaMedico)
-                                .addComponent(FieldCedulaPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))))
-                    .addComponent(ButtonEmitirFormula))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(46, 46, 46)
+                        .addComponent(FieldCedulaMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jButtonContinunar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(FieldCedulaPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(ComboBoxCodigoMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(13, 13, 13)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(FieldCedulaMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(FieldCedulaPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonContinunar)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel2.setText("Código medicamento");
+
+        ButtonEmitirFormula.setText("Agregar medicamento");
+        ButtonEmitirFormula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonEmitirFormulaActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Código generado ");
+
+        jTextFieldCodigo.setEditable(false);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldCodigo)
+                    .addComponent(ComboBoxCodigoMedicamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ButtonEmitirFormula)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(76, 76, 76))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(ComboBoxCodigoMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(ButtonEmitirFormula)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -122,44 +174,65 @@ public class InternalEmitirFormulaMedica extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonEmitirFormulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmitirFormulaActionPerformed
-        String codigoFormula;
-        Date fecha = new Date();
-        LocalDateTime fechaLocal = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        codigoFormula = Integer.toString(fechaLocal.getDayOfMonth()) + "-" + Integer.toString(fechaLocal.getMonthValue()) + "-" + Integer.toString(fechaLocal.getYear())
-                + "//" + Integer.toString(fechaLocal.getHour()) + ":" + Integer.toString(fechaLocal.getMinute()) + ":" + Integer.toString(fechaLocal.getSecond());
-
-        
-        if(this.FieldCedulaMedico.getText().trim().isEmpty() || this.FieldCedulaPaciente.getText().trim().isEmpty()
-           ){
-            JOptionPane.showMessageDialog(this, "Existen casillas vacías");
-        }else{
-            String id_medico = this.FieldCedulaMedico.getText();
-            String id_paciente = this.FieldCedulaPaciente.getText();
-            String id_medicamento= (String)this.ComboBoxCodigoMedicamento.getSelectedItem();
-            if(controlPaciente.verificarExistencia(id_paciente) && controlMedico.verificarExistencia(id_medico)){
-                JOptionPane.showMessageDialog(this, controlFormula.insertarFormula(codigoFormula,id_medicamento, id_medico, id_paciente));
-            }else{
-                JOptionPane.showMessageDialog(this, "el numero de paciente o el numero del medico no existen");
-            }
-            
-                       
+        String cod_formula = this.jTextFieldCodigo.getText();
+        String med = (String) this.ComboBoxCodigoMedicamento.getSelectedItem();
+        if (med != null) {
+            JOptionPane.showMessageDialog(this, controlFormula.insertarMedicamentos(cod_formula, med));
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay medicamentos para agregar");
         }
     }//GEN-LAST:event_ButtonEmitirFormulaActionPerformed
+
+    private void jButtonContinunarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinunarActionPerformed
+        // TODO add your handling code here:
+        String id_medico = this.FieldCedulaMedico.getText().trim();
+        String id_paciente = this.FieldCedulaPaciente.getText().trim();
+        if (id_medico.isEmpty() || id_paciente.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar ambos datos");
+        } else if (!controlMedico.verificarExistencia(id_medico)) {
+            JOptionPane.showMessageDialog(this, "No existe un médico con esa cédula");
+        } else if (!controlPaciente.verificarExistencia(id_paciente)) {
+            JOptionPane.showMessageDialog(this, "No existe un paciente con esa cédula");
+        } else {
+            Date fecha_actual = new Date();
+            LocalDateTime fechaLocal = fecha_actual.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+            String fecha = Integer.toString(fechaLocal.getDayOfMonth()) + "-" + Integer.toString(fechaLocal.getMonthValue()) + "-" + Integer.toString(fechaLocal.getYear());
+
+            String hora = Integer.toString(fechaLocal.getHour());
+            String minutos = Integer.toString(fechaLocal.getMinute());
+            String codigo_formula = id_medico + id_paciente + fecha + hora + minutos;
+
+            String respuestaFormula = controlFormula.insertarFormula(codigo_formula, id_medico, id_paciente, fecha);
+            if (respuestaFormula.equals("Fórmula creada correctamente")) {
+                this.jPanel2.setVisible(true);
+                this.FieldCedulaMedico.setEditable(false);
+                this.FieldCedulaPaciente.setEditable(false);
+                this.jTextFieldCodigo.setText(codigo_formula);
+                this.refrescar();
+            } else {
+                JOptionPane.showMessageDialog(this, respuestaFormula);
+            }
+        }
+    }//GEN-LAST:event_jButtonContinunarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -167,15 +240,19 @@ public class InternalEmitirFormulaMedica extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> ComboBoxCodigoMedicamento;
     private javax.swing.JTextField FieldCedulaMedico;
     private javax.swing.JTextField FieldCedulaPaciente;
+    private javax.swing.JButton jButtonContinunar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextFieldCodigo;
     // End of variables declaration//GEN-END:variables
 
     private void refrescar() {
         ArrayList lista = controlMedicamento.listarMedicamentos();
-
         if (lista != null) {
             int n = lista.size();
             for (int i = 0; i < n; i++) {
