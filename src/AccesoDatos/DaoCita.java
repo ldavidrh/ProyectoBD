@@ -40,21 +40,21 @@ public class DaoCita {
         }        
     }
     
-    public String consultarCita(String id_medico, String id_paciente, String fecha){
+    public String consultarCita(String id_paciente){
         String sql_select;       
         String consulta = "";        
-        sql_select = "SELECT * FROM cita WHERE id_medico = '" + id_medico + "' AND id_paciente ='"
-                      + id_paciente + "' AND fecha ='" + fecha + "'";
+        sql_select ="SELECT id_medico , fecha , hora, precio FROM cita WHERE id_paciente='"+id_paciente+"';";
         try{
             Connection conn= fachada.getConnetion();            
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_select);   
             
             while(tabla.next()){                
-                consulta += "Fecha: " + tabla.getString(3);
-                consulta += "\nHora: " + tabla.getString(4);
-                consulta += "\nPrecio: " + tabla.getString(5);  
-                consulta += "\n";
+                consulta += "Fecha: " + (String)tabla.getString(2)+
+                 "   Médico: " + (String)tabla.getString(1) +
+                 "   Hora: " + (String)tabla.getString(3)+
+                 "   Precio: " + (String)tabla.getString(4) +
+                 "\n";
             }           
             return consulta;            
         }catch(Exception e){
@@ -111,14 +111,13 @@ public class DaoCita {
         sql_delete = "DELETE FROM cita WHERE id_medico ='" + id_medico + "'"+
                         " and id_paciente ='" + id_paciente + "'" +
                         " and fecha='" + fecha + "'" +
-                        " and hora='" + hora +
-                "';";
+                        " and hora='" + hora + "';";
         
         try{
             Connection conn= fachada.getConnetion();       
             Statement sentencia = conn.createStatement();            
             if(sentencia.executeUpdate(sql_delete)==1){
-                return "cita eliminada exitosamente";
+                return "Cita eliminada exitosamente";
             }else{
                 return "No se eliminó la cita";
             }                

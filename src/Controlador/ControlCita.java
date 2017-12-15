@@ -32,6 +32,10 @@ public class ControlCita {
     public String eliminarCita(String m,String p,String f,String h){
     return daoCita.eliminarCita(m, p, f, h);
     }
+    
+    public String consultarCita(String id_paciente){
+    return daoCita.consultarCita(id_paciente);
+    }
    
     
 }

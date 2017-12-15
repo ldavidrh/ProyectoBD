@@ -164,7 +164,7 @@ public class InternalBorrarCita extends javax.swing.JInternalFrame {
     private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
        if(this.id_paciente.getText().trim().isEmpty()
            ){
-            JOptionPane.showMessageDialog(this, "el campo iddel paciente esta vacio");
+            JOptionPane.showMessageDialog(this, "el campo id del paciente esta vacio");
         }else{
             String id_paciente = this.id_paciente.getText();
             if(controlPaciente.verificarExistencia(id_paciente)){
