@@ -51,16 +51,15 @@ public class DaoAgenda {
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            ResultSet tabla = sentencia.executeQuery(sql_select);
+            ResultSet tabla = sentencia.executeQuery(sql_select);           
 
-            while (tabla.next()) {
-                for(int i=0; i<consulta.size(); i++){
-                    if(consulta.get(i).equals(tabla.getString(1))){
-                        consulta.remove(i);
+            while (tabla.next()) {                
+                for (int i = 0; i < consulta.size(); i++) {   
+                    if (consulta.get(i).equals(tabla.getString(1))) {                        
+                        consulta.remove(i);                        
                     }
-                }       
+                }
             }
-
             return consulta;
         } catch (Exception e) {
             System.out.println(e);
@@ -71,22 +70,22 @@ public class DaoAgenda {
     public ArrayList horasDisponibles() {
         ArrayList horas = new ArrayList();
 
-        horas.add("7:00");
-        horas.add("7:30");
-        horas.add("8:00");
-        horas.add("8:30");
-        horas.add("9:00");
-        horas.add("9:30");
-        horas.add("10:00");
-        horas.add("10:30");
-        horas.add("11:00");
-        horas.add("11:30");
-        horas.add("14:00");
-        horas.add("14:30");
-        horas.add("15:00");
-        horas.add("15:30");
-        horas.add("16:00");
-        horas.add("16:30");
+        horas.add("07:00:00");
+        horas.add("07:30:00");
+        horas.add("08:00:00");
+        horas.add("08:30:00");
+        horas.add("09:00:00");
+        horas.add("09:30:00");
+        horas.add("10:00:00");
+        horas.add("10:30:00");
+        horas.add("11:00:00");
+        horas.add("11:30:00");
+        horas.add("14:00:00");
+        horas.add("14:30:00");
+        horas.add("15:00:00");
+        horas.add("15:30:00");
+        horas.add("16:00:00");
+        horas.add("16:30:00");
 
         return horas;
     }
