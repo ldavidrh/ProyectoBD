@@ -27,6 +27,7 @@ public class DaoRegistro {
 
     public String guardarRegistro(Registro r) {
         String sql_guardar;
+        System.out.println(r.getCodigo_causa());
         sql_guardar = "INSERT INTO registro VALUES('" + 
                 r.getNum_historia() + "', '" + r.getCodigo_causa() + "', '" + r.getId_persona() + "', '" 
                 + r.getFecha() + "');";

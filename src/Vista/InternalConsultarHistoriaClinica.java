@@ -5,6 +5,8 @@
  */
 package Vista;
 import Controlador.ControlHistoriaClinica;
+import Controlador.ControlPaciente;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
@@ -34,13 +36,24 @@ public class InternalConsultarHistoriaClinica extends javax.swing.JInternalFrame
         FieldCedula = new javax.swing.JTextField();
         ButtonConsultarHistoria = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TextArea = new javax.swing.JTextArea();
+        TextConsulta = new javax.swing.JTextArea();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setText("Ingrese la cedula del paciente que desea consultar la historia clinica");
 
+        FieldCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FieldCedulaActionPerformed(evt);
+            }
+        });
+
         ButtonConsultarHistoria.setText("Consultar");
+        ButtonConsultarHistoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonConsultarHistoriaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -66,9 +79,9 @@ public class InternalConsultarHistoriaClinica extends javax.swing.JInternalFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        TextArea.setColumns(20);
-        TextArea.setRows(5);
-        jScrollPane1.setViewportView(TextArea);
+        TextConsulta.setColumns(20);
+        TextConsulta.setRows(5);
+        jScrollPane1.setViewportView(TextConsulta);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,11 +107,37 @@ public class InternalConsultarHistoriaClinica extends javax.swing.JInternalFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void FieldCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FieldCedulaActionPerformed
+
+    private void ButtonConsultarHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarHistoriaActionPerformed
+        try {
+            if (this.FieldCedula.getText().trim().isEmpty()) {
+                JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula del paciente", "Atención", JOptionPane.WARNING_MESSAGE);
+            } else {
+                String num_historia = "H" + this.FieldCedula.getText().trim();
+                String consulta = "";
+                String[] historia = controlHistoriaClinica.consultarHistoria(num_historia);
+                if (historia == null) {
+                    consulta = "No existe un paciente con esa cédula en el hospital";
+                } else {
+                    consulta = controlHistoriaClinica.listarRegistros(num_historia);
+                    System.out.println(consulta + "xd");
+                }
+                this.TextConsulta.setText(consulta);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());                   
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error desde la vista");
+        }
+    }//GEN-LAST:event_ButtonConsultarHistoriaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonConsultarHistoria;
     private javax.swing.JTextField FieldCedula;
-    private javax.swing.JTextArea TextArea;
+    private javax.swing.JTextArea TextConsulta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

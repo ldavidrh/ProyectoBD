@@ -34,6 +34,7 @@ public class ControlRegistro {
         return daoRegistro.eliminarRegistro(r);
     }
     
+    
     public void cerrarConexionBD(){
         daoRegistro.cerrarConexionBD();
     }
