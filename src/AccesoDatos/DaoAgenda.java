@@ -53,15 +53,14 @@ public class DaoAgenda {
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_select);
 
-            if (tabla.next()) {
-                while (tabla.next()) {
-                    if (consulta.contains(tabla.getString(1))) {
-                        consulta.remove(tabla.getString(1));
+            while (tabla.next()) {
+                for(int i=0; i<consulta.size(); i++){
+                    if(consulta.get(i).equals(tabla.getString(1))){
+                        consulta.remove(i);
                     }
-                }
-            }else{
-                return null;
+                }       
             }
+
             return consulta;
         } catch (Exception e) {
             System.out.println(e);
@@ -91,7 +90,7 @@ public class DaoAgenda {
 
         return horas;
     }
-    
+
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());
     }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Vista;
+import Controlador.ControlAsiste;
 import Controlador.ControlCampana;
 import javax.swing.JOptionPane;
 /**
@@ -12,11 +13,13 @@ import javax.swing.JOptionPane;
  */
 public class InternalConsultarCampana extends javax.swing.JInternalFrame {
     ControlCampana controlCampana;
+    ControlAsiste controlAsiste;
     /**
      * Creates new form InternalConsultarCampaña
      */
-    public InternalConsultarCampana(ControlCampana controlCampana) {
+    public InternalConsultarCampana(ControlCampana controlCampana, ControlAsiste controlAsiste) {
         this.controlCampana = controlCampana;
+        this.controlAsiste = controlAsiste;
         initComponents();
     }
 
@@ -115,7 +118,7 @@ public class InternalConsultarCampana extends javax.swing.JInternalFrame {
                 consulta = "No hay registros de una campaña con ese código";
             } else {                
                 consulta = "Nombre: " + campana[1] + "\nDescripción: " + campana[2] + "\nFecha: " + campana[3] +
-                            "\nID médico encargado: " + campana[4];                 
+                            "\nID médico encargado: " + campana[4] + "\n\nAsistentes:\n" + controlAsiste.consultarAsistencia(cod);                                               
             }
             this.jTextArea1.setText(consulta);
         }
