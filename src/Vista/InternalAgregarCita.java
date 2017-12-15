@@ -303,8 +303,7 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
         ArrayList horas = controlAgenda.consultarAgenda(id_medico, fecha);
         this.ComboBoxHora.removeAllItems();
         for (int i = 0; i < horas.size(); i++) {
-            this.ComboBoxHora.addItem((String) horas.get(i));
-            System.out.println("FUNCIONA???");
+            this.ComboBoxHora.addItem((String) horas.get(i));            
         }
     }
 

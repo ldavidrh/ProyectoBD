@@ -114,16 +114,42 @@ public class InternalEmpleadosPorArea extends javax.swing.JInternalFrame {
         String codigo = (String) this.ComboBoxAreas.getSelectedItem();
         ArrayList consulta = controlArea.consultarEmpleadosPorArea(codigo);
         String mensaje = "";
+        int cont = 1;
         if (consulta != null) {
             for (int i = 1; i < consulta.size(); i++) {
                 if (i % 5 != 0) {
-                    mensaje += (String) consulta.get(i-1)+"\n";
-
+                    switch (cont) {
+                        case 1:
+                            mensaje += "Cedula: "+(String) consulta.get(i - 1) + "\n";
+                            cont++;
+                            break;
+                            
+                        case 2: 
+                             mensaje += "Nombre empleado: "+(String) consulta.get(i - 1) + "\n";
+                             cont++;
+                             break;
+                             
+                        case 3:
+                             mensaje += "Nombre area: "+(String) consulta.get(i - 1) + "\n";
+                             cont++;
+                             break;
+                             
+                        case 4: 
+                            mensaje += "Cargo: "+(String) consulta.get(i - 1) + "\n";
+                            cont++;
+                            break;
+                            
+                        default:
+                            break;
+                    }
                 } else {
+                    mensaje += "Salario: "+(String) consulta.get(i - 1) + "\n";
                     mensaje += "\n";
+                    cont = 1;
                 }
 
             }
+            mensaje += "Salario: " + (String)consulta.get(consulta.size()-1);
             this.TextArea.setText(mensaje);
         }
     }//GEN-LAST:event_ButtonConsultarEmpleadosActionPerformed
