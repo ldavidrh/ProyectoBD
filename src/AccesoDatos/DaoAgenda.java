@@ -120,6 +120,23 @@ public class DaoAgenda {
         return mensaje;        
     }
     
+    public String eliminarCita(String id_medico, String fecha, String hora){
+        String sql_delete;
+        sql_delete = "DELETE FROM agenda WHERE id_medico = '" + id_medico + "' AND fecha = '" + fecha + 
+                     "' AND hora_inicio = '" + hora + "'";
+        try {
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            if (sentencia.executeUpdate(sql_delete) == 1) {
+                return "Cita eliminada exitosamente de agenda médico";
+            } else {
+                return "No existe ese registro en la agenda del médico";
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            return "Ocurrió un problema al eliminar la cita en la agenda del médico";
+        }
+    }
 
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());

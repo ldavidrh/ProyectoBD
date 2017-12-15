@@ -96,7 +96,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="eliminar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ELIMINAR"/>
+            <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarActionPerformed"/>
@@ -104,12 +104,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="INGRESE EL ID DEL PACIENTE DEL QUE QUIERE CONSULTAR LAS CITAS:"/>
+            <Property name="text" type="java.lang.String" value="Ingrese el ID del paciente del que quiere consultar las citas:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ID DEL PACIENTE:"/>
+            <Property name="text" type="java.lang.String" value="ID del paciente"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox1">
@@ -124,12 +124,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="LAS CITAS DEL PACIENTE SON:"/>
+            <Property name="text" type="java.lang.String" value="Las citas del paciente son:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="consultar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="CONSULTAR"/>
+            <Property name="text" type="java.lang.String" value="Consultar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultarActionPerformed"/>

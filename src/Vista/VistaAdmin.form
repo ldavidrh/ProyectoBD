@@ -65,8 +65,8 @@
         <Container class="javax.swing.JPanel" name="PanelMedico">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Medico">
-                <Property name="tabTitle" type="java.lang.String" value="Medico"/>
+              <JTabbedPaneConstraints tabName="M&#xe9;dico">
+                <Property name="tabTitle" type="java.lang.String" value="M&#xe9;dico"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -393,8 +393,8 @@
         <Container class="javax.swing.JPanel" name="PanelArea">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Area">
-                <Property name="tabTitle" type="java.lang.String" value="Area"/>
+              <JTabbedPaneConstraints tabName="&#xc1;rea">
+                <Property name="tabTitle" type="java.lang.String" value="&#xc1;rea"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
