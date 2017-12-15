@@ -33,6 +33,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     ControlCama controlCama;
     ControlAsignada controlAsignada;
     ControlHabilidades controlHabilidades;
+    ControlAsiste controlAsiste;
     /**
      * Creates new form VistaPrincipal
      */
@@ -53,6 +54,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         controlHistoria = new ControlHistoriaClinica();
         controlCita = new ControlCita();
         controlCama = new ControlCama();
+        controlAsiste = new ControlAsiste();
         HiloCamas hilo = new HiloCamas(controlAsignada, controlCama);
         hilo.start();
         
@@ -1152,7 +1154,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonAgregarHabilidadesActionPerformed
 
     private void ButtonAgregarAsistentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarAsistentesActionPerformed
-        InternalAgregarAsistente addAsis = new InternalAgregarAsistente(controlCampana, controlPaciente);
+        InternalAgregarAsistente addAsis = new InternalAgregarAsistente(controlCampana, controlPaciente, controlAsiste);
         this.DesktopPane.add(addAsis);
         addAsis.show();
     }//GEN-LAST:event_ButtonAgregarAsistentesActionPerformed

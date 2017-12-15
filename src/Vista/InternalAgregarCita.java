@@ -45,7 +45,7 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
         FieldPrecio = new javax.swing.JTextField();
         DateChooser = new com.toedter.calendar.JDateChooser();
         ButtonAgregar = new javax.swing.JButton();
-        ComboBoxHora = new javax.swing.JComboBox<>();
+        ComboBoxHora = new javax.swing.JComboBox<String>();
 
         setClosable(true);
         setIconifiable(true);
@@ -53,9 +53,9 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Cedula medico");
+        jLabel1.setText("Cédula médico");
 
-        jLabel2.setText("Cedula paciente");
+        jLabel2.setText("Cédula paciente");
 
         jLabel3.setText("Fecha");
 

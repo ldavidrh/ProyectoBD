@@ -12,9 +12,9 @@ package Modelo;
 public class Asiste {
     String id_persona;
     String codigo_campana;
-    int descuento;
+    char descuento;
 
-    public Asiste(String id_persona, String codigo_campana, int descuento) {
+    public Asiste(String id_persona, String codigo_campana, char descuento) {
         this.id_persona = id_persona;
         this.codigo_campana = codigo_campana;
         this.descuento = descuento;
@@ -36,12 +36,11 @@ public class Asiste {
         this.codigo_campana = codigo_campana;
     }
 
-    public int getDescuento() {
+    public char getDescuento() {
         return descuento;
     }
 
-    public void setDescuento(int descuento) {
+    public void setDescuento(char descuento) {
         this.descuento = descuento;
-    }
-    
+    }    
 }

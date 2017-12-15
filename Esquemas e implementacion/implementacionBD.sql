@@ -130,6 +130,7 @@ CREATE TABLE asiste
 	codigo_campana VARCHAR(30) NOT NULL,
 	descuento_aplicado BIT NOT NULL,
 
+	PRIMARY KEY (id_persona, codigo_campana),
 	FOREIGN KEY (id_persona) REFERENCES paciente (id_persona) ON DELETE CASCADE
 );
 
