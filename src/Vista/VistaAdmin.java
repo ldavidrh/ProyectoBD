@@ -1126,7 +1126,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarPaciente2ActionPerformed
 
     private void ButtonAgendaMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgendaMesActionPerformed
-        InternalConsultarAgendaMes agendaMes = new InternalConsultarAgendaMes(controlMedico, controlAgenda);
+        InternalConsultarAgendaMes agendaMes = new InternalConsultarAgendaMes(controlMedico, controlAgenda, this);
         this.DesktopPane.add(agendaMes);
         agendaMes.show();
     }//GEN-LAST:event_ButtonAgendaMesActionPerformed
@@ -1253,4 +1253,9 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel PanelUsuarios;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+    
+    public void showAgendaMes(InternalShowAgenda e){
+        this.DesktopPane.add(e);
+        e.show();
+    }
 }
