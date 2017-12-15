@@ -6,6 +6,7 @@
 package Controlador;
 import Modelo.Area;
 import AccesoDatos.*;
+import java.util.ArrayList;
 /**
  *
  * @author User
@@ -33,6 +34,14 @@ public class ControlArea {
     
     public String eliminarArea(String codigo){
         return daoArea.eliminarArea(codigo);
+    }
+    
+    public ArrayList consultarEmpleadosPorArea(String codigo){
+       return daoArea.consultarEmpleadosPorArea(codigo);
+    }
+    
+    public ArrayList cargarCodigosAreas(){
+        return daoArea.cargarCodigosAreas();
     }
     
     public void cerrarConexionBD(){

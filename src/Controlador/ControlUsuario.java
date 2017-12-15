@@ -24,17 +24,28 @@ public class ControlUsuario {
         daoUsuario = new DaoUsuario();
     }
 
-    public boolean verificarUsuario(String cedula, String password, String tipo) {
+    public String verificarUsuario(String cedula, String password, String tipo) {
         String[] resultado = daoUsuario.consultarDatos(cedula);
         if (resultado == null) {
-            return false;
+            return null;
         } else {
             if (resultado[1].equals(password) && resultado[2].equals(tipo)) {
-                return true;
+                return resultado[0];
             } else {
-                return false;
+                return null;
             }
         }
+    }
+    
+    public String cambiarPassword(String id_usuario, String passwordAntiguo, String passwordNuevo){
+        String[] consulta = consultarUsuario(id_usuario);
+        if(consulta[1].equals(passwordAntiguo)){
+            return daoUsuario.cambiarPassword(id_usuario, passwordNuevo);
+        }else{
+            return "La contraseña anterior no coincide";
+        }
+        
+        
     }
     
     public String agregarUsuario (String usuario,String contrasenia,String tipo_u) {
@@ -53,6 +64,7 @@ public class ControlUsuario {
     public String modificarUsuario(String usuario,String contrasenia){
         return daoUsuario.modificarUsuario(usuario,contrasenia);
     }
+    
     
     
     

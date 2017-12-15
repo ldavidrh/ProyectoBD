@@ -17,6 +17,7 @@ import java.util.ArrayList;
  * @author Luis
  */
 public class VistaMedico extends javax.swing.JFrame {
+    String idUsuario;
     ControlHistoriaClinica controlHistoriaClinica;
     ControlUsuario controlUsuario;
     ControlFormula controlFormula;
@@ -50,9 +51,9 @@ public class VistaMedico extends javax.swing.JFrame {
             new JLabel("Contraseña"),
             fieldPassword
         };//Finaliza creacion de ventana login
-        boolean existe = false;
+        String existe = null;
         do {
-            int resultado = JOptionPane.showConfirmDialog(this, entradas, "LOGIN", JOptionPane.CANCEL_OPTION);
+            int resultado = JOptionPane.showConfirmDialog(this, entradas, "LOGIN MEDICO", JOptionPane.CANCEL_OPTION);
             if (resultado == JOptionPane.CANCEL_OPTION | resultado == JOptionPane.CLOSED_OPTION) {
                 System.exit(0);
             } else if (resultado == JOptionPane.OK_OPTION) {
@@ -60,7 +61,10 @@ public class VistaMedico extends javax.swing.JFrame {
                 String password = new String(fieldPassword.getPassword());
                 existe = controlUsuario.verificarUsuario(cedula, password, "Médico");
             }
-        } while (!existe);
+        } while (existe == null);
+        //Almaceno el id del medico en un atributo para cambiar contraseña sin necesidad de introducir el id manualmente
+        idUsuario = existe;
+        
  }
 
     /**
@@ -80,6 +84,9 @@ public class VistaMedico extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         ButtonFormulaMedica = new javax.swing.JButton();
         DesktopPane = new javax.swing.JDesktopPane();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        MenuItemPassword = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,8 +154,28 @@ public class VistaMedico extends javax.swing.JFrame {
         );
         DesktopPaneLayout.setVerticalGroup(
             DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 288, Short.MAX_VALUE)
+            .addGap(0, 267, Short.MAX_VALUE)
         );
+
+        jMenu1.setText("Cuenta");
+
+        MenuItemPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/key.png"))); // NOI18N
+        MenuItemPassword.setText("Cambiar contraseña");
+        MenuItemPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                MenuItemPasswordMouseReleased(evt);
+            }
+        });
+        MenuItemPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemPasswordActionPerformed(evt);
+            }
+        });
+        jMenu1.add(MenuItemPassword);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,6 +218,16 @@ public class VistaMedico extends javax.swing.JFrame {
         this.DesktopPane.add(emitirFormula);
         emitirFormula.show();
     }//GEN-LAST:event_ButtonFormulaMedicaActionPerformed
+
+    private void MenuItemPasswordMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuItemPasswordMouseReleased
+        InternalCambiarPasswordUsuario editPass = new InternalCambiarPasswordUsuario(idUsuario, controlUsuario);
+        this.DesktopPane.add(editPass);
+        editPass.show();
+    }//GEN-LAST:event_MenuItemPasswordMouseReleased
+
+    private void MenuItemPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuItemPasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,6 +277,9 @@ public class VistaMedico extends javax.swing.JFrame {
     private javax.swing.JButton ButtonConsultarHistoriaPaciente;
     private javax.swing.JButton ButtonFormulaMedica;
     private javax.swing.JDesktopPane DesktopPane;
+    private javax.swing.JMenuItem MenuItemPassword;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;

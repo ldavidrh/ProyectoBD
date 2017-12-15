@@ -42,6 +42,14 @@ public class ControlAsignada {
         return daoAsignada.verificarFechaSalida();
     }
     
+    public String historialCama(String num_Cama){
+    return daoAsignada.historialCama(num_Cama);
+    }
+    
+    public String historialPaciente(String id_persona){
+    return daoAsignada.historialPaciente(id_persona);
+    }
+    
     public void cerrarConexionBD(){
         daoAsignada.cerrarConexionBD();
     }
