@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -31,8 +32,18 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
         this.controlCausa = controlCausa;
         this.controlHistoriaClinica = controlHistoriaClinica;
         initComponents();
-
+        this.refrescarCausas();
     }
+    
+    public void refrescarCausas() {
+        ArrayList causas = controlCausa.consultarCausas();
+        this.ComboBoxCausas.removeAllItems();
+        for (int i = 0; i < causas.size(); i++) {
+            this.ComboBoxCausas.addItem((String) causas.get(i));
+        }
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -148,7 +159,9 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Existen casillas vacías");
         }else{
             String num_historia =  "H" + this.FieldCedulaPaciente.getText();
+            System.out.println((String)this.ComboBoxCausas.getSelectedItem()+"s");
             String codigo_causa = controlCausa.obtenerCodigo((String)this.ComboBoxCausas.getSelectedItem());
+            
             String id_persona = this.FieldCedulaMedico.getText();
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             LocalDate actual = LocalDate.now();
