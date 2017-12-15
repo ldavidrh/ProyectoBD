@@ -187,6 +187,7 @@ CREATE TABLE formula
 	id_formula VARCHAR(30) PRIMARY KEY NOT NULL,
 	id_medico VARCHAR(30) NOT NULL,
 	id_paciente VARCHAR(30) NOT NULL,
+	fecha_emision DATE NOT NULL,
 	
 	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE,
 	FOREIGN KEY (id_paciente) REFERENCES paciente (id_persona) ON DELETE CASCADE
