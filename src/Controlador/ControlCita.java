@@ -29,6 +29,9 @@ public class ControlCita {
     return daoCita.listarCitasPaciente(id_paciente);
     }
     
+    public String eliminarCita(String m,String p,String f,String h){
+    return daoCita.eliminarCita(m, p, f, h);
+    }
    
     
 }

@@ -23,6 +23,8 @@ public class InternalBorrarCita extends javax.swing.JInternalFrame {
         this.controlPaciente = controlPaciente;
         initComponents();
         this.jComboBox1.setVisible(false);
+        this.jLabel6.setVisible(false);
+        this.eliminar.setVisible(false);
         
     }
 
@@ -44,28 +46,28 @@ public class InternalBorrarCita extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         consultar = new javax.swing.JButton();
 
+        setClosable(true);
+
         id_paciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 id_pacienteActionPerformed(evt);
             }
         });
 
-        eliminar.setText("Eliminar");
+        eliminar.setText("ELIMINAR");
         eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("ingrese su id de paciente para consultar sus citas:");
+        jLabel1.setText("INGRESE EL ID DEL PACIENTE DEL QUE QUIERE CONSULTAR LAS CITAS:");
 
-        jLabel2.setText("id del paciente");
+        jLabel2.setText("ID DEL PACIENTE:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel6.setText("LAS CITAS DEL PACIENTE SON:");
 
-        jLabel6.setText("sus citas son las siguientes:");
-
-        consultar.setText("consultar");
+        consultar.setText("CONSULTAR");
         consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarActionPerformed(evt);
@@ -79,19 +81,18 @@ public class InternalBorrarCita extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(id_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(consultar)
-                            .addComponent(eliminar))
-                        .addGap(0, 261, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel1)
+                    .addComponent(eliminar)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(id_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(consultar))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,16 +102,15 @@ public class InternalBorrarCita extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(id_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(consultar)
-                .addGap(52, 52, 52)
-                .addComponent(jLabel6)
+                    .addComponent(id_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(consultar))
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(eliminar)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,7 +134,27 @@ public class InternalBorrarCita extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-      
+        if(this.jComboBox1.getSelectedItem()== null){
+            JOptionPane.showMessageDialog(this, "porfavor elija una cita para eliminar, si no hay ninguna no tiene citas");
+        }else{
+            String id_paciente = this.id_paciente.getText();            
+            String string= (String) this.jComboBox1.getSelectedItem();
+            
+            String[] cita = string.split("=");
+            
+            String pr= cita[1];
+            String[] s= pr.split("\\.");
+            String medico=s[0];
+            
+            String se= cita[2];
+            String[] o= se.split("\\.");
+            String fecha= o[0];
+            
+            String hora= cita[3];
+            JOptionPane.showMessageDialog(this, controlCita.eliminarCita(medico, id_paciente, fecha, hora));
+            this.jComboBox1.removeAllItems();
+            refrescar(this.id_paciente.getText());
+        }     
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void id_pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_pacienteActionPerformed
@@ -150,6 +170,10 @@ public class InternalBorrarCita extends javax.swing.JInternalFrame {
             if(controlPaciente.verificarExistencia(id_paciente)){
                 refrescar(id_paciente);
                 this.jComboBox1.setVisible(true);
+                this.jLabel6.setVisible(true);
+                this.eliminar.setVisible(true);
+                this.id_paciente.setEditable(false);
+                this.consultar.setEnabled(false);
             }else{
                 JOptionPane.showMessageDialog(this, "el numero de paciente o el numero del medico no existen");
             }
