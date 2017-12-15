@@ -7,6 +7,7 @@ package Controlador;
 
 import AccesoDatos.DaoCita;
 import Modelo.Cita;
+import java.util.ArrayList;
 
 /**
  *
@@ -22,6 +23,10 @@ public class ControlCita {
     public String insertarCita(String id_medico, String id_paciente, String fecha, String hora, int precio){
         Cita cita = new Cita(id_medico, id_paciente, fecha, hora, precio);
         return daoCita.guardarCita(cita);
+    }
+    
+    public ArrayList listarCitasPaciente(String id_paciente){
+    return daoCita.listarCitasPaciente(id_paciente);
     }
     
    

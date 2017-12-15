@@ -1061,7 +1061,9 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonAgregarCitaActionPerformed
 
     private void ButtonEliminarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarCitaActionPerformed
-       InternalBorrarCita delCita = new InternalBorrarCita();
+       InternalBorrarCita delCita = new InternalBorrarCita(controlCita,controlPaciente);
+       this.DesktopPane.add(delCita);
+       delCita.show();
     }//GEN-LAST:event_ButtonEliminarCitaActionPerformed
 
     private void ButtonConsultarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarCitaActionPerformed

@@ -6,6 +6,7 @@
 package AccesoDatos;
 import Modelo.Cita;
 import java.sql.*;
+import java.util.ArrayList;
 /**
  *
  * @author User
@@ -80,6 +81,28 @@ public class DaoCita {
             return "Ha ocurrido un error al modificar el empleado";
         }
     }
+    
+    
+    public ArrayList listarCitasPaciente(String id_paciente){
+    String sql_listar;
+        ArrayList listar = new ArrayList();
+        sql_listar = "SELECT id_medico , fecha , hora FROM cita WHERE id_paciente='"+id_paciente+"';" ;
+        try {
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_listar);
+
+            
+            while (tabla.next()) {
+                listar.add(tabla.getString(1));
+                System.out.println((String)tabla.getString(1));
+            }
+            } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+            return listar; 
+    }
+    
     
     
     
