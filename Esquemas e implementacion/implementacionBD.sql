@@ -255,7 +255,7 @@ INSERT INTO cita VALUES ('333','111', '31-12-2017','5:30', 50000);
 
 INSERT INTO medicamento VALUES ('1212','Dolex', 'Ayuda contra el malestar general', 700, '1');
 
-INSERT INTO formula VALUES('111', '333', '111');
+INSERT INTO formula VALUES('111', '333', '111', '11-06-2017');
 
 INSERT INTO medicamentos_formula VALUES ('111', '1212');
 
