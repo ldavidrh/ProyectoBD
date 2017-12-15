@@ -74,7 +74,7 @@ public class VistaAdmin extends javax.swing.JFrame {
             }else if(resultado == JOptionPane.OK_OPTION){
                 String cedula = fieldCedula.getText();
                 String password = new String(fieldPassword.getPassword());
-                existe = controlUsuario.verificarUsuario(cedula, password, "admin");
+                existe = controlUsuario.verificarUsuario(cedula, password, "Administrador");
             }
         }while(!existe);
     }
