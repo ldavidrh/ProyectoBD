@@ -4,19 +4,25 @@
  * and open the template in the editor.
  */
 package Vista;
+
 import Controlador.ControlArea;
+import java.util.ArrayList;
+
 /**
  *
  * @author Luis
  */
 public class InternalEmpleadosPorArea extends javax.swing.JInternalFrame {
+
     ControlArea controlArea;
+
     /**
      * Creates new form InternalEmpleadosPorArea
      */
     public InternalEmpleadosPorArea(ControlArea controlArea) {
         this.controlArea = controlArea;
         initComponents();
+        cargarCodigosAreas();
     }
 
     /**
@@ -30,8 +36,8 @@ public class InternalEmpleadosPorArea extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        ComboBoxArea = new javax.swing.JComboBox<>();
         ButtonConsultarEmpleados = new javax.swing.JButton();
+        ComboBoxAreas = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         TextArea = new javax.swing.JTextArea();
 
@@ -43,7 +49,7 @@ public class InternalEmpleadosPorArea extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Seleccione le area para consultar los empleados");
+        jLabel1.setText("Seleccione el area para consultar los empleados");
 
         ButtonConsultarEmpleados.setText("Consultar empleados");
         ButtonConsultarEmpleados.addActionListener(new java.awt.event.ActionListener() {
@@ -60,8 +66,8 @@ public class InternalEmpleadosPorArea extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(ComboBoxArea, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtonConsultarEmpleados))
+                    .addComponent(ButtonConsultarEmpleados)
+                    .addComponent(ComboBoxAreas, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -70,7 +76,7 @@ public class InternalEmpleadosPorArea extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ComboBoxArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ComboBoxAreas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ButtonConsultarEmpleados)
                 .addGap(7, 7, 7))
@@ -105,16 +111,39 @@ public class InternalEmpleadosPorArea extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonConsultarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarEmpleadosActionPerformed
-        
+        String codigo = (String) this.ComboBoxAreas.getSelectedItem();
+        ArrayList consulta = controlArea.consultarEmpleadosPorArea(codigo);
+        String mensaje = "";
+        if (consulta != null) {
+            for (int i = 1; i < consulta.size(); i++) {
+                if (i % 5 != 0) {
+                    mensaje += (String) consulta.get(i-1)+"\n";
+
+                } else {
+                    mensaje += "\n";
+                }
+
+            }
+            this.TextArea.setText(mensaje);
+        }
     }//GEN-LAST:event_ButtonConsultarEmpleadosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonConsultarEmpleados;
-    private javax.swing.JComboBox<String> ComboBoxArea;
+    private javax.swing.JComboBox<String> ComboBoxAreas;
     private javax.swing.JTextArea TextArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarCodigosAreas() {
+        ArrayList<String> consulta = controlArea.cargarCodigosAreas();
+        if (consulta != null) {
+            for (String codigo : consulta) {
+                this.ComboBoxAreas.addItem(codigo);
+            }
+        }
+    }
 }
