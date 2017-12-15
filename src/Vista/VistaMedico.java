@@ -11,29 +11,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import Controlador.*;
+import java.util.ArrayList;
 /**
  *
  * @author Luis
  */
 public class VistaMedico extends javax.swing.JFrame {
     ControlHistoriaClinica controlHistoriaClinica;
-    ControlFormula controlFormula;
     ControlUsuario controlUsuario;
-    ControlCita controlCita;
-    ControlMedicamento controlMedicamento;
-    ControlAgenda controlAgenda;
-    ControlPaciente controlPaciente;
-    ControlPersona controlPersona;
-    ControlEnfermera controlEnfermera;
+    ControlFormula controlFormula;
     ControlMedico controlMedico;
-    ControlArea controlArea;
-    ControlEmpleado controlEmpleado;
-    ControlCampana controlCampana;
-    ControlHistoriaClinica controlHistoria;
-    ControlCama controlCama;
-    ControlAsignada controlAsignada;
-    ControlHabilidades controlHabilidades;
-    
+    ControlPaciente controlPaciente;
+    ControlCausa controlCausa;
+    ControlMedicamento controlMedicamento;
+    ControlRegistro controlRegistro;
     
     /**
      * Creates new form VistaMedico
@@ -44,7 +35,9 @@ public class VistaMedico extends javax.swing.JFrame {
         this.controlFormula = new ControlFormula();
         this.controlMedico = new ControlMedico();
         this.controlPaciente = new ControlPaciente();
+        this.controlCausa = new ControlCausa();
         this.controlMedicamento = new ControlMedicamento();
+        this.controlRegistro = new ControlRegistro();
         initComponents();
 
         //Creacion de InputDialog para login
@@ -65,7 +58,7 @@ public class VistaMedico extends javax.swing.JFrame {
             } else if (resultado == JOptionPane.OK_OPTION) {
                 String cedula = fieldCedula.getText();
                 String password = new String(fieldPassword.getPassword());
-                existe = controlUsuario.verificarUsuario(cedula, password, "medico");
+                existe = controlUsuario.verificarUsuario(cedula, password, "Médico");
             }
         } while (!existe);
  }
@@ -78,16 +71,19 @@ public class VistaMedico extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         ButtonConsultarHistoriaPaciente = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        ButtonAgregarRegistro = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         ButtonFormulaMedica = new javax.swing.JButton();
         DesktopPane = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         ButtonConsultarHistoriaPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/historiaClinica.png"))); // NOI18N
         ButtonConsultarHistoriaPaciente.setText("Historia Clinica");
@@ -98,39 +94,32 @@ public class VistaMedico extends javax.swing.JFrame {
                 ButtonConsultarHistoriaPacienteActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 199, 11, 0);
+        jPanel1.add(ButtonConsultarHistoriaPaciente, gridBagConstraints);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addRegistro.png"))); // NOI18N
-        jButton2.setText("Añadir registro");
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ButtonAgregarRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addRegistro.png"))); // NOI18N
+        ButtonAgregarRegistro.setText("Añadir registro");
+        ButtonAgregarRegistro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonAgregarRegistro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonAgregarRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ButtonAgregarRegistroActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(ButtonConsultarHistoriaPaciente)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addContainerGap(284, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ButtonConsultarHistoriaPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 18, 11, 214);
+        jPanel1.add(ButtonAgregarRegistro, gridBagConstraints);
 
         jTabbedPane1.addTab("Paciente", jPanel1);
+
+        jPanel2.setLayout(new java.awt.GridBagLayout());
 
         ButtonFormulaMedica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/formula.png"))); // NOI18N
         ButtonFormulaMedica.setText("Emitir formula medica");
@@ -141,23 +130,12 @@ public class VistaMedico extends javax.swing.JFrame {
                 ButtonFormulaMedicaActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(243, 243, 243)
-                .addComponent(ButtonFormulaMedica)
-                .addContainerGap(259, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ButtonFormulaMedica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 243, 11, 259);
+        jPanel2.add(ButtonFormulaMedica, gridBagConstraints);
 
         jTabbedPane1.addTab("Formula medica", jPanel2);
 
@@ -202,9 +180,11 @@ public class VistaMedico extends javax.swing.JFrame {
         conHis.show();
     }//GEN-LAST:event_ButtonConsultarHistoriaPacienteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void ButtonAgregarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarRegistroActionPerformed
+       InternalAgregarRegistro addReg = new InternalAgregarRegistro(controlRegistro, controlCausa, controlHistoriaClinica);
+       this.DesktopPane.add(addReg);
+       addReg.show();
+    }//GEN-LAST:event_ButtonAgregarRegistroActionPerformed
 
     private void ButtonFormulaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonFormulaMedicaActionPerformed
         InternalEmitirFormulaMedica emitirFormula = new InternalEmitirFormulaMedica(controlFormula, controlMedico, controlPaciente, controlMedicamento);
@@ -256,10 +236,10 @@ public class VistaMedico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonAgregarRegistro;
     private javax.swing.JButton ButtonConsultarHistoriaPaciente;
     private javax.swing.JButton ButtonFormulaMedica;
     private javax.swing.JDesktopPane DesktopPane;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;

@@ -50,7 +50,7 @@ public class InternalAgregarUsuario extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Tipo de usuario");
 
-        ComboTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medico", "Administrador" }));
+        ComboTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Médico", "Administrador" }));
 
         ButtonAgregar.setText("Agregar");
         ButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +126,7 @@ public class InternalAgregarUsuario extends javax.swing.JInternalFrame {
         }else{
             String usuario = this.FieldCedula.getText();
             String contrasenia = this.FieldPassword.getText();
-            String tipo_u = this.ComboTipoUsuario.getItemAt(WIDTH);
+            String tipo_u = (String)this.ComboTipoUsuario.getSelectedItem();
             
             JOptionPane.showMessageDialog(this, controlUsuario.agregarUsuario(usuario, contrasenia, tipo_u));           
         } // TODO add your handling code here:
