@@ -104,6 +104,25 @@ public class DaoUsuario {
         }
     }
     
+    public String cambiarPassword(String id_persona, String passwordNuevo){
+        String sql_cambiarPassword;
+        int filas;
+        sql_cambiarPassword = "UPDATE usuario SET password = '" + passwordNuevo +"' WHERE id_persona = '" + id_persona + "';";
+        try {
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            filas = sentencia.executeUpdate(sql_cambiarPassword);
+            if(filas == 1){
+                return "Contraseña cambiada";
+            }else{
+                return "Error al cambiar la contraseña";
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
      public void cerrarConexionBD(){
         fachada.closeConection(fachada.getConnetion());
     }  

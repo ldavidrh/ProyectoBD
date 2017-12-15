@@ -18,6 +18,7 @@ import javax.swing.JTextField;
  * @author Luis
  */
 public class VistaAdmin extends javax.swing.JFrame {
+    String idUsuario;
     ControlUsuario controlUsuario;
     ControlCita controlCita;
     ControlMedicamento controlMedicamento;
@@ -68,9 +69,9 @@ public class VistaAdmin extends javax.swing.JFrame {
             new JLabel("Contraseña"),
             fieldPassword
         };//Finaliza creacion de ventana login
-        boolean existe = false;
+        String existe = null;
         do{
-            int resultado = JOptionPane.showConfirmDialog(this, entradas, "LOGIN", JOptionPane.CANCEL_OPTION);
+            int resultado = JOptionPane.showConfirmDialog(this, entradas, "LOGIN ADMINISTRADOR", JOptionPane.CANCEL_OPTION);
             if(resultado == JOptionPane.CANCEL_OPTION | resultado == JOptionPane.CLOSED_OPTION){
                 System.exit(0);
             }else if(resultado == JOptionPane.OK_OPTION){
@@ -78,7 +79,8 @@ public class VistaAdmin extends javax.swing.JFrame {
                 String password = new String(fieldPassword.getPassword());
                 existe = controlUsuario.verificarUsuario(cedula, password, "Administrador");
             }
-        }while(!existe);
+        }while(existe == null);
+        idUsuario = existe;
     }
 
     /**
@@ -140,7 +142,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         PanelUsuarios = new javax.swing.JPanel();
         ButtonAgregarUsuario = new javax.swing.JButton();
         ButtonEliminarUsuario = new javax.swing.JButton();
-        ButtonEditarUsuario = new javax.swing.JButton();
+        ButtonCambiarPasswordUsuario = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         ButtonAgregarMedicamento = new javax.swing.JButton();
         ButtonConsultarMedicamento = new javax.swing.JButton();
@@ -814,13 +816,13 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 0);
         PanelUsuarios.add(ButtonEliminarUsuario, gridBagConstraints);
 
-        ButtonEditarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editUser.png"))); // NOI18N
-        ButtonEditarUsuario.setText("Editar");
-        ButtonEditarUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        ButtonEditarUsuario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        ButtonEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
+        ButtonCambiarPasswordUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/editUser.png"))); // NOI18N
+        ButtonCambiarPasswordUsuario.setText("Cambiar contraseña");
+        ButtonCambiarPasswordUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonCambiarPasswordUsuario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonCambiarPasswordUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonEditarUsuarioActionPerformed(evt);
+                ButtonCambiarPasswordUsuarioActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -828,7 +830,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 152);
-        PanelUsuarios.add(ButtonEditarUsuario, gridBagConstraints);
+        PanelUsuarios.add(ButtonCambiarPasswordUsuario, gridBagConstraints);
 
         PanelPrincipal.addTab("Usuarios", PanelUsuarios);
 
@@ -1059,7 +1061,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonAgregarCitaActionPerformed
 
     private void ButtonEliminarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarCitaActionPerformed
-        // TODO add your handling code here:
+       InternalBorrarCita delCita = new InternalBorrarCita();
     }//GEN-LAST:event_ButtonEliminarCitaActionPerformed
 
     private void ButtonConsultarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarCitaActionPerformed
@@ -1082,11 +1084,11 @@ public class VistaAdmin extends javax.swing.JFrame {
         delUser.show();
     }//GEN-LAST:event_ButtonEliminarUsuarioActionPerformed
 
-    private void ButtonEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarUsuarioActionPerformed
-        InternalEditarUsuario conUser = new InternalEditarUsuario(controlUsuario);
+    private void ButtonCambiarPasswordUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCambiarPasswordUsuarioActionPerformed
+        InternalCambiarPasswordUsuario conUser = new InternalCambiarPasswordUsuario(this.idUsuario, controlUsuario);
         this.DesktopPane.add(conUser);
         conUser.show();
-    }//GEN-LAST:event_ButtonEditarUsuarioActionPerformed
+    }//GEN-LAST:event_ButtonCambiarPasswordUsuarioActionPerformed
 
     private void ButtonEmpleadosPorAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmpleadosPorAreaActionPerformed
         InternalEmpleadosPorArea empArea = new InternalEmpleadosPorArea(controlArea);
@@ -1209,6 +1211,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton ButtonAgregarPaciente;
     private javax.swing.JButton ButtonAgregarUsuario;
     private javax.swing.JButton ButtonCamasAsignadas;
+    private javax.swing.JButton ButtonCambiarPasswordUsuario;
     private javax.swing.JButton ButtonConsultarArea;
     private javax.swing.JButton ButtonConsultarCama;
     private javax.swing.JButton ButtonConsultarCampana;
@@ -1229,7 +1232,6 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton ButtonEditarPaciente;
     private javax.swing.JButton ButtonEditarPaciente1;
     private javax.swing.JButton ButtonEditarPaciente2;
-    private javax.swing.JButton ButtonEditarUsuario;
     private javax.swing.JButton ButtonEliminarArea;
     private javax.swing.JButton ButtonEliminarCama;
     private javax.swing.JButton ButtonEliminarCampana;
