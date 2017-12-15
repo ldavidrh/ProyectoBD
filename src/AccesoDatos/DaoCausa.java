@@ -33,7 +33,7 @@ public class DaoCausa {
             }
         } catch (SQLException ex) {
             Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
-            return "Error al guardar la causa";
+            return "Ya existe una causa con el codigo "+causa.getCodigo_causa();
         }catch(Exception ex){ 
             System.out.println(ex); 
             return "Ha ocurrido un error al crear la causa";

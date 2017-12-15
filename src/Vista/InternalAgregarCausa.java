@@ -5,6 +5,7 @@
  */
 package Vista;
 import Controlador.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
@@ -38,6 +39,12 @@ public class InternalAgregarCausa extends javax.swing.JInternalFrame {
         TextAreaDescripcion = new javax.swing.JTextArea();
         ButtonAgregarCausa = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Agregar causa");
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         jLabel1.setText("Codigo");
 
         jLabel2.setText("Nombre");
@@ -69,7 +76,7 @@ public class InternalAgregarCausa extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3))
                         .addGap(45, 45, 45)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                             .addComponent(FieldNombre)
                             .addComponent(FieldCodigo)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -92,7 +99,7 @@ public class InternalAgregarCausa extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(ButtonAgregarCausa)
                 .addGap(20, 20, 20))
         );
@@ -121,7 +128,7 @@ public class InternalAgregarCausa extends javax.swing.JInternalFrame {
         String codigo_causa = this.FieldCodigo.getText();
         String nombre = this.FieldNombre.getText();
         String descripcion = this.TextAreaDescripcion.getText();
-        controlCausa.insertarCausa(codigo_causa, nombre, descripcion);
+        JOptionPane.showMessageDialog(this, controlCausa.insertarCausa(codigo_causa, nombre, descripcion), "ATENCIÓN", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_ButtonAgregarCausaActionPerformed
 
 

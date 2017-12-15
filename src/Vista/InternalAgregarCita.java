@@ -8,7 +8,9 @@ package Vista;
 import Controlador.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,7 +24,8 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
     ControlPaciente controlPaciente;
     ControlAgenda controlAgenda;
     ControlAsiste controlAsiste;
-    String fecha;      
+    String fecha;
+    String id_medico;
 
     /**
      * Creates new form InternalAgregarCita
@@ -211,38 +214,52 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
 
     private void ButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarActionPerformed
         // TODO add your handling code here:
-        if(this.FieldCedulaPaciente.getText().trim().isEmpty()){
+        String id_paciente = this.FieldCedulaPaciente.getText().trim();
+        if (id_paciente.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese la cédula del paciente que pide la cita");
-        }else{
-            String id_medico = this.FieldCedulaMedico.getText().trim();
-            String id_paciente = this.FieldCedulaPaciente.getText().trim();
+        } else if (!controlPaciente.verificarExistencia(id_paciente)) {
+            JOptionPane.showMessageDialog(this, "No existe un paciente con esa cédula");
+        } else if (this.ComboBoxHora.getSelectedItem()==null){
+            JOptionPane.showMessageDialog(this, "No hay horas disponibles para ese día, por favor elija otro");
+        } else {
             int precio = controlAsiste.generarPrecioCita(id_paciente);
-            String hora = (String)this.ComboBoxHora.getSelectedItem();
-            
-            if(controlCita.insertarCita(id_medico, id_paciente, this.fecha, hora, precio).equals("Cita creada exitosamente")){
-                controlAgenda.actualizarAgenda(id_medico, fecha, hora);
-            }else{
-                JOptionPane.showMessageDialog(this, "Ha ocurrido un error al crear la cita");
-            }            
+            String hora = (String) this.ComboBoxHora.getSelectedItem();
+
+            String mensaje_cita = controlCita.insertarCita(this.id_medico, id_paciente, this.fecha, hora, precio);
+            if (mensaje_cita.equals("Cita creada exitosamente")) {
+                controlAgenda.actualizarAgenda(this.id_medico, fecha, hora);
+                JOptionPane.showMessageDialog(this, "El precio de la cita es de " + precio);
+                this.ButtonAgregar.setEnabled(false);
+            } else {
+                JOptionPane.showMessageDialog(this, mensaje_cita);
+            }
         }
     }//GEN-LAST:event_ButtonAgregarActionPerformed
 
     private void jButtonConsultarDisponibilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarDisponibilidadActionPerformed
         // TODO add your handling code here:
         try {
-            if (this.FieldCedulaMedico.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Ingrese la cédula del médico con el que quiere la cita");
-            } else {
-                LocalDate fecha = this.DateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                String dia = String.valueOf(fecha.getDayOfMonth());
-                String mes = String.valueOf(fecha.getMonthValue());
-                String anio = String.valueOf(fecha.getYear());
-                String fecha_cita = dia + "-" + mes + "-" + anio;
+            this.id_medico = this.FieldCedulaMedico.getText().trim();
+            Date fecha = this.DateChooser.getDate();
+            LocalDate fechaLocal = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate actual = LocalDate.now();
 
+            if (fechaLocal.getDayOfWeek().toString().equals("SUNDAY")) {
+                JOptionPane.showMessageDialog(this, "Los medicos no se encuentran disponibles los domingos");
+            } else if (fechaLocal.isBefore(actual) || fechaLocal.isEqual(actual)) {
+                JOptionPane.showMessageDialog(this, "Asegúrese de elegir un día posterior al actual");
+            } else if (this.id_medico.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Ingrese la cédula del médico con el que quiere la cita");
+            } else if (!controlMedico.verificarExistencia(this.id_medico)) {
+                JOptionPane.showMessageDialog(this, "No existe un médico con esa cédula");
+            } else {
+                String dia_cita = String.valueOf(fechaLocal.getDayOfMonth());
+                String mes_cita = String.valueOf(fechaLocal.getMonthValue());
+                String anio_cita = String.valueOf(fechaLocal.getYear());
+                String fecha_cita = dia_cita + "-" + mes_cita + "-" + anio_cita;
                 this.fecha = fecha_cita;
-                String id_medico = this.FieldCedulaMedico.getText().trim();
-                
-                this.refrescarHorarios(id_medico, this.fecha);
+
+                this.refrescarHorarios();
                 this.ButtonAgregar.setEnabled(true);
                 this.jButtonConsultarDisponibilidad.setEnabled(false);
                 this.FieldCedulaMedico.setEditable(false);
@@ -261,6 +278,8 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
         this.DateChooser.setEnabled(true);
         this.jButtonConsultarDisponibilidad.setEnabled(true);
         this.ButtonAgregar.setEnabled(false);
+        this.FieldCedulaPaciente.setText("");
+        this.refrescarHorarios();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -280,11 +299,11 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 
-    public void refrescarHorarios(String id_medico, String fecha) {
-        ArrayList horas = controlAgenda.consultarAgenda(id_medico, fecha);
+    public void refrescarHorarios() {
+        ArrayList horas = controlAgenda.consultarAgenda(this.id_medico, this.fecha);
+        this.ComboBoxHora.removeAllItems();
         for (int i = 0; i < horas.size(); i++) {
             this.ComboBoxHora.addItem((String) horas.get(i));
-            System.out.println(horas.get(i));
         }
     }
 
