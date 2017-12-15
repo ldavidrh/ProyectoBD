@@ -147,7 +147,7 @@ CREATE TABLE causa
 DROP TABLE if EXISTS registro CASCADE;
 CREATE TABLE registro
 (
-	if_registro VARCHAR(30) PRIMARY KEY NOT NULL,
+	id_registro VARCHAR(30) PRIMARY KEY NOT NULL,
 	num_historia VARCHAR(30) NOT NULL,	
 	id_persona VARCHAR(30) NOT NULL,
 	fecha DATE NOT NULL,
