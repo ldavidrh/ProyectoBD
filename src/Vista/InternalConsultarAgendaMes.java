@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,16 +20,17 @@ import javax.swing.JOptionPane;
  * @author Luis
  */
 public class InternalConsultarAgendaMes extends javax.swing.JInternalFrame {
-
+    VistaAdmin vistaAdmin;
     ControlAgenda controlAgenda;
     ControlMedico controlMedico;
 
     /**
      * Creates new form InternalConsultarAgendaMes
      */
-    public InternalConsultarAgendaMes(ControlMedico controlMedico, ControlAgenda controlAgenda) {
+    public InternalConsultarAgendaMes(ControlMedico controlMedico, ControlAgenda controlAgenda, VistaAdmin vistaAdmin) {
         this.controlAgenda = controlAgenda;
         this.controlMedico = controlMedico;
+        this.vistaAdmin = vistaAdmin;
         initComponents();
 
     }
@@ -55,9 +57,9 @@ public class InternalConsultarAgendaMes extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Ingrese la cedula del medico y el mes del que desea consultar la agenda");
+        jLabel1.setText("Ingrese la cédula del medico y el mes del que desea consultar la agenda");
 
-        jLabel2.setText("Cedula");
+        jLabel2.setText("Cédula");
 
         Calendar.setRequestFocusEnabled(false);
         Calendar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -129,19 +131,31 @@ public class InternalConsultarAgendaMes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonConsultarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarDiaActionPerformed
-        Date fecha = this.Calendar.getDate();
-        LocalDate fechaLocal = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        if (fechaLocal.getDayOfWeek().toString().equals("SUNDAY")) {
-            JOptionPane.showMessageDialog(this, "Los medicos no se encuentran disponibles los domingos");
+        String id_medico = this.FieldCedula.getText().trim();
+        if (id_medico.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese la cédula del médico");
+        } else if (!controlMedico.verificarExistencia(id_medico)) {
+            JOptionPane.showMessageDialog(this, "No existe un médico con esa cédula");
         } else {
-            String fechaConsulta = Integer.toString(fechaLocal.getDayOfMonth()) + "-" + Integer.toString(fechaLocal.getMonthValue()) + "-" + Integer.toString(fechaLocal.getYear());
-            JOptionPane.showMessageDialog(this, fechaConsulta);
+            Date fecha = this.Calendar.getDate();
+            LocalDate fechaLocal = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            if (fechaLocal.getDayOfWeek().toString().equals("SUNDAY")) {
+                JOptionPane.showMessageDialog(this, "Él medico no se encuentra disponible los domingos");
+            } else {
+                String fechaConsulta = Integer.toString(fechaLocal.getDayOfMonth()) + "-" + Integer.toString(fechaLocal.getMonthValue()) + "-" + Integer.toString(fechaLocal.getYear());
+                String horas = "AGENDA DEL MÉDICO " + id_medico + " \n\nFecha: " + fechaConsulta + "\n";
+                horas += controlAgenda.consultarAgendaMensual(id_medico, fechaConsulta);
+                
+                InternalShowAgenda showAgenda = new InternalShowAgenda(horas);
+                
+                this.vistaAdmin.showAgendaMes(showAgenda);
+            }
         }
 
     }//GEN-LAST:event_ButtonConsultarDiaActionPerformed
-
+   
     private void CalendarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CalendarMouseClicked
-      
+
     }//GEN-LAST:event_CalendarMouseClicked
 
 
@@ -154,5 +168,4 @@ public class InternalConsultarAgendaMes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
-    
 }

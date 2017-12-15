@@ -51,12 +51,12 @@ public class DaoAgenda {
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            ResultSet tabla = sentencia.executeQuery(sql_select);           
+            ResultSet tabla = sentencia.executeQuery(sql_select);
 
-            while (tabla.next()) {                
-                for (int i = 0; i < consulta.size(); i++) {   
-                    if (consulta.get(i).equals(tabla.getString(1))) {                        
-                        consulta.remove(i);                        
+            while (tabla.next()) {
+                for (int i = 0; i < consulta.size(); i++) {
+                    if (consulta.get(i).equals(tabla.getString(1))) {
+                        consulta.remove(i);
                     }
                 }
             }
@@ -89,6 +89,37 @@ public class DaoAgenda {
 
         return horas;
     }
+
+    public String consultarAgendaLibres(String id_medico, String fecha) {
+        ArrayList horasLibres = this.consultarAgenda(id_medico, fecha);
+        ArrayList horasDeTrabajo = this.horasDisponibles();
+        horasDeTrabajo.add("17:00:00");       
+        String msj = "";
+        for (int i = 0; i < 16; i++) {
+            msj += "\n" + (String) horasDeTrabajo.get(i) + " - " + (String) horasDeTrabajo.get(i + 1);
+            for(int j=0; j<horasLibres.size(); j++){
+                if(horasDeTrabajo.get(i).equals(horasLibres.get(j))){
+                    msj += ": Libre";
+                } 
+            }           
+        }        
+        return msj;
+    }
+    
+    public String consultaAgendaMensual(String id_medico, String fecha){
+        String libres = this.consultarAgendaLibres(id_medico, fecha);
+        String[] linea = libres.split("\n");
+        String mensaje = "";
+        
+        for(int i=1; i<17; i++){
+            if(!linea[i].contains("Libre")){                
+                linea[i] += ": Ocupado";
+            }            
+            mensaje += "\n" + linea[i];
+        } 
+        return mensaje;        
+    }
+    
 
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());

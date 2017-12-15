@@ -7,6 +7,7 @@ package Controlador;
 
 import AccesoDatos.DaoCita;
 import Modelo.Cita;
+import java.util.ArrayList;
 
 /**
  *
@@ -24,6 +25,13 @@ public class ControlCita {
         return daoCita.guardarCita(cita);
     }
     
+    public ArrayList listarCitasPaciente(String id_paciente){
+    return daoCita.listarCitasPaciente(id_paciente);
+    }
+    
+    public String eliminarCita(String m,String p,String f,String h){
+    return daoCita.eliminarCita(m, p, f, h);
+    }
    
     
 }

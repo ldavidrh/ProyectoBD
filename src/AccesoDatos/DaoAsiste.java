@@ -49,7 +49,8 @@ public class DaoAsiste {
     public String consultarAsistencia(String cod_campana) {
         String sql_select;
         String consulta = "";
-        sql_select = "SELECT id_persona FROM asiste WHERE codigo_campana = '" + cod_campana + "'";
+        sql_select = "SELECT nombre FROM asiste INNER JOIN persona ON asiste.id_persona = persona.id_persona "
+                + "WHERE codigo_campana = '" + cod_campana + "'";
                 
         try {
             Connection conn = fachada.getConnetion();

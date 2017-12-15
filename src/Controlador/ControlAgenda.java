@@ -29,6 +29,10 @@ public class ControlAgenda {
         return daoAgenda.consultarAgenda(id_medico, fecha);
     }    
     
+    public String consultarAgendaMensual(String id_medico, String fecha){
+        return daoAgenda.consultaAgendaMensual(id_medico, fecha);      
+    }
+    
     public void cerrarConexionBD(){
         daoAgenda.cerrarConexionBD();
     }

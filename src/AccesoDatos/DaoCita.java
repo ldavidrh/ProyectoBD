@@ -6,6 +6,7 @@
 package AccesoDatos;
 import Modelo.Cita;
 import java.sql.*;
+import java.util.ArrayList;
 /**
  *
  * @author User
@@ -80,6 +81,53 @@ public class DaoCita {
             return "Ha ocurrido un error al modificar el empleado";
         }
     }
+    
+    
+    public ArrayList listarCitasPaciente(String id_paciente){
+    String sql_listar;
+        ArrayList listar = new ArrayList();
+        sql_listar = "SELECT id_medico , fecha , hora FROM cita WHERE id_paciente='"+id_paciente+"';" ;
+        try {
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_listar);
+
+            
+            while (tabla.next()) {
+                listar.add("ID médico =" + (tabla.getString(1)) +
+                ".  fecha =" + (tabla.getString(2)) +
+                ".  hora =" + (tabla.getString(3))
+                );
+                
+            }
+            } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+            return listar; 
+    }
+    
+    public String eliminarCita(String id_medico,String id_paciente,String fecha,String hora){
+        String sql_delete;
+        sql_delete = "DELETE FROM cita WHERE id_medico ='" + id_medico + "'"+
+                        " and id_paciente ='" + id_paciente + "'" +
+                        " and fecha='" + fecha + "'" +
+                        " and hora='" + hora +
+                "';";
+        
+        try{
+            Connection conn= fachada.getConnetion();       
+            Statement sentencia = conn.createStatement();            
+            if(sentencia.executeUpdate(sql_delete)==1){
+                return "cita eliminada exitosamente";
+            }else{
+                return "No se eliminó la cita";
+            }                
+        }catch(Exception e){
+            System.out.println(e);
+            return "Ocurrió un problema al eliminar la cita";
+        } 
+    }
+    
     
     
     
