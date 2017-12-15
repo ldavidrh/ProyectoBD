@@ -4,21 +4,25 @@
  * and open the template in the editor.
  */
 package Vista;
+import Controlador.ControlAsignada;
 import Controlador.ControlPaciente;
 import Controlador.ControlCama;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
  */
 public class InternalMovimientosPaciente extends javax.swing.JInternalFrame {
     ControlPaciente controlPaciente;
-    ControlCama controlCama; 
+    ControlCama controlCama;
+    ControlAsignada controlAsignada;
     /**
      * Creates new form InternalMovimientosPaciente
      */
-    public InternalMovimientosPaciente(ControlPaciente controlPaciente, ControlCama controlCama) {
+    public InternalMovimientosPaciente(ControlPaciente controlPaciente, ControlCama controlCama, ControlAsignada controlAsignada) {
         this.controlPaciente = controlPaciente;
         this.controlCama = controlCama;
+        this.controlAsignada = controlAsignada;
         initComponents();
     }
 
@@ -48,6 +52,11 @@ public class InternalMovimientosPaciente extends javax.swing.JInternalFrame {
         jLabel1.setText("Ingrese la cedula del paciente del que desea saber los movimientos en la clinica");
 
         ButtonConsultarMovimientos.setText("Consultar");
+        ButtonConsultarMovimientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonConsultarMovimientosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -100,6 +109,21 @@ public class InternalMovimientosPaciente extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonConsultarMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarMovimientosActionPerformed
+        if(this.FieldCedula.getText().trim().isEmpty()
+           ){
+            JOptionPane.showMessageDialog(this, "por favor ingrese una identificacion el campo esta vacio");
+        }else{
+            if(controlPaciente.verificarExistencia(this.FieldCedula.getText())){
+            String id_persona = this.FieldCedula.getText();
+            
+            this.TextArea.setText(controlAsignada.historialPaciente(id_persona));
+        } else{
+            JOptionPane.showMessageDialog(this, "este paciente no existe");
+            }
+        } // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonConsultarMovimientosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

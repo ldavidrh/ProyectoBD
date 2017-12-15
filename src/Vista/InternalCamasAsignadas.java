@@ -111,10 +111,14 @@ public class InternalCamasAsignadas extends javax.swing.JInternalFrame {
            ){
             JOptionPane.showMessageDialog(this, "por favor ingrese un numero de cama el campo esta vacio");
         }else{
+         if(controlCama.verificarExistencia(this.FieldNumCama.getText())){
             String num_cama = this.FieldNumCama.getText();
             
             this.TextArea.setText(controlAsignada.historialCama(num_cama));
-        } // TODO add your handling code here:
+         }else{
+             JOptionPane.showMessageDialog(this, "esta cama no existe");
+         }
+        }
     }//GEN-LAST:event_ButtonConsultarHistorialCAmaActionPerformed
 
 
