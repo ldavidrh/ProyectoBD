@@ -105,6 +105,25 @@ public class DaoCausa {
         }
 
     }
+    
+    public String obtenerCodigo(String nombre){
+        String codigo_causa;
+        String[] consulta = new String[3];
+
+        codigo_causa = "SELECT codigo_causa FROM causa WHERE nombre = '" + nombre + "';";
+
+        try {
+            Connection conexion = fachada.getConnetion();
+            Statement sentencia = conexion.createStatement();
+            ResultSet tabla = sentencia.executeQuery(codigo_causa);
+
+            return codigo_causa;
+        
+        } catch (SQLException e) {
+            System.out.print(e);
+            return null;
+        }
+    }
 
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());
