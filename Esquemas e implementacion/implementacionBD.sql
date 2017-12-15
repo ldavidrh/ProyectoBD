@@ -244,4 +244,6 @@ INSERT INTO medicamento VALUES ('1212','Dolex', 'Ayuda contra el malestar genera
 
 INSERT INTO formula VALUES ('0001','1212', '333', '111');
 
-INSERT INTO usuario VALUES ('1','1','admin');
+INSERT INTO usuario VALUES ('1','1','Administrador');
+
+INSERT INTO usuario VALUES ('2','2','Médico');

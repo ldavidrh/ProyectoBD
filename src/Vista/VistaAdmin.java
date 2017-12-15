@@ -1041,7 +1041,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEliminarCampanaActionPerformed
 
     private void ButtonConsultarCampanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarCampanaActionPerformed
-        InternalConsultarCampana conCamp = new InternalConsultarCampana(controlCampana);
+        InternalConsultarCampana conCamp = new InternalConsultarCampana(controlCampana, controlAsiste);
         this.DesktopPane.add(conCamp);
         conCamp.show();
     }//GEN-LAST:event_ButtonConsultarCampanaActionPerformed
@@ -1053,7 +1053,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarCampanaActionPerformed
 
     private void ButtonAgregarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarCitaActionPerformed
-        InternalAgregarCita addCita = new InternalAgregarCita(controlCita, controlMedico, controlAgenda, controlPaciente);
+        InternalAgregarCita addCita = new InternalAgregarCita(controlCita, controlMedico, controlAgenda, controlPaciente, controlAsiste);
         this.DesktopPane.add(addCita);
         addCita.show();
     }//GEN-LAST:event_ButtonAgregarCitaActionPerformed
@@ -1112,7 +1112,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarAsignarCamaActionPerformed
 
     private void ButtonCamasAsignadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCamasAsignadasActionPerformed
-        InternalCamasAsignadas camAsig = new InternalCamasAsignadas(controlCama);
+        InternalCamasAsignadas camAsig = new InternalCamasAsignadas(controlCama,controlAsignada);
         this.DesktopPane.add(camAsig);
         camAsig.show();
     }//GEN-LAST:event_ButtonCamasAsignadasActionPerformed

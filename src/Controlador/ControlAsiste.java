@@ -24,9 +24,13 @@ public class ControlAsiste {
         return daoAsiste.guardarAsiste(a);
     }
     
-    public String[] consultarAsiste(String id_persona, String codigo_campana){
-        return daoAsiste.consultarAsiste(id_persona, codigo_campana);
+    public String consultarAsistencia(String codigo_campana){
+        return daoAsiste.consultarAsistencia(codigo_campana);
     }       
+    
+    public int generarPrecioCita(String id_paciente){
+        return daoAsiste.generarPrecioCita(id_paciente);
+    }
     
     public void cerrarConexionBD(){
         daoAsiste.cerrarConexionBD();

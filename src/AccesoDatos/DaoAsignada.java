@@ -138,6 +138,29 @@ public class DaoAsignada {
         }
     }
     
+    public String historialCama(String num_Cama){
+     String sql_listar;
+        String listar = "";
+        sql_listar = "SELECT * FROM asignada WHERE num_cama='"+ num_Cama +"';" ;
+        try {
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_listar);
+
+            
+            while (tabla.next()) {
+               listar = listar +
+                       "persona: " + tabla.getString(1) + " "+
+                       "numero de cama: " + tabla.getString(2) + " "+
+                       "fecha de entrada: " + tabla.getString(3) + " "+
+                       "fechaa de salida: " + tabla.getString(4) + "\n";
+            }
+            } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+            return listar; 
+    }
+    
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());
     }

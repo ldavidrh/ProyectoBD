@@ -6,6 +6,7 @@
 package Controlador;
 
 import AccesoDatos.DaoCita;
+import Modelo.Cita;
 
 /**
  *
@@ -18,5 +19,11 @@ public class ControlCita {
         this.daoCita = new DaoCita();
     }
     
+    public String insertarCita(String id_medico, String id_paciente, String fecha, String hora, int precio){
+        Cita cita = new Cita(id_medico, id_paciente, fecha, hora, precio);
+        return daoCita.guardarCita(cita);
+    }
+    
+   
     
 }
