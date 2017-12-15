@@ -94,25 +94,22 @@ public class DaoMedicamento {
     
     public ArrayList listarMedicamentos(){
      String sql_listar;
-        ArrayList listar = null;
-        sql_listar = "SELECT * codigo_medicamento FROM medicamento;" ;
+        ArrayList listar = new ArrayList();
+        sql_listar = "SELECT codigo_medicamento FROM medicamento;" ;
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_listar);
 
-            if (tabla.next()) {
-                while (tabla.next()) {
-                    listar.add(tabla.getString(1));
-                }
-            }else{
-                return null;
+            
+            while (tabla.next()) {
+                listar.add(tabla.getString(1));
+                System.out.println((String)tabla.getString(1));
             }
-            return listar;
-        } catch (Exception e) {
-            System.out.println(e);
-            return null;
+            } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
+            return listar; 
     }
 
     public void cerrarConexionBD() {

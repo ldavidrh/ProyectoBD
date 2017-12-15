@@ -11,16 +11,19 @@ import java.time.ZoneId;
 import java.util.Date;
 import Controlador.*;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Luis
  */
 public class InternalEmitirFormulaMedica extends javax.swing.JInternalFrame {
+
     ControlFormula controlFormula;
     ControlMedico controlMedico;
     ControlPaciente controlPaciente;
     ControlMedicamento controlMedicamento;
+
     /**
      * Creates new form InternalEmitirFormulaMedica
      */
@@ -137,9 +140,25 @@ public class InternalEmitirFormulaMedica extends javax.swing.JInternalFrame {
         String codigoFormula;
         Date fecha = new Date();
         LocalDateTime fechaLocal = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-        codigoFormula = Integer.toString(fechaLocal.getDayOfMonth())+"-"+Integer.toString(fechaLocal.getMonthValue())+"-"+Integer.toString(fechaLocal.getYear())
-                +"//"+Integer.toString(fechaLocal.getHour())+":"+Integer.toString(fechaLocal.getMinute())+":"+Integer.toString(fechaLocal.getSecond());
+        codigoFormula = Integer.toString(fechaLocal.getDayOfMonth()) + "-" + Integer.toString(fechaLocal.getMonthValue()) + "-" + Integer.toString(fechaLocal.getYear())
+                + "//" + Integer.toString(fechaLocal.getHour()) + ":" + Integer.toString(fechaLocal.getMinute()) + ":" + Integer.toString(fechaLocal.getSecond());
+
         
+        if(this.FieldCedulaMedico.getText().trim().isEmpty() || this.FieldCedulaPaciente.getText().trim().isEmpty()
+           ){
+            JOptionPane.showMessageDialog(this, "Existen casillas vacías");
+        }else{
+            String id_medico = this.FieldCedulaMedico.getText();
+            String id_paciente = this.FieldCedulaPaciente.getText();
+            String id_medicamento= (String)this.ComboBoxCodigoMedicamento.getSelectedItem();
+            if(controlPaciente.verificarExistencia(id_paciente) && controlMedico.verificarExistencia(id_medico)){
+                JOptionPane.showMessageDialog(this, controlFormula.insertarFormula(codigoFormula,id_medicamento, id_medico, id_paciente));
+            }else{
+                JOptionPane.showMessageDialog(this, "el numero de paciente o el numero del medico no existen");
+            }
+            
+                       
+        }
     }//GEN-LAST:event_ButtonEmitirFormulaActionPerformed
 
 
@@ -154,12 +173,14 @@ public class InternalEmitirFormulaMedica extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
-    private void refrescar(){
-    ArrayList lista = controlMedicamento.listarMedicamentos();
-    int n= lista.size();
-    for (int i=0;i<n;i++){
-        this.ComboBoxCodigoMedicamento.addItem((String)lista.get(i));
-    }
-            
+    private void refrescar() {
+        ArrayList lista = controlMedicamento.listarMedicamentos();
+
+        if (lista != null) {
+            int n = lista.size();
+            for (int i = 0; i < n; i++) {
+                this.ComboBoxCodigoMedicamento.addItem((String) lista.get(i));
+            }
+        }
     }
 }

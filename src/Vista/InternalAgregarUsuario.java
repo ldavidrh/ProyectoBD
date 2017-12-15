@@ -50,7 +50,7 @@ public class InternalAgregarUsuario extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Tipo de usuario");
 
-        ComboTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mèdico", "Administrador" }));
+        ComboTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Médico", "Administrador" }));
 
         ButtonAgregar.setText("Agregar");
         ButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
