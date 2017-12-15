@@ -6,6 +6,7 @@
 package AccesoDatos;
 import Modelo.Medicamento;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.*;
 /**
  *
@@ -88,6 +89,29 @@ public class DaoMedicamento {
         } catch (Exception ex) {
             System.out.println(ex);
             return "Ha ocurrido un error al modificar el Medicamento";
+        }
+    }
+    
+    public ArrayList listarMedicamentos(){
+     String sql_listar;
+        ArrayList listar = null;
+        sql_listar = "SELECT * codigo_medicamento FROM medicamento;" ;
+        try {
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_listar);
+
+            if (tabla.next()) {
+                while (tabla.next()) {
+                    listar.add(tabla.getString(1));
+                }
+            }else{
+                return null;
+            }
+            return listar;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
         }
     }
 
