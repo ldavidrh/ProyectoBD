@@ -37,7 +37,7 @@ public class InternalConsultarCampana extends javax.swing.JInternalFrame {
         FieldCodigo = new javax.swing.JTextField();
         ButtonConsultar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        TextArea = new javax.swing.JTextArea();
 
         setClosable(true);
         setIconifiable(true);
@@ -78,9 +78,9 @@ public class InternalConsultarCampana extends javax.swing.JInternalFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        TextArea.setColumns(20);
+        TextArea.setRows(5);
+        jScrollPane1.setViewportView(TextArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,7 +120,7 @@ public class InternalConsultarCampana extends javax.swing.JInternalFrame {
                 consulta = "Nombre: " + campana[1] + "\nDescripción: " + campana[2] + "\nFecha: " + campana[3] +
                             "\nID médico encargado: " + campana[4] + "\n\nAsistentes:\n" + controlAsiste.consultarAsistencia(cod);                                               
             }
-            this.jTextArea1.setText(consulta);
+            this.TextArea.setText(consulta);
         }
     }//GEN-LAST:event_ButtonConsultarActionPerformed
 
@@ -128,9 +128,9 @@ public class InternalConsultarCampana extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonConsultar;
     private javax.swing.JTextField FieldCodigo;
+    private javax.swing.JTextArea TextArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

@@ -180,7 +180,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 81, 11, 0);
+        gridBagConstraints.insets = new java.awt.Insets(8, 93, 11, 0);
         PanelMedico.add(ButtonAgregarMedico, gridBagConstraints);
 
         ButtonEliminarMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/deleteDoctor.png"))); // NOI18N
@@ -196,7 +196,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 29, 11, 0);
+        gridBagConstraints.insets = new java.awt.Insets(8, 18, 11, 0);
         PanelMedico.add(ButtonEliminarMedico, gridBagConstraints);
 
         ButtonConsultarMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchDoctor.png"))); // NOI18N
@@ -244,7 +244,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(8, 18, 11, 71);
+        gridBagConstraints.insets = new java.awt.Insets(8, 18, 11, 96);
         PanelMedico.add(ButtonAgendaMes, gridBagConstraints);
 
         PanelPrincipal.addTab("Medico", PanelMedico);
