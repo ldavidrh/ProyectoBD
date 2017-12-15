@@ -63,22 +63,21 @@ public class DaoCita {
         }
     }
     
-    public String modificarCita(Cita c){
+    public String modificarCita(String id_fecha_n,String hora_n, String id_fecha_v,String hora_v,String id_paciente){
         String sql_modificar;
-        sql_modificar = "UPDATE cita SET id_medico ='" + c.getId_medico()+ "', fecha ='" +
-                        c.getFecha() + "', hora = '" + c.getHora() + "', precio ='" +
-                        c.getPrecio() + "' WHERE id_paciente = '" + c.getId_medico()+ "'";
+        sql_modificar = "UPDATE cita SET fecha ='" + id_fecha_n + "', hora = '" + hora_n +
+                    "' WHERE id_paciente = '" + id_paciente + "' and hora='"+ hora_v + "' and fecha='" + id_fecha_v +"';";
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
             if(sentencia.executeUpdate(sql_modificar)==1){
-                return "Empleado modificado exitosamente";
+                return "Cita modificada correctamente";
             }else{
-                return "No existe un empleado con ese id";
+                return "No existe una cita";
             }            
         }catch(Exception ex){
             System.out.println(ex);
-            return "Ha ocurrido un error al modificar el empleado";
+            return "Ha ocurrido un error al modificar la cita";
         }
     }
     

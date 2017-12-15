@@ -15,12 +15,14 @@ public class InternalBorrarCita extends javax.swing.JInternalFrame {
 
   ControlCita controlCita;
   ControlPaciente controlPaciente;
+  ControlAgenda controlAgenda;
     /**
      * Creates new form InternalEliminarCita
      */
-    public InternalBorrarCita(ControlCita controlCita,ControlPaciente controlPaciente) {
+    public InternalBorrarCita(ControlCita controlCita,ControlPaciente controlPaciente, ControlAgenda controlAgenda) {
         this.controlCita = controlCita;
         this.controlPaciente = controlPaciente;
+        this.controlAgenda = controlAgenda;
         initComponents();
         this.jComboBox1.setVisible(false);
         this.jLabel6.setVisible(false);
@@ -42,7 +44,7 @@ public class InternalBorrarCita extends javax.swing.JInternalFrame {
         eliminar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jLabel6 = new javax.swing.JLabel();
         consultar = new javax.swing.JButton();
 
@@ -54,20 +56,20 @@ public class InternalBorrarCita extends javax.swing.JInternalFrame {
             }
         });
 
-        eliminar.setText("ELIMINAR");
+        eliminar.setText("Eliminar");
         eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("INGRESE EL ID DEL PACIENTE DEL QUE QUIERE CONSULTAR LAS CITAS:");
+        jLabel1.setText("Ingrese el ID del paciente del que quiere consultar las citas:");
 
-        jLabel2.setText("ID DEL PACIENTE:");
+        jLabel2.setText("ID del paciente");
 
-        jLabel6.setText("LAS CITAS DEL PACIENTE SON:");
+        jLabel6.setText("Las citas del paciente son:");
 
-        consultar.setText("CONSULTAR");
+        consultar.setText("Consultar");
         consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarActionPerformed(evt);
@@ -135,7 +137,7 @@ public class InternalBorrarCita extends javax.swing.JInternalFrame {
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         if(this.jComboBox1.getSelectedItem()== null){
-            JOptionPane.showMessageDialog(this, "porfavor elija una cita para eliminar, si no hay ninguna no tiene citas");
+            JOptionPane.showMessageDialog(this, "Por favor elija una cita para eliminar, si no hay ninguna no tiene citas");
         }else{
             String id_paciente = this.id_paciente.getText();            
             String string= (String) this.jComboBox1.getSelectedItem();
@@ -152,6 +154,7 @@ public class InternalBorrarCita extends javax.swing.JInternalFrame {
             
             String hora= cita[3];
             JOptionPane.showMessageDialog(this, controlCita.eliminarCita(medico, id_paciente, fecha, hora));
+            System.out.println(controlAgenda.eliminarCita(medico, fecha, hora));
             this.jComboBox1.removeAllItems();
             refrescar(this.id_paciente.getText());
         }     
@@ -162,9 +165,8 @@ public class InternalBorrarCita extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_id_pacienteActionPerformed
 
     private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
-       if(this.id_paciente.getText().trim().isEmpty()
-           ){
-            JOptionPane.showMessageDialog(this, "el campo id del paciente esta vacio");
+       if(this.id_paciente.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ingrese la cédula del paciente");
         }else{
             String id_paciente = this.id_paciente.getText();
             if(controlPaciente.verificarExistencia(id_paciente)){
@@ -175,7 +177,7 @@ public class InternalBorrarCita extends javax.swing.JInternalFrame {
                 this.id_paciente.setEditable(false);
                 this.consultar.setEnabled(false);
             }else{
-                JOptionPane.showMessageDialog(this, "el numero de paciente o el numero del medico no existen");
+                JOptionPane.showMessageDialog(this, "No existe un paciente con esa cédula");
             }
             
                        

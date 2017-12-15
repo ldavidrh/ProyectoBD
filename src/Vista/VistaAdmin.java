@@ -247,7 +247,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(8, 18, 11, 96);
         PanelMedico.add(ButtonAgendaMes, gridBagConstraints);
 
-        PanelPrincipal.addTab("Medico", PanelMedico);
+        PanelPrincipal.addTab("Médico", PanelMedico);
 
         PanelEnfermera.setLayout(new java.awt.GridBagLayout());
 
@@ -516,7 +516,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(11, 18, 8, 82);
         PanelArea.add(ButtonEmpleadosPorArea, gridBagConstraints);
 
-        PanelPrincipal.addTab("Area", PanelArea);
+        PanelPrincipal.addTab("Área", PanelArea);
 
         PanelCamas.setLayout(new java.awt.GridBagLayout());
 
@@ -1094,17 +1094,21 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonAgregarCitaActionPerformed
 
     private void ButtonEliminarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEliminarCitaActionPerformed
-       InternalBorrarCita delCita = new InternalBorrarCita(controlCita,controlPaciente);
+       InternalBorrarCita delCita = new InternalBorrarCita(controlCita,controlPaciente, controlAgenda);
        this.DesktopPane.add(delCita);
        delCita.show();
     }//GEN-LAST:event_ButtonEliminarCitaActionPerformed
 
     private void ButtonConsultarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarCitaActionPerformed
-        // TODO add your handling code here:
+        InternalConsultarCita conCita = new InternalConsultarCita(controlCita,controlPaciente);
+        this.DesktopPane.add(conCita);
+        conCita.show();
     }//GEN-LAST:event_ButtonConsultarCitaActionPerformed
 
     private void ButtonEditarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarCitaActionPerformed
-        // TODO add your handling code here:
+       InternalEditarCita ediCita = new InternalEditarCita(controlCita,controlPaciente,controlAgenda,controlMedico);
+       this.DesktopPane.add(ediCita);
+       ediCita.show();
     }//GEN-LAST:event_ButtonEditarCitaActionPerformed
 
     private void ButtonAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarUsuarioActionPerformed

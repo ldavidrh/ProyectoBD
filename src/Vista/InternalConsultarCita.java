@@ -40,6 +40,8 @@ public class InternalConsultarCita extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
+        setClosable(true);
+
         jLabel1.setText("Ingrese el ID del paciente para consultar las citas:");
 
         consultar.setText("CONSULTAR");
@@ -114,7 +116,8 @@ public class InternalConsultarCita extends javax.swing.JInternalFrame {
         }else{
             String id_paciente = this.id_paciente.getText();
             if(controlPaciente.verificarExistencia(id_paciente)){
-               this.jTextArea1.add(controlCita.consultarCita(id_paciente), this);
+               this.jTextArea1.setText(controlCita.consultarCita(id_paciente));
+               this.consultar.setEnabled(false);
             }else{
                 JOptionPane.showMessageDialog(this, "el numero de paciente o el numero del medico no existen");
             }

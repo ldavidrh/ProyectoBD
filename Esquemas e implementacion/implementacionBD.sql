@@ -141,7 +141,7 @@ CREATE TABLE causa
 	nombre VARCHAR(30) NOT NULL,
 	descripcion VARCHAR(60) NOT NULL,
 	
-	PRIMARY KEY(codigo_causa, nombre)
+	PRIMARY KEY(codigo_causa)
 );
 
 DROP TABLE if EXISTS registro CASCADE;
@@ -212,9 +212,9 @@ INSERT INTO persona VALUES ('222','Diana Sofia','Calle 12A #3C', '314 600 40 57'
 INSERT INTO persona VALUES ('333','Luis','Car 60B #1A', '212 541 12 78');
 INSERT INTO persona VALUES ('444','Miguel Angel','Corinto :v', '300 400 50 60');
 
-INSERT INTO historia_clinica VALUES ('01', '27-11-2001');
+INSERT INTO historia_clinica VALUES ('H111', '27-11-2001');
 
-INSERT INTO paciente VALUES ('111','01','123456', '31-07-1998', 'Gasta mucho');
+INSERT INTO paciente VALUES ('111','H111','123456', '31-07-1998', 'Gasta mucho');
 
 INSERT INTO asignada VALUES ('111','002','31-07-2017', '31-12-2017');
 
@@ -238,7 +238,7 @@ INSERT INTO asiste VALUES ('111','1', '0');
 
 INSERT INTO causa VALUES ('1000','Dolor en espalda', 'Fuertes dolores lumbares');
 
-INSERT INTO registro VALUES ('01','1000', '333', '16-10-2017');
+INSERT INTO registro VALUES ('H111','1000', '333', '16-10-2017');
 
 INSERT INTO cita VALUES ('333','111', '31-12-2017','5:30', 50000);
 

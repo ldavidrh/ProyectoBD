@@ -33,6 +33,10 @@ public class ControlAgenda {
         return daoAgenda.consultaAgendaMensual(id_medico, fecha);      
     }
     
+    public String eliminarCita(String id_medico, String fecha, String hora){
+        return daoAgenda.eliminarCita(id_medico, fecha, hora);
+    }
+    
     public void cerrarConexionBD(){
         daoAgenda.cerrarConexionBD();
     }
