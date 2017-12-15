@@ -137,9 +137,11 @@ CREATE TABLE asiste
 DROP TABLE IF EXISTS causa CASCADE;
 CREATE TABLE causa
 (
-	codigo_causa VARCHAR(30) PRIMARY KEY NOT NULL,
+	codigo_causa VARCHAR(30) NOT NULL,
 	nombre VARCHAR(30) NOT NULL,
-	descripcion VARCHAR(60) NOT NULL
+	descripcion VARCHAR(60) NOT NULL,
+	
+	PRIMARY KEY(codigo_causa, nombre)
 );
 
 DROP TABLE if EXISTS registro CASCADE;

@@ -51,12 +51,12 @@ public class DaoAgenda {
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            ResultSet tabla = sentencia.executeQuery(sql_select);           
+            ResultSet tabla = sentencia.executeQuery(sql_select);
 
-            while (tabla.next()) {                
-                for (int i = 0; i < consulta.size(); i++) {   
-                    if (consulta.get(i).equals(tabla.getString(1))) {                        
-                        consulta.remove(i);                        
+            while (tabla.next()) {
+                for (int i = 0; i < consulta.size(); i++) {
+                    if (consulta.get(i).equals(tabla.getString(1))) {
+                        consulta.remove(i);
                     }
                 }
             }
@@ -89,7 +89,17 @@ public class DaoAgenda {
 
         return horas;
     }
-
+/*
+    public void consultarAgendaMensual(String id_medico, String fecha) {
+        ArrayList horasOcupadas = this.consultarAgenda(id_medico, fecha);
+        ArrayList horasDisponibles = this.horasDisponibles();
+        String mensaje = "";
+        for(int i=0; i<horasDisponibles.size(); i++){
+           mensaje += (String)horasDisponibles.get(i) + (String)horasDisponibles.get(i+1);
+           if((horasDisponibles.get(i).equals(i)))
+        }
+    }*/
+        
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());
     }

@@ -8,7 +8,6 @@ package Vista;
 import Controlador.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -25,7 +24,6 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
     ControlAgenda controlAgenda;
     ControlAsiste controlAsiste;
     String fecha;
-    String id_medico;
 
     /**
      * Creates new form InternalAgregarCita
@@ -213,7 +211,7 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_FieldCedulaPacienteActionPerformed
 
     private void ButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
         String id_paciente = this.FieldCedulaPaciente.getText().trim();
         if (id_paciente.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese la cédula del paciente que pide la cita");
@@ -224,10 +222,10 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
         } else {
             int precio = controlAsiste.generarPrecioCita(id_paciente);
             String hora = (String) this.ComboBoxHora.getSelectedItem();
-
-            String mensaje_cita = controlCita.insertarCita(this.id_medico, id_paciente, this.fecha, hora, precio);
+            String id_medico = this.FieldCedulaMedico.getText().trim();
+            String mensaje_cita = controlCita.insertarCita(id_medico, id_paciente, this.fecha, hora, precio);
             if (mensaje_cita.equals("Cita creada exitosamente")) {
-                controlAgenda.actualizarAgenda(this.id_medico, fecha, hora);
+                controlAgenda.actualizarAgenda(id_medico, this.fecha, hora);
                 JOptionPane.showMessageDialog(this, "El precio de la cita es de " + precio);
                 this.ButtonAgregar.setEnabled(false);
             } else {
@@ -239,7 +237,7 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
     private void jButtonConsultarDisponibilidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarDisponibilidadActionPerformed
         // TODO add your handling code here:
         try {
-            this.id_medico = this.FieldCedulaMedico.getText().trim();
+            String id_medico = this.FieldCedulaMedico.getText().trim();
             Date fecha = this.DateChooser.getDate();
             LocalDate fechaLocal = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             LocalDate actual = LocalDate.now();
@@ -248,9 +246,9 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "Los medicos no se encuentran disponibles los domingos");
             } else if (fechaLocal.isBefore(actual) || fechaLocal.isEqual(actual)) {
                 JOptionPane.showMessageDialog(this, "Asegúrese de elegir un día posterior al actual");
-            } else if (this.id_medico.isEmpty()) {
+            } else if (id_medico.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Ingrese la cédula del médico con el que quiere la cita");
-            } else if (!controlMedico.verificarExistencia(this.id_medico)) {
+            } else if (!controlMedico.verificarExistencia(id_medico)) {
                 JOptionPane.showMessageDialog(this, "No existe un médico con esa cédula");
             } else {
                 String dia_cita = String.valueOf(fechaLocal.getDayOfMonth());
@@ -259,7 +257,7 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
                 String fecha_cita = dia_cita + "-" + mes_cita + "-" + anio_cita;
                 this.fecha = fecha_cita;
 
-                this.refrescarHorarios();
+                this.refrescarHorarios(id_medico, fecha_cita);
                 this.ButtonAgregar.setEnabled(true);
                 this.jButtonConsultarDisponibilidad.setEnabled(false);
                 this.FieldCedulaMedico.setEditable(false);
@@ -273,13 +271,15 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonConsultarDisponibilidadActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
         this.FieldCedulaMedico.setEditable(true);
+        this.FieldCedulaMedico.setText("");
+        this.DateChooser.setDate(null);
         this.DateChooser.setEnabled(true);
         this.jButtonConsultarDisponibilidad.setEnabled(true);
         this.ButtonAgregar.setEnabled(false);
         this.FieldCedulaPaciente.setText("");
-        this.refrescarHorarios();
+        this.ComboBoxHora.removeAllItems();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -299,11 +299,12 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 
-    public void refrescarHorarios() {
-        ArrayList horas = controlAgenda.consultarAgenda(this.id_medico, this.fecha);
+    public void refrescarHorarios(String id_medico, String fecha) {
+        ArrayList horas = controlAgenda.consultarAgenda(id_medico, fecha);
         this.ComboBoxHora.removeAllItems();
         for (int i = 0; i < horas.size(); i++) {
             this.ComboBoxHora.addItem((String) horas.get(i));
+            System.out.println("FUNCIONA???");
         }
     }
 

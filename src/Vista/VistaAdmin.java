@@ -19,6 +19,7 @@ import javax.swing.JTextField;
  */
 public class VistaAdmin extends javax.swing.JFrame {
     String idUsuario;
+    ControlCausa controlCausa;
     ControlUsuario controlUsuario;
     ControlCita controlCita;
     ControlMedicamento controlMedicamento;
@@ -56,6 +57,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         controlCita = new ControlCita();
         controlCama = new ControlCama();
         controlAsiste = new ControlAsiste();
+        controlCausa = new ControlCausa();
         HiloCamas hilo = new HiloCamas(controlAsignada, controlCama);
         hilo.start();
         
@@ -147,6 +149,8 @@ public class VistaAdmin extends javax.swing.JFrame {
         ButtonAgregarMedicamento = new javax.swing.JButton();
         ButtonConsultarMedicamento = new javax.swing.JButton();
         ButtonEditarMedicamento = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        ButtonAgregarCausa = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -886,6 +890,35 @@ public class VistaAdmin extends javax.swing.JFrame {
 
         PanelPrincipal.addTab("Medicamentos", jPanel1);
 
+        ButtonAgregarCausa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addCausa.png"))); // NOI18N
+        ButtonAgregarCausa.setText("Agregar");
+        ButtonAgregarCausa.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButtonAgregarCausa.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButtonAgregarCausa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonAgregarCausaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(308, 308, 308)
+                .addComponent(ButtonAgregarCausa)
+                .addContainerGap(353, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ButtonAgregarCausa)
+                .addContainerGap())
+        );
+
+        PanelPrincipal.addTab("Causas", jPanel2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1128,7 +1161,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarPaciente2ActionPerformed
 
     private void ButtonAgendaMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgendaMesActionPerformed
-        InternalConsultarAgendaMes agendaMes = new InternalConsultarAgendaMes(controlMedico, controlAgenda);
+        InternalConsultarAgendaMes agendaMes = new InternalConsultarAgendaMes(controlMedico, controlAgenda, this);
         this.DesktopPane.add(agendaMes);
         agendaMes.show();
     }//GEN-LAST:event_ButtonAgendaMesActionPerformed
@@ -1162,6 +1195,12 @@ public class VistaAdmin extends javax.swing.JFrame {
         this.DesktopPane.add(addAsis);
         addAsis.show();
     }//GEN-LAST:event_ButtonAgregarAsistentesActionPerformed
+
+    private void ButtonAgregarCausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarCausaActionPerformed
+        InternalAgregarCausa addCausa = new InternalAgregarCausa(controlCausa);
+        this.DesktopPane.add(addCausa);
+        addCausa.show();
+    }//GEN-LAST:event_ButtonAgregarCausaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1205,6 +1244,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JButton ButtonAgregarAsistentes;
     private javax.swing.JButton ButtonAgregarCama;
     private javax.swing.JButton ButtonAgregarCampana;
+    private javax.swing.JButton ButtonAgregarCausa;
     private javax.swing.JButton ButtonAgregarCita;
     private javax.swing.JButton ButtonAgregarEnfermera;
     private javax.swing.JButton ButtonAgregarHabilidades;
@@ -1254,5 +1294,11 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JTabbedPane PanelPrincipal;
     private javax.swing.JPanel PanelUsuarios;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+    
+    public void showAgendaMes(InternalShowAgenda e){
+        this.DesktopPane.add(e);
+        e.show();
+    }
 }
