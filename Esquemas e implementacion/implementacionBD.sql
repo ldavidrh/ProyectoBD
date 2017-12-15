@@ -184,14 +184,24 @@ CREATE TABLE medicamento
 DROP TABLE IF EXISTS formula CASCADE;
 CREATE TABLE formula
 (
-	id_formula VARCHAR(30) PRIMARY KEY NOT NULL,
-	codigo_medicamento VARCHAR(30) NOT NULL,
+	id_formula VARCHAR(30) PRIMARY KEY NOT NULL
 	id_medico VARCHAR(30) NOT NULL,
 	id_paciente VARCHAR(30) NOT NULL,
-
-	FOREIGN KEY (codigo_medicamento) REFERENCES medicamento (codigo_medicamento) ON DELETE CASCADE,
+	
 	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE,
 	FOREIGN KEY (id_paciente) REFERENCES paciente (id_persona) ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS medicamentos_formula CASCADE;
+CREATE TABLE medicamentos_formula
+(
+	id_formula VARCHAR(30) NOT NULL,
+	codigo_medicamento VARCHAR(30) NOT NULL,
+	
+	PRIMARY KEY (id_formula,codigo_medicamento),
+	
+	FOREIGN KEY (codigo_medicamento) REFERENCES medicamento (codigo_medicamento) ON DELETE CASCADE,
+	FOREIGN KEY (id_formula) REFERENCES formula (id_formula) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS usuario CASCADE;
@@ -244,7 +254,9 @@ INSERT INTO cita VALUES ('333','111', '31-12-2017','5:30', 50000);
 
 INSERT INTO medicamento VALUES ('1212','Dolex', 'Ayuda contra el malestar general', 700, '1');
 
-INSERT INTO formula VALUES ('0001','1212', '333', '111');
+INSERT INTO formula VALUES('111', '333', '111');
+
+INSERT INTO medicamentos_formula VALUES ('111', '1212');
 
 INSERT INTO usuario VALUES ('1','1','Administrador');
 
