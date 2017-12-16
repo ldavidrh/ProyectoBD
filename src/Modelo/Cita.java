@@ -15,6 +15,7 @@ public class Cita {
     String fecha;
     String hora;
     int precio;
+   
 
     public Cita(String id_medico, String id_paciente, String fecha, String hora, int precio) {
         this.id_medico = id_medico;
