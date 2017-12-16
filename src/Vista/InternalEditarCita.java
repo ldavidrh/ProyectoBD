@@ -331,8 +331,13 @@ ControlCita controlCita;
     }//GEN-LAST:event_FieldCedulaMedicoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      JOptionPane.showMessageDialog(this,controlCita.modificarCita(this.fecha, (String)this.ComboBoxHora.getSelectedItem(), this.fechavieja.getText(), this.horaVieja.getText(), this.id_paciente2.getText()));
-      
+      String hora_nueva = (String)this.ComboBoxHora.getSelectedItem();
+      String hora_vieja = this.horaVieja.getText();
+      String fecha_vieja = this.fechavieja.getText();
+      JOptionPane.showMessageDialog(this, controlCita.modificarCita(this.fecha, hora_nueva, fecha_vieja , hora_vieja , this.id_paciente2.getText()));
+      String id_medico = this.FieldCedulaMedico.getText().trim();      
+      controlAgenda.actualizarAgenda(id_medico, this.fecha, hora_nueva);
+      controlAgenda.eliminarCita(id_medico, fecha_vieja, hora_vieja);
       this.DateChooser.setEnabled(false);
       this.jButtonConsultarDisponibilidad.setEnabled(false);
       this.ComboBoxHora.setEnabled(false);

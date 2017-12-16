@@ -26,6 +26,7 @@ public class VistaMedico extends javax.swing.JFrame {
     ControlCausa controlCausa;
     ControlMedicamento controlMedicamento;
     ControlRegistro controlRegistro;
+    ControlCita controlCita;
     
     /**
      * Creates new form VistaMedico
@@ -39,6 +40,7 @@ public class VistaMedico extends javax.swing.JFrame {
         this.controlCausa = new ControlCausa();
         this.controlMedicamento = new ControlMedicamento();
         this.controlRegistro = new ControlRegistro();
+        this.controlCita = new ControlCita();
         initComponents();
 
         //Creacion de InputDialog para login
@@ -208,7 +210,7 @@ public class VistaMedico extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonConsultarHistoriaPacienteActionPerformed
 
     private void ButtonAgregarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarRegistroActionPerformed
-       InternalAgregarRegistro addReg = new InternalAgregarRegistro(controlRegistro, controlCausa, controlHistoriaClinica, controlPaciente, controlMedico);
+       InternalAgregarRegistro addReg = new InternalAgregarRegistro(controlRegistro, controlCausa, controlHistoriaClinica, controlPaciente, controlMedico, controlCita);
        this.DesktopPane.add(addReg);
        addReg.show();
     }//GEN-LAST:event_ButtonAgregarRegistroActionPerformed
