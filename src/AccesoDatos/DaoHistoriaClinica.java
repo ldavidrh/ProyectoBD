@@ -97,7 +97,30 @@ public class DaoHistoriaClinica {
         }                             
     }
     
-        public String listarRegistros(String num_historia, String causas){
+    public String obtenerCausas(String codigo_registro){
+        String sql_consultar;
+        String causas = "";
+        sql_consultar = "SELECT codigo_causa FROM causas_registro WHERE id_registro = '" + codigo_registro + "';";
+
+        try {
+            Connection conexion = fachada.getConnetion();
+            Statement sentencia = conexion.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_consultar);
+            while(tabla.next()){
+                causas =  causas +
+                        (String)tabla.getString(1) + ", ";
+            }
+            System.out.println(causas);
+            return causas;
+            
+        
+        } catch (SQLException e) {
+            System.out.print(e);
+            return null;
+        }
+    }
+    
+        public String listarRegistros(String num_historia){
             String sql_listar;
             String listar = "";
             sql_listar = "SELECT * FROM registro WHERE num_historia='"+ num_historia +"';" ;
@@ -109,16 +132,22 @@ public class DaoHistoriaClinica {
             
             while (tabla.next()) {
                listar = listar +
-                       "Historia Clinica: " + tabla.getString(1) + "\n"+
-                       "Causas: " + causas + "\n"+
+                       "Registro: " + tabla.getString(1) + "\n"+
+                       "Historia Clinica : " + tabla.getString(2) + "\n"+
                        "Cedula medico: " + tabla.getString(3) + "\n"+
-                       "fecha: " + tabla.getString(4) + "\n";
+                       "Fecha: " + tabla.getString(4) + "\n" +
+                       "Causas: " + obtenerCausas((String)tabla.getString(1)) + "\n" + 
+                       "*****************************" + "\n";
             }
             } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
             return listar;
         }
+        
+        
+        
+        
     
     public void cerrarConexionBD(){
         fachada.closeConection(fachada.getConnetion());
