@@ -25,16 +25,18 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
     ControlHistoriaClinica controlHistoriaClinica;
     ControlPaciente controlPaciente;
     ControlMedico controlMedico;
+    ControlCita controlCita;
 
     /**
      * Creates new form InternalAgregarRegistro
      */
-    public InternalAgregarRegistro(ControlRegistro controlRegistro, ControlCausa controlCausa, ControlHistoriaClinica controlHistoriaClinica, ControlPaciente controlPaciente, ControlMedico controlMedico) {
+    public InternalAgregarRegistro(ControlRegistro controlRegistro, ControlCausa controlCausa, ControlHistoriaClinica controlHistoriaClinica, ControlPaciente controlPaciente, ControlMedico controlMedico, ControlCita controlCita) {
         this.controlRegistro = controlRegistro;
         this.controlCausa = controlCausa;
         this.controlHistoriaClinica = controlHistoriaClinica;
         this.controlMedico = controlMedico;
         this.controlPaciente = controlPaciente;
+        this.controlCita = controlCita;
         initComponents();
         this.refrescarCausas();
         this.jPanel2.setVisible(false);
@@ -70,6 +72,7 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
         ButtonAgregarCausa = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         FieldCodigoRegistro = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setClosable(true);
         setIconifiable(true);
@@ -103,17 +106,17 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(FieldCedulaPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(FieldCedulaPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(FieldCedulaMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(FieldCedulaMedico))
                     .addComponent(jLabel3))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonContinuar)
@@ -156,25 +159,30 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(139, Short.MAX_VALUE)
+                .addComponent(ButtonAgregarCausa)
+                .addGap(42, 42, 42))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FieldCodigoRegistro)
-                    .addComponent(ComboBoxCausas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FieldCodigoRegistro)
+                            .addComponent(ComboBoxCausas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ButtonAgregarCausa)
-                .addGap(42, 42, 42))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(FieldCodigoRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -184,7 +192,7 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
                     .addComponent(ComboBoxCausas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(ButtonAgregarCausa)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -193,10 +201,12 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,8 +214,8 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -215,11 +225,20 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
     private void ButtonAgregarCausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarCausaActionPerformed
         String cod_registro = this.FieldCodigoRegistro.getText();
         String causa = (String) this.ComboBoxCausas.getSelectedItem();
-        if (causa != null) {
+        String cita = (String) this.jComboBox1.getSelectedItem();
+        String id_medico = this.FieldCedulaMedico.getText();
+        String id_paciente = this.FieldCedulaPaciente.getText();
+        if(cita == null){
+            JOptionPane.showMessageDialog(this, "No hay citas para atender");
+        } else if(causa == null) {
+             JOptionPane.showMessageDialog(this, "No hay causas para agregar");           
+        } else {            
             String cod_causa[] = causa.split("-");            
             JOptionPane.showMessageDialog(this, controlRegistro.insertarCausas(cod_registro, cod_causa[0].trim()));
-        } else {
-            JOptionPane.showMessageDialog(this, "No hay causas para agregar");
+            String fecha_hora[] = cita.split(";");
+            String fecha = fecha_hora[0].trim().substring(6);
+            String hora = fecha_hora[1].trim().substring(4);
+            controlCita.registrarAsistencia(id_medico, id_paciente, fecha, hora);            
         }
     }//GEN-LAST:event_ButtonAgregarCausaActionPerformed
 
@@ -247,12 +266,13 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
             String codigo_registro = "H" + id_paciente + id_medico + fecha + hora + minutos;
 
             String respuestaRegistro = controlRegistro.insertarRegistro(codigo_registro, "H" + id_paciente, id_medico, fecha);
-            if (respuestaRegistro.equals("Registro guardado exitosamente")) {
+            if (respuestaRegistro.equals("Registro guardado exitosamente")) {                                
                 this.jPanel2.setVisible(true);
                 this.FieldCedulaMedico.setEditable(false);
                 this.FieldCedulaPaciente.setEditable(false);
                 this.FieldCodigoRegistro.setText(codigo_registro);
                 this.refrescarCausas();
+                this.refrescarCitas(id_paciente, id_medico); 
             } else {
                 JOptionPane.showMessageDialog(this, respuestaRegistro);
             }
@@ -267,6 +287,7 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
     private javax.swing.JTextField FieldCedulaPaciente;
     private javax.swing.JTextField FieldCodigoRegistro;
     private javax.swing.JButton jButtonContinuar;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -275,4 +296,17 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
+
+    private void refrescarCitas(String id_paciente, String id_medico) {
+        ArrayList lista = controlCita.listarCitasMedico(id_paciente, id_medico);
+        if (lista != null) {
+            int n = lista.size();
+            for (int i = 0; i < n; i++) {
+                this.jComboBox1.addItem((String) lista.get(i));
+            }
+        }else{
+            lista.add("No hay citas para atender");
+            this.jComboBox1.addItem((String)lista.get(1));
+        }
+    }
 }

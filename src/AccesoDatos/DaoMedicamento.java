@@ -8,7 +8,6 @@ package AccesoDatos;
 import Modelo.Medicamento;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.*;
 
 /**
  *
@@ -98,14 +97,14 @@ public class DaoMedicamento {
     public ArrayList listarMedicamentos() {
         String sql_listar;
         ArrayList listar = new ArrayList();
-        sql_listar = "SELECT codigo_medicamento FROM medicamento WHERE existe = '1';";
+        sql_listar = "SELECT codigo_medicamento, nombre FROM medicamento WHERE existe = '1';";
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_listar);
 
             while (tabla.next()) {
-                listar.add(tabla.getString(1));
+                listar.add(tabla.getString(1) + " - " + tabla.getString(2));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
