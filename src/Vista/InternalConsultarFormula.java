@@ -6,6 +6,8 @@
 package Vista;
 import Controlador.ControlMedicamento;
 import Controlador.ControlFormula;
+import Controlador.ControlPaciente;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Luis
@@ -13,13 +15,15 @@ import Controlador.ControlFormula;
 public class InternalConsultarFormula extends javax.swing.JInternalFrame {
     ControlMedicamento controlMedicamento;
     ControlFormula controlFormula;
+    ControlPaciente controlPaciente;
     
     /**
      * Creates new form InternalConsultarFormula
      */
-    public InternalConsultarFormula(ControlFormula controlFormula, ControlMedicamento controlMedicamento) {
+    public InternalConsultarFormula(ControlFormula controlFormula, ControlMedicamento controlMedicamento, ControlPaciente controlPaciente) {
         this.controlFormula = controlFormula;
         this.controlMedicamento = controlMedicamento;
+        this.controlPaciente = controlPaciente;
         initComponents();
     }
 
@@ -45,9 +49,14 @@ public class InternalConsultarFormula extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Ingrese la cedula del paciente del que desea consultar las formulas medicas");
+        jLabel1.setText("Ingrese la cédula del paciente del que desea consultar las fórmulas médicas");
 
         ButtonConsultar.setText("Consultar");
+        ButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -100,6 +109,18 @@ public class InternalConsultarFormula extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarActionPerformed
+        // TODO add your handling code here:
+        String cedula = this.FieldCedula.getText().trim();
+        if(cedula.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ingrese la cédula del paciente");
+        }else if(!controlPaciente.verificarExistencia(cedula)){
+            JOptionPane.showMessageDialog(this, "No existe un paciente con esa cédula");
+        }else{
+            this.TextArea.setText(controlFormula.consultaFormula(cedula));
+        }
+    }//GEN-LAST:event_ButtonConsultarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
