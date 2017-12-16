@@ -10,14 +10,14 @@ package Modelo;
  * @author juandavid
  */
 public class Registro {
-    String num_historia;
-    String codigo_causa;
+    String codigo_registro;
+    String num_historia;  
     String id_persona; 
     String fecha;
 
-    public Registro(String num_historia, String codigo_causa, String id_persona, String fecha) {
-        this.num_historia = num_historia;
-        this.codigo_causa = codigo_causa;
+    public Registro(String codigo_registro, String num_historia, String id_persona, String fecha) {
+        this.codigo_registro = codigo_registro;
+        this.num_historia = num_historia;    
         this.id_persona = id_persona;
         this.fecha = fecha;
     }
@@ -30,12 +30,8 @@ public class Registro {
         this.num_historia = num_historia;
     }
 
-    public String getCodigo_causa() {
-        return codigo_causa;
-    }
-
-    public void setCodigo_causa(String codigo_causa) {
-        this.codigo_causa = codigo_causa;
+    public String getCodigo_registro() {
+        return codigo_registro;
     }
 
     public String getId_persona() {

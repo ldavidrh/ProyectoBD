@@ -208,7 +208,7 @@ public class VistaMedico extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonConsultarHistoriaPacienteActionPerformed
 
     private void ButtonAgregarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarRegistroActionPerformed
-       InternalAgregarRegistro addReg = new InternalAgregarRegistro(controlRegistro, controlCausa, controlHistoriaClinica);
+       InternalAgregarRegistro addReg = new InternalAgregarRegistro(controlRegistro, controlCausa, controlHistoriaClinica, controlPaciente, controlMedico);
        this.DesktopPane.add(addReg);
        addReg.show();
     }//GEN-LAST:event_ButtonAgregarRegistroActionPerformed
