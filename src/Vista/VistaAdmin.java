@@ -1151,7 +1151,9 @@ public class VistaAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonEditarPaciente1ActionPerformed
 
     private void ButtonEditarCitasPorMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarCitasPorMedicoActionPerformed
-        // TODO add your handling code here:
+        InternalCitasAtendidas citAte = new InternalCitasAtendidas(controlCita,controlPaciente, controlAgenda);
+        this.DesktopPane.add(citAte);
+        citAte.show();
     }//GEN-LAST:event_ButtonEditarCitasPorMedicoActionPerformed
 
     private void ButtonEditarAsignarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarAsignarCamaActionPerformed

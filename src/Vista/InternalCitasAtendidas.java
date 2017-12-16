@@ -5,16 +5,24 @@
  */
 package Vista;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import Controlador.*;
 /**
  *
  * @author Familia
  */
 public class InternalCitasAtendidas extends javax.swing.JInternalFrame {
-
+    ControlCita controlCita;
+    ControlPaciente controlPaciente;
+    ControlAgenda controlAgenda;
     /**
      * Creates new form InternalCitasAtendidas
      */
-    public InternalCitasAtendidas() {
+    public InternalCitasAtendidas(ControlCita controlCita,ControlPaciente controlPaciente, ControlAgenda controlAgenda) {
+        this.controlCita = controlCita;
+        this.controlPaciente = controlPaciente;
+        this.controlAgenda = controlAgenda;
         initComponents();
     }
 
@@ -33,12 +41,22 @@ public class InternalCitasAtendidas extends javax.swing.JInternalFrame {
         jYearChooser1 = new com.toedter.calendar.JYearChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        Consultar = new javax.swing.JButton();
+
+        setClosable(true);
 
         jLabel2.setText("Elija el mes y el año en el que quiere consultar la cantidad de consultas por medico.");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        Consultar.setText("Consultar");
+        Consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -52,9 +70,11 @@ public class InternalCitasAtendidas extends javax.swing.JInternalFrame {
                         .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)
                         .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                        .addGap(34, 34, 34)
+                        .addComponent(Consultar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addComponent(jScrollPane1)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -64,9 +84,10 @@ public class InternalCitasAtendidas extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Consultar))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -90,8 +111,27 @@ public class InternalCitasAtendidas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsultarActionPerformed
+    int mes = this.jMonthChooser1.getMonth();
+        System.out.println(mes);
+        int anio = this.jYearChooser1.getYear();
+
+        Calendar calendario = new GregorianCalendar(anio, mes, 1);
+        int diasMes = calendario.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+        mes += 1;
+        String fechaInicio = "01-" + mes + "-" + anio;
+        String fechaFin = diasMes + "-" + mes + "-" + anio;
+	System.out.println("s"+fechaInicio + "s" + fechaFin+"s");  
+        
+        
+        this.jTextArea1.setText(controlCita.consultarCitasAtendidas(fechaInicio,fechaFin));
+        this.Consultar.setEnabled(false);
+    }//GEN-LAST:event_ConsultarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Consultar;
     private javax.swing.JLabel jLabel2;
     private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JPanel jPanel1;
