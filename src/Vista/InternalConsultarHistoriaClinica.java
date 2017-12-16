@@ -112,24 +112,23 @@ public class InternalConsultarHistoriaClinica extends javax.swing.JInternalFrame
     }//GEN-LAST:event_FieldCedulaActionPerformed
 
     private void ButtonConsultarHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarHistoriaActionPerformed
-        try {
-            if (this.FieldCedula.getText().trim().isEmpty()) {
-                JOptionPane.showInternalMessageDialog(this, "Ingrese la cédula del paciente", "Atención", JOptionPane.WARNING_MESSAGE);
-            } else {
-                String num_historia = "H" + this.FieldCedula.getText().trim();
-                String consulta = "";
-                String[] historia = controlHistoriaClinica.consultarHistoria(num_historia);
-                if (historia == null) {
+        if(this.FieldCedula.getText().trim().isEmpty()
+           ){
+            JOptionPane.showMessageDialog(this, "por favor ingrese una cedula");
+        }else{
+            String cedula = this.FieldCedula.getText();
+            String consulta;
+            String num_historia = "H" + this.FieldCedula.getText();
+            String[] paciente = controlHistoriaClinica.consultarHistoria(num_historia);
+                if (paciente == null) {
                     consulta = "No existe un paciente con esa cédula en el hospital";
-                } else {
-                    consulta = controlHistoriaClinica.listarRegistros(num_historia);
-                    System.out.println(consulta + "xd");
                 }
-                this.TextConsulta.setText(consulta);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());                   
-            JOptionPane.showMessageDialog(this, "Ha ocurrido un error desde la vista");
+                else{
+                    
+                    String causas = "1000,2000,3000";
+                    consulta = controlHistoriaClinica.listarRegistros(num_historia, causas);
+                    this.TextConsulta.setText(consulta);
+                }
         }
     }//GEN-LAST:event_ButtonConsultarHistoriaActionPerformed
 
