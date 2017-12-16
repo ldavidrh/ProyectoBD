@@ -4,19 +4,22 @@
  * and open the template in the editor.
  */
 package Vista;
+
 import Controlador.ControlMedicamento;
 import Controlador.ControlFormula;
 import Controlador.ControlPaciente;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luis
  */
 public class InternalConsultarFormula extends javax.swing.JInternalFrame {
+
     ControlMedicamento controlMedicamento;
     ControlFormula controlFormula;
     ControlPaciente controlPaciente;
-    
+
     /**
      * Creates new form InternalConsultarFormula
      */
@@ -113,12 +116,17 @@ public class InternalConsultarFormula extends javax.swing.JInternalFrame {
     private void ButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarActionPerformed
         // TODO add your handling code here:
         String cedula = this.FieldCedula.getText().trim();
-        if(cedula.isEmpty()){
+        if (cedula.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese la cédula del paciente");
-        }else if(!controlPaciente.verificarExistencia(cedula)){
+        } else if (!controlPaciente.verificarExistencia(cedula)) {
             JOptionPane.showMessageDialog(this, "No existe un paciente con esa cédula");
-        }else{
-            this.TextArea.setText(controlFormula.consultaFormula(cedula));
+        } else {
+            String formula = controlFormula.consultaFormula(cedula);
+            if(formula.equals("")){
+                JOptionPane.showMessageDialog(this, "No se han emitido fórmulas para ese paciente");
+            }else{
+                this.TextArea.setText(formula);
+            }
         }
     }//GEN-LAST:event_ButtonConsultarActionPerformed
 
