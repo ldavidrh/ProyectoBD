@@ -97,6 +97,9 @@ public class DaoRegistro {
             return "Ha ocurrido un error al guardar la causa";
         }        
     }
+    
+    
+    
 
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());
