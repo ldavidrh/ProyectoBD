@@ -131,14 +131,14 @@ public class DaoCausa {
     public ArrayList consultarCausas() {
         String sql_select;
         ArrayList causas = new ArrayList();
-        sql_select = "SELECT nombre FROM causa";
+        sql_select = "SELECT codigo_causa, nombre FROM causa";
         try {
             Connection conn = fachada.getConnetion();
             Statement sentencia = conn.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql_select);           
             
             while (tabla.next()) {
-                causas.add(tabla.getString(1));
+                causas.add(tabla.getString(1) + " - " + tabla.getString(2));
             }
             return causas;
         } catch (Exception e) {

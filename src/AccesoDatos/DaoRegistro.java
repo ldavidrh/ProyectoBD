@@ -26,12 +26,10 @@ public class DaoRegistro {
     }
 
     public String guardarRegistro(Registro r) {
-        String sql_guardar;
-        System.out.println(r.getCodigo_causa());
-        sql_guardar = "INSERT INTO registro VALUES('" + 
-                r.getNum_historia() + "', '" + r.getCodigo_causa() + "', '" + r.getId_persona() + "', '" 
+        String sql_guardar;        
+        sql_guardar = "INSERT INTO registro VALUES('" + r.getCodigo_registro() + "', '" +
+                r.getNum_historia() + "', '" + r.getId_persona() + "', '" 
                 + r.getFecha() + "');";
-
         try {
             Connection conexion = fachada.getConnetion();
             Statement sentencia = conexion.createStatement();
@@ -41,8 +39,8 @@ public class DaoRegistro {
                 return "No se pudo guardar el Registro";
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
-            return "Error al guardar el Registro";
+            System.out.println(ex.getMessage());
+            return "Ya se creó un registro para esta cita";
         }catch(Exception ex){ 
             System.out.println(ex); 
             return "Ha ocurrido un error al crear el Registro";
@@ -76,30 +74,29 @@ public class DaoRegistro {
             System.out.print(e);
             return null;
         }
-
     }
-
-    public String eliminarRegistro(Registro r) {
-        String sql_eliminar;
-        sql_eliminar = "DELETE FROM registro WHERE num_historia = '" + r.getNum_historia() + 
-                "' AND codigo_causa ='" + r.getCodigo_causa() + "' AND id_persona ='" + r.getId_persona() + 
-                "' AND fecha ='" + r.getFecha() + "';";
-
-        try {
-            Connection conexion = fachada.getConnetion();
-            Statement sentencia = conexion.createStatement();
-            if (sentencia.executeUpdate(sql_eliminar)==1) {
-                return "Registro eliminado existosamente";
-            } else {
-                return "No existe ese registro";
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DaoAgenda.class.getName()).log(Level.SEVERE, null, ex);
-            return "Error al eliminar Registro";
-        }
-    }
-
     
+    public String guardarCausas(String codigo_registro, String codigo_causa){
+        String sql_guardar;
+        sql_guardar = "INSERT INTO causas_registro VALUES('" + codigo_registro
+                      + "', '" + codigo_causa + "')";
+        try{
+            Connection conn= fachada.conectar();
+            Statement sentencia = conn.createStatement();             
+            if(sentencia.executeUpdate(sql_guardar)==1){
+                return "Causa guardada correctamente";
+            }else{
+                return "Error: No se insertó la causa";
+            }
+        }catch(SQLException ex){
+            System.out.println(ex);
+            return "Ya se agregó esa causa al registro";
+        }
+        catch(Exception ex){ 
+            System.out.println(ex); 
+            return "Ha ocurrido un error al guardar la causa";
+        }        
+    }
 
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());
