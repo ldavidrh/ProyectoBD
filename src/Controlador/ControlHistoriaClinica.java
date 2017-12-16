@@ -35,8 +35,8 @@ public class ControlHistoriaClinica {
         return daoHistoria.eliminarHistoria(num);
     }
     
-    public String listarRegistros(String num_historia, String causas){
-        return daoHistoria.listarRegistros(num_historia, causas);
+    public String listarRegistros(String num_historia){
+        return daoHistoria.listarRegistros(num_historia);
     }
     
     public void cerrarConexionBD(){
