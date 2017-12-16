@@ -97,61 +97,27 @@ public class DaoHistoriaClinica {
         }                             
     }
     
-        public String listarRegistros(String num_historia){
-            String sql_listarHistoria;
-            String sql_listarRegistro;
-            String sql_listarCausa;
-            String sql_listarMedico;
+        public String listarRegistros(String num_historia, String causas){
+            String sql_listar;
             String listar = "";
-            sql_listarHistoria = "SELECT * FROM historia_clinica WHERE num_historia='"+ num_historia +"';" ;
-            sql_listarRegistro = "SELECT codigo_causa,id_persona,fecha FROM registro WHERE num_historia='"+ num_historia +"';" ;
-            
-            
+            sql_listar = "SELECT * FROM registro WHERE num_historia='"+ num_historia +"';" ;
             try {
-                Connection conn = fachada.getConnetion();
-                Statement sentencia = conn.createStatement();
-                ResultSet tablaHistoria = sentencia.executeQuery(sql_listarHistoria);
-                Connection conn1 = fachada.getConnetion();
-                Statement sentencia1 = conn1.createStatement();
-                ResultSet tablaRegistro = sentencia.executeQuery(sql_listarRegistro);
-                sql_listarCausa = "SELECT * FROM causa WHERE codigo_causa='"+ (String)tablaRegistro.getString(1)+"';" ;
-                sql_listarMedico = "SELECT * FROM persona WHERE id_persona='"+ (String)tablaRegistro.getString(2)+"';" ;
-                Connection conn2 = fachada.getConnetion();
-                Statement sentencia2 = conn2.createStatement();
-                ResultSet tablaCausa = sentencia.executeQuery(sql_listarCausa);
-                Connection conn3 = fachada.getConnetion();
-                Statement sentencia3 = conn3.createStatement();
-                ResultSet tablaMedico = sentencia.executeQuery(sql_listarMedico);
-                tablaHistoria.next();
-                
-                if(tablaHistoria.next()){
-                     listar  = listar +
-                           "Historia clinica: " + tablaHistoria.getString(1) + "\n"+
-                           "Fecha de apertura: " + tablaHistoria.getString(2);
-                }
-                
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_listar);
 
-
-                while (tablaRegistro.next()) {
-                    if(tablaCausa.next()){
-                        listar  = listar +
-                           "Codigo de la causa: " + tablaCausa.getString(1) + "\n"+
-                           "Nombre de la causa: " + tablaCausa.getString(2) + "\n"+
-                           "Descripción de la causa: " + tablaCausa.getString(3);
-                    }
-                    if(tablaMedico.next()){
-                        listar  = listar +
-                           "Codigo del medico: " + tablaMedico.getString(1) + "\n"+
-                           "Nombre del medico: " + tablaMedico.getString(2); 
-                    }
-                    
-                   listar  = listar +
-                           "Fecha: " + tablaRegistro.getString(3);
-                }
-                } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
+            
+            while (tabla.next()) {
+               listar = listar +
+                       "Historia Clinica: " + tabla.getString(1) + "\n"+
+                       "Causas: " + causas + "\n"+
+                       "Cedula medico: " + tabla.getString(3) + "\n"+
+                       "fecha: " + tabla.getString(4) + "\n";
             }
-                return listar; 
+            } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+            return listar;
         }
     
     public void cerrarConexionBD(){
