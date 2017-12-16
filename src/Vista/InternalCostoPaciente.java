@@ -4,16 +4,22 @@
  * and open the template in the editor.
  */
 package Vista;
+
 import Controlador.ControlPersona;
 import Controlador.ControlPaciente;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  *
  * @author Luis
  */
 public class InternalCostoPaciente extends javax.swing.JInternalFrame {
+
     ControlPersona controlPersona;
     ControlPaciente controlPaciente;
+
     /**
      * Creates new form InternalCostoPaciente
      */
@@ -35,7 +41,18 @@ public class InternalCostoPaciente extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        TextArea = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        MonthChooser = new com.toedter.calendar.JMonthChooser();
+        YearChooser = new com.toedter.calendar.JYearChooser();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        ButtonConsultarAnio = new javax.swing.JButton();
+        ButtonConsultarMes = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        FieldCedula = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -45,9 +62,9 @@ public class InternalCostoPaciente extends javax.swing.JInternalFrame {
 
         jLabel1.setText("A continuacion podra ver el costo de cita y medicamentos por cada paciente");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        TextArea.setColumns(20);
+        TextArea.setRows(5);
+        jScrollPane1.setViewportView(TextArea);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -55,10 +72,12 @@ public class InternalCostoPaciente extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,7 +85,94 @@ public class InternalCostoPaciente extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel2.setText("Año");
+
+        jLabel3.setText("Mes");
+
+        jLabel4.setText("Para consultar por año, digite la cedula del paciente, seleccione el año y presione \"Consultar año\".");
+
+        jLabel5.setText("Para consultar por mes, digite la cedula del paciente, seleccione el mes y el año y presione \"Consultar mes\".");
+
+        ButtonConsultarAnio.setText("Consultar año");
+        ButtonConsultarAnio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonConsultarAnioActionPerformed(evt);
+            }
+        });
+
+        ButtonConsultarMes.setText("Consultar mes");
+        ButtonConsultarMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonConsultarMesActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Cedula paciente");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(MonthChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(YearChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ButtonConsultarAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ButtonConsultarMes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(FieldCedula))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(MonthChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(FieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(YearChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ButtonConsultarAnio)
+                            .addComponent(ButtonConsultarMes))))
                 .addContainerGap())
         );
 
@@ -76,25 +182,132 @@ public class InternalCostoPaciente extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ButtonConsultarAnioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarAnioActionPerformed
+        String mensaje = this.consultarCostoPromedioAnualCita() + "\n"
+                + this.consultarCostoPromedioAnualMedicamento();
+
+        this.TextArea.setText(mensaje);
+    }//GEN-LAST:event_ButtonConsultarAnioActionPerformed
+
+    private void ButtonConsultarMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarMesActionPerformed
+        String mensaje = this.consultarCostoPromedioMensualCita() + "\n"
+                + this.consultarCostoPromedioMensualMedicamento();
+
+        this.TextArea.setText(mensaje);
+    }//GEN-LAST:event_ButtonConsultarMesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonConsultarAnio;
+    private javax.swing.JButton ButtonConsultarMes;
+    private javax.swing.JTextField FieldCedula;
+    private com.toedter.calendar.JMonthChooser MonthChooser;
+    private javax.swing.JTextArea TextArea;
+    private com.toedter.calendar.JYearChooser YearChooser;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
+    private String consultarCostoPromedioMensualMedicamento() {
+        int mes = this.MonthChooser.getMonth();
+        System.out.println(mes);
+        int anio = this.YearChooser.getYear();
+        String cedula = this.FieldCedula.getText();
+
+        Calendar calendario = new GregorianCalendar(anio, mes, 1);
+        int diasMes = calendario.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+        mes += 1;
+        String fechaInicio = "1-" + mes + "-" + anio;
+        String fechaFin = diasMes + "-" + mes + "-" + anio;
+        System.out.println(fechaInicio + " " + fechaFin);
+        String resultado = (String) controlPaciente.consultarCostoPromedioMensualMedicamento(cedula, fechaInicio, fechaFin).get(0);
+        if (resultado != null) {
+            int a = (int) Math.round(Double.parseDouble(resultado));
+            return "Costo promedio de medicamentos del paciente con cedula: " + cedula + " entre " + fechaInicio + " y " + fechaFin + ": \n" + a;
+        } else {
+            return "El paciente no compro medicamentos en el mes consultado";
+        }
+
+    }
+
+    private String consultarCostoPromedioAnualMedicamento() {
+        int anio = this.YearChooser.getYear();
+        String cedula = this.FieldCedula.getText();
+
+        String fechaInicio = "1-" + "1-" + anio;
+        String fechaFin = "31-" + "12-" + anio;
+        System.out.println(fechaInicio + " " + fechaFin);
+        String resultado = (String) controlPaciente.consultarCostoPromedioAnualMedicamento(cedula, fechaInicio, fechaFin).get(0);
+        if (resultado != null) {
+            int a = (int) Math.round(Double.parseDouble(resultado));
+            return "Costo promedio de medicamentos del paciente con cedula: " + cedula + " entre " + fechaInicio + " y " + fechaFin + ": \n" + a;
+        } else {
+            return "El paciente no compro medicamentos en el año consultado";
+        }
+    }
+
+    private String consultarCostoPromedioMensualCita() {
+        int mes = this.MonthChooser.getMonth();
+        System.out.println(mes);
+        int anio = this.YearChooser.getYear();
+        String cedula = this.FieldCedula.getText();
+
+        Calendar calendario = new GregorianCalendar(anio, mes, 1);
+        int diasMes = calendario.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+        mes += 1;
+        String fechaInicio = "1-" + mes + "-" + anio;
+        String fechaFin = diasMes + "-" + mes + "-" + anio;
+        System.out.println(fechaInicio + " " + fechaFin);
+        String resultado = (String) controlPaciente.consultarCostoPromedioMensualCita(cedula, fechaInicio, fechaFin).get(0);
+        if (resultado != null) {
+            int a = (int) Math.round(Double.parseDouble(resultado));
+            return "Costo promedio de citas del paciente con cedula: " + cedula + " entre " + fechaInicio + " y " + fechaFin + ": \n" + a;
+        } else {
+            return "El paciente no asistio a citas en el mes consultado";
+        }
+
+    }
+
+    private String consultarCostoPromedioAnualCita() {
+        int anio = this.YearChooser.getYear();
+        String cedula = this.FieldCedula.getText();
+
+        String fechaInicio = "1-" + "1-" + anio;
+        String fechaFin = "31-" + "12-" + anio;
+        System.out.println(fechaInicio + " " + fechaFin);
+        String resultado = (String) controlPaciente.consultarCostoPromedioAnualCita(cedula, fechaInicio, fechaFin).get(0);
+        if (resultado != null) {
+            int a = (int) Math.round(Double.parseDouble(resultado));
+            return "Costo promedio de citas del paciente con cedula: " + cedula + " entre " + fechaInicio + " y " + fechaFin + ": \n" + a;
+        } else {
+            return "El paciente no asistio a citas en el año consultado";
+        }
+    }
 }

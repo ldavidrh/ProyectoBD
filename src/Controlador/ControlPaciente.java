@@ -6,6 +6,7 @@
 package Controlador;
 import Modelo.Paciente;
 import AccesoDatos.*;
+import java.util.ArrayList;
 /**
  *
  * @author invitado
@@ -38,6 +39,20 @@ public class ControlPaciente {
         return daoPaciente.verificarExistencia(id);
     }
     
+    public ArrayList consultarCostoPromedioMensualMedicamento(String cedula, String fechaInicio, String fechaFin){
+        return daoPaciente.consultarCostoPromedioMedicamento(cedula, fechaInicio, fechaFin);
+    }
+    public ArrayList consultarCostoPromedioAnualMedicamento(String cedula, String fechaInicio, String fechaFin){
+        return daoPaciente.consultarCostoPromedioMedicamento(cedula, fechaInicio, fechaFin);
+    }
+    
+    public ArrayList consultarCostoPromedioMensualCita(String cedula, String fechaInicio, String fechaFin){
+        return daoPaciente.consultarCostoPromedioCita(cedula, fechaInicio, fechaFin);
+    }
+    
+    public ArrayList consultarCostoPromedioAnualCita(String cedula, String fechaInicio, String fechaFin){
+        return daoPaciente.consultarCostoPromedioCita(cedula, fechaInicio, fechaFin);
+    }
     public void cerrarConexionBD(){
         daoPaciente.cerrarConexionBD();
     }   
