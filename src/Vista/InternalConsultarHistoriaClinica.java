@@ -38,6 +38,10 @@ public class InternalConsultarHistoriaClinica extends javax.swing.JInternalFrame
         jScrollPane1 = new javax.swing.JScrollPane();
         TextConsulta = new javax.swing.JTextArea();
 
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("Consultar historia clinica");
+
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setText("Ingrese la cedula del paciente que desea consultar la historia clinica");
