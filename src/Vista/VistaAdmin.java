@@ -151,6 +151,8 @@ public class VistaAdmin extends javax.swing.JFrame {
         ButtonEditarMedicamento = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         ButtonAgregarCausa = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -890,6 +892,8 @@ public class VistaAdmin extends javax.swing.JFrame {
 
         PanelPrincipal.addTab("Medicamentos", jPanel1);
 
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
         ButtonAgregarCausa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/addCausa.png"))); // NOI18N
         ButtonAgregarCausa.setText("Agregar");
         ButtonAgregarCausa.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -899,25 +903,29 @@ public class VistaAdmin extends javax.swing.JFrame {
                 ButtonAgregarCausaActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(308, 308, 308)
-                .addComponent(ButtonAgregarCausa)
-                .addContainerGap(353, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ButtonAgregarCausa)
-                .addContainerGap())
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 308, 8, 371);
+        jPanel2.add(ButtonAgregarCausa, gridBagConstraints);
 
         PanelPrincipal.addTab("Causas", jPanel2);
+
+        jPanel3.setLayout(new java.awt.GridBagLayout());
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/searchFormula.png"))); // NOI18N
+        jButton1.setText("Consultar");
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(11, 311, 8, 368);
+        jPanel3.add(jButton1, gridBagConstraints);
+
+        PanelPrincipal.addTab("Formulas", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1299,8 +1307,10 @@ public class VistaAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel PanelPaciente;
     private javax.swing.JTabbedPane PanelPrincipal;
     private javax.swing.JPanel PanelUsuarios;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
     
     public void showAgendaMes(InternalShowAgenda e){

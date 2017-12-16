@@ -15,13 +15,16 @@ public class Cita {
     String fecha;
     String hora;
     int precio;
+    char completada;
+   
 
-    public Cita(String id_medico, String id_paciente, String fecha, String hora, int precio) {
+    public Cita(String id_medico, String id_paciente, String fecha, String hora, int precio, char completada) {
         this.id_medico = id_medico;
         this.id_paciente = id_paciente;
         this.fecha = fecha;
         this.hora = hora;
         this.precio = precio;
+        this.completada = completada;
     }    
     
     public String getId_medico() {
@@ -62,5 +65,9 @@ public class Cita {
 
     public void setPrecio(int precio) {
         this.precio = precio;
+    }   
+
+    public char getCompletada() {
+        return completada;
     }   
 }

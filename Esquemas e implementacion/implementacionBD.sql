@@ -175,6 +175,7 @@ CREATE TABLE cita
 	fecha DATE NOT NULL,
 	hora TIME NOT NULL,
 	precio FLOAT(30) NOT NULL,
+	completada BIT NOT NULL,
 	
 	PRIMARY KEY(id_medico, id_paciente,  fecha, hora),
 	FOREIGN KEY (id_medico) REFERENCES medico (id_persona) ON DELETE CASCADE,
@@ -261,7 +262,7 @@ INSERT INTO causa VALUES ('1000','Dolor en espalda', 'Fuertes dolores lumbares')
 
 INSERT INTO registro VALUES ('H1113331659', 'H111', '333', '16-10-2017');
 
-INSERT INTO cita VALUES ('333','111', '31-12-2017','5:30', 50000);
+INSERT INTO cita VALUES ('333','111', '31-12-2017','5:30', 50000, '0');
 
 INSERT INTO medicamento VALUES ('1212','Dolex', 'Ayuda contra el malestar general', 700, '1');
 

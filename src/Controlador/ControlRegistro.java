@@ -20,20 +20,18 @@ public class ControlRegistro {
         daoRegistro = new DaoRegistro();
     }
     
-    public String insertarRegistro(String num_historia, String codigo_causa, String id_persona, String fecha){
-        Registro r = new Registro(num_historia, codigo_causa, id_persona, fecha);
+    public String insertarRegistro(String codigo_registro, String num_historia, String id_persona, String fecha){
+        Registro r = new Registro(codigo_registro, num_historia, id_persona, fecha);
         return daoRegistro.guardarRegistro(r);
     }
     
     public String[] consultarRegistro(String id_persona){       
         return daoRegistro.consultarRegistro(id_persona);
     }
-     
-    public String eliminarRegistro(String num_historia, String codigo_causa, String id_persona, String fecha){
-        Registro r = new Registro(num_historia, codigo_causa, id_persona, fecha);
-        return daoRegistro.eliminarRegistro(r);
-    }
     
+    public String insertarCausas(String codigo_registro, String codigo_causa){
+        return daoRegistro.guardarCausas(codigo_registro, codigo_causa);
+    }
     
     public void cerrarConexionBD(){
         daoRegistro.cerrarConexionBD();

@@ -43,6 +43,8 @@ public class InternalCitasAtendidas extends javax.swing.JInternalFrame {
         jTextArea1 = new javax.swing.JTextArea();
         Consultar = new javax.swing.JButton();
 
+        setClosable(true);
+
         jLabel2.setText("Elija el mes y el año en el que quiere consultar la cantidad de consultas por medico.");
 
         jTextArea1.setColumns(20);
@@ -118,11 +120,12 @@ public class InternalCitasAtendidas extends javax.swing.JInternalFrame {
         int diasMes = calendario.getActualMaximum(Calendar.DAY_OF_MONTH);
 
         mes += 1;
-        String fechaInicio = "1-" + mes + "-" + anio;
+        String fechaInicio = "01-" + mes + "-" + anio;
         String fechaFin = diasMes + "-" + mes + "-" + anio;
-	System.out.println(fechaInicio + " " + fechaFin);  
+	System.out.println("s"+fechaInicio + "s" + fechaFin+"s");  
         
-        controlCita.consultarCitasAtendidas(fechaInicio, fechaFin);
+        
+        this.jTextArea1.setText(controlCita.consultarCitasAtendidas(fechaInicio,fechaFin));
         this.Consultar.setEnabled(false);
     }//GEN-LAST:event_ConsultarActionPerformed
 
