@@ -119,14 +119,13 @@ public class InternalConsultarHistoriaClinica extends javax.swing.JInternalFrame
             String cedula = this.FieldCedula.getText();
             String consulta;
             String num_historia = "H" + this.FieldCedula.getText();
-            String[] paciente = controlHistoriaClinica.consultarHistoria(num_historia);
-                if (paciente == null) {
+            String[] historia = controlHistoriaClinica.consultarHistoria(num_historia);
+                if (historia == null) {
                     consulta = "No existe un paciente con esa cédula en el hospital";
+                    this.TextConsulta.setText(consulta);
                 }
                 else{
-                    
-                    String causas = "1000,2000,3000";
-                    consulta = controlHistoriaClinica.listarRegistros(num_historia, causas);
+                    consulta = controlHistoriaClinica.listarRegistros(num_historia);
                     this.TextConsulta.setText(consulta);
                 }
         }
