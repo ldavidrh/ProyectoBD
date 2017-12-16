@@ -51,7 +51,7 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         FieldCedulaPaciente = new javax.swing.JTextField();
         ButtonAgregar = new javax.swing.JButton();
-        ComboBoxHora = new javax.swing.JComboBox<String>();
+        ComboBoxHora = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         FieldCedulaMedico = new javax.swing.JTextField();
@@ -81,6 +81,12 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
         ButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonAgregarActionPerformed(evt);
+            }
+        });
+
+        ComboBoxHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxHoraActionPerformed(evt);
             }
         });
 
@@ -281,6 +287,10 @@ public class InternalAgregarCita extends javax.swing.JInternalFrame {
         this.FieldCedulaPaciente.setText("");
         this.ComboBoxHora.removeAllItems();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ComboBoxHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxHoraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxHoraActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -7,6 +7,7 @@ package AccesoDatos;
 
 import Modelo.Causa;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;/**
  *
@@ -104,6 +105,49 @@ public class DaoCausa {
         }
 
     }
+    
+    public String obtenerCodigo(String nombre){
+        String sql_consultar;
+        String codigo_causa = "";
+        sql_consultar = "SELECT * FROM causa WHERE nombre = '" + nombre + "';";
+
+        try {
+            Connection conexion = fachada.getConnetion();
+            Statement sentencia = conexion.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_consultar);
+            if(tabla.next()){
+                codigo_causa = (String)tabla.getString(1);
+            }
+            System.out.println(codigo_causa);
+            return codigo_causa;
+            
+        
+        } catch (SQLException e) {
+            System.out.print(e);
+            return null;
+        }
+    }
+    
+    public ArrayList consultarCausas() {
+        String sql_select;
+        ArrayList causas = new ArrayList();
+        sql_select = "SELECT codigo_causa, nombre FROM causa";
+        try {
+            Connection conn = fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);           
+            
+            while (tabla.next()) {
+                causas.add(tabla.getString(1) + " - " + tabla.getString(2));
+            }
+            return causas;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+
+   
 
     public void cerrarConexionBD() {
         fachada.closeConection(fachada.getConnetion());
