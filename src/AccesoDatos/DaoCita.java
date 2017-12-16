@@ -150,6 +150,34 @@ public class DaoCita {
             return "Ocurrió un problema al eliminar la cita";
         }
     }
+    
+    public String consultarCitasAtendidas(String fecha_inicial, String fecha_final){
+        String sql_select;       
+        String consulta = "";        
+        sql_select ="select id_medico, count(*) from cita" +
+                    " where completada = '1' and fecha between '" + fecha_inicial + "' and '" + fecha_final + "'" +
+                    "group by id_medico;";
+        try{
+            Connection conn= fachada.getConnetion();            
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);   
+            
+            while(tabla.next()){                
+                consulta += "id medico: " + (String)tabla.getString(1)+
+                 "   cantidad de citas atedidas : " + (String)tabla.getString(2) +
+                 "\n";
+            }           
+            return consulta;            
+        }catch(Exception e){
+            System.out.println(e);
+            return "Ha ocurido un error al consultar la cantidad de citas";
+        }
+    }
+    
+    
+    
+    
+    
 
     public boolean registrarAsistencia(String id_medico, String id_paciente, String fecha, String hora) {
         String sql_modificar;
