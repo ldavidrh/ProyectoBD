@@ -110,10 +110,7 @@ public class DaoHistoriaClinica {
                 causas =  causas +
                         (String)tabla.getString(1) + ", ";
             }
-            System.out.println(causas);
             return causas;
-            
-        
         } catch (SQLException e) {
             System.out.print(e);
             return null;
