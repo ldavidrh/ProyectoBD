@@ -36,6 +36,7 @@ public class VistaAdmin extends javax.swing.JFrame {
     ControlAsignada controlAsignada;
     ControlHabilidades controlHabilidades;
     ControlAsiste controlAsiste;
+    ControlFormula controlFormula;
     /**
      * Creates new form VistaPrincipal
      */
@@ -58,6 +59,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         controlCama = new ControlCama();
         controlAsiste = new ControlAsiste();
         controlCausa = new ControlCausa();
+        controlFormula = new ControlFormula();
         HiloCamas hilo = new HiloCamas(controlAsignada, controlCama);
         hilo.start();
         
@@ -918,6 +920,11 @@ public class VistaAdmin extends javax.swing.JFrame {
         jButton1.setText("Consultar");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -1215,6 +1222,13 @@ public class VistaAdmin extends javax.swing.JFrame {
         this.DesktopPane.add(addCausa);
         addCausa.show();
     }//GEN-LAST:event_ButtonAgregarCausaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        InternalConsultarFormula conFormula = new InternalConsultarFormula(controlFormula, controlMedicamento, controlPaciente);
+        this.DesktopPane.add(conFormula);
+        conFormula.show();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

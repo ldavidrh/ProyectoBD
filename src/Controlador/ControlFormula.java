@@ -26,6 +26,10 @@ public class ControlFormula {
         return daoFormula.guardarMedicamentos(codigo_formula, codigo_medicamento);
     }
     
+    public String consultaFormula(String id_paciente){
+        return daoFormula.consultarFormula(id_paciente);
+    }
+    
     public void cerrarConexionBD(){
         daoFormula.cerrarConexionBD();
     }

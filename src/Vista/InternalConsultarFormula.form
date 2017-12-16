@@ -87,7 +87,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingrese la cedula del paciente del que desea consultar las formulas medicas"/>
+            <Property name="text" type="java.lang.String" value="Ingrese la c&#xe9;dula del paciente del que desea consultar las f&#xf3;rmulas m&#xe9;dicas"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="FieldCedula">
@@ -96,6 +96,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonConsultarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

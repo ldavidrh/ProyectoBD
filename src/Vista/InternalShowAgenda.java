@@ -38,6 +38,7 @@ public class InternalShowAgenda extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jTextAreaAgenda.setEditable(false);
         jTextAreaAgenda.setColumns(20);
         jTextAreaAgenda.setRows(5);
         jScrollPane1.setViewportView(jTextAreaAgenda);
