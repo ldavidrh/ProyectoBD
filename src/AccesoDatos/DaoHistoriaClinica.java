@@ -109,7 +109,7 @@ public class DaoHistoriaClinica {
             while(tabla.next()){
                 causas =  causas +
                         (String)tabla.getString(1) + ", ";
-            }
+            }            
             return causas;
         } catch (SQLException e) {
             System.out.print(e);

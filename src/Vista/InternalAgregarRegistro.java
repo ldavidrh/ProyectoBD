@@ -228,17 +228,17 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
         String cita = (String) this.jComboBox1.getSelectedItem();
         String id_medico = this.FieldCedulaMedico.getText();
         String id_paciente = this.FieldCedulaPaciente.getText();
-        if(cita == null){
+        if (cita == null) {
             JOptionPane.showMessageDialog(this, "No hay citas para atender");
-        } else if(causa == null) {
-             JOptionPane.showMessageDialog(this, "No hay causas para agregar");           
-        } else {            
-            String cod_causa[] = causa.split("-");            
+        } else if (causa == null) {
+            JOptionPane.showMessageDialog(this, "No hay causas para agregar");
+        } else {
+            String cod_causa[] = causa.split("-");
             JOptionPane.showMessageDialog(this, controlRegistro.insertarCausas(cod_registro, cod_causa[0].trim()));
             String fecha_hora[] = cita.split(";");
             String fecha = fecha_hora[0].trim().substring(6);
             String hora = fecha_hora[1].trim().substring(4);
-            controlCita.registrarAsistencia(id_medico, id_paciente, fecha, hora);            
+            controlCita.registrarAsistencia(id_medico, id_paciente, fecha, hora);
         }
     }//GEN-LAST:event_ButtonAgregarCausaActionPerformed
 
@@ -266,13 +266,14 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
             String codigo_registro = "H" + id_paciente + id_medico + fecha + hora + minutos;
 
             String respuestaRegistro = controlRegistro.insertarRegistro(codigo_registro, "H" + id_paciente, id_medico, fecha);
-            if (respuestaRegistro.equals("Registro guardado exitosamente")) {                                
+            if (respuestaRegistro.equals("Registro guardado exitosamente")) {
                 this.jPanel2.setVisible(true);
                 this.FieldCedulaMedico.setEditable(false);
                 this.FieldCedulaPaciente.setEditable(false);
                 this.FieldCodigoRegistro.setText(codigo_registro);
                 this.refrescarCausas();
-                this.refrescarCitas(id_paciente, id_medico); 
+                this.refrescarCitas(id_paciente, id_medico);
+                this.jButtonContinuar.setEnabled(false);
             } else {
                 JOptionPane.showMessageDialog(this, respuestaRegistro);
             }
@@ -297,16 +298,11 @@ public class InternalAgregarRegistro extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 
-    private void refrescarCitas(String id_paciente, String id_medico) {
+    public void refrescarCitas(String id_paciente, String id_medico) {
         ArrayList lista = controlCita.listarCitasMedico(id_paciente, id_medico);
-        if (lista != null) {
-            int n = lista.size();
-            for (int i = 0; i < n; i++) {
-                this.jComboBox1.addItem((String) lista.get(i));
-            }
-        }else{
-            lista.add("No hay citas para atender");
-            this.jComboBox1.addItem((String)lista.get(1));
+        this.jComboBox1.removeAllItems();
+        for (int i = 0; i < lista.size(); i++) {
+            this.jComboBox1.addItem((String) lista.get(i));
         }
     }
 }

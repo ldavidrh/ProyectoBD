@@ -4,17 +4,22 @@
  * and open the template in the editor.
  */
 package Vista;
+
 import Controlador.ControlHistoriaClinica;
 import Controlador.ControlPaciente;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luis
  */
 public class InternalConsultarHistoriaClinica extends javax.swing.JInternalFrame {
+
     ControlHistoriaClinica controlHistoriaClinica;
+
     /**
      * Creates new form InternalConsultarHistoriaClinica
+     *
      * @param controlHistoriaClinica
      */
     public InternalConsultarHistoriaClinica(ControlHistoriaClinica controlHistoriaClinica) {
@@ -116,22 +121,23 @@ public class InternalConsultarHistoriaClinica extends javax.swing.JInternalFrame
     }//GEN-LAST:event_FieldCedulaActionPerformed
 
     private void ButtonConsultarHistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonConsultarHistoriaActionPerformed
-        if(this.FieldCedula.getText().trim().isEmpty()
-           ){
+        if (this.FieldCedula.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "por favor ingrese una cedula");
-        }else{
-            String cedula = this.FieldCedula.getText();
+        } else {            
             String consulta;
             String num_historia = "H" + this.FieldCedula.getText();
             String[] historia = controlHistoriaClinica.consultarHistoria(num_historia);
-                if (historia == null) {
-                    consulta = "No existe un paciente con esa cédula en el hospital";
+            if (historia == null) {
+                consulta = "No existe un paciente con esa cédula en el hospital";
+                this.TextConsulta.setText(consulta);
+            } else {
+                consulta = controlHistoriaClinica.listarRegistros(num_historia);
+                if (consulta.equals("")) {
+                    this.TextConsulta.setText("No existen registros en la historia clínica");
+                } else {
                     this.TextConsulta.setText(consulta);
-                }
-                else{
-                    consulta = controlHistoriaClinica.listarRegistros(num_historia);
-                    this.TextConsulta.setText(consulta);
-                }
+                }                
+            }
         }
     }//GEN-LAST:event_ButtonConsultarHistoriaActionPerformed
 
