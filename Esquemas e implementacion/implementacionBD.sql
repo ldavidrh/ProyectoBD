@@ -147,15 +147,25 @@ CREATE TABLE causa
 DROP TABLE if EXISTS registro CASCADE;
 CREATE TABLE registro
 (
-	num_historia VARCHAR(30) NOT NULL,
-	codigo_causa VARCHAR(30) NOT NULL,
+	id_registro VARCHAR(30) PRIMARY KEY NOT NULL,
+	num_historia VARCHAR(30) NOT NULL,	
 	id_persona VARCHAR(30) NOT NULL,
 	fecha DATE NOT NULL,
 
-	FOREIGN KEY (num_historia) REFERENCES historia_clinica (num_historia) ON DELETE CASCADE,
-	FOREIGN KEY (codigo_causa) REFERENCES causa (codigo_causa) ON DELETE CASCADE,
-	FOREIGN KEY (id_persona) REFERENCES medico (id_persona) ON DELETE CASCADE
+	FOREIGN KEY (num_historia) REFERENCES historia_clinica (num_historia) ON DELETE CASCADE	
 );
+
+DROP TABLE if EXISTS causas_registro CASCADE;
+CREATE TABLE causas_registro
+(
+	id_registro VARCHAR(30) NOT NULL,	
+	codigo_causa VARCHAR(30) NOT NULL,	
+
+	PRIMARY KEY (id_registro, codigo_causa),
+	FOREIGN KEY (id_registro) REFERENCES registro (id_registro) ON DELETE CASCADE,		
+	FOREIGN KEY (codigo_causa) REFERENCES causa (codigo_causa) ON DELETE CASCADE
+);
+
 
 DROP TABLE IF EXISTS cita CASCADE;
 CREATE TABLE cita
@@ -249,7 +259,7 @@ INSERT INTO asiste VALUES ('111','1', '0');
 
 INSERT INTO causa VALUES ('1000','Dolor en espalda', 'Fuertes dolores lumbares');
 
-INSERT INTO registro VALUES ('H111','1000', '333', '16-10-2017');
+INSERT INTO registro VALUES ('H1113331659', 'H111', '333', '16-10-2017');
 
 INSERT INTO cita VALUES ('333','111', '31-12-2017','5:30', 50000);
 
