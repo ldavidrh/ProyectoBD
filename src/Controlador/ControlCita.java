@@ -50,4 +50,10 @@ public class ControlCita {
         return daoCita.modificarCita(id_fecha_n, hora_n, id_fecha_v, hora_v, id_paciente);
     }
 
+    
+    public String consultarCitasAtendidas(String fecha_inicial, String fecha_final){
+    return daoCita.consultarCitasAtendidas(fecha_inicial, fecha_final);
+    }
+   
+    
 }
