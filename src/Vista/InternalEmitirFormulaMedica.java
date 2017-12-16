@@ -5,7 +5,6 @@
  */
 package Vista;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -196,7 +195,8 @@ public class InternalEmitirFormulaMedica extends javax.swing.JInternalFrame {
         String cod_formula = this.jTextFieldCodigo.getText();
         String med = (String) this.ComboBoxCodigoMedicamento.getSelectedItem();
         if (med != null) {
-            JOptionPane.showMessageDialog(this, controlFormula.insertarMedicamentos(cod_formula, med));
+            String cod_med[] = med.split("-");   
+            JOptionPane.showMessageDialog(this, controlFormula.insertarMedicamentos(cod_formula, cod_med[0].trim()));
         } else {
             JOptionPane.showMessageDialog(this, "No hay medicamentos para agregar");
         }
