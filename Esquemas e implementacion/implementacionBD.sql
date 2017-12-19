@@ -223,3 +223,6 @@ CREATE TABLE usuario
 	password VARCHAR(30) NOT NULL,
 	tipo_u VARCHAR(30)
 );
+
+INSERT INTO usuario VALUES('1', '1', 'Administrador');
+INSERT INTO usuario VALUES('2', '2', 'Médico');
